@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.theme-light {
+  --primary: #7200a1;
+  --background: #fff;
+  --sidebar-bg: #f2f2f2;
+  --alpha-bg: rgba(0,0,0,0.05);
+  --highlight: #fff;
+  --text-primary: #444;
+  --text-secondary: #444;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --tab-active: #fff;
+  --banner-home-dot: #727171;
+  --sticky-header-box-shadow: rgba(0,0,0,0.08);
+  --progress: #7200a1;
+  --progress-bg: rgb(71 66 66 / 45%);
+  --logo-url: url('https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-light.svg');
+}
+
+.theme-dark {
+  --primary: #7200a1;
+  --background: #170f23;
+  --sidebar-bg: hsla(0,0%,100%,0.05);
+  --alpha-bg: hsla(0, 0%, 100%, 0.1);
+  --highlight: #fff;
+  --text-primary: #fff;
+  --text-secondary: #dadada;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --tab-active: hsla(0,0%,100%,0.3);
+  --banner-home-dot: #d8d8d8;
+  --sticky-header-box-shadow: rgba(0,0,0,0.08);
+  --progress: #fff;
+  --progress-bg: rgb(71 66 66 / 45%);
+  --logo: 'dark';
+  --logo-url: url('https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg');
+}

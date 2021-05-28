@@ -1,8 +1,21 @@
 import axios from 'axios'
+import home from '@/data/home.json'
 
 const request = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL as string || 'http://localhost:8080'
 })
+
+request.interceptors.response.use(
+  (response) => {
+    if (response && response.data) {
+      return response.data
+    }
+    return false
+  },
+  (_err) => {
+    return false
+  }
+)
 
 export function fetchPlaylist(id: string) {
   return request({
@@ -17,10 +30,12 @@ export function fetchStreaming(id: string) {
 }
 
 export function fetchHome(page = 1) {
-  console.log('fetHome')
-  return request({
-    url: '/home?page=' + page
+  return new Promise<any>(res => {
+    setTimeout(() => res(home), 500)
   })
+  // return request({
+  //   url: '/home?page=' + page
+  // })
 }
 
 export function fetchSong(id: string) {
