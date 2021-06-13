@@ -11,8 +11,13 @@
           <img :src="slider.banner" alt="banner image">
         </a>
       </div>
+      <div class="relative opacity-0 slider-item current" style="position: relative">
+        <a href="#" class="inline-block">
+          <img :src="sliders[0].banner" alt="banner image">
+        </a>
+      </div>
     </div>
-    <button @click="goNext">Next</button>
+    <!-- <button @click="goNext">Next</button> -->
   </div>
 </template>
 
@@ -25,7 +30,7 @@ export default {
     sliders: { type: Array },
   },
   components: { SliderItem },
-  setup({ sliders }) {
+  setup() {
     const activeIndex = ref(0)
 
     const nextIndex = computed(() => {
@@ -43,21 +48,18 @@ export default {
     function goNext () {
       activeIndex.value = nextIndex.value
     }
-    return {activeIndex, previousIndex, nextIndex, goNext}
+    return {activeIndex, previousIndex, sliders, nextIndex, goNext}
   },
 }
 </script>
 
 <style scoped>
 .slider {
-  width: 1000px;
-  background: red;
-  margin: 10rem auto 0;
   @apply relative;
 }
 
 .slider-item {
-  @apply absolute w-1/2 inset-x-0 m-auto transform translate-x-0;
+  @apply absolute w-2/5 inset-x-0 m-auto transform translate-x-0;
   transition: transform 0.7s;
   transition: all 0.7s ease-out;
 }

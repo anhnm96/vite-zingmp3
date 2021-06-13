@@ -1,0 +1,2356 @@
+{
+  "items": [
+    {
+      "sectionType": "genre_mood",
+      "viewType": "slider",
+      "title": "Tâm Trạng Và Hoạt Động",
+      "link": "",
+      "sectionId": "hGenre",
+      "items": [
+        {
+          "encodeId": "IWZ9Z09C",
+          "cover": "https://photo-zmp3.zadn.vn/cover/1/3/d/a/13da957b7350667f92a0c6ae620c97ec.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/d/0/d/7/d0d772a6c3e35b3e768d5c3ebf644ecd.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/8/7/d/c/87dc784f849a55fb343b0ed994a8d864.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/4/7/8/0/47808cadd480844905b26104468e29b7.jpg",
+          "title": "Spa - Yoga",
+          "link": "/hub/Spa-Yoga/IWZ9Z09C.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z0AF",
+          "cover": "https://photo-zmp3.zadn.vn/cover/1/6/6/4/16643b9766c7cd5a5eb819d8160eb8b8.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/2/e/9/6/2e966bf47b1989fdff7149c7a1b0f25e.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/b/e/9/b/be9b83fdbb931eaf0a0342914cb6a12d.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/0/c/6/a/0c6a98b09036e57ecea05f0d19fe7011.jpg",
+          "title": "Driving",
+          "link": "/hub/Driving/IWZ9Z0AF.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z09F",
+          "cover": "https://photo-zmp3.zadn.vn/cover/7/1/a/b/71ab8a69d1ad4cad8c6289a346773073.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/d/b/5/c/db5cf069b328c7858b2d9642cc6b4529.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/6/a/9/8/6a982b0ea4de24100388beb27087d241.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/a/a/6/a/aa6afa7fdab849574a71dec0770a4b22.jpg",
+          "title": "Workout",
+          "link": "/hub/Workout/IWZ9Z09F.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z09B",
+          "cover": "https://photo-zmp3.zadn.vn/cover/9/4/5/2/94525d3e4dfd9b64b3cddb0365b00dcc.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/4/a/3/b/4a3b5265ee2c9e2c84f5a88194382b5d.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/7/8/e/b/78eb333a7b7a350a03c7674c0613d04d.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/3/e/2/5/3e25261cae8470995e8d88997e9c3e0e.jpg",
+          "title": "Ngủ Ngon",
+          "link": "/hub/Ngu-Ngon/IWZ9Z09B.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z09E",
+          "cover": "https://photo-zmp3.zadn.vn/cover/5/7/d/b/57dbc9145318876d3d79e26a99ec8a83.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/0/a/e/f/0aef849d584c7e995073617f53b9ac24.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/9/8/7/3/98732de40faf3fa472968bd081369978.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/a/2/3/b/a23b64ffea1892027878ffe3fd5a38bb.jpg",
+          "title": "Tình Yêu",
+          "link": "/hub/Tinh-Yeu/IWZ9Z09E.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z099",
+          "cover": "https://photo-zmp3.zadn.vn/cover/9/5/e/2/95e21d554ae394322b3bb79f7a01617b.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/e/6/8/0/e680570f74b3497c95d96f6ba6db7b07.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/4/f/d/a/4fda0068d6821c35e89a6d405b314ba0.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/0/7/e/a/07eaa28ca48cc2557737deee06d3c3f6.jpg",
+          "title": "Giai Điệu Buồn",
+          "link": "/hub/Giai-Dieu-Buon/IWZ9Z099.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z097",
+          "cover": "https://photo-zmp3.zadn.vn/cover/9/2/4/d/924d799e99bc603fe8aab02284711de1.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/4/d/f/4/4df44f0a15edb254717c383cf256b193.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/c/1/5/1/c151d0ea45ca4e88bade5841047acb9e.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/2/5/2/9/25296c695110c33adaf08901c9223017.jpg",
+          "title": "Chơi Game",
+          "link": "/hub/Choi-Game/IWZ9Z097.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z098",
+          "cover": "https://photo-zmp3.zadn.vn/cover/7/b/a/3/7ba3b164504295c3ab8ee10e1133678e.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/e/3/d/4/e3d43659c6dc756f87f4e44220313f92.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/d/0/7/1/d0714f6cfd28af5d7518d582285f3312.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/a/5/9/2/a592ccc7e41403e2f7b5233e064cf594.jpg",
+          "title": "Du lịch",
+          "link": "/hub/Du-lich/IWZ9Z098.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z0A0",
+          "cover": "https://photo-zmp3.zadn.vn/cover/7/4/5/7/7457c5c2972c13603b22885baf25b47d.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/9/5/1/b/951bb18f468ea711a81a0dd28a8797d4.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/e/d/3/2/ed325aa9d68abced2dc9234965f4af73.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/4/d/8/3/4d83d75dbb440bc97b3e397ea7606936.jpg",
+          "title": "Motivation",
+          "link": "/hub/Motivation/IWZ9Z0A0.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z0CI",
+          "cover": "https://photo-zmp3.zadn.vn/cover/d/6/2/1/d621f4cf5cecdf0ab58f6c4dfd8536a1.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/9/d/0/4/9d045c7d3a111975bb6920d963046dd1.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/4/f/8/5/4f857e3277bb89b5e1c5ecc24598027c.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/e/2/c/6/e2c683306586cb2e6e9cbfa77b4fd622.jpg",
+          "title": "Chill",
+          "link": "/hub/Chill/IWZ9Z0CI.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z0C8",
+          "cover": "https://photo-zmp3.zadn.vn/cover/2/8/2/a/282a894be5043c1b47446fff0d748fcb.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/1/c/c/8/1cc8ae9704ae8fb7e34487ce744083a9.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/1/a/9/9/1a99f9d8d8c5563e3893d9f10cd8689a.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/f/6/6/3/f6639d240726fcbe9c4fe584ee5cedc6.jpg",
+          "title": "Dinner",
+          "link": "/hub/Dinner/IWZ9Z0C8.html",
+          "description": ""
+        },
+        {
+          "encodeId": "IWZ9Z096",
+          "cover": "https://photo-zmp3.zadn.vn/cover/f/b/7/9/fb79cd3242278a6d8f8a8e473a80cd3b.jpg",
+          "thumbnail": "https://photo-zmp3.zadn.vn/cover/0/f/d/1/0fd1da7445b21a752a1c4282b06f2cf0.jpg",
+          "thumbnailHasText": "https://photo-zmp3.zadn.vn/cover/a/2/7/8/a2784283efbab4c3b17e344f9b0a4b30.jpg",
+          "thumbnailR": "https://photo-zmp3.zadn.vn/cover/9/2/2/d/922d20a7762e49a74a5564942189fb84.jpg",
+          "title": "Thư Giãn",
+          "link": "/hub/Thu-Gian/IWZ9Z096.html",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sectionType": "playlist",
+      "viewType": "slider",
+      "title": "Yêu là phải nghe",
+      "link": "",
+      "sectionId": "hAutoTheme1",
+      "items": [
+        {
+          "encodeId": "ZBIIO00W",
+          "title": "Thả Thính Là Phải Dính!",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/9/1/4/c/914cea6dff1e9d5072c2cf32be64e299.jpg",
+          "isoffical": true,
+          "link": "/album/Tha-Thinh-La-Phai-Dinh-Various-Artists/ZBIIO00W.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/1/4/c/914cea6dff1e9d5072c2cf32be64e299.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZDU8AE89",
+          "title": "Crush Ơi! Mình Yêu Nhau Đi",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/b/7/c/7/b7c769b237227f8430dcf62b59a2de4e.jpg",
+          "isoffical": true,
+          "link": "/album/Crush-Oi-Minh-Yeu-Nhau-Di-Various-Artists/ZDU8AE89.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/b/7/c/7/b7c769b237227f8430dcf62b59a2de4e.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZFBBBD8D",
+          "title": "Yêu Không Cần Cớ, Cần Anh Cơ!",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/1/4/1/1/1411806da8948cb6108b57283ccc4726.jpg",
+          "isoffical": true,
+          "link": "/album/Yeu-Khong-Can-Co-Can-Anh-Co-Various-Artists/ZFBBBD8D.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/1/4/1/1/1411806da8948cb6108b57283ccc4726.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "60O76D0I",
+          "title": "Chào Anh, Em Đứng Đây Từ Chiều!",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/2/c/a/3/2ca31a3183b732ba49589418cb7fcc91.jpg",
+          "isoffical": true,
+          "link": "/album/Chao-Anh-Em-Dung-Day-Tu-Chieu-Various-Artists/60O76D0I.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/2/c/a/3/2ca31a3183b732ba49589418cb7fcc91.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "6II7IUIU",
+          "title": "Yêu Thì Yêu, Không Yêu Thì Yêu",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/6/5/2/9/652992cda94f5ea61eb8b15a9f4044ac.jpg",
+          "isoffical": true,
+          "link": "/album/Yeu-Thi-Yeu-Khong-Yeu-Thi-Yeu-Various-Artists/6II7IUIU.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/6/5/2/9/652992cda94f5ea61eb8b15a9f4044ac.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "6IOWA007",
+          "title": "Có Chắc Yêu Là Đây",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/e/a/0/9/ea096a8afb3f160d1f3f52fb8a068403.jpg",
+          "isoffical": true,
+          "link": "/album/Co-Chac-Yeu-La-Day-Various-Artists/6IOWA007.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/e/a/0/9/ea096a8afb3f160d1f3f52fb8a068403.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "6IU0W00U",
+          "title": "Rap Việt Thả Thính Cực Chất",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/1/2/2/d/122d4e48b229f122fddc7304aa8ab06f.jpg",
+          "isoffical": true,
+          "link": "/album/Rap-Viet-Tha-Thinh-Cuc-Chat-Various-Artists/6IU0W00U.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/1/2/2/d/122d4e48b229f122fddc7304aa8ab06f.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "6ZOBBDAZ",
+          "title": "Trên Tình Bạn Dưới Tình Yêu",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/d/4/d/5/d4d52cdbcbc88b018129ef26cb85aed7.jpg",
+          "isoffical": true,
+          "link": "/album/Tren-Tinh-Ban-Duoi-Tinh-Yeu-Various-Artists/6ZOBBDAZ.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/d/4/d/5/d4d52cdbcbc88b018129ef26cb85aed7.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "67ZBZUDB",
+          "title": "Phải Chăng Em Đã Yêu?",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/8/e/4/d/8e4d3988a33f77e7b5d5b3164b78af92.jpg",
+          "isoffical": true,
+          "link": "/album/Phai-Chang-Em-Da-Yeu-Various-Artists/67ZBZUDB.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/8/e/4/d/8e4d3988a33f77e7b5d5b3164b78af92.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        }
+      ]
+    },
+    {
+      "sectionType": "playlist",
+      "viewType": "slider",
+      "title": "Nghe là thấy vui",
+      "link": "",
+      "sectionId": "hAutoTheme2",
+      "items": [
+        {
+          "encodeId": "ZOCZU0D6",
+          "title": "A Perfect Day",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/e/a/9/d/ea9de1e0a90bfb6b52e7340130eb1890.jpg",
+          "isoffical": true,
+          "link": "/album/A-Perfect-Day-Various-Artists/ZOCZU0D6.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 283,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/e/a/9/d/ea9de1e0a90bfb6b52e7340130eb1890.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOUZ7OIB",
+          "title": "Happy Chill",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/9/8/8/0/9880bf4a2068b81d38c983f24e79c7c4.jpg",
+          "isoffical": true,
+          "link": "/album/Happy-Chill-Various-Artists/ZOUZ7OIB.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 235,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/8/8/0/9880bf4a2068b81d38c983f24e79c7c4.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZWZBOC6A",
+          "title": "Ngày Hạnh Phúc",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/0/1/4/7/0147e115242a369304e8aa0ffcded4c2.jpg",
+          "isoffical": true,
+          "link": "/album/Ngay-Hanh-Phuc-Various-Artists/ZWZBOC6A.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 0,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/0/1/4/7/0147e115242a369304e8aa0ffcded4c2.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOUOW6UE",
+          "title": "Beautiful Day",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/7/0/8/b/708b9ef4f53fcfc6927577e89ae59d79.jpg",
+          "isoffical": true,
+          "link": "/album/Beautiful-Day-Various-Artists/ZOUOW6UE.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 70,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/7/0/8/b/708b9ef4f53fcfc6927577e89ae59d79.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOUUDUEW",
+          "title": "Cuộc Sống Tươi Đẹp",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/d/a/5/c/da5c38b76df3d4feedfd50a6456b0c58.jpg",
+          "isoffical": true,
+          "link": "/album/Cuoc-Song-Tuoi-Dep-Various-Artists/ZOUUDUEW.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 235,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/d/a/5/c/da5c38b76df3d4feedfd50a6456b0c58.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZFECA67W",
+          "title": "#HAPPY",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/6/3/5/f/635ff1d55bc43aa54252309cc16c97f6.jpg",
+          "isoffical": true,
+          "link": "/album/HAPPY-Various-Artists/ZFECA67W.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/6/3/5/f/635ff1d55bc43aa54252309cc16c97f6.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZE990U80",
+          "title": "Lắc Lư Cho Hết Buồn",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/d/3/d/9/d3d90145bdd0ada067fe926e4a1fcc67.jpg",
+          "isoffical": true,
+          "link": "/album/Lac-Lu-Cho-Het-Buon-Various-Artists/ZE990U80.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/d/3/d/9/d3d90145bdd0ada067fe926e4a1fcc67.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZODIU0CO",
+          "title": "Easy Lifestyle",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/0/5/a/4/05a4e11209d3443697e206c2695e5ba7.jpg",
+          "isoffical": true,
+          "link": "/album/Easy-Lifestyle-Various-Artists/ZODIU0CO.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 283,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/0/5/a/4/05a4e11209d3443697e206c2695e5ba7.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOUUDUB7",
+          "title": "Lush Life",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/a/e/f/a/aefa602c4071dbbe87fad3632658f435.jpg",
+          "isoffical": true,
+          "link": "/album/Lush-Life-Various-Artists/ZOUUDUB7.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 234,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/a/e/f/a/aefa602c4071dbbe87fad3632658f435.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZDWI7AUB",
+          "title": "Nghe Thôi... Đã Thấy Vui!",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/a/3/c/1/a3c1d74f7694a612efa151873fc7feb7.jpg",
+          "isoffical": true,
+          "link": "/album/Nghe-Thoi-Da-Thay-Vui-Various-Artists/ZDWI7AUB.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/a/3/c/1/a3c1d74f7694a612efa151873fc7feb7.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOED000C",
+          "title": "Những Giai Điệu V-Pop Tươi Vui",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/5/f/a/e/5fae8faa4e9a3a0f4ec00e46fb730d87.jpg",
+          "isoffical": true,
+          "link": "/album/Nhung-Giai-Dieu-V-Pop-Tuoi-Vui-Various-Artists/ZOED000C.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 298,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/5/f/a/e/5fae8faa4e9a3a0f4ec00e46fb730d87.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOUDDBBI",
+          "title": "FA No Problem",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/d/5/d/d/d5dd39c94bad20a53260e1147d870daf.jpg",
+          "isoffical": true,
+          "link": "/album/FA-No-Problem-Various-Artists/ZOUDDBBI.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 235,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/d/5/d/d/d5dd39c94bad20a53260e1147d870daf.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZODAZECI",
+          "title": "Cười Lên Nào!",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/b/4/1/5/b415a50f3d09e19e9cdb32e3a719db3f.jpg",
+          "isoffical": true,
+          "link": "/album/Cuoi-Len-Nao-Various-Artists/ZODAZECI.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 298,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/b/4/1/5/b415a50f3d09e19e9cdb32e3a719db3f.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZFFID0OZ",
+          "title": "#Vui",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/9/3/8/6/9386b13ad12bb331a5b8c3f6e77426f4.jpg",
+          "isoffical": true,
+          "link": "/album/Vui-Various-Artists/ZFFID0OZ.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/3/8/6/9386b13ad12bb331a5b8c3f6e77426f4.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOZ90BUB",
+          "title": "Stress Out",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/3/e/b/c/3ebc8b9437d6cb31de5f287b2cc179c3.jpg",
+          "isoffical": true,
+          "link": "/album/Stress-Out-Various-Artists/ZOZ90BUB.html",
+          "isIndie": false,
+          "PR": false,
+          "artists": [
+            {
+              "id": "IW67C6W0",
+              "name": "",
+              "link": "/nghe-si/IW67C6W0",
+              "spotlight": false
+            }
+          ],
+          "artistsNames": "Various Artists,",
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 256,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/3/e/b/c/3ebc8b9437d6cb31de5f287b2cc179c3.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZFUF99O0",
+          "title": "Độc Thân Vui Vẻ",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/1/4/c/a/14cac4b013766f1f4ac5f37712a7e576.jpg",
+          "isoffical": true,
+          "link": "/album/Doc-Than-Vui-Ve-Various-Artists/ZFUF99O0.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/1/4/c/a/14cac4b013766f1f4ac5f37712a7e576.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOU9B0E9",
+          "title": "#Smile",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/b/8/6/1/b8610ad03c98993616be20d247afe6e6.jpg",
+          "isoffical": true,
+          "link": "/album/Smile-Various-Artists/ZOU9B0E9.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 256,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/b/8/6/1/b8610ad03c98993616be20d247afe6e6.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZDW970B7",
+          "title": "Vui Lên Nào!",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/b/7/b/3/b7b377454369bb4d31d1a3ccd5d8603f.jpg",
+          "isoffical": true,
+          "link": "/album/Vui-Len-Nao-Various-Artists/ZDW970B7.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/b/7/b/3/b7b377454369bb4d31d1a3ccd5d8603f.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZUIOOAEB",
+          "title": "Nhạc Hoa Giai Điệu Vui Nhộn",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/3/e/7/9/3e799c64990210f4f0b53efcd33e0acd.jpg",
+          "isoffical": true,
+          "link": "/album/Nhac-Hoa-Giai-Dieu-Vui-Nhon-Various-Artists/ZUIOOAEB.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 354,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/3/e/7/9/3e799c64990210f4f0b53efcd33e0acd.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZWZCUF9E",
+          "title": "Happy Time",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/3/5/3/8/35386e480a012a5da850dc9c1d5ba8e1.jpg",
+          "isoffical": true,
+          "link": "/album/Happy-Time-Various-Artists/ZWZCUF9E.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 88,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/3/5/3/8/35386e480a012a5da850dc9c1d5ba8e1.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        }
+      ]
+    },
+    {
+      "sectionType": "playlist",
+      "viewType": "slider",
+      "title": "Những bản hit một thời",
+      "link": "",
+      "sectionId": "hAutoTheme2",
+      "items": [
+        {
+          "encodeId": "ZF90UE6A",
+          "title": "K-Pop Năm 2019",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/5/3/3/7/5337cd6001a8e9eb262aeac18c698f33.jpg",
+          "isoffical": true,
+          "link": "/album/K-Pop-Nam-2019-Various-Artists/ZF90UE6A.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/5/3/3/7/5337cd6001a8e9eb262aeac18c698f33.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOCOWFDZ",
+          "title": "Duyên Dáng Bolero Vol 7",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/e/7/3/3/e733c40ba905cf215cd2437554dbda1f.jpg",
+          "isoffical": true,
+          "link": "/album/Duyen-Dang-Bolero-Vol-7-Ngoc-Ha-Ha-Thanh-Xuan-Ha-Vy/ZOCOWFDZ.html",
+          "isIndie": false,
+          "PR": false,
+          "artists": [
+            {
+              "id": "IWZ9ZUWO",
+              "name": "Ngọc Hạ",
+              "link": "/nghe-si/Ngoc-Ha",
+              "spotlight": false,
+              "playlistId": "Z6BOFECC"
+            },
+            {
+              "id": "IWZ97OII",
+              "name": "Hà Thanh Xuân",
+              "link": "/nghe-si/Ha-Thanh-Xuan",
+              "spotlight": false,
+              "playlistId": "Z6BUIZB8"
+            },
+            {
+              "id": "IWZ9Z8OO",
+              "name": "Hạ Vy",
+              "link": "/nghe-si/Ha-Vy-bolero",
+              "spotlight": false,
+              "playlistId": "Z6BOF8CO"
+            }
+          ],
+          "artistsNames": "Ngọc Hạ, Hà Thanh Xuân, Hạ Vy",
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 283,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/e/7/3/3/e733c40ba905cf215cd2437554dbda1f.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF907FEO",
+          "title": "K-Pop Năm 2015",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/b/9/9/6/b9962be424e0c993cbd7258470b5225c.jpg",
+          "isoffical": true,
+          "link": "/album/K-Pop-Nam-2015-Various-Artists/ZF907FEO.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/b/9/9/6/b9962be424e0c993cbd7258470b5225c.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZFFE76FA",
+          "title": "Hit Âu Mỹ Hay Nhất 2010",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/5/f/c/c/5fcc759664f2ef1e964c70e16fc8af17.jpg",
+          "isoffical": true,
+          "link": "/album/Hit-Au-My-Hay-Nhat-2010-Various-Artists/ZFFE76FA.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/5/f/c/c/5fcc759664f2ef1e964c70e16fc8af17.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF9O96W0",
+          "title": "K-Pop Năm 2012",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/0/5/6/c/056cd5380b9ae6b971e0e639486f6b1a.jpg",
+          "isoffical": true,
+          "link": "/album/K-Pop-Nam-2012-Various-Artists/ZF9O96W0.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/0/5/6/c/056cd5380b9ae6b971e0e639486f6b1a.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF7UD9AF",
+          "title": "Câu Lạc Bộ Hits Vol.6",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/e/4/9/9/e4993feec88f7ecf85d97dab0560b65b.jpg",
+          "isoffical": true,
+          "link": "/album/Cau-Lac-Bo-Hits-Vol-6-Various-Artists/ZF7UD9AF.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/e/4/9/9/e4993feec88f7ecf85d97dab0560b65b.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF9O8OF7",
+          "title": "K-Pop Năm 2014",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/7/7/8/d/778d43db0bc83630f89352d3aa5b2a22.jpg",
+          "isoffical": true,
+          "link": "/album/K-Pop-Nam-2014-Various-Artists/ZF9O8OF7.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/7/7/8/d/778d43db0bc83630f89352d3aa5b2a22.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "6I8I8WUF",
+          "title": "Câu Lạc Bộ Hits Vol.13",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/c/a/8/1/ca81443cec4442ed1a43d1b84e64c97d.jpg",
+          "isoffical": true,
+          "link": "/album/Cau-Lac-Bo-Hits-Vol-13-Various-Artists/6I8I8WUF.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/c/a/8/1/ca81443cec4442ed1a43d1b84e64c97d.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF89DIAB",
+          "title": "Câu Lạc Bộ Hits Vol.7",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/2/2/8/5/2285d92e6d85d8d8a0588ecafbb6b3fb.jpg",
+          "isoffical": true,
+          "link": "/album/Cau-Lac-Bo-Hits-Vol-7-Various-Artists/ZF89DIAB.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/2/2/8/5/2285d92e6d85d8d8a0588ecafbb6b3fb.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZB0B9CEC",
+          "title": "Hit Âu Mỹ Hay Nhất 1999",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/8/9/4/5/8945691bcd9fd5c1494d58db7f844be5.jpg",
+          "isoffical": true,
+          "link": "/album/Hit-Au-My-Hay-Nhat-1999-Various-Artists/ZB0B9CEC.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/8/9/4/5/8945691bcd9fd5c1494d58db7f844be5.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF907ZI0",
+          "title": "K-Pop Năm 2017",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/9/4/0/0/94003dcb9a4ef6f908e1b60840417e82.jpg",
+          "isoffical": true,
+          "link": "/album/K-Pop-Nam-2017-Various-Artists/ZF907ZI0.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/4/0/0/94003dcb9a4ef6f908e1b60840417e82.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF90788O",
+          "title": "K-Pop Năm 2016",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/9/8/c/6/98c672170119d38b1de050006b7c0d5c.jpg",
+          "isoffical": true,
+          "link": "/album/K-Pop-Nam-2016-Various-Artists/ZF90788O.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/8/c/6/98c672170119d38b1de050006b7c0d5c.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "60EAADZI",
+          "title": "Câu Lạc Bộ Hits Vol.11",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/4/2/e/f/42ef7900cafa17332a009287b9c2e111.jpg",
+          "isoffical": true,
+          "link": "/album/Cau-Lac-Bo-Hits-Vol-11-Various-Artists/60EAADZI.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/4/2/e/f/42ef7900cafa17332a009287b9c2e111.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZF9O8F7F",
+          "title": "K-Pop Năm 2013",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/3/b/7/e/3b7e5bd45ee84917c3341dc99357b1f4.jpg",
+          "isoffical": true,
+          "link": "/album/K-Pop-Nam-2013-Various-Artists/ZF9O8F7F.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 435,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/3/b/7/e/3b7e5bd45ee84917c3341dc99357b1f4.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "60EAAFCZ",
+          "title": "Câu Lạc Bộ Hits Vol.12",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/9/b/5/b/9b5b864ff4a4fa1af5a7775cb87c646d.jpg",
+          "isoffical": true,
+          "link": "/album/Cau-Lac-Bo-Hits-Vol-12-Various-Artists/60EAAFCZ.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/9/b/5/b/9b5b864ff4a4fa1af5a7775cb87c646d.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOBFDCDC",
+          "title": "Duyên Dáng Bolero Vol 4",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/c/6/e/0/c6e07492c22ecefafbff83fa3e427095.jpg",
+          "isoffical": true,
+          "link": "/album/Duyen-Dang-Bolero-Vol-4-Duong-Hong-Loan-Giang-Tien-Luu-Anh-Loan/ZOBFDCDC.html",
+          "isIndie": false,
+          "PR": false,
+          "artists": [
+            {
+              "id": "IWZ9BZ0B",
+              "name": "Dương Hồng Loan",
+              "link": "/nghe-si/Duong-Hong-Loan",
+              "spotlight": false,
+              "playlistId": "Z6BUIWC7"
+            },
+            {
+              "id": "IWZ98IZ8",
+              "name": "Giáng Tiên",
+              "link": "/nghe-si/Giang-Tien",
+              "spotlight": false,
+              "playlistId": "Z6BOE786"
+            },
+            {
+              "id": "IWZ96ZF6",
+              "name": "Lưu Ánh Loan",
+              "link": "/nghe-si/Luu-Anh-Loan",
+              "spotlight": false,
+              "playlistId": "Z6BU070B"
+            }
+          ],
+          "artistsNames": "Dương Hồng Loan, Giáng Tiên, Lưu Ánh Loan",
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 283,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/c/6/e/0/c6e07492c22ecefafbff83fa3e427095.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOED8OD8",
+          "title": "Duyên Dáng Bolero Vol 9",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/7/9/a/a/79aad6b8148366c7c0bec11574750c65.jpg",
+          "isoffical": true,
+          "link": "/album/Duyen-Dang-Bolero-Vol-9-Phuong-My-Chi-Phan-Y-Linh-Yen-Nhien/ZOED8OD8.html",
+          "isIndie": false,
+          "PR": false,
+          "artists": [
+            {
+              "id": "IWZ9EWB6",
+              "name": "Phương Mỹ Chi",
+              "link": "/nghe-si/Phuong-My-Chi",
+              "spotlight": false,
+              "playlistId": "Z6BOEAI0"
+            },
+            {
+              "id": "IWZFEDEI",
+              "name": "Phan Ý Linh",
+              "link": "/nghe-si/Phan-Y-Linh",
+              "spotlight": false,
+              "playlistId": "Z6BUI0UC"
+            },
+            {
+              "id": "IWZ9FOF8",
+              "name": "Yên Nhiên",
+              "link": "/nghe-si/Yen-Nhien",
+              "spotlight": false,
+              "playlistId": "Z6BUI0DU"
+            }
+          ],
+          "artistsNames": "Phương Mỹ Chi, Phan Ý Linh, Yên Nhiên",
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 133,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/7/9/a/a/79aad6b8148366c7c0bec11574750c65.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOBFDCA6",
+          "title": "Duyên Dáng Bolero Vol 2",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/7/f/d/9/7fd9a24a3584f0cd4b5716f794cfce4b.jpg",
+          "isoffical": true,
+          "link": "/album/Duyen-Dang-Bolero-Vol-2-To-My-Ha-Van-Lam-Ngoc-Hoa/ZOBFDCA6.html",
+          "isIndie": false,
+          "PR": false,
+          "artists": [
+            {
+              "id": "IWZA6D7W",
+              "name": "Tố My",
+              "link": "/nghe-si/To-My",
+              "spotlight": false,
+              "playlistId": "Z6BU0IOA"
+            },
+            {
+              "id": "IWZ9EAA6",
+              "name": "Hà Vân",
+              "link": "/nghe-si/Ha-Van-bolero",
+              "spotlight": false,
+              "playlistId": "Z6BU08DA"
+            },
+            {
+              "id": "IWZAUAUZ",
+              "name": "Lâm Ngọc Hoa",
+              "link": "/nghe-si/Lam-Ngoc-Hoa",
+              "spotlight": false,
+              "playlistId": "Z6BOFUZA"
+            }
+          ],
+          "artistsNames": "Tố My, Hà Vân, Lâm Ngọc Hoa",
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 283,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/7/f/d/9/7fd9a24a3584f0cd4b5716f794cfce4b.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZOC08FZB",
+          "title": "Duyên Dáng Bolero Vol 5",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/8/f/f/8/8ff830509b31e246905267920f532672.jpg",
+          "isoffical": true,
+          "link": "/album/Duyen-Dang-Bolero-Vol-5-Ngoc-Han-Kim-Thu-Hong-Phuong/ZOC08FZB.html",
+          "isIndie": false,
+          "PR": false,
+          "artists": [
+            {
+              "id": "IWZA0OWB",
+              "name": "Ngọc Hân",
+              "link": "/nghe-si/Ngoc-Han",
+              "spotlight": false,
+              "playlistId": "Z6BOFBFW"
+            },
+            {
+              "id": "IWZ98UCI",
+              "name": "Kim Thư",
+              "link": "/nghe-si/Kim-Thu",
+              "spotlight": false,
+              "playlistId": "Z6BODEUC"
+            },
+            {
+              "id": "IWZ997E0",
+              "name": "Hồng Phượng",
+              "link": "/nghe-si/Hong-Phuong",
+              "spotlight": false,
+              "playlistId": "Z6BOE09U"
+            }
+          ],
+          "artistsNames": "Ngọc Hân, Kim Thư, Hồng Phượng",
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 133,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/8/f/f/8/8ff830509b31e246905267920f532672.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        },
+        {
+          "encodeId": "ZFFWOAWA",
+          "title": "Hit Âu Mỹ Hay Nhất 2005",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/e/4/5/2/e45238e50cb89d5aec628dc99085d28d.jpg",
+          "isoffical": true,
+          "link": "/album/Hit-Au-My-Hay-Nhat-2005-Various-Artists/ZFFWOAWA.html",
+          "isIndie": false,
+          "PR": false,
+          "playItemMode": 0,
+          "subType": 1,
+          "uid": 422,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/e/4/5/2/e45238e50cb89d5aec628dc99085d28d.jpg",
+          "isShuffle": true,
+          "isPrivate": false,
+          "userName": "Zing MP3",
+          "isAlbum": false,
+          "textType": "Playlist",
+          "isSingle": false
+        }
+      ]
+    },
+    {
+      "sectionType": "event",
+      "viewType": "slider",
+      "title": "Sắp diễn ra",
+      "link": "",
+      "sectionId": "hSlider",
+      "items": [
+        {
+          "encodeId": "IWZ979FA",
+          "description": "Vào ngày sinh nhật Isaac, 1.000 fans nhanh tay nhất nhập mã IsaacxZingMP3 tại trang đổi mã sẽ nhận được tài khoản Zing VIP trải nghiệm âm nhạc không giới hạn trên Zing MP3 đấy! \r\n\r\nCòn chần chừ gì nữa mà không đặt lịch và gửi ngay lời chúc đến Isaac ngay tại đây!",
+          "address": "",
+          "link": "/event/IWZ979FA.html",
+          "coverV": "https://photo-zmp3.zadn.vn/event/4/b/2/4/4b2489f658fa5632931702bb60475a01.jpg",
+          "coverVM": "https://photo-resize-zmp3.zadn.vn/w350_r7x12_jpeg/event/4/b/2/4/4b2489f658fa5632931702bb60475a01.jpg",
+          "coverH": "https://photo-zmp3.zadn.vn/event/0/7/6/3/0763160664a1879dcdb0014847d22372.jpg",
+          "coverHM": "https://photo-resize-zmp3.zadn.vn/w600_r12x7_jpeg/event/0/7/6/3/0763160664a1879dcdb0014847d22372.jpg",
+          "startTime": 1623517200,
+          "endTime": 1623603540,
+          "publishTime": 1623039120,
+          "place": "Zing MP3",
+          "status": 1,
+          "label": "SỰ KIỆN",
+          "shortTitle": "Sinh Nhật Sao x Isaac",
+          "title": "Sinh Nhật Sao x Isaac",
+          "subscribeText": "Chúc mừng",
+          "unsubscribeText": "Đã Chúc mừng",
+          "totalFollow": 2226,
+          "followers": [
+            {
+              "id": "ZWW6776D",
+              "avatar": "https://s240-ava-talk.zadn.vn/2/8/8/8/1/240/262d719b7656716229a6895848e6b78b.jpg"
+            },
+            {
+              "id": "ZIZ669AF",
+              "avatar": "https://s240-ava-talk.zadn.vn/e/7/0/7/4/240/45e9d4f24a2cd66337e8b1d701db9694.jpg"
+            },
+            {
+              "id": "UE7ICODD",
+              "avatar": "https://s240-ava-talk.zadn.vn/1/5/2/2/4/240/35331fd11759439255c5874d1f929d32.jpg"
+            },
+            {
+              "id": "ZIUD970I",
+              "avatar": "https://s240-ava-talk.zadn.vn/f/0/a/a/2/240/f6d75ad6984aa0c6faaf6c4c2f7ebd82.jpg"
+            },
+            {
+              "id": "ZWO8O96W",
+              "avatar": "https://s240-ava-talk.zadn.vn/0/f/7/6/1/240/5ff2c3f69dd169d4b20ec45b2c9f6873.jpg"
+            },
+            {
+              "id": "UFD676C0",
+              "avatar": "https://s240-ava-talk.zadn.vn/8/e/3/7/10/240/698e18278a1e92a5beab694ea411f1e2.jpg"
+            }
+          ],
+          "startUrl": "",
+          "startUrlText": "PHÁT BÀI HÁT",
+          "startText": "ĐANG DIỄN RA",
+          "endText": "ĐÃ DIỄN RA",
+          "videoUrl": "",
+          "host": {
+            "id": "IWZ99IE0",
+            "name": "Isaac",
+            "link": "/nghe-si/Isaac365",
+            "spotlight": false,
+            "playlistId": "Z6BOE0CA",
+            "cover": "https://photo-zmp3.zadn.vn/cover_artist/8/4/84b29556794eb423843e6ff121cd58e7_1510815288.jpg",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/9/0/8/0/9080ec8bbad94770d7d353d532ca15ab.jpg"
+          }
+        },
+        {
+          "encodeId": "IWZ97A0A",
+          "description": "K-ICM và Ryo sẽ phát hành bài hát 'Tình Yêu Hóa Đá' vào lúc 20:00 ngày 13.06.2021 trên ứng dụng Zing MP3.",
+          "address": "Chỉ có trên Zing MP3",
+          "link": "/event/IWZ97A0A.html",
+          "coverV": "https://photo-zmp3.zadn.vn/event/c/a/4/b/ca4bb826770fcaf5d73fb3bc3c4a22ea.jpg",
+          "coverVM": "https://photo-resize-zmp3.zadn.vn/w350_r7x12_jpeg/event/c/a/4/b/ca4bb826770fcaf5d73fb3bc3c4a22ea.jpg",
+          "coverH": "https://photo-zmp3.zadn.vn/event/0/7/8/3/07836bfeb68f8e2fe021c8836f0b60e6.jpg",
+          "coverHM": "https://photo-resize-zmp3.zadn.vn/w600_r12x7_jpeg/event/0/7/8/3/07836bfeb68f8e2fe021c8836f0b60e6.jpg",
+          "startTime": 1623589200,
+          "endTime": 1623589200,
+          "publishTime": 1623424200,
+          "place": "Zing MP3",
+          "status": 1,
+          "label": "PHÁT HÀNH BÀI HÁT",
+          "shortTitle": "Tình Yêu Hóa Đá",
+          "title": "Tình Yêu Hóa Đá - K-ICM, Ryo",
+          "subscribeText": "Quan tâm",
+          "unsubscribeText": "Đã quan tâm",
+          "totalFollow": 154,
+          "followers": [
+            {
+              "id": "ZWI8WIIE",
+              "avatar": "https://s240-ava-talk.zadn.vn/3/1/8/7/1/240/a546b8798d94028407a81253f205ae89.jpg"
+            },
+            {
+              "id": "UDF7F6E8",
+              "avatar": "https://s240-ava-talk.zadn.vn/8/2/5/2/114/240/474d4a62334226b9598582a7d342ee99.jpg"
+            },
+            {
+              "id": "ZWODAIIW",
+              "avatar": "https://s240-ava-talk.zadn.vn/c/8/f/2/1/240/8acf4b1d48615494d1dd2b90ff4bd739.jpg"
+            },
+            {
+              "id": "Z0I79O97",
+              "avatar": "https://s240-ava-talk.zadn.vn/1/4/6/7/7/240/72c9d3b2ebff2cedf1d84e3b69948268.jpg"
+            },
+            {
+              "id": "ZWIDCAF9",
+              "avatar": "https://s240-ava-talk.zadn.vn/c/5/2/e/1/240/d57f216102480e89b69c9fb8244a68f9.jpg"
+            },
+            {
+              "id": "Z07AU0FF",
+              "avatar": "https://s240-ava-talk.zadn.vn/c/8/9/e/19/240/8bb1756c4909833fa35657dbc42b04fb.jpg"
+            }
+          ],
+          "startUrl": "",
+          "startUrlText": "PHÁT BÀI HÁT",
+          "startText": "ĐÃ PHÁT HÀNH",
+          "endText": "ĐÃ PHÁT HÀNH",
+          "videoUrl": "",
+          "host": {
+            "id": "IWZFFOWB",
+            "name": "K-ICM",
+            "link": "/nghe-si/K-ICM",
+            "spotlight": false,
+            "playlistId": "Z6BOFUD7",
+            "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/e/0/f/a/e0fa83e73def78c85335f59d0c3a0eb0.jpg"
+          }
+        },
+        {
+          "encodeId": "IWZ979F9",
+          "description": "Vào ngày sinh nhật Chi Pu, 1.000 fans nhanh tay nhất nhập mã ChiPuxZingMP3 tại trang đổi mã sẽ nhận được tài khoản Zing VIP trải nghiệm âm nhạc không giới hạn trên Zing MP3 đấy! \r\n\r\nCòn chần chừ gì nữa mà không đặt lịch và gửi ngay lời chúc đến Chi Pu ngay tại đây!",
+          "address": "",
+          "link": "/event/IWZ979F9.html",
+          "coverV": "https://photo-zmp3.zadn.vn/event/c/d/8/0/cd80d0a0a1a2b6598b735a006872bae6.jpg",
+          "coverVM": "https://photo-resize-zmp3.zadn.vn/w350_r7x12_jpeg/event/c/d/8/0/cd80d0a0a1a2b6598b735a006872bae6.jpg",
+          "coverH": "https://photo-zmp3.zadn.vn/event/f/9/d/6/f9d60e8b8315be3b6a68441b7884869f.jpg",
+          "coverHM": "https://photo-resize-zmp3.zadn.vn/w600_r12x7_jpeg/event/f/9/d/6/f9d60e8b8315be3b6a68441b7884869f.jpg",
+          "startTime": 1623603600,
+          "endTime": 1623689940,
+          "publishTime": 1623038880,
+          "place": "Zing MP3",
+          "status": 1,
+          "label": "SỰ KIỆN",
+          "shortTitle": "Sinh Nhật Sao",
+          "title": "Sinh Nhật Sao x Chi Pu",
+          "subscribeText": "Chúc mừng",
+          "unsubscribeText": "Đã Chúc Mừng",
+          "totalFollow": 1089,
+          "followers": [
+            {
+              "id": "ZIF67OCF",
+              "avatar": "https://s240-ava-talk.zadn.vn/5/7/0/1/24/240/ca31547033bc490d84ef109c7acaa7bd.jpg"
+            },
+            {
+              "id": "UEZOBAE9",
+              "avatar": "https://s240-ava-talk.zadn.vn/2/d/d/a/30/240/540e4b699ec72b3fd4d0d8fc4ed5c6a1.jpg"
+            },
+            {
+              "id": "ZIUD970I",
+              "avatar": "https://s240-ava-talk.zadn.vn/f/0/a/a/2/240/f6d75ad6984aa0c6faaf6c4c2f7ebd82.jpg"
+            },
+            {
+              "id": "ZICBW09C",
+              "avatar": "https://s240-ava-talk.zadn.vn/7/3/7/9/3/240/5692e0fe33dd2087f3b802092f20d243.jpg"
+            },
+            {
+              "id": "UFCAC6DE",
+              "avatar": "https://s240-ava-talk.zadn.vn/a/7/f/6/20/240/71b4f9f0a9c3c5ed60875adda5115b02.jpg"
+            },
+            {
+              "id": "Z00D76AB",
+              "avatar": "https://s240-ava-talk.zadn.vn/1/4/e/e/39/240/8afcef5a12d83299d76788beb4ff225c.jpg"
+            }
+          ],
+          "startUrl": "",
+          "startUrlText": "PHÁT BÀI HÁT",
+          "startText": "ĐANG DIỄN RA",
+          "endText": "ĐÃ DIỄN RA",
+          "videoUrl": "",
+          "host": {
+            "id": "IWZ9D087",
+            "name": "Chi Pu",
+            "link": "/nghe-si/Chi-Pu",
+            "spotlight": false,
+            "playlistId": "Z6BUIBFF",
+            "cover": "https://photo-zmp3.zadn.vn/cover_artist/0/b/b/8/0bb8f461feb168a941d8819f9bbe6b9d.jpg",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/6/2/4/9/62498fa513ccd6abdd5a373117353e16.jpg"
+          }
+        },
+        {
+          "encodeId": "IWZ97A0B",
+          "description": "Dương Hoàng Yến và Đạt G sẽ phát hành bài hát 'Xe Anh Đến Đâu Em Theo Đến Đó' vào lúc 19:00 ngày 16.06.2021 trên ứng dụng Zing MP3.",
+          "address": "Chỉ có trên Zing MP3",
+          "link": "/event/IWZ97A0B.html",
+          "coverV": "https://photo-zmp3.zadn.vn/event/e/0/2/4/e024acfde4a6674509fd121ed6691622.jpg",
+          "coverVM": "https://photo-resize-zmp3.zadn.vn/w350_r7x12_jpeg/event/e/0/2/4/e024acfde4a6674509fd121ed6691622.jpg",
+          "coverH": "https://photo-zmp3.zadn.vn/event/0/b/a/9/0ba936f44e55dd655f00a8b4ba814b83.jpg",
+          "coverHM": "https://photo-resize-zmp3.zadn.vn/w600_r12x7_jpeg/event/0/b/a/9/0ba936f44e55dd655f00a8b4ba814b83.jpg",
+          "startTime": 1623844800,
+          "endTime": 1623844800,
+          "publishTime": 1623480840,
+          "place": "Zing MP3",
+          "status": 1,
+          "label": "PHÁT HÀNH BÀI HÁT",
+          "shortTitle": "Xe Anh Đến Đâu Em Theo Đến Đó",
+          "title": "Xe Anh Đến Đâu Em Theo Đến Đó - Dương Hoàng Yến, Đạt G",
+          "subscribeText": "Quan tâm",
+          "unsubscribeText": "Đã quan tâm",
+          "totalFollow": 41,
+          "followers": [
+            {
+              "id": "ZWIIZOZ8",
+              "avatar": "https://s120-ava-talk.zadn.vn/default"
+            },
+            {
+              "id": "UFABO800",
+              "avatar": "https://s240-ava-talk.zadn.vn/b/2/b/7/6/240/af68021912c345183ffdf5a59e0b4807.jpg"
+            },
+            {
+              "id": "UF0AAUEW",
+              "avatar": "https://s240-ava-talk.zadn.vn/8/b/5/d/10/240/ae0662467d62cf9eb5b211e1f28331c3.jpg"
+            },
+            {
+              "id": "UEAW8AIA",
+              "avatar": "https://s240-ava-talk.zadn.vn/7/a/7/9/24/240/c65718f17c42e3b8529f0dde9f60a98b.jpg"
+            },
+            {
+              "id": "ZWOD9IZC",
+              "avatar": "http://s120-ava-talk.zadn.vn/default"
+            },
+            {
+              "id": "ZIBDOZDE",
+              "avatar": "https://s240-ava-talk.zadn.vn/b/8/3/8/0/240/f36514014eb64a6efbf6c551e094838c.jpg"
+            }
+          ],
+          "startUrl": "",
+          "startUrlText": "PHÁT BÀI HÁT",
+          "startText": "ĐÃ PHÁT HÀNH",
+          "endText": "ĐÃ PHÁT HÀNH",
+          "videoUrl": "",
+          "host": {
+            "id": "IWZ97WAZ",
+            "name": "Dương Hoàng Yến",
+            "link": "/nghe-si/Duong-Hoang-Yen",
+            "spotlight": false,
+            "playlistId": "Z6BOEZZU",
+            "cover": "https://photo-zmp3.zadn.vn/cover_artist/4/a/a/b/4aabfa5c2a0fb1665ae754841769cf81.jpg",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/e/9/6/1/e961a45b0004018a92db04d9d301f3dc.jpg"
+          }
+        },
+        {
+          "encodeId": "IWZ97A06",
+          "description": "Chúc mừng sinh nhật Dương Hoàng Yến! Zing MP3 chúc Dương Hoàng Yến luôn tỏa sáng và vững vàng trên con đường âm nhạc của mình.\r\n\r\nNiềm vui sinh nhật sẽ được nhân đôi khi có thêm bạn trong sinh nhật lần này của Dương Hoàng Yến. Gửi ngay lời chúc của bạn đến nữ ca sĩ tại đây nhé!",
+          "address": "",
+          "link": "/event/IWZ97A06.html",
+          "coverV": "https://photo-zmp3.zadn.vn/event/a/5/b/5/a5b5e39d0b1151a883fb7d995b2334e9.jpg",
+          "coverVM": "https://photo-resize-zmp3.zadn.vn/w350_r7x12_jpeg/event/a/5/b/5/a5b5e39d0b1151a883fb7d995b2334e9.jpg",
+          "coverH": "https://photo-zmp3.zadn.vn/event/0/c/9/e/0c9e61c48a60fa4df42792660637b9a9.jpg",
+          "coverHM": "https://photo-resize-zmp3.zadn.vn/w600_r12x7_jpeg/event/0/c/9/e/0c9e61c48a60fa4df42792660637b9a9.jpg",
+          "startTime": 1623690000,
+          "endTime": 1623776340,
+          "publishTime": 1623324180,
+          "place": "Zing MP3",
+          "status": 1,
+          "label": "SỰ KIỆN",
+          "shortTitle": "Sinh Nhật Sao",
+          "title": "Sinh Nhật Sao x Dương Hoàng Yến",
+          "subscribeText": "Chúc mừng",
+          "unsubscribeText": "Đã Chúc mừng",
+          "totalFollow": 359,
+          "followers": [
+            {
+              "id": "UF0AAUEW",
+              "avatar": "https://s240-ava-talk.zadn.vn/8/b/5/d/10/240/ae0662467d62cf9eb5b211e1f28331c3.jpg"
+            },
+            {
+              "id": "ZIUD970I",
+              "avatar": "https://s240-ava-talk.zadn.vn/f/0/a/a/2/240/f6d75ad6984aa0c6faaf6c4c2f7ebd82.jpg"
+            },
+            {
+              "id": "UE89797Z",
+              "avatar": "https://s240-ava-talk.zadn.vn/e/7/5/9/73/240/6a79e60c3147f1ae0c41eaf568fbd85d.jpg"
+            },
+            {
+              "id": "ZIDIFZ8U",
+              "avatar": "https://s240-ava-talk.zadn.vn/a/0/7/2/2/240/5b2b0e02447599fb2f8c1418dfca710e.jpg"
+            },
+            {
+              "id": "UFCAC6DE",
+              "avatar": "https://s240-ava-talk.zadn.vn/a/7/f/6/20/240/71b4f9f0a9c3c5ed60875adda5115b02.jpg"
+            },
+            {
+              "id": "Z00D76AB",
+              "avatar": "https://s240-ava-talk.zadn.vn/1/4/e/e/39/240/8afcef5a12d83299d76788beb4ff225c.jpg"
+            }
+          ],
+          "startUrl": "",
+          "startUrlText": "PHÁT BÀI HÁT",
+          "startText": "ĐANG DIỄN RA",
+          "endText": "ĐÃ DIỄN RA",
+          "videoUrl": "",
+          "host": {
+            "id": "IWZ97WAZ",
+            "name": "Dương Hoàng Yến",
+            "link": "/nghe-si/Duong-Hoang-Yen",
+            "spotlight": false,
+            "playlistId": "Z6BOEZZU",
+            "cover": "https://photo-zmp3.zadn.vn/cover_artist/4/a/a/b/4aabfa5c2a0fb1665ae754841769cf81.jpg",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/e/9/6/1/e961a45b0004018a92db04d9d301f3dc.jpg"
+          }
+        },
+        {
+          "encodeId": "IWZ97A0C",
+          "description": "Jaykii sẽ phát hành bài hát 'Yếu Đuối Ai Xem' vào lúc 20:00 ngày 16.06.2021 trên ứng dụng Zing MP3.",
+          "address": "Phát hành trên Zing MP3",
+          "link": "/event/IWZ97A0C.html",
+          "coverV": "https://photo-zmp3.zadn.vn/event/6/5/5/d/655d8e418f9d97f7d7808bcd67ae499b.jpg",
+          "coverVM": "https://photo-resize-zmp3.zadn.vn/w350_r7x12_jpeg/event/6/5/5/d/655d8e418f9d97f7d7808bcd67ae499b.jpg",
+          "coverH": "https://photo-zmp3.zadn.vn/event/5/4/9/f/549f884d820dc0b0e7741ef245a2d938.jpg",
+          "coverHM": "https://photo-resize-zmp3.zadn.vn/w600_r12x7_jpeg/event/5/4/9/f/549f884d820dc0b0e7741ef245a2d938.jpg",
+          "startTime": 1623848400,
+          "endTime": 1623848400,
+          "publishTime": 1623481080,
+          "place": "Zing MP3",
+          "status": 1,
+          "label": "PHÁT HÀNH BÀI HÁT",
+          "shortTitle": "Yếu Đuối Ai Xem",
+          "title": "Yếu Đuối Ai Xem - Jaykii",
+          "subscribeText": "Quan tâm",
+          "unsubscribeText": "Đã quan tâm",
+          "totalFollow": 47,
+          "followers": [
+            {
+              "id": "UFZ907AD",
+              "avatar": "https://s240-ava-talk.zadn.vn/1/c/4/1/28/240/3b24d2af9de89312d8acde67e7de620d.jpg"
+            },
+            {
+              "id": "UEFO699C",
+              "avatar": "https://s120-ava-talk.zadn.vn/default"
+            },
+            {
+              "id": "ZWOD9IZC",
+              "avatar": "http://s120-ava-talk.zadn.vn/default"
+            },
+            {
+              "id": "ZIBDOZDE",
+              "avatar": "https://s240-ava-talk.zadn.vn/b/8/3/8/0/240/f36514014eb64a6efbf6c551e094838c.jpg"
+            },
+            {
+              "id": "UFCAC6DE",
+              "avatar": "https://s240-ava-talk.zadn.vn/a/7/f/6/20/240/71b4f9f0a9c3c5ed60875adda5115b02.jpg"
+            },
+            {
+              "id": "IW80EZC8",
+              "avatar": "https://s240-ava-talk.zadn.vn/8/c/e/7/49/240/89935b5b7c3dd7e76ab7405f3ef631ac.jpg"
+            }
+          ],
+          "startUrl": "",
+          "startUrlText": "PHÁT BÀI HÁT",
+          "startText": "ĐÃ PHÁT HÀNH",
+          "endText": "ĐÃ PHÁT HÀNH",
+          "videoUrl": "",
+          "host": {
+            "id": "IWZFE0CD",
+            "name": "JayKii",
+            "link": "/nghe-si/JayKii",
+            "spotlight": false,
+            "playlistId": "Z6BOECFC",
+            "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/d/7/6/e/d76ef36e9ba03ee77be72bf36ce4ac50.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "encodeId": "ZU0WU9EF",
+          "title": "Thương Thầm",
+          "alias": "Thuong-Tham-NB3-Hoai-Bao",
+          "isOffical": true,
+          "username": "",
+          "artistsNames": "NB3 Hoài Bảo",
+          "artists": [
+            {
+              "id": "IW67DF6B",
+              "name": "NB3 Hoài Bảo",
+              "link": "/nghe-si/NB3-Hoai-Bao",
+              "spotlight": false,
+              "playlistId": "67EU66O8"
+            }
+          ],
+          "isWorldWide": true,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/e/1/1/f/e11fe0da669959f8dbe4c4d305b8324f.jpg",
+          "link": "/bai-hat/Thuong-Tham-NB3-Hoai-Bao/ZU0WU9EF.html",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/e/1/1/f/e11fe0da669959f8dbe4c4d305b8324f.jpg",
+          "duration": 229,
+          "isZMA": false,
+          "zingChoise": false,
+          "isPrivate": false,
+          "preRelease": false,
+          "releaseDate": 1622199600,
+          "indicators": [],
+          "streamingStatus": 1,
+          "allowAudioAds": true,
+          "hasLyric": true,
+          "rakingStatus": 0,
+          "score": 10281,
+          "totalTopZing": 0,
+          "artist": {
+            "id": "IW67DF6B",
+            "name": "NB3 Hoài Bảo",
+            "link": "/nghe-si/NB3-Hoai-Bao",
+            "spotlight": false,
+            "playlistId": "67EU66O8",
+            "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/1/5/0/d/150d91fc62b6bba002dd6e3ad3c5e453.jpg"
+          }
+        },
+        {
+          "encodeId": "ZOFEOCIO",
+          "title": "Sợ Ta Mất Nhau",
+          "alias": "So-Ta-Mat-Nhau-Chau-Khai-Phong-ACV",
+          "isOffical": true,
+          "username": "",
+          "artistsNames": "Châu Khải Phong, ACV",
+          "artists": [
+            {
+              "id": "IWZ976C7",
+              "name": "Châu Khải Phong",
+              "link": "/nghe-si/Chau-Khai-Phong",
+              "spotlight": false,
+              "playlistId": "Z6BUIE7I"
+            },
+            {
+              "id": "IW6ZAAB8",
+              "name": "ACV",
+              "link": "/nghe-si/ACV",
+              "spotlight": false,
+              "playlistId": "60U6OOWD"
+            }
+          ],
+          "isWorldWide": true,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/1/5/4/6/15464365b9ceaaa3410de8ed722f518a.jpg",
+          "link": "/bai-hat/So-Ta-Mat-Nhau-Chau-Khai-Phong-ACV/ZOFEOCIO.html",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/1/5/4/6/15464365b9ceaaa3410de8ed722f518a.jpg",
+          "duration": 286,
+          "isZMA": false,
+          "zingChoise": false,
+          "isPrivate": false,
+          "preRelease": false,
+          "releaseDate": 1621688700,
+          "indicators": [],
+          "mvlink": "/video-clip/So-Ta-Mat-Nhau-Chau-Khai-Phong-ACV/ZOFEOCIO.html",
+          "streamingStatus": 1,
+          "allowAudioAds": true,
+          "hasLyric": true,
+          "rakingStatus": 0,
+          "score": 5796,
+          "totalTopZing": 0,
+          "artist": {
+            "id": "IWZ976C7",
+            "name": "Châu Khải Phong",
+            "link": "/nghe-si/Chau-Khai-Phong",
+            "spotlight": false,
+            "playlistId": "Z6BUIE7I",
+            "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/7/3/a/a/73aa6af7968ec8161e59312dfd1e1430.jpg"
+          }
+        },
+        {
+          "encodeId": "ZU0WFOIF",
+          "title": "Lựa Chọn Của Anh",
+          "alias": "Lua-Chon-Cua-Anh-Thuong-Vo-ACV",
+          "isOffical": true,
+          "username": "",
+          "artistsNames": "Thương Võ, ACV",
+          "artists": [
+            {
+              "id": "IWZFEZIC",
+              "name": "Thương Võ",
+              "link": "/nghe-si/Thuong-Vo",
+              "spotlight": false,
+              "playlistId": "Z6BOFBAA"
+            },
+            {
+              "id": "IW6ZAAB8",
+              "name": "ACV",
+              "link": "/nghe-si/ACV",
+              "spotlight": false,
+              "playlistId": "60U6OOWD"
+            }
+          ],
+          "isWorldWide": true,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/f/d/0/c/fd0c43ad1d2c2eb3b1e77e4c726bdac2.jpg",
+          "link": "/bai-hat/Lua-Chon-Cua-Anh-Thuong-Vo-ACV/ZU0WFOIF.html",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/f/d/0/c/fd0c43ad1d2c2eb3b1e77e4c726bdac2.jpg",
+          "duration": 288,
+          "isZMA": false,
+          "zingChoise": false,
+          "isPrivate": false,
+          "preRelease": false,
+          "releaseDate": 1622293500,
+          "indicators": [],
+          "streamingStatus": 1,
+          "allowAudioAds": true,
+          "hasLyric": true,
+          "rakingStatus": 0,
+          "score": 4726,
+          "totalTopZing": 0,
+          "artist": {
+            "id": "IWZFEZIC",
+            "name": "Thương Võ",
+            "link": "/nghe-si/Thuong-Vo",
+            "spotlight": false,
+            "playlistId": "Z6BOFBAA",
+            "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/9/b/8/9/9b89b2a594d805de75eeb1ce0547fff8.jpg"
+          }
+        },
+        {
+          "encodeId": "ZOFZBD6F",
+          "title": "Sắp 30",
+          "alias": "Sap-30-Trinh-Dinh-Quang",
+          "isOffical": true,
+          "username": "",
+          "artistsNames": "Trịnh Đình Quang",
+          "artists": [
+            {
+              "id": "IWZAODD8",
+              "name": "Trịnh Đình Quang",
+              "link": "/nghe-si/Singer-Trinh-Dinh-Quang",
+              "spotlight": false,
+              "playlistId": "Z6BOF9OF"
+            }
+          ],
+          "isWorldWide": true,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/d/9/e/9/d9e901750b0205d7fd0cbc8bd87aea85.jpg",
+          "link": "/bai-hat/Sap-30-Trinh-Dinh-Quang/ZOFZBD6F.html",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/d/9/e/9/d9e901750b0205d7fd0cbc8bd87aea85.jpg",
+          "duration": 362,
+          "isZMA": false,
+          "zingChoise": false,
+          "isPrivate": false,
+          "preRelease": false,
+          "releaseDate": 1620388800,
+          "indicators": [],
+          "radioId": 1437670125,
+          "streamingStatus": 1,
+          "allowAudioAds": true,
+          "hasLyric": true,
+          "rakingStatus": 0,
+          "score": 4513,
+          "totalTopZing": 0,
+          "artist": {
+            "id": "IWZAODD8",
+            "name": "Trịnh Đình Quang",
+            "link": "/nghe-si/Singer-Trinh-Dinh-Quang",
+            "spotlight": false,
+            "playlistId": "Z6BOF9OF",
+            "cover": "https://photo-zmp3.zadn.vn/cover_artist/4/7/d/d/47dd1e49e57bd76f1623e4f10aa30af4.jpg",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/4/4/7/4/4474062bb6b56be949da975c6963d4b6.jpg"
+          }
+        },
+        {
+          "encodeId": "ZU0C76UU",
+          "title": "Yêu Sai Người",
+          "alias": "Yeu-Sai-Nguoi-Phan-Duy-Anh",
+          "isOffical": true,
+          "username": "",
+          "artistsNames": "Phan Duy Anh",
+          "artists": [
+            {
+              "id": "IWZ99IO9",
+              "name": "Phan Duy Anh",
+              "link": "/nghe-si/Phan-Duy-Anh",
+              "spotlight": false,
+              "playlistId": "Z6BOFWII"
+            }
+          ],
+          "isWorldWide": true,
+          "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/2/c/9/1/2c91905a1104cab5aad414ec02b8867e.jpg",
+          "link": "/bai-hat/Yeu-Sai-Nguoi-Phan-Duy-Anh/ZU0C76UU.html",
+          "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/2/c/9/1/2c91905a1104cab5aad414ec02b8867e.jpg",
+          "duration": 282,
+          "isZMA": false,
+          "zingChoise": false,
+          "isPrivate": false,
+          "preRelease": false,
+          "releaseDate": 1623328200,
+          "indicators": [],
+          "streamingStatus": 1,
+          "allowAudioAds": true,
+          "hasLyric": true,
+          "rakingStatus": 0,
+          "score": 4142,
+          "totalTopZing": 0,
+          "artist": {
+            "id": "IWZ99IO9",
+            "name": "Phan Duy Anh",
+            "link": "/nghe-si/Phan-Duy-Anh",
+            "spotlight": false,
+            "playlistId": "Z6BOFWII",
+            "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+            "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/c/a/d/c/cadc278603a35d636c956944208be7ea.jpg"
+          }
+        }
+      ],
+      "chart": {
+        "times": [
+          {
+            "hour": "13"
+          },
+          {
+            "hour": "14"
+          },
+          {
+            "hour": "15"
+          },
+          {
+            "hour": "16"
+          },
+          {
+            "hour": "17"
+          },
+          {
+            "hour": "18"
+          },
+          {
+            "hour": "19"
+          },
+          {
+            "hour": "20"
+          },
+          {
+            "hour": "21"
+          },
+          {
+            "hour": "22"
+          },
+          {
+            "hour": "23"
+          },
+          {
+            "hour": "00"
+          },
+          {
+            "hour": "01"
+          },
+          {
+            "hour": "02"
+          },
+          {
+            "hour": "03"
+          },
+          {
+            "hour": "04"
+          },
+          {
+            "hour": "05"
+          },
+          {
+            "hour": "06"
+          },
+          {
+            "hour": "07"
+          },
+          {
+            "hour": "08"
+          },
+          {
+            "hour": "09"
+          },
+          {
+            "hour": "10"
+          },
+          {
+            "hour": "11"
+          },
+          {
+            "hour": "12"
+          }
+        ],
+        "minScore": 0,
+        "maxScore": 14310,
+        "items": {
+          "ZU0WU9EF": [
+            {
+              "time": 1623477600000,
+              "hour": "13",
+              "counter": 11925
+            },
+            {
+              "time": 1623481200000,
+              "hour": "14",
+              "counter": 10755
+            },
+            {
+              "time": 1623484800000,
+              "hour": "15",
+              "counter": 9703
+            },
+            {
+              "time": 1623488400000,
+              "hour": "16",
+              "counter": 8934
+            },
+            {
+              "time": 1623492000000,
+              "hour": "17",
+              "counter": 8877
+            },
+            {
+              "time": 1623495600000,
+              "hour": "18",
+              "counter": 9764
+            },
+            {
+              "time": 1623499200000,
+              "hour": "19",
+              "counter": 8985
+            },
+            {
+              "time": 1623502800000,
+              "hour": "20",
+              "counter": 8656
+            },
+            {
+              "time": 1623506400000,
+              "hour": "21",
+              "counter": 8367
+            },
+            {
+              "time": 1623510000000,
+              "hour": "22",
+              "counter": 9470
+            },
+            {
+              "time": 1623513600000,
+              "hour": "23",
+              "counter": 11165
+            },
+            {
+              "time": 1623517200000,
+              "hour": "00",
+              "counter": 10361
+            },
+            {
+              "time": 1623520800000,
+              "hour": "01",
+              "counter": 8283
+            },
+            {
+              "time": 1623524400000,
+              "hour": "02",
+              "counter": 6075
+            },
+            {
+              "time": 1623528000000,
+              "hour": "03",
+              "counter": 3881
+            },
+            {
+              "time": 1623531600000,
+              "hour": "04",
+              "counter": 3710
+            },
+            {
+              "time": 1623535200000,
+              "hour": "05",
+              "counter": 3200
+            },
+            {
+              "time": 1623538800000,
+              "hour": "06",
+              "counter": 3811
+            },
+            {
+              "time": 1623542400000,
+              "hour": "07",
+              "counter": 6263
+            },
+            {
+              "time": 1623546000000,
+              "hour": "08",
+              "counter": 8814
+            },
+            {
+              "time": 1623549600000,
+              "hour": "09",
+              "counter": 10001
+            },
+            {
+              "time": 1623553200000,
+              "hour": "10",
+              "counter": 10616
+            },
+            {
+              "time": 1623556800000,
+              "hour": "11",
+              "counter": 10239
+            },
+            {
+              "time": 1623560400000,
+              "hour": "12",
+              "counter": 9233
+            }
+          ],
+          "ZOFEOCIO": [
+            {
+              "time": 1623477600000,
+              "hour": "13",
+              "counter": 7151
+            },
+            {
+              "time": 1623481200000,
+              "hour": "14",
+              "counter": 6903
+            },
+            {
+              "time": 1623484800000,
+              "hour": "15",
+              "counter": 6274
+            },
+            {
+              "time": 1623488400000,
+              "hour": "16",
+              "counter": 5691
+            },
+            {
+              "time": 1623492000000,
+              "hour": "17",
+              "counter": 5319
+            },
+            {
+              "time": 1623495600000,
+              "hour": "18",
+              "counter": 5824
+            },
+            {
+              "time": 1623499200000,
+              "hour": "19",
+              "counter": 5611
+            },
+            {
+              "time": 1623502800000,
+              "hour": "20",
+              "counter": 5270
+            },
+            {
+              "time": 1623506400000,
+              "hour": "21",
+              "counter": 4615
+            },
+            {
+              "time": 1623510000000,
+              "hour": "22",
+              "counter": 5345
+            },
+            {
+              "time": 1623513600000,
+              "hour": "23",
+              "counter": 6325
+            },
+            {
+              "time": 1623517200000,
+              "hour": "00",
+              "counter": 6719
+            },
+            {
+              "time": 1623520800000,
+              "hour": "01",
+              "counter": 5402
+            },
+            {
+              "time": 1623524400000,
+              "hour": "02",
+              "counter": 4049
+            },
+            {
+              "time": 1623528000000,
+              "hour": "03",
+              "counter": 2621
+            },
+            {
+              "time": 1623531600000,
+              "hour": "04",
+              "counter": 2545
+            },
+            {
+              "time": 1623535200000,
+              "hour": "05",
+              "counter": 2248
+            },
+            {
+              "time": 1623538800000,
+              "hour": "06",
+              "counter": 2448
+            },
+            {
+              "time": 1623542400000,
+              "hour": "07",
+              "counter": 3747
+            },
+            {
+              "time": 1623546000000,
+              "hour": "08",
+              "counter": 5233
+            },
+            {
+              "time": 1623549600000,
+              "hour": "09",
+              "counter": 6032
+            },
+            {
+              "time": 1623553200000,
+              "hour": "10",
+              "counter": 6752
+            },
+            {
+              "time": 1623556800000,
+              "hour": "11",
+              "counter": 6425
+            },
+            {
+              "time": 1623560400000,
+              "hour": "12",
+              "counter": 5660
+            }
+          ],
+          "ZU0WFOIF": [
+            {
+              "time": 1623477600000,
+              "hour": "13",
+              "counter": 5870
+            },
+            {
+              "time": 1623481200000,
+              "hour": "14",
+              "counter": 5427
+            },
+            {
+              "time": 1623484800000,
+              "hour": "15",
+              "counter": 4778
+            },
+            {
+              "time": 1623488400000,
+              "hour": "16",
+              "counter": 4514
+            },
+            {
+              "time": 1623492000000,
+              "hour": "17",
+              "counter": 4287
+            },
+            {
+              "time": 1623495600000,
+              "hour": "18",
+              "counter": 4584
+            },
+            {
+              "time": 1623499200000,
+              "hour": "19",
+              "counter": 4544
+            },
+            {
+              "time": 1623502800000,
+              "hour": "20",
+              "counter": 4155
+            },
+            {
+              "time": 1623506400000,
+              "hour": "21",
+              "counter": 4057
+            },
+            {
+              "time": 1623510000000,
+              "hour": "22",
+              "counter": 4719
+            },
+            {
+              "time": 1623513600000,
+              "hour": "23",
+              "counter": 5463
+            },
+            {
+              "time": 1623517200000,
+              "hour": "00",
+              "counter": 5202
+            },
+            {
+              "time": 1623520800000,
+              "hour": "01",
+              "counter": 4290
+            },
+            {
+              "time": 1623524400000,
+              "hour": "02",
+              "counter": 3552
+            },
+            {
+              "time": 1623528000000,
+              "hour": "03",
+              "counter": 2189
+            },
+            {
+              "time": 1623531600000,
+              "hour": "04",
+              "counter": 1996
+            },
+            {
+              "time": 1623535200000,
+              "hour": "05",
+              "counter": 1864
+            },
+            {
+              "time": 1623538800000,
+              "hour": "06",
+              "counter": 2060
+            },
+            {
+              "time": 1623542400000,
+              "hour": "07",
+              "counter": 2998
+            },
+            {
+              "time": 1623546000000,
+              "hour": "08",
+              "counter": 4440
+            },
+            {
+              "time": 1623549600000,
+              "hour": "09",
+              "counter": 5170
+            },
+            {
+              "time": 1623553200000,
+              "hour": "10",
+              "counter": 5671
+            },
+            {
+              "time": 1623556800000,
+              "hour": "11",
+              "counter": 5220
+            },
+            {
+              "time": 1623560400000,
+              "hour": "12",
+              "counter": 4397
+            }
+          ]
+        },
+        "totalScore": 20803
+      },
+      "chartType": "song",
+      "sectionType": "RTChart",
+      "sectionId": "hZC"
+    },
+    {
+      "items": [
+        {
+          "banner": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/chart-song-vn.png",
+          "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/song-vn-2x.jpg",
+          "country": "vn",
+          "type": "song",
+          "group": [
+            {
+              "id": 1,
+              "name": "Bài hát",
+              "type": "song",
+              "link": "/zing-chart-tuan/Bai-hat-Viet-Nam/IWZ9Z08I.html"
+            },
+            {
+              "id": 2,
+              "name": "MV",
+              "type": "video",
+              "link": "/zing-chart-tuan/MV-Viet-Nam/IWZ9Z08W.html"
+            }
+          ],
+          "link": "/zing-chart-tuan/Bai-hat-Viet-Nam/IWZ9Z08I.html",
+          "startDate": "01/01",
+          "endDate": "07/01"
+        },
+        {
+          "banner": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/chart-song-us.png",
+          "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/web_song_usuk.jpg",
+          "country": "us",
+          "type": "song",
+          "group": [
+            {
+              "id": 50,
+              "name": "Bài hát",
+              "type": "song",
+              "link": "/zing-chart-tuan/Bai-hat-US-UK/IWZ9Z0BW.html"
+            },
+            {
+              "id": 52,
+              "name": "MV",
+              "type": "video",
+              "link": "/zing-chart-tuan/MV-US-UK/IWZ9Z0BU.html"
+            }
+          ],
+          "link": "/zing-chart-tuan/Bai-hat-US-UK/IWZ9Z0BW.html",
+          "startDate": "01/01",
+          "endDate": "07/01"
+        },
+        {
+          "banner": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/chart-song-kpop.png",
+          "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/web_song_kpop.jpg",
+          "country": "korea",
+          "type": "song",
+          "group": [
+            {
+              "id": 51,
+              "name": "Bài hát",
+              "type": "song",
+              "link": "/zing-chart-tuan/Bai-hat-KPop/IWZ9Z0BO.html"
+            },
+            {
+              "id": 53,
+              "name": "MV",
+              "type": "video",
+              "link": "/zing-chart-tuan/MV-KPop/IWZ9Z0BZ.html"
+            }
+          ],
+          "link": "/zing-chart-tuan/Bai-hat-KPop/IWZ9Z0BO.html",
+          "startDate": "01/01",
+          "endDate": "07/01"
+        }
+      ],
+      "sectionType": "weekChart"
+    }
+  ],
+  "hasMore": true,
+  "total": 21
+}
