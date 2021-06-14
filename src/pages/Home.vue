@@ -1,34 +1,35 @@
 <template>
- <div>
-   <template v-for="(section, index) in sections" :key="'section' + index">
-     <Slider v-if="section.sectionType === 'banner'" :sliders="section.items" />
-   </template>
- </div>
+  <Slider />
+  <section
+    v-for="(section, index) in data.items"
+    :key="index"
+  >
+    <Carousel
+      v-if="section.sectionType==='playlist'"
+      :items="section.items"
+      :title="section.title"
+    />
+  </section>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import Slider from '@/components/slider/index.vue'
 import { fetchHome } from '@/api'
+import Slider from '@/components/slider/index.vue'
+import Carousel from '@/components/Carousel.vue'
+import data from '@/data/home2.json'
 
 export default defineComponent({
   name: 'App',
   components: {
-    Slider
+    Slider,
+    Carousel,
   },
   setup() {
-    const sections = ref([])
-    async function loadHome () {
-      const res = await fetchHome()
-      if (res && res.data && Array.isArray(res.data.items)) {
-        sections.value.push(...res.data.items)
-      }
-    }
-    loadHome()
     return {
-      sections
+      data,
     }
-  }
+  },
 })
 </script>
 

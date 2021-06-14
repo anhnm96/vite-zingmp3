@@ -15,43 +15,63 @@
         ><i class="w-5 h-5 text-primary ic-go-right"></i></button>
       </div>
     </div>
-    <div class="carousel-items">
-      <div
-        class="card"
+    <div
+      ref="listEl"
+      class="carousel-items"
+    >
+      <BaseCard
         v-for="song in items"
         :key="song.title"
-      >
-        <div class="card-main">
-          <img
-            :src="song.thumbnail"
-            alt="img"
-          >
-        </div>
-        <a class="card-title">{{song.title}}</a>
-      </div>
+        :song="song"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent, onMounted, ref, computed } from 'vue'
 export default defineComponent({
   name: 'Carousel',
   props: {
     title: String,
     items: Array,
   },
-  setup() {
+  setup(props) {
+    const listEl = ref<HTMLElement | null>(null)
+    const currentPage = ref<number>(0)
     let cardEl
+    let LIMIT_ITEMS
+    let totalPages
+
     onMounted(() => {
-      card = document.querySelector('.card')
+      cardEl = listEl.value.querySelector('.card')
+      LIMIT_ITEMS = Math.round(listEl.value.offsetWidth / cardEl.offsetWidth)
+      totalPages = Math.ceil(props.items.length / LIMIT_ITEMS)
     })
-    // const totalPages= props.items.length /
+
+    const prevPage = computed(() => {
+      let result = currentPage.value - 1
+      if (result < 0) return totalPages - 1
+      return result
+    })
+
+    const nextPage = computed(() => {
+      let result = currentPage.value + 1
+      if (result === totalPages) return 0
+      return result
+    })
+
     function slideLeft() {
-      console.log(cardEl.clientWidth)
+      currentPage.value = prevPage.value
+      listEl.value.scrollLeft = currentPage.value * listEl.value.offsetWidth
     }
-    function slideRight() {}
-    return { slideLeft, slideRight }
+
+    function slideRight() {
+      currentPage.value = nextPage.value
+      listEl.value.scrollLeft = currentPage.value * listEl.value.offsetWidth
+    }
+
+    return { currentPage, slideLeft, slideRight, listEl }
   },
 })
 </script>
@@ -59,25 +79,6 @@ export default defineComponent({
 <style scoped>
 .carousel-items {
   @apply flex w-full -mx-4 overflow-hidden mt-3;
-}
-.card {
-  @apply flex-shrink-0 md:w-1/6 px-4;
-}
-.card-title {
-  @apply text-sm font-semibold text-primary;
-  word-break: break-word;
-  /*
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  -webkit-line-clamp: 2; */
-}
-.card-main {
-  @apply relative;
-}
-.card-main > img {
-  @apply w-full max-w-full rounded-lg;
+  scroll-behavior: smooth;
 }
 </style>

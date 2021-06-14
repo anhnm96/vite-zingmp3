@@ -6,51 +6,53 @@
     <!-- <button @click="toggleTheme">Toggle</button> -->
     <!-- <router-view /> -->
     <aside class="aside md:w-64">
-      <div class="px-6 py-4">
-        <router-link to="/">
-          <div class="logo"></div>
-        </router-link>
+      <div>
+        <div class="px-6 py-4">
+          <router-link to="/">
+            <div class="logo"></div>
+          </router-link>
+        </div>
+        <nav>
+          <ul>
+            <li
+              v-for="(nav, index) in nav1"
+              :class="{'active': index === 1}"
+              :key="nav.text"
+            >
+              <a
+                href="#"
+                class="nav-link"
+              >
+                <i
+                  :class="nav.iconClass"
+                  class="nav-icon"
+                ></i>
+                <span class="nav-text">{{nav.text}}</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="divider"></div>
+        <nav>
+          <ul>
+            <li
+              v-for="nav in nav2"
+              :key="nav.text"
+            >
+              <a
+                href="#"
+                class="nav-link"
+              >
+                <i
+                  :class="nav.iconClass"
+                  class="nav-icon"
+                ></i>
+                <span class="nav-text">{{nav.text}}</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul>
-          <li
-            v-for="(nav, index) in nav1"
-            :class="{'active': index === 1}"
-            :key="nav.text"
-          >
-            <a
-              href="#"
-              class="nav-link"
-            >
-              <i
-                :class="nav.iconClass"
-                class="nav-icon"
-              ></i>
-              <span class="nav-text">{{nav.text}}</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class="divider"></div>
-      <nav>
-        <ul>
-          <li
-            v-for="nav in nav2"
-            :key="nav.text"
-          >
-            <a
-              href="#"
-              class="nav-link"
-            >
-              <i
-                :class="nav.iconClass"
-                class="nav-icon"
-              ></i>
-              <span class="nav-text">{{nav.text}}</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </aside>
     <div class="flex-grow">
       <header class="flex items-center px-4 py-2 space-x-2">
@@ -308,17 +310,7 @@
         </div>
       </header>
       <main class="py-5 px-9">
-        <Slider />
-        <section
-          v-for="(section, index) in data.items"
-          :key="index"
-        >
-          <Carousel
-            v-if="section.sectionType==='playlist'"
-            :items="section.items"
-            :title="section.title"
-          />
-        </section>
+        <router-view />
       </main>
     </div>
   </div>
@@ -326,11 +318,8 @@
 
 <script lang="ts">
 import { ref } from 'vue'
-import Slider from '@/components/slider/index.vue'
-import Carousel from '@/components/carousel.vue'
-import data from '@/data/home2.json'
+
 export default {
-  components: { Slider, Carousel },
   setup() {
     const theme = ref('light')
     function toggleTheme() {
@@ -349,7 +338,7 @@ export default {
       { text: 'Top 100', iconClass: 'ic-mn-top100' },
       { text: 'MV', iconClass: 'ic-mn-mv' },
     ]
-    return { theme, toggleTheme, nav1, nav2, data }
+    return { theme, toggleTheme, nav1, nav2 }
   },
 }
 </script>
@@ -359,7 +348,10 @@ export default {
 }
 .aside {
   background-color: var(--sidebar-bg);
-  @apply min-h-screen flex-shrink-0;
+  @apply min-h-screen flex-shrink-0 relative;
+}
+.aside > div {
+  @apply sticky inset-0;
 }
 .logo {
   width: 120px;
@@ -380,7 +372,7 @@ export default {
 }
 .nav-text {
   color: var(--text-primary);
-  @apply text-sm leading-normal;
+  @apply text-sm leading-normal font-semibold;
 }
 
 .divider {
