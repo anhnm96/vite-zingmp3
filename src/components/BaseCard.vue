@@ -7,7 +7,7 @@
       >
     </div>
     <router-link
-      :to="song.link"
+      to="/album"
       :title="song.title"
       class="card-title"
     >{{song.title}}</router-link>

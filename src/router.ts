@@ -16,7 +16,11 @@ const routes: RouteRecordRaw[] = [
     //   },
     // ],
   },
-  { path: '/album/:path/:id.html', component: () => import('./pages/album.vue') },
+  { path: '/album', component: () => import('./pages/Album.vue') },
+  {
+    path: '/:path(.*)*',
+    component: () => import('./pages/NotFound.vue'),
+  },
 ]
 
 export default createRouter({

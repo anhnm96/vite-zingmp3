@@ -5,19 +5,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary)'
+        primary: 'var(--primary)',
+        'alpha': 'var(--alpha-bg)'
       }
     },
-    textColor: {
+    textColor: theme => ({
+      ...theme('colors'),
       primary: 'var(--text-primary)',
       secondary: 'var(--text-secondary)'
-    },
+    }),
     scale: {
       '85': '.85'
     },
     backgroundColor: (theme) => ({
       ...theme('colors'),
-      'alpha': 'var(--alpha-bg)'
+      'primary': 'var(--background)'
     })
   },
   variants: {
