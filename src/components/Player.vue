@@ -1,11 +1,12 @@
 <template>
   <div
     v-if="song"
-    class="sticky bg-primary border-t border-alpha bottom-0"
+    class="sticky bottom-0 border-t bg-primary border-alpha"
     :class="isPlaying && 'playing'"
   >
-    <div class="flex space-x-2 items-center w-full h-24 pl-10 pr-5">
-      <div class="w-1/3 flex space-x-2">
+    <div class="flex items-center w-full h-24 pl-10 pr-5 space-x-2">
+      <!-- left -->
+      <div class="flex w-1/3 space-x-3">
         <!-- thumbnail -->
         <div class="relative">
           <img
@@ -37,10 +38,54 @@
         </div>
         <!-- detail -->
         <div class="flex flex-col justify-center space-y-1">
-          <h4 class="text-primary font-semibold text-sm">{{song.title}}</h4>
-          <p class="text-secondary text-xs">{{song.artists[0].name}}</p>
+          <h4 class="font-semibold text-md text-primary">{{song.title}}</h4>
+          <p class="text-xs text-secondary">{{song.artists[0].name}}</p>
+        </div>
+        <!-- actions -->
+        <div class="flex place-items-center">
+          <button class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha">
+            <i class="flex ic-like"></i>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha">
+            <i class="flex ic-more"></i>
+          </button>
         </div>
       </div>
+      <!-- center -->
+      <div class="flex-grow">
+        <!-- controls -->
+        <div class="flex items-center justify-center space-x-4">
+          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
+            <i class="flex ic-shuffle"></i>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
+            <i class="flex ic-pre"></i>
+          </button>
+          <button
+            @click="togglePlay"
+            class="flex items-center justify-center w-12 h-12 text-4xl rounded-full focus:outline-none text-primary"
+          >
+            <i
+              class="flex"
+              :class="isPlaying ? 'ic-pause-circle-outline' : 'ic-play-circle-outline'"
+            ></i>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
+            <i class="flex ic-next"></i>
+          </button>
+          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
+            <i class="flex ic-repeat"></i>
+          </button>
+        </div>
+        <!-- seeker -->
+        <div class="flex items-center space-x-3">
+          <span class="text-xs font-semibold text-secondary">00:04</span>
+          <ProgressBar />
+          <span class="text-xs font-bold text-primary">6:04</span>
+        </div>
+      </div>
+      <!-- right -->
+      <div class="w-1/3"></div>
     </div>
   </div>
 </template>
@@ -48,15 +93,20 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import ProgressBar from './ProgressBar.vue'
 
 export default defineComponent({
   name: 'Player',
+  components: { ProgressBar },
   setup() {
     const store = useStore()
     const song = computed(() => store.state.currentSong)
-    const isPlaying = computed(() => store.getters.isPlaying)
+    const isPlaying = computed<boolean>(() => store.getters.isPlaying)
+    function togglePlay() {
+      store.commit('togglePlay')
+    }
 
-    return { song, isPlaying }
+    return { song, isPlaying, togglePlay }
   },
 })
 </script>
