@@ -51,7 +51,7 @@
         </div>
       </aside>
       <div class="flex-grow">
-        <header class="sticky top-0 bg-primary h-16 flex items-center px-4 py-2 space-x-2 z-20">
+        <header class="sticky top-0 z-20 flex items-center h-16 px-4 py-2 space-x-2 bg-primary">
           <div class="flex items-center flex-shrink-0">
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-back text-primary"></i></button>
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-forward text-primary"></i></button>

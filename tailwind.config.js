@@ -8,6 +8,9 @@ module.exports = {
         'primary': 'var(--primary)',
         'alpha': 'var(--alpha-bg)',
         'progress': 'var(--progress)'
+      },
+      spacing: {
+        22: '5.5rem'
       }
     },
     textColor: theme => ({

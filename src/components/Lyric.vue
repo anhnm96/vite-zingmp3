@@ -1,27 +1,30 @@
 <template>
-  <div class="fixed bg-primary inset-0 z-40">
-    <div class="pt-5 pb-24 h-screen flex flex-col justify-between">
+  <div class="fixed inset-0 z-40 bg-primary">
+    <div class="flex flex-col justify-between h-screen pt-5 pb-20">
       <!-- header -->
       <div class="relative flex items-center">
         <!-- center -->
-        <div class="w-1/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div class="flex bg-alpha rounded-full p-1">
-            <button class="flex-1 text-base focus:outline-none px-2 py-1 text-secondary">Karaoke</button>
-            <button class="flex-1 text-base focus:outline-none px-2 py-1 font-semibold bg-active text-primary rounded-full">Lyric</button>
+        <div class="absolute w-1/4 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+          <div class="flex p-1 rounded-full bg-alpha">
+            <button class="flex-1 px-2 py-1 text-base focus:outline-none text-secondary">Karaoke</button>
+            <button class="flex-1 px-2 py-1 text-base font-semibold rounded-full focus:outline-none bg-active text-primary">Lyric</button>
           </div>
         </div>
         <!-- right -->
-        <div class="flex space-x-4 ml-auto">
-          <button class="text-xl rounded-full bg-alpha w-12 h-12 flex justify-center items-center">
+        <div class="flex ml-auto mr-5 space-x-4">
+          <button class="flex items-center justify-center w-12 h-12 text-xl rounded-full bg-alpha">
             <i class="flex ic-settings"></i>
           </button>
-          <button class="text-xl rounded-full bg-alpha w-12 h-12 flex justify-center items-center">
+          <button
+            @click="toggleShowLyric"
+            class="flex items-center justify-center w-12 h-12 text-xl rounded-full bg-alpha"
+          >
             <i class="flex ic-go-down"></i>
           </button>
         </div>
       </div>
       <!-- content -->
-      <div class="flex space-x-4 w-4/5 mx-auto">
+      <div class="flex w-4/5 max-w-5xl mx-auto space-x-4">
         <img
           class="rounded-lg"
           style="width: 400px"
@@ -29,22 +32,41 @@
           alt="thumbnail"
         >
         <div class="flex-1">
-          <div class="text-xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer">Trăng soi trong đêm mây trôi lặng thầm</div>
-          <div class="text-xl font-bold text-progress bg-alpha p-2.5 rounded-lg cursor-pointer">Bên thềm nhà gió nhẹ nhàng</div>
+          <div class="text-2xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer">Trăng soi trong đêm mây trôi lặng thầm</div>
+          <div class="text-2xl font-bold text-progress bg-alpha p-2.5 rounded-lg cursor-pointer">Bên thềm nhà gió nhẹ nhàng</div>
         </div>
       </div>
       <!-- player -->
       <div class="text-center">
-        <span class="text-xs font-bold text-primary">Day dut noi dau</span>
-        <span class="text-secondary text-xs"> - Mr. Siro</span>
+        <span class="text-sm font-bold text-primary">Cafe Không Đường</span>
+        <span class="text-sm text-secondary"> - G5RSquad</span>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {
+  defineComponent,
+  computed,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue'
+import { useStore } from 'vuex'
+
 export default {
   name: 'LyricModal',
+  setup() {
+    const store = useStore()
+    onMounted(() => {
+      document.body.style.overflow = 'hidden'
+    })
+    onBeforeUnmount(() => {
+      document.body.style.overflow = ''
+    })
+    return { toggleShowLyric: () => store.commit('toggleShowLyric') }
+  },
 }
 </script>
 

@@ -2,9 +2,9 @@
   <div
     v-if="song"
     class="sticky bottom-0 border-t bg-primary border-alpha"
-    :class="isPlaying && 'playing'"
+    :class="{'playing': isPlaying, 'border-none bg-transparent': showLyric}"
   >
-    <div class="flex items-center w-full h-24 pl-10 pr-5 space-x-2">
+    <div class="flex items-center w-full pl-10 pr-5 space-x-2 h-22">
       <!-- left -->
       <div class="flex w-1/3 space-x-3">
         <!-- thumbnail -->
@@ -52,7 +52,10 @@
         </div>
       </div>
       <!-- center -->
-      <div class="flex-grow">
+      <div
+        class="flex-grow transform -translate-x-5"
+        :class="showLyric && 'flex flex-col-reverse'"
+      >
         <!-- controls -->
         <div class="flex items-center justify-center space-x-4">
           <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
@@ -85,23 +88,23 @@
         </div>
       </div>
       <!-- right -->
-      <div class="w-1/3 flex items-center justify-end">
+      <div class="flex items-center justify-end w-1/3">
         <button
-          class="rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center"
+          class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
           v-if="song.mvlink"
         >
           <i class="flex ic-mv"></i>
         </button>
         <button
-          @click="toggleLyricModal"
-          class="ml-2 rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center"
+          @click="toggleShowLyric"
+          class="flex items-center justify-center w-8 h-8 ml-2 rounded-full hover:bg-alpha focus:outline-none"
         >
           <i class="flex ic-karaoke"></i>
         </button>
-        <div class="ml-2 flex items-center space-x-2">
+        <div class="flex items-center ml-2 space-x-2">
           <button
             @click="toggleMute"
-            class="rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center"
+            class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
           >
             <i
               class="flex"
@@ -114,7 +117,7 @@
           />
         </div>
         <div class="pl-4 ml-6 border-l border-alpha">
-          <button class="rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center">
+          <button class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none">
             <i class="flex ic-list-music"></i>
           </button>
         </div>
@@ -162,8 +165,8 @@ export default defineComponent({
       },
     })
     const duration = computed(() => store.getters.duration)
-    function toggleLyricModal() {
-      store.commit('toggleLyric')
+    function toggleShowLyric() {
+      store.commit('toggleShowLyric')
     }
 
     return {
@@ -176,7 +179,8 @@ export default defineComponent({
       isMuted,
       volume,
       duration,
-      toggleLyricModal,
+      toggleShowLyric,
+      showLyric: computed(() => store.state.showLyric),
     }
   },
 })

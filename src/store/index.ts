@@ -2,8 +2,8 @@ import { createStore } from 'vuex'
 import { Howl } from 'howler'
 import { formatTime } from '@/helpers/utils'
 interface SetStatePayload {
-  prop: string;
-  value: any;
+  prop: string
+  value: any
 }
 
 let timeout: number
@@ -57,8 +57,7 @@ const store = createStore({
       state.volume = payload
       state.howler.volume(payload)
     },
-    toggleLyric(state) {
-      console.log('toggleLyric', state.showLyric)
+    toggleShowLyric(state) {
       state.showLyric = !state.showLyric
     }
   },
