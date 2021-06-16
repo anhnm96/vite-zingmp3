@@ -44,24 +44,21 @@
         <span>{{displayDuration(song.duration, 2)}}</span>
       </div>
       <button
-        class="inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary"
+        class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary"
         v-if="song.mvlink"
       >
         <i class="flex icon ic-mv"></i>
       </button>
       <button
-        class="inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary"
+        class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary"
         v-if="song.hasLyric"
       >
         <i class="flex icon ic-karaoke"></i>
       </button>
-      <button
-        class="inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary"
-        @click="toggleLike"
-      >
+      <button class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary">
         <i class="flex icon ic-like"></i>
       </button>
-      <button class="inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary">
+      <button class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary">
         <i class="flex icon ic-more"></i>
       </button>
     </div>
@@ -82,11 +79,14 @@ export default {
     const store = useStore()
 
     function playSong() {
+      let src =
+        props.song.encodeId === 'ZO9ZI68B'
+          ? 'https://mp33.uchin.dev/proxy/a9695c5b-8504-4c70-b6aa-d0f68cb83731?id=ZO9ZI68B'
+          : 'https://mp33.uchin.dev/proxy/f8278503-a6e9-4a05-842f-ecede27c0999?id=ZU0I6CBE'
       console.log('dbclick')
-      if (store.state.howler === null) {
+      if (store.state.currentSong?.encodeId !== props.song.encodeId) {
         store.dispatch('loadSong', {
-          source:
-            'https://mp33.uchin.dev/proxy/a9695c5b-8504-4c70-b6aa-d0f68cb83731?id=ZO9ZI68B',
+          source: src,
           song: props.song,
         })
       } else {
@@ -97,7 +97,7 @@ export default {
     const isCurrent = computed(
       () => store.state.currentSong?.encodeId === props.song.encodeId
     )
-    const isPlaying = computed(() => isCurrent.value && store.getters.isPlaying)
+    const isPlaying = computed(() => isCurrent.value && store.state.isPlaying)
 
     return { displayDuration, playSong, isCurrent, isPlaying }
   },

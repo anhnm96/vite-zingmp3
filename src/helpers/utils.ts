@@ -15,3 +15,10 @@ export function displayDuration(sec: number, type = 1) {
     return [format(minutes), format(seconds)].join(':')
   }
 }
+
+export function formatTime(time: number): string {
+  const minutes = Math.floor(time / 60) || 0;
+  const seconds = Math.round((time - minutes * 60) || 0);
+
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}

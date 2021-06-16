@@ -51,7 +51,7 @@
         </div>
       </aside>
       <div class="flex-grow">
-        <header class="sticky top-0 bg-primary h-16 flex items-center px-4 py-2 space-x-2 z-50">
+        <header class="sticky top-0 bg-primary h-16 flex items-center px-4 py-2 space-x-2 z-20">
           <div class="flex items-center flex-shrink-0">
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-back text-primary"></i></button>
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-forward text-primary"></i></button>
@@ -310,16 +310,19 @@
         </main>
       </div>
     </div>
-    <Player />
+    <Player class="z-50" />
+    <Lyric v-if="showLyricModal" />
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
 import Player from './components/Player.vue'
+import Lyric from './components/Lyric.vue'
 
 export default {
-  components: { Player },
+  components: { Player, Lyric },
   setup() {
     const theme = ref('light')
     function toggleTheme() {
@@ -338,7 +341,10 @@ export default {
       { text: 'Top 100', iconClass: 'ic-mn-top100' },
       { text: 'MV', iconClass: 'ic-mn-mv' },
     ]
-    return { theme, toggleTheme, nav1, nav2 }
+
+    const store = useStore()
+    const showLyricModal = computed(() => store.state.showLyric)
+    return { theme, toggleTheme, nav1, nav2, showLyricModal }
   },
 }
 </script>

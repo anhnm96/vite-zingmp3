@@ -10,7 +10,7 @@
     >
       <div
         class="progress"
-        :style="{width: percent + '%'}"
+        :style="{width: progressLocal + '%'}"
       ></div>
     </div>
   </div>
@@ -18,15 +18,19 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
+import { useVModel } from '@/composables/useVModel'
 
 export default defineComponent({
   name: 'ProgressBar',
+  props: {
+    progress: Number,
+  },
+  emits: ['update:progress'],
   setup(props) {
-    const percent = ref<number>(15)
+    const progressLocal = useVModel(props, 'progress')
     const progressElement = ref<HTMLElement | null>(null)
 
     function mousedown() {
-      console.log('mousedown')
       document.addEventListener('mousemove', mousemove)
       document.addEventListener('mouseup', mouseup)
     }
@@ -36,7 +40,6 @@ export default defineComponent({
     }
 
     function clickOnProgressBar(e) {
-      console.log('click')
       setProgress(e)
     }
 
@@ -45,8 +48,7 @@ export default defineComponent({
       let progress = e.clientX - progressElement.value.offsetLeft
       if (progress < 0) progress = 0
       if (progress > elWidth) progress = elWidth
-      percent.value = (progress / elWidth) * 100
-      console.log(percent.value)
+      progressLocal.value = (progress / elWidth) * 100
     }
 
     function mouseup() {
@@ -54,7 +56,7 @@ export default defineComponent({
       document.removeEventListener('mousemove', mousemove)
       document.removeEventListener('mouseup', mouseup)
     }
-    return { percent, progressElement, mousedown, clickOnProgressBar }
+    return { progressLocal, progressElement, mousedown, clickOnProgressBar }
   },
 })
 </script>
@@ -66,7 +68,7 @@ export default defineComponent({
 }
 
 .progress-bar:hover .progress-bg {
-  height: 4px;
+  height: 5px;
 }
 
 .progress-bg {
@@ -76,7 +78,23 @@ export default defineComponent({
 }
 
 .progress {
-  @apply absolute top-0 left-0 h-full;
+  @apply absolute top-0 left-0 h-full rounded-full;
   background: var(--progress);
+}
+
+.progress::after {
+  content: '';
+  background: var(--progress);
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  right: 0;
+  top: -3px;
+  opacity: 0;
+  box-shadow: 0px 0px 2px 1px #0008;
+}
+.progress-bar:hover .progress::after {
+  opacity: 1;
 }
 </style>

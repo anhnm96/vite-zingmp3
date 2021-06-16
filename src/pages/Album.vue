@@ -3,14 +3,21 @@
     <!-- left -->
     <div class="album-info">
       <div class="sticky top-20">
-        <div class="album-cover">
+        <div
+          @click="togglePlay"
+          class="album-cover"
+          :class="{'rotate': isPlaying}"
+        >
           <img
             :src="album.thumbnailM"
             :alt="album.title"
           >
           <div class="overlay">
             <button class="btn-play">
-              <i class="icon ic-play"></i>
+              <i
+                class="icon"
+                :class="isPlaying ? 'ic-gif-playing-white':'ic-play'"
+              ></i>
             </button>
           </div>
         </div>
@@ -47,8 +54,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import album from '@/data/list.json'
 import SongItem from '@/components/SongItem.vue'
 
@@ -56,10 +64,15 @@ export default defineComponent({
   name: 'PageAlbum',
   components: { SongItem },
   setup() {
+    const store = useStore()
     const route = useRoute()
+    const isPlaying = computed(() => store.state.isPlaying)
     const id = route.params.id
     console.log(id)
-    return { album }
+    function togglePlay() {
+      store.commit('togglePlay')
+    }
+    return { album, isPlaying, togglePlay }
   },
 })
 </script>
@@ -73,8 +86,21 @@ export default defineComponent({
   @apply relative;
 }
 .album-cover {
+  transition: all 0.4s ease;
   box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%);
   @apply relative rounded-lg overflow-hidden;
+}
+.rotate {
+  border-radius: 100%;
+  overflow: hidden;
+  -webkit-animation-name: spin;
+  animation-name: spin;
+  -webkit-animation-duration: 12s;
+  animation-duration: 12s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 .album-cover img {
   transition: transform 0.5s;
@@ -87,7 +113,8 @@ export default defineComponent({
   background-color: rgba(0, 0, 0, 0.4);
   @apply opacity-0 absolute inset-0;
 }
-.album-cover:hover .overlay {
+.album-cover:hover .overlay,
+.album-cover.rotate .overlay {
   @apply opacity-100;
 }
 .btn-play {

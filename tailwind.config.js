@@ -5,21 +5,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary)',
-        'alpha': 'var(--alpha-bg)'
+        'primary': 'var(--primary)',
+        'alpha': 'var(--alpha-bg)',
+        'progress': 'var(--progress)'
       }
     },
     textColor: theme => ({
       ...theme('colors'),
       primary: 'var(--text-primary)',
-      secondary: 'var(--text-secondary)'
+      secondary: 'var(--text-secondary)',
     }),
     scale: {
       '85': '.85'
     },
     backgroundColor: (theme) => ({
       ...theme('colors'),
-      'primary': 'var(--background)'
+      'primary': 'var(--background)',
+      'active': 'var(--tab-active)'
     })
   },
   variants: {

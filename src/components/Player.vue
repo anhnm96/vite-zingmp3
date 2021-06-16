@@ -79,21 +79,55 @@
         </div>
         <!-- seeker -->
         <div class="flex items-center space-x-3">
-          <span class="text-xs font-semibold text-secondary">00:04</span>
-          <ProgressBar />
-          <span class="text-xs font-bold text-primary">6:04</span>
+          <span class="text-xs font-semibold text-secondary">{{seek}}</span>
+          <ProgressBar v-model:progress="playerProgress" />
+          <span class="text-xs font-bold text-primary">{{duration}}</span>
         </div>
       </div>
       <!-- right -->
-      <div class="w-1/3"></div>
+      <div class="w-1/3 flex items-center justify-end">
+        <button
+          class="rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center"
+          v-if="song.mvlink"
+        >
+          <i class="flex ic-mv"></i>
+        </button>
+        <button
+          @click="toggleLyricModal"
+          class="ml-2 rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center"
+        >
+          <i class="flex ic-karaoke"></i>
+        </button>
+        <div class="ml-2 flex items-center space-x-2">
+          <button
+            @click="toggleMute"
+            class="rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center"
+          >
+            <i
+              class="flex"
+              :class="isMuted ? 'ic-volume-mute' : 'ic-volume'"
+            ></i>
+          </button>
+          <ProgressBar
+            style="width: 70px"
+            v-model:progress="volume"
+          />
+        </div>
+        <div class="pl-4 ml-6 border-l border-alpha">
+          <button class="rounded-full hover:bg-alpha focus:outline-none w-8 h-8 flex items-center justify-center">
+            <i class="flex ic-list-music"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import ProgressBar from './ProgressBar.vue'
+import { displayDuration } from '@/helpers/utils'
 
 export default defineComponent({
   name: 'Player',
@@ -101,12 +135,49 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const song = computed(() => store.state.currentSong)
-    const isPlaying = computed<boolean>(() => store.getters.isPlaying)
+    const isPlaying = computed<boolean>(() => store.state.isPlaying)
     function togglePlay() {
       store.commit('togglePlay')
     }
+    const seek = computed<string>(() => store.state.seek)
+    const playerProgress = computed<string>({
+      get() {
+        return store.state.playerProgress
+      },
+      set(val) {
+        store.dispatch('updateSeek', val)
+      },
+    })
 
-    return { song, isPlaying, togglePlay }
+    function toggleMute() {
+      store.dispatch('toggleMute')
+    }
+    const isMuted = computed(() => store.state.isMuted)
+    const volume = computed({
+      get() {
+        return store.state.volume * 100
+      },
+      set(val) {
+        store.commit('setVolume', val / 100)
+      },
+    })
+    const duration = computed(() => store.getters.duration)
+    function toggleLyricModal() {
+      store.commit('toggleLyric')
+    }
+
+    return {
+      song,
+      isPlaying,
+      togglePlay,
+      seek,
+      playerProgress,
+      toggleMute,
+      isMuted,
+      volume,
+      duration,
+      toggleLyricModal,
+    }
   },
 })
 </script>
@@ -115,7 +186,7 @@ export default defineComponent({
 .thumbnail {
   @apply w-16 h-16 rounded-full;
   border: 3px solid var(--banner-home-dot);
-  animation-name: spinner;
+  animation-name: spin;
   animation-duration: 12s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -155,15 +226,6 @@ export default defineComponent({
   animation-play-state: running;
 }
 
-@keyframes spinner {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes bubble-1 {
   0% {
     opacity: 0;
@@ -175,7 +237,7 @@ export default defineComponent({
     transform: rotate(180deg) translate(55px) rotate(-180deg) scale(1.3);
   }
 
-  to {
+  100% {
     opacity: 0;
     transform: rotate(260deg) translate(70px) rotate(-260deg) scale(1.7)
       rotate(45deg) rotate(50deg);
@@ -194,7 +256,7 @@ export default defineComponent({
       rotate(-50deg);
   }
 
-  to {
+  100% {
     opacity: 0;
     transform: rotate(260deg) translate(75px) rotate(-260deg) scale(1.7)
       rotate(45deg) rotate(-50deg);
