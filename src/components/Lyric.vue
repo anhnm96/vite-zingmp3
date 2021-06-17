@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 z-40 bg-primary pb-20">
+  <div class="fixed inset-0 z-40 pb-20 bg-primary">
     <div class="flex flex-col justify-between h-full pt-5">
       <!-- header -->
       <div class="relative flex items-center">
@@ -44,7 +44,7 @@
         >
         <!-- lyric -->
         <div
-          class="hide-scrollbar flex-1 overflow-y-auto"
+          class="flex-1 overflow-y-auto hide-scrollbar"
           style="max-height: 400px"
         >
           <div
@@ -57,7 +57,7 @@
           >{{sentence.content}}</div>
         </div>
       </div>
-      <Karaoke v-show="tab===Tab.Karaoke" />
+      <Karaoke v-if="tab===Tab.Karaoke" />
       <!-- player -->
       <div class="text-center">
         <span class="text-sm font-bold text-primary">Cafe Không Đường</span>
@@ -77,7 +77,7 @@ import {
   ref,
 } from 'vue'
 import { useStore } from 'vuex'
-import Karaoke from '@/components/Karaoke.vue'
+import Karaoke from './Karaoke.vue'
 import lyricData from '@/data/lyric.json'
 import axios from 'axios'
 import { lyricParser } from '@/helpers'

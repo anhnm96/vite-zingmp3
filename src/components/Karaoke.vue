@@ -5,7 +5,8 @@
       width="1500"
       height="600"
       ref="canvasEl"
-    ></canvas>
+      class="w-full h-full mx-auto"
+    ></canvas>s
   </div>
 </template>
 
@@ -25,7 +26,7 @@ export default defineComponent({
   },
   setup(props) {
     const Colors = {
-      primary: '#fff',
+      primary: '#000',
       stroke: '#7200a1',
     }
     let ctx: CanvasRenderingContext2D
@@ -36,15 +37,22 @@ export default defineComponent({
       ctx = canvasEl.value.getContext('2d')
       width = canvasEl.value.width
       height = canvasEl.value.height
-      draw()
+      console.log('asd', width, height)
+
+      // ctx.fillStyle = Colors.primary
+      // ctx.clearRect(0, 0, width, height)
+      ctx.textAlign = 'center'
+      // ctx.font = `bold ${fontSize}px Arial`
+      // ctx.textBaseline = 'hanging'
+      // ctx.globalAlpha = 1
+      drawIntro()
     })
 
     function drawIntro() {
       // const song = player.currentSong.value
       // if (!song) return
-      const fontsize = [60, 40][
-        ('Cafe Không Đường', song.artistsNames)
-      ].forEach((text, index) => {
+      const fontsize = [60, 40]
+      ;['Cafe Không Đường', 'G5RSquad'].forEach((text, index) => {
         const contentHeight =
           fontSize * lines + lineHeight * fontSize * (lines - 1)
 
@@ -53,7 +61,8 @@ export default defineComponent({
           (lineHeight * fontSize + fontSize) * (index % lines)
         const positionX = width / 2
 
-        ctx.font = `bold ${fontsize[index]}px ${fontFamily}`
+        ctx.font = `bold ${fontsize[index]}px Arial`
+        console.log(positionX, positionY)
         ctx.fillText(text, positionX, positionY)
       })
     }
