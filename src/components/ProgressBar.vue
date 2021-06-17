@@ -45,14 +45,14 @@ export default defineComponent({
 
     function setProgress(e) {
       const elWidth = progressElement.value.offsetWidth
-      let progress = e.clientX - progressElement.value.offsetLeft
+      let progress =
+        e.clientX - progressElement.value.getBoundingClientRect().left
       if (progress < 0) progress = 0
       if (progress > elWidth) progress = elWidth
       progressLocal.value = (progress / elWidth) * 100
     }
 
     function mouseup() {
-      console.log('mouseup')
       document.removeEventListener('mousemove', mousemove)
       document.removeEventListener('mouseup', mouseup)
     }
