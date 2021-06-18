@@ -57,7 +57,7 @@
           >{{sentence.content}}</div>
         </div>
       </div>
-      <Karaoke v-if="tab===Tab.Karaoke" />
+      <Karaoke v-if="tab===Tab.Karaoke" :sentences="lyricData.sentences" />
       <!-- player -->
       <div class="text-center">
         <span class="text-sm font-bold text-primary">Cafe Không Đường</span>
@@ -110,7 +110,7 @@ export default defineComponent({
 
     const currentSentenceIndex = ref<number>(0)
 
-    let timeout
+    let timeout: number
     function updateCurrentIndex() {
       const seek = store.state.howler.seek()
       currentSentenceIndex.value = sentences.value.findIndex(
@@ -157,6 +157,7 @@ export default defineComponent({
       currentSentenceIndex,
       toggleShowLyric: () => store.commit('toggleShowLyric'),
       seekLyric,
+      lyricData
     }
   },
 })

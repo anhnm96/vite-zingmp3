@@ -39,9 +39,9 @@ export default defineComponent({
   setup(props) {
     const listEl = ref<HTMLElement | null>(null)
     const currentPage = ref<number>(0)
-    let cardEl
+    let cardEl: HTMLElement
     let LIMIT_ITEMS
-    let totalPages
+    let totalPages: number
 
     onMounted(() => {
       cardEl = listEl.value.querySelector('.card')

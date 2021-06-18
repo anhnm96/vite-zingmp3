@@ -101,6 +101,7 @@ export default defineComponent({
   animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
+  animation-delay: 700ms;
 }
 .album-cover img {
   transition: transform 0.5s;
