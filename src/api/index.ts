@@ -1,6 +1,15 @@
 import axios from 'axios'
 import home from '@/data/home.json'
 
+export enum ApiStatus {
+  IDLE = 'IDLE',
+  PENDING = 'PENDING',
+  SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR'
+}
+
+export * from './useApi'
+
 const request = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL as string || 'http://localhost:8080'
 })
@@ -19,34 +28,34 @@ request.interceptors.response.use(
 
 export function fetchPlaylist(id: string) {
   return request({
-    url: '/playlist/getDetail?id=' + id
+    url: 'api/playlist/getDetail?id=' + id
   })
 }
 
 export function fetchStreaming(id: string) {
   return request({
-    url: '/song/getStreaming?id=' + id
+    url: 'api/song/getStreaming?id=' + id
   })
 }
 
 export function fetchHome(page = 1) {
-  return new Promise<any>(res => {
-    setTimeout(() => res(home), 500)
-  })
-  // return request({
-  //   url: '/home?page=' + page
+  // return new Promise<any>(res => {
+  //   setTimeout(() => res(home), 500)
   // })
+  return request({
+    url: 'api/home?page=' + page
+  })
 }
 
 export function fetchSong(id: string) {
   return request({
-    url: '/song/getDetail?id=' + id
+    url: 'api/song/getDetail?id=' + id
   })
 }
 
 export function fetchKaraokeLyric(id: string) {
   return request({
-    url: '/lyric?id=' + id
+    url: 'api/lyric?id=' + id
   })
 }
 

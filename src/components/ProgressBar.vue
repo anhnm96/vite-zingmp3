@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
-import { useVModel } from '@/composables/useVModel'
+import { defineComponent, ref } from 'vue'
+import { useVModel } from '@/composables'
 
 export default defineComponent({
   name: 'ProgressBar',
@@ -35,15 +35,15 @@ export default defineComponent({
       document.addEventListener('mouseup', mouseup)
     }
 
-    function mousemove(e) {
+    function mousemove(e: MouseEvent) {
       setProgress(e)
     }
 
-    function clickOnProgressBar(e) {
+    function clickOnProgressBar(e: MouseEvent) {
       setProgress(e)
     }
 
-    function setProgress(e) {
+    function setProgress(e: MouseEvent) {
       const elWidth = progressElement.value.offsetWidth
       let progress =
         e.clientX - progressElement.value.getBoundingClientRect().left

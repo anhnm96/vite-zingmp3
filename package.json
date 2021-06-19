@@ -10,15 +10,13 @@
     "axios": "^0.21.1",
     "howler": "^2.2.1",
     "lodash-es": "^4.17.21",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6",
-    "tough-cookie-file-store": "^2.0.2",
     "vue": "^3.0.5",
     "vue-router": "^4.0.8",
     "vuex": "^4.0.1"
   },
   "devDependencies": {
     "@types/howler": "^2.2.2",
+    "@types/lodash-es": "^4.17.4",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.6",

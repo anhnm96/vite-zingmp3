@@ -7,13 +7,28 @@
         :key="index"
         :class="{next: index === nextIndex, prev: index === previousIndex, current: index===activeIndex}"
       >
-        <a href="#" class="inline-block">
-          <img :src="slider.banner" alt="banner image">
+        <a
+          href="#"
+          class="inline-block"
+        >
+          <img
+            :src="slider.banner"
+            alt="banner image"
+          >
         </a>
       </div>
-      <div class="relative opacity-0 slider-item current" style="position: relative">
-        <a href="#" class="inline-block">
-          <img :src="sliders[0].banner" alt="banner image">
+      <div
+        class="relative opacity-0 slider-item current"
+        style="position: relative"
+      >
+        <a
+          href="#"
+          class="inline-block"
+        >
+          <img
+            :src="sliders[0].banner"
+            alt="banner image"
+          >
         </a>
       </div>
     </div>
@@ -45,10 +60,10 @@ export default {
       return index
     })
 
-    function goNext () {
+    function goNext() {
       activeIndex.value = nextIndex.value
     }
-    return {activeIndex, previousIndex, sliders, nextIndex, goNext}
+    return { activeIndex, previousIndex, sliders, nextIndex, goNext }
   },
 }
 </script>
@@ -60,8 +75,7 @@ export default {
 
 .slider-item {
   @apply absolute w-2/5 inset-x-0 m-auto transform translate-x-0;
-  transition: transform 0.7s;
-  transition: all 0.7s ease-out;
+  transition: transform 0.7s ease-out;
 }
 
 .slider-item.current {
@@ -82,5 +96,5 @@ export default {
 
 .slider-item img {
   @apply h-auto w-full rounded-lg;
-} 
+}
 </style>
