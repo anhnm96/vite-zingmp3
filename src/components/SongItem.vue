@@ -1,12 +1,12 @@
 <template>
   <div
     @dblclick="playSong"
-    class="hover:bg-alpha cursor-pointer border-t border-solid border-alpha flex justify-between items-center p-2"
+    class="flex items-center justify-between p-2 border-t border-solid cursor-pointer hover:bg-alpha border-alpha"
     :class="isCurrent && 'bg-alpha'"
   >
     <!-- left -->
-    <div class="flex items-center space-x-2 flex-1">
-      <div class="relative w-10 h-10 rounded overflow-hidden">
+    <div class="flex items-center flex-1 space-x-2">
+      <div class="relative w-10 h-10 overflow-hidden rounded">
         <img
           :src="song.thumbnail"
           alt="thumbnail"
@@ -16,7 +16,7 @@
           class="absolute inset-0 bg-black bg-opacity-40"
           :class="!isCurrent && 'opacity-0 hover:opacity-100'"
         >
-          <button class="w-full h-full flex place-items-center">
+          <button class="flex w-full h-full place-items-center">
             <span class="w-5 h-5 mx-auto text-white">
               <i
                 class="flex justify-center icon"
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div>
-        <h4 class="text-primary font-semibold text-sm">{{song.title}}</h4>
+        <h4 class="text-sm font-semibold text-primary">{{song.title}}</h4>
         <p class="text-xs text-secondary">
           <span
             v-for="(artist, index) in song.artists"
@@ -39,38 +39,38 @@
       </div>
     </div>
     <!-- right -->
-    <div class="flex-1 flex space-x-2">
-      <div class="flex-1 flex items-center text-xs text-primary">
+    <div class="flex flex-1 space-x-2">
+      <div class="flex items-center flex-1 text-xs text-primary">
         <span>{{displayDuration(song.duration, 2)}}</span>
       </div>
       <button
-        class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary"
+        class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary"
         v-if="song.mvlink"
       >
         <i class="flex icon ic-mv"></i>
       </button>
       <button
-        class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary"
+        class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary"
         v-if="song.hasLyric"
       >
         <i class="flex icon ic-karaoke"></i>
       </button>
-      <button class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary">
+      <button class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary">
         <i class="flex icon ic-like"></i>
       </button>
-      <button class="focus:outline-none inline-flex items-center justify-center rounded-full w-8 h-8 hover:bg-alpha text-primary">
+      <button class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary">
         <i class="flex icon ic-more"></i>
       </button>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { displayDuration } from '@/helpers/utils'
-import { computed } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 
-export default {
+export default defineComponent({
   name: 'SongItem',
   props: {
     song: Object,
@@ -101,8 +101,5 @@ export default {
 
     return { displayDuration, playSong, isCurrent, isPlaying }
   },
-}
+})
 </script>
-
-<style>
-</style>

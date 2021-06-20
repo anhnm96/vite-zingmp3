@@ -9,7 +9,10 @@
         <button class="flex items-center justify-center text-xl text-white">
           <i class="flex ic-like"></i>
         </button>
-        <button class="flex items-center justify-center text-xl text-white border border-white rounded-full w-11 h-11 hover:text-gray-200 hover:border-gray-200">
+        <button
+          @click="setPlaylistAndPlay"
+          class="flex items-center justify-center text-xl text-white border border-white rounded-full w-11 h-11 hover:text-gray-200 hover:border-gray-200"
+        >
           <i class="flex ic-play"></i>
         </button>
         <button class="flex items-center justify-center text-xl text-white">
@@ -28,6 +31,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 // import {fetchSongList, useApi} from '@/api'
+import { useStore } from 'vuex'
 import { Song } from '@/types'
 import list from '@/data/list.json'
 
@@ -41,8 +45,15 @@ export default defineComponent({
     // onSuccess(result => {
     //   result.song.items
     // })
-    const playlist = list.song.items
-    return {}
+    function setPlaylistAndPlay() {
+      store.commit('setState', { prop: 'playlist', value: list })
+      store.commit('setState', {
+        prop: 'currentSong',
+        value: list.song.items[0],
+      })
+    }
+    const store = useStore()
+    return { setPlaylistAndPlay }
   },
 })
 </script>

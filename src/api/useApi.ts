@@ -29,7 +29,7 @@ export const useApi = (apiName: string, fn: Function, config: any = {}) => {
   const { initialData, responseAdapter, minimumWait = 500 } = config
   // Reactive values to store data and API status
   const data = ref(initialData)
-  const status = ref(ApiStatus.IDLE)
+  const status = ref<ApiStatus>(ApiStatus.IDLE)
   const error = ref(null)
   const resultEvent = useEventHook()
 

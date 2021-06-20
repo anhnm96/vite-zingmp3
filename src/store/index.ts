@@ -11,6 +11,7 @@ const store = createStore({
   state: {
     howler: null,
     currentSong: null,
+    playlist: null,
     seek: '0:00',
     playerProgress: 0,
     isMuted: false,

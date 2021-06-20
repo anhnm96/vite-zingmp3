@@ -37,6 +37,18 @@
   --logo-url: url('https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg');
 }
 
+body {
+  overflow: hidden;
+}
+
+.h-main {
+  height: calc(100vh - 70px - 88px);
+}
+
+.h-main-2 {
+  height: calc(100vh - 70px);
+}
+
 #nprogress {
   position: relative;
   z-index: 999;

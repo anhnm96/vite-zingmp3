@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="song"
-    class="sticky bottom-0 border-t bg-primary border-alpha"
+    class="fixed bottom-0 w-full border-t bg-primary border-alpha"
     :class="{'playing': isPlaying, 'border-none bg-transparent': showLyric}"
   >
     <div class="flex items-center w-full pl-10 pr-5 space-x-2 h-22">

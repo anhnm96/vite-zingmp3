@@ -7,9 +7,12 @@ module.exports = {
       colors: {
         'primary': 'var(--primary)',
         'alpha': 'var(--alpha-bg)',
-        'progress': 'var(--progress)'
+        'progress': 'var(--progress)',
+        'bg': 'var(--primary)',
+        'border': 'var(--border-color)'
       },
       spacing: {
+        17: '4.375rem',
         22: '5.5rem'
       }
     },

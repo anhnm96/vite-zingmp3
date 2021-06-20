@@ -305,25 +305,44 @@
             </button>
           </div>
         </header>
-        <main class="py-5 px-9">
+        <main
+          ref="main"
+          class="py-5 px-9"
+          :class="currentSong ? 'h-main' : 'h-main-2'"
+        >
           <router-view />
         </main>
       </div>
+      <Playlist v-if="hasPlaylist" />
     </div>
-    <Player class="z-50" />
+    <Player
+      v-if="currentSong"
+      class="z-50"
+    />
     <Lyric v-if="showLyricModal" />
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useStore } from 'vuex'
 import Player from './components/Player.vue'
 import Lyric from './components/Lyric.vue'
+import Playlist from './components/Playlist.vue'
+import Scrollbar from 'smooth-scrollbar'
 
 export default {
-  components: { Player, Lyric },
+  components: { Player, Lyric, Playlist },
   setup() {
+    const main = ref(null)
+    onMounted(() => {
+      Scrollbar.init(main.value, { damping: 0.2 })
+    })
+
+    onBeforeUnmount(() => {
+      Scrollbar.destroy(main.value)
+    })
+
     const theme = ref('light')
     function toggleTheme() {
       if (theme.value === 'light') theme.value = 'dark'
@@ -343,8 +362,19 @@ export default {
     ]
 
     const store = useStore()
+    const hasPlaylist = computed(() => !!store.state.playlist)
     const showLyricModal = computed(() => store.state.showLyric)
-    return { theme, toggleTheme, nav1, nav2, showLyricModal }
+    const currentSong = computed(() => store.state.currentSong)
+    return {
+      main,
+      theme,
+      toggleTheme,
+      nav1,
+      nav2,
+      showLyricModal,
+      hasPlaylist,
+      currentSong,
+    }
   },
 }
 </script>
