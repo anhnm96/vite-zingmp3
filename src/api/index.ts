@@ -53,6 +53,12 @@ export function fetchSong(id: string) {
   })
 }
 
+export function fetchSongList(id: string) {
+  return request({
+    url: 'api/song/list?id=' + id
+  })
+}
+
 export function fetchKaraokeLyric(id: string) {
   return request({
     url: 'api/lyric?id=' + id

@@ -1,7 +1,7 @@
 <template>
   <div :class="theme === 'light' ? 'theme-light' : 'theme-dark'">
     <div class="flex">
-      <aside class="aside md:w-64">
+      <aside class="aside">
         <div>
           <div class="px-6 py-4">
             <router-link to="/">
@@ -351,7 +351,7 @@ export default {
 <style>
 .aside {
   background-color: var(--sidebar-bg);
-  @apply min-h-screen flex-shrink-0 relative;
+  @apply min-h-screen flex-shrink-0 relative md:w-64;
 }
 .aside > div {
   @apply sticky inset-0;

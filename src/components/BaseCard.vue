@@ -5,6 +5,17 @@
         :src="song.thumbnail"
         alt="img"
       >
+      <div class="card-overlay">
+        <button class="flex items-center justify-center text-xl text-white">
+          <i class="flex ic-like"></i>
+        </button>
+        <button class="flex items-center justify-center text-xl text-white border border-white rounded-full w-11 h-11 hover:text-gray-200 hover:border-gray-200">
+          <i class="flex ic-play"></i>
+        </button>
+        <button class="flex items-center justify-center text-xl text-white">
+          <i class="flex ic-more"></i>
+        </button>
+      </div>
     </div>
     <router-link
       to="/album"
@@ -15,12 +26,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
+// import {fetchSongList, useApi} from '@/api'
+import { Song } from '@/types'
+import list from '@/data/list.json'
 
 export default defineComponent({
   name: 'BaseCard',
   props: {
-    song: Object,
+    song: Object as PropType<Song>,
+  },
+  setup() {
+    // const {onSuccess} = useApi('fetchSongList', fetchSongList)
+    // onSuccess(result => {
+    //   result.song.items
+    // })
+    const playlist = list.song.items
+    return {}
   },
 })
 </script>
@@ -41,9 +63,21 @@ export default defineComponent({
   -webkit-line-clamp: 2; */
 }
 .card-main {
-  @apply relative;
+  @apply relative overflow-hidden rounded-lg;
+}
+.card-main:hover > img {
+  transform: scale(1.1);
 }
 .card-main > img {
-  @apply w-full max-w-full rounded-lg;
+  @apply w-full max-w-full;
+  transition: transform 0.7s ease-out;
+}
+.card-overlay {
+  @apply absolute inset-0 flex justify-center items-center space-x-4;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+.card-main:hover .card-overlay {
+  opacity: 1;
 }
 </style>

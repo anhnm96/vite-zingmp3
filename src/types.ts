@@ -6,3 +6,8 @@ export interface Word {
 export interface Sentence {
   words: [Word]
 }
+
+export interface Song {
+  title: string
+  thumbnail: string
+}

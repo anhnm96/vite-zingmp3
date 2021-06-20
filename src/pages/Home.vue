@@ -18,9 +18,9 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
+import { useApi, fetchHome, ApiStatus } from '@/api'
 import Slider from '@/components/slider/index.vue'
 import Carousel from '@/components/Carousel.vue'
-import { useApi, fetchHome, ApiStatus } from '@/api'
 import InfiniteLoad from '@/components/InfiniteLoad.vue'
 
 export default defineComponent({
@@ -28,11 +28,11 @@ export default defineComponent({
   components: {
     Slider,
     Carousel,
-    InfiniteLoad
+    InfiniteLoad,
   },
   setup() {
     const page = ref<number>(1)
-    const home = reactive({sections: [], hasMore: false})
+    const home = reactive({ sections: [], hasMore: false })
     const {
       exec: fetchHomeData,
       onSuccess,
@@ -40,7 +40,7 @@ export default defineComponent({
     } = useApi('fetchHome', fetchHome)
     fetchHomeData(page.value)
 
-    onSuccess(result => {
+    onSuccess((result) => {
       home.sections.push(...result.items)
       home.hasMore = result.hasMore
       page.value++
@@ -57,7 +57,7 @@ export default defineComponent({
       status,
       ApiStatus,
       page,
-      fetchMore
+      fetchMore,
     }
   },
 })
