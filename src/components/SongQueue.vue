@@ -5,15 +5,27 @@
     :class="{'bg-bg': active, 'hover:bg-alpha': !active}"
   >
     <!-- thumbnail -->
-    <div class="flex-shrink-0 relative overflow-hidden rounded">
+    <div class="relative flex-shrink-0 overflow-hidden rounded">
       <img
         class="w-10 h-10"
         :src="song.thumbnail"
         alt="thumbnail"
       >
-      <div class="overlay absolute inset-0 bg-black opacity-0 hover:opacity-100 bg-opacity-40" :class="active && 'opacity-100'">
-        <button @click="play" class="focus:outline-none flex items-center justify-center w-full h-full text-white">
-          <i class="flex icon " :class="{'ic-gif-playing-white': active && isPlaying, 'ic-play': (active && !isPlaying) || !active}"></i>
+      <div
+        class="absolute inset-0 bg-black opacity-0 overlay hover:opacity-100 bg-opacity-40"
+        :class="active && 'opacity-100'"
+      >
+        <button
+          @click.prevent="play"
+          :disabled="isLoading && active"
+          class="flex items-center justify-center w-full h-full text-white focus:outline-none"
+        >
+          <i
+            v-show="!isLoading"
+            class="flex icon "
+            :class="{'ic-gif-playing-white': active && isPlaying, 'ic-play': (active && !isPlaying) || !active}"
+          ></i>
+          <Loading v-if="isLoading && active" />
         </button>
       </div>
     </div>
@@ -47,7 +59,8 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
 import { useStore } from 'vuex'
-import {Song} from '@/types'
+import { Song } from '@/types'
+import { PlayerState } from '@/store'
 
 export default defineComponent({
   name: 'SongQueue',
@@ -59,15 +72,28 @@ export default defineComponent({
     const store = useStore()
 
     function play() {
+      console.log('PPLAY')
       if (props.active) {
         store.commit('togglePlay')
       } else {
-        store.commit('setCurrentSong', props.song)
+        // setTimeout for delay setCurrentSong. If not
+        // the clickOutside will not detect that event.target
+        // was child of Playlist
+        // (cause this commit makes component rerender)
+        // so it leads to unexpected
+        // close Playlist sidebar
+        setTimeout(() => {
+          store.commit('setCurrentSong', props.song)
+        }, 0)
       }
     }
 
-    return {isPlaying: computed(() => store.state.isPlaying), play}
-  }
+    return {
+      play,
+      isPlaying: computed(() => store.state.playerState === PlayerState.PLAYING),
+      isLoading: computed(() => store.state.playerState === PlayerState.LOADING)
+    }
+  },
 })
 </script>
 

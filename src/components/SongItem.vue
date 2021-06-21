@@ -69,6 +69,7 @@
 import { displayDuration } from '@/helpers/utils'
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import { PlayerState } from '@/store'
 
 export default defineComponent({
   name: 'SongItem',
@@ -91,7 +92,7 @@ export default defineComponent({
     const isCurrent = computed(
       () => store.state.currentSong?.encodeId === props.song.encodeId
     )
-    const isPlaying = computed(() => isCurrent.value && store.state.isPlaying)
+    const isPlaying = computed(() => isCurrent.value && store.state.playerState === PlayerState.PLAYING)
 
     return { displayDuration, playSong, isCurrent, isPlaying }
   },

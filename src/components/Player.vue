@@ -3,7 +3,7 @@
     v-if="song"
     id="player"
     class="fixed bottom-0 w-full border-t bg-primary border-alpha"
-    :class="{'playing': isPlaying, 'border-none bg-transparent': showLyric}"
+    :class="{'playing': playerState === PlayerState.PLAYING, 'border-none bg-transparent': showLyric}"
   >
     <div class="flex items-center w-full pl-10 pr-5 space-x-2 h-22">
       <!-- left -->
@@ -39,7 +39,7 @@
         </div>
         <!-- detail -->
         <div class="flex flex-col justify-center space-y-1 overflow-hidden">
-          <h4 class="font-semibold text-md text-primary truncate">{{song.title}}</h4>
+          <h4 class="font-semibold truncate text-md text-primary">{{song.title}}</h4>
           <p class="text-xs text-secondary">{{song.artistsNames}}</p>
         </div>
         <!-- actions -->
@@ -67,12 +67,14 @@
           </button>
           <button
             @click="togglePlay"
+            :disabled="playerState === PlayerState.LOADING"
             class="flex items-center justify-center w-12 h-12 text-4xl rounded-full focus:outline-none text-primary"
           >
             <i
               class="flex"
-              :class="isPlaying ? 'ic-pause-circle-outline' : 'ic-play-circle-outline'"
+              :class="{'ic-pause-circle-outline': playerState === PlayerState.PLAYING, 'ic-play-circle-outline': playerState === PlayerState.PAUSE}"
             ></i>
+            <Loading v-if="playerState === PlayerState.LOADING" />
           </button>
           <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
             <i class="flex ic-next"></i>
@@ -117,8 +119,11 @@
             v-model:progress="volume"
           />
         </div>
-        <div class="btn-toggle pl-4 ml-6 border-l border-alpha">
-          <button @click="toggleShowPlaylist" class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none">
+        <div class="pl-4 ml-6 border-l btn-toggle border-alpha">
+          <button
+            @click="toggleShowPlaylist"
+            class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
+          >
             <i class="flex ic-list-music"></i>
           </button>
         </div>
@@ -130,6 +135,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import { PlayerState } from '@/store'
 import ProgressBar from './ProgressBar.vue'
 
 export default defineComponent({
@@ -157,23 +163,21 @@ export default defineComponent({
       },
     })
     const duration = computed(() => store.getters.duration)
-    function toggleShowLyric() {
-      store.commit('toggleShowLyric')
-    }
 
     return {
       song,
-      isPlaying: computed<boolean>(() => store.state.isPlaying),
-      seek: computed<string>(() => store.state.seek),
-      togglePlay: () => store.commit('togglePlay'),
       playerProgress,
-      toggleMute: () => store.commit('toggleMute'),
-      isMuted: computed(() => store.state.isMuted),
       volume,
       duration,
-      toggleShowLyric,
-      showLyric: computed(() => store.state.showLyric),
-      toggleShowPlaylist: () => store.commit('toggleShowPlaylist')
+      seek: computed<string>(() => store.state.seek),
+      PlayerState,
+      playerState: computed<PlayerState>(() => store.state.playerState),
+      isMuted: computed<boolean>(() => store.state.isMuted),
+      showLyric: computed<boolean>(() => store.state.showLyric),
+      togglePlay: () => store.commit('togglePlay'),
+      toggleMute: () => store.commit('toggleMute'),
+      toggleShowLyric: () => store.commit('toggleShowLyric'),
+      toggleShowPlaylist: () => store.commit('toggleShowPlaylist'),
     }
   },
 })

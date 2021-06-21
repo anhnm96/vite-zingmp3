@@ -9,9 +9,11 @@ import nProgress from './plugins/nProgress'
 import 'nprogress/nprogress.css'
 // global component
 import BaseCard from './components/BaseCard.vue'
+import Loading from './assets/loading.svg?component'
 
 const app = createApp(App)
 app.component('BaseCard', BaseCard)
+app.component('Loading', Loading)
 app.use(store)
 app.use(router)
 nProgress(router)

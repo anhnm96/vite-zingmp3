@@ -24,11 +24,11 @@
           </div>
         </div>
         <h1 class="album-title">{{album.title}}</h1>
-        <p class="album-info mt-1">Cập nhật: {{new Date(album.contentLastUpdate * 1000).toLocaleDateString()}}</p>
+        <p class="mt-1 album-info">Cập nhật: {{new Date(album.contentLastUpdate * 1000).toLocaleDateString()}}</p>
         <p class="album-info">{{album.like}} Người yêu thích</p>
 
         <button class="btn-action">
-          <i class="flex place-items-center w-5 h-5 icon ic-play"></i>
+          <i class="flex w-5 h-5 place-items-center icon ic-play"></i>
           <span>Phát ngẫu nhiên</span>
         </button>
         <div class="album-footer">
@@ -63,7 +63,7 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import {fetchPlaylist, useApi, ApiStatus} from '@/api'
 import {Song} from '@/types'
-
+import { PlayerState } from '@/store'
 // import album from '@/data/list.json'
 import SongItem from '@/components/SongItem.vue'
 
@@ -73,7 +73,7 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const route = useRoute()
-    const isPlaying = computed(() => store.state.isPlaying)
+    const isPlaying = computed(() => store.state.isPlaying === PlayerState.PLAYING)
     const id = route.params.id
     console.log(id)
 
@@ -86,7 +86,6 @@ export default defineComponent({
 
     function playsong(song: Song) {
       if (!store.state.playlist || store.state.playlist.encodeId !== album.encodeId) {
-        console.log('aASASASASA')
         store.commit('setState', {prop: 'playlist', value: album.value})
       }
       store.commit('setState', {prop: 'currentSong', value: song})

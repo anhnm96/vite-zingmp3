@@ -1,17 +1,19 @@
 <template>
-  <!-- <div class="fixed inset-0 z-50 bg-transparent clickoutside" :style="{'display': showPlaylist ? 'block' : 'none'}" @click="toggleShowPlaylist">
-  </div> -->
-  <aside v-click-outside="close" class="playlist flex-shrink-0 border-l w-80 border-border" :style="{transform: showPlaylist ? 'translateX(0)' : ''}">
+  <aside
+    v-click-outside="close"
+    class="flex-shrink-0 border-l playlist w-80 border-border"
+    :style="{transform: showPlaylist ? 'translateX(0)' : ''}"
+  >
     <!-- tabs -->
     <div class="z-20 flex items-center px-2 py-4 space-x-1 h-17 bg-primary">
       <div class="flex p-1 rounded-full bg-alpha">
         <button class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full bg-active text-bg">Danh sách phát</button>
         <button class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full text-secondary">Nghe gần đây</button>
       </div>
-      <button class="focus:outline-none flex items-center justify-center w-8 h-8 text-white rounded-full bg-bg">
+      <button class="flex items-center justify-center w-8 h-8 text-white rounded-full focus:outline-none bg-bg">
         <i class="flex ic-clock"></i>
       </button>
-      <button class="focus:outline-none flex items-center justify-center w-8 h-8 rounded-full text-secondary bg-alpha">
+      <button class="flex items-center justify-center w-8 h-8 rounded-full focus:outline-none text-secondary bg-alpha">
         <i class="flex ic-more"></i>
       </button>
     </div>
@@ -20,7 +22,12 @@
       ref="scroll"
     >
       <!-- Previous songs -->
-      <SongQueue v-for="song in previousSongs" :key="song.title" :song="song" class="opacity-50 hover:opacity-100"  />
+      <SongQueue
+        v-for="song in previousSongs"
+        :key="song.title"
+        :song="song"
+        class="opacity-50 hover:opacity-100"
+      />
       <!-- Current song -->
       <SongQueue
         :active="true"
@@ -41,21 +48,29 @@
       </div>
     </div>
   </aside>
-  
+
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import {
+  defineComponent,
+  computed,
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  watch,
+} from 'vue'
 import { useStore } from 'vuex'
 import clickOutside from '@/directives/clickOutside'
-import {fetchStreaming, useApi} from '@/api'
+import { fetchStreaming, useApi } from '@/api'
+import { PlayerState } from '@/store'
 import Scrollbar from 'smooth-scrollbar'
 import SongQueue from './SongQueue.vue'
 
 export default defineComponent({
   name: 'Playlist',
   components: { SongQueue },
-  directives: {clickOutside},
+  directives: { clickOutside },
   setup() {
     const store = useStore()
     const currentSong = computed(() => store.state.currentSong)
@@ -71,54 +86,64 @@ export default defineComponent({
     })
 
     // fetch streaming for current song
-    const {exec: fetchStreamingData, onSuccess: onFetchStreamingSuccess} = useApi('fetchStreaming', fetchStreaming)
-    onFetchStreamingSuccess(result => {
+    const { exec: fetchStreamingData, onSuccess: onFetchStreamingSuccess } =
+      useApi('fetchStreaming', fetchStreaming)
+
+    onFetchStreamingSuccess((result) => {
       store.dispatch('loadSong', result['128'])
     })
 
-    watch(currentSong, (newSong) => {
-      console.log('fetch')
-      fetchStreamingData(newSong.encodeId)
-    }, {immediate: true})
+    watch(
+      currentSong,
+      (newSong) => {
+        store.commit('setState', {prop: 'playerState', value: PlayerState.LOADING})
+        console.log('fetch', store.state.playerState)
+        fetchStreamingData(newSong.encodeId)
+      },
+      { immediate: true }
+    )
 
     function close(e: MouseEvent) {
       if (!showPlaylist.value) return
+      console.log('CLOSE', e.target)
       const player = document.getElementById('player')
       if (!player.contains(e.target as HTMLElement)) {
-        store.commit('toggleShowPlaylist')
+        // store.commit('toggleShowPlaylist')
       }
     }
 
-    return { currentSong, scroll,
+    return {
+      currentSong,
+      scroll,
       playlist: computed(() => store.state.playlist),
       showPlaylist,
       previousSongs: computed(() => store.getters.previousSongs),
       nextSongs: computed(() => store.getters.nextSongs),
-      close
+      close,
     }
   },
 })
 </script>
 
 <style scoped>
-  .clickoutside {
-    display: none;
-  }
-  @media only screen and (max-width: 1636px) {
-    .playlist {
-      position: fixed;
-      transform: translateX(100%);
-      right: 0;
-      top: 0;
-      z-index: 100;
-      background-color: var(--background);
-    }
-
-    .clickoutside {
-      display: block;
-    }
-  }
+.clickoutside {
+  display: none;
+}
+@media only screen and (max-width: 1636px) {
   .playlist {
-    transition: all .3s;
+    position: fixed;
+    transform: translateX(100%);
+    right: 0;
+    top: 0;
+    z-index: 100;
+    background-color: var(--background);
   }
+
+  .clickoutside {
+    display: block;
+  }
+}
+.playlist {
+  transition: all 0.3s;
+}
 </style>

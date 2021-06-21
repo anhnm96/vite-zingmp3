@@ -51,7 +51,7 @@
         </div>
       </aside>
       <div class="flex-grow">
-        <header class="shadow-sm sticky top-0 z-20 flex items-center h-17 px-4 py-2 space-x-2 bg-primary">
+        <header class="sticky top-0 z-20 flex items-center px-4 py-2 space-x-2 shadow-sm h-17 bg-primary">
           <div class="flex items-center flex-shrink-0">
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-back text-primary"></i></button>
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-forward text-primary"></i></button>
@@ -307,10 +307,12 @@
         </header>
         <main
           ref="main"
-          class="py-5 px-9"
+          class="px-9"
           :class="currentSong ? 'h-main' : 'h-main-2'"
         >
-          <router-view />
+          <div class="py-5">
+            <router-view />
+          </div>
         </main>
       </div>
       <Playlist v-if="hasPlaylist && currentSong" />
@@ -338,7 +340,8 @@ export default {
     const main = ref(null)
 
     onMounted(() => {
-      if (document.body.offsetWidth < 1637) store.commit('setState', {prop: 'showPlaylist', value: false})
+      if (document.body.offsetWidth < 1637)
+        store.commit('setState', { prop: 'showPlaylist', value: false })
       Scrollbar.init(main.value, { damping: 0.2 })
     })
 
@@ -375,7 +378,7 @@ export default {
       nav2,
       showLyricModal,
       hasPlaylist,
-      currentSong
+      currentSong,
     }
   },
 }

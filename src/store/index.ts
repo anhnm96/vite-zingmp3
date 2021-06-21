@@ -7,6 +7,13 @@ interface SetStatePayload {
   value: any
 }
 
+export enum PlayerState {
+  IDLE = 'IDLE',
+  LOADING = 'LOADING',
+  PLAYING = 'PLAYING',
+  PAUSE = 'PAUSE'
+}
+
 let timeout: number
 const store = createStore({
   state: {
@@ -17,16 +24,16 @@ const store = createStore({
     playerProgress: 0,
     isMuted: false,
     volume: 0.5,
-    isPlaying: false,
+    playerState: PlayerState.IDLE,
     showLyric: false,
-    showPlaylist: true
+    showPlaylist: true,
   },
   mutations: {
     setState(state, payload: SetStatePayload) {
       // @ts-ignore
       state[payload.prop] = payload.value
     },
-    setCurrentSong(state, payload) {
+    setCurrentSong(state, payload: Song) {
       state.howler?.pause()
       state.currentSong = payload
     },
@@ -80,8 +87,6 @@ const store = createStore({
       // destroy Howl object 
       if (state.howler instanceof Howl) {
         state.howler.unload()
-        console.log('unload')
-        commit('setState', { prop: 'isPlaying', value: false })
         clearTimeout(timeout)
       }
 
@@ -98,12 +103,14 @@ const store = createStore({
         console.log('play', state.currentSong.title)
         // clear old timeout
         clearTimeout(timeout)
-        commit('setState', { prop: 'isPlaying', value: true })
+        commit('setState', { prop: 'playerState', value: PlayerState.PLAYING })
         dispatch('progress')
       })
       state.howler.on('pause', () => {
         clearTimeout(timeout)
-        commit('setState', { prop: 'isPlaying', value: false })
+        // if we want howler load other song it will pause -> unload
+        if (state.playerState !== PlayerState.LOADING)
+          commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
         console.log('pause', state.currentSong.title)
       })
       state.howler.on('unlock', () => {
@@ -111,13 +118,12 @@ const store = createStore({
       })
       state.howler.on('stop', () => {
         console.log('stop', state.currentSong.title)
-        commit('setState', { prop: 'isPlaying', value: false })
+        commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
       })
 
       state.howler.on('end', () => {
         console.log('end', state.currentSong.title)
         commit('setState', { prop: 'currentSong', value: getters.nextSongs[0] })
-        // commit('setState', { prop: 'isPlaying', value: false })
       })
 
       commit('updateMediaSessionMetaData')

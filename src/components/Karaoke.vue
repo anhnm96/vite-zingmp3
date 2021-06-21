@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 v-if="countdown <= 3 &&countdown > 0" class="absolute left-1/2 transform -translate-x-1/2 text-2xl text-center font-bold">{{countdown}}</h4>
+    <h4 v-if="countdown <= 3 &&countdown > 0" class="absolute text-2xl font-bold text-center transform -translate-x-1/2 left-1/2">{{countdown}}</h4>
     <canvas
       id="canvas"
       width="1500"
@@ -14,6 +14,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, PropType, watch } from 'vue'
 import { useStore } from 'vuex'
+import { PlayerState } from '@/store'
 import {buildSentences, normalize} from '@/helpers'
 import { Sentence } from "@/types"
 
@@ -54,8 +55,8 @@ export default defineComponent({
 
       sections = normalize(props.sentences, ctx)
       console.log(sections[0].start)
-      watch(() => store.state.isPlaying, (val) => {
-        if (val) {
+      watch(() => store.state.playerState, (val) => {
+        if (val === PlayerState.PLAYING) {
           doKaraoke()
         } else {
           clearTimeout(timeout)

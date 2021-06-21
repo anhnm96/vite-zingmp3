@@ -81,6 +81,7 @@ import {
 } from 'vue'
 import { useStore } from 'vuex'
 import {fetchLyric, fetchKaraokeLyric, useApi, ApiStatus} from '@/api'
+import { PlayerState } from '@/store'
 import Karaoke from './Karaoke.vue'
 // import lyricData from '@/data/lyric.json'
 import { lyricParser } from '@/helpers'
@@ -151,9 +152,9 @@ export default defineComponent({
     // currentSentenceIndex but it was slow to sync
     // with playing sound.
     watch(
-      () => store.state.isPlaying,
+      () => store.state.playerState,
       (val) => {
-        if (val) updateCurrentIndex()
+        if (val === PlayerState.PLAYING) updateCurrentIndex()
         else clearTimeout(timeout)
       }
     )
