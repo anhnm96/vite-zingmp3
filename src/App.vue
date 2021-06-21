@@ -51,7 +51,7 @@
         </div>
       </aside>
       <div class="flex-grow">
-        <header class="sticky top-0 z-20 flex items-center h-16 px-4 py-2 space-x-2 bg-primary">
+        <header class="shadow-sm sticky top-0 z-20 flex items-center h-17 px-4 py-2 space-x-2 bg-primary">
           <div class="flex items-center flex-shrink-0">
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-back text-primary"></i></button>
             <button class="flex items-center p-2"><i class="flex h-5 text-xl leading-normal ic-forward text-primary"></i></button>
@@ -313,7 +313,7 @@
           <router-view />
         </main>
       </div>
-      <Playlist v-if="hasPlaylist" />
+      <Playlist v-if="hasPlaylist && currentSong" />
     </div>
     <Player
       v-if="currentSong"
@@ -334,8 +334,11 @@ import Scrollbar from 'smooth-scrollbar'
 export default {
   components: { Player, Lyric, Playlist },
   setup() {
+    const store = useStore()
     const main = ref(null)
+
     onMounted(() => {
+      if (document.body.offsetWidth < 1637) store.commit('setState', {prop: 'showPlaylist', value: false})
       Scrollbar.init(main.value, { damping: 0.2 })
     })
 
@@ -361,7 +364,6 @@ export default {
       { text: 'MV', iconClass: 'ic-mn-mv' },
     ]
 
-    const store = useStore()
     const hasPlaylist = computed(() => !!store.state.playlist)
     const showLyricModal = computed(() => store.state.showLyric)
     const currentSong = computed(() => store.state.currentSong)
@@ -373,7 +375,7 @@ export default {
       nav2,
       showLyricModal,
       hasPlaylist,
-      currentSong,
+      currentSong
     }
   },
 }

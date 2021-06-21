@@ -2,58 +2,57 @@
   <div class="card">
     <div class="card-main">
       <img
-        :src="song.thumbnail"
+        :src="list.thumbnail"
         alt="img"
       >
       <div class="card-overlay">
-        <button class="flex items-center justify-center text-xl text-white">
+        <button class="focus:outline-none flex items-center justify-center text-xl text-white">
           <i class="flex ic-like"></i>
         </button>
         <button
-          @click="setPlaylistAndPlay"
-          class="flex items-center justify-center text-xl text-white border border-white rounded-full w-11 h-11 hover:text-gray-200 hover:border-gray-200"
+          @click="fetchListAndPlay"
+          class="focus:outline-none flex items-center justify-center text-xl text-white border border-white rounded-full w-11 h-11 hover:text-gray-200 hover:border-gray-200"
         >
           <i class="flex ic-play"></i>
         </button>
-        <button class="flex items-center justify-center text-xl text-white">
+        <button class="focus:outline-none flex items-center justify-center text-xl text-white">
           <i class="flex ic-more"></i>
         </button>
       </div>
     </div>
     <router-link
-      to="/album"
-      :title="song.title"
+      :to="list.link.split('.')[0]"
+      :title="list.title"
       class="card-title"
-    >{{song.title}}</router-link>
+    >{{list.title}}</router-link>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-// import {fetchSongList, useApi} from '@/api'
+import {fetchSongList, useApi} from '@/api'
 import { useStore } from 'vuex'
-import { Song } from '@/types'
-import list from '@/data/list.json'
+import { Playlist } from '@/types'
 
 export default defineComponent({
   name: 'BaseCard',
   props: {
-    song: Object as PropType<Song>,
+    list: Object as PropType<Playlist>,
   },
-  setup() {
-    // const {onSuccess} = useApi('fetchSongList', fetchSongList)
-    // onSuccess(result => {
-    //   result.song.items
-    // })
-    function setPlaylistAndPlay() {
+  setup(props) {
+    const { exec: fetchSongListData, onSuccess: onFetchListSuccess} = useApi('fetchSongList', fetchSongList)
+
+    onFetchListSuccess(list => {
       store.commit('setState', { prop: 'playlist', value: list })
-      store.commit('setState', {
-        prop: 'currentSong',
-        value: list.song.items[0],
-      })
+      store.commit('setState', { prop: 'currentSong', value: list.song.items[0] })
+    })
+
+    function fetchListAndPlay() {
+      fetchSongListData(props.list.encodeId)
     }
+
     const store = useStore()
-    return { setPlaylistAndPlay }
+    return { fetchListAndPlay }
   },
 })
 </script>

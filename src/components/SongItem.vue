@@ -16,7 +16,7 @@
           class="absolute inset-0 bg-black bg-opacity-40"
           :class="!isCurrent && 'opacity-0 hover:opacity-100'"
         >
-          <button class="flex w-full h-full place-items-center">
+          <button @click="playSong" class="flex w-full h-full place-items-center">
             <span class="w-5 h-5 mx-auto text-white">
               <i
                 class="flex justify-center icon"
@@ -75,20 +75,14 @@ export default defineComponent({
   props: {
     song: Object,
   },
-  setup(props) {
+  emits: [],
+  setup(props, {emit}) {
     const store = useStore()
 
     function playSong() {
-      let src =
-        props.song.encodeId === 'ZO9ZI68B'
-          ? 'https://mp33.uchin.dev/proxy/a9695c5b-8504-4c70-b6aa-d0f68cb83731?id=ZO9ZI68B'
-          : 'https://mp33.uchin.dev/proxy/f8278503-a6e9-4a05-842f-ecede27c0999?id=ZU0I6CBE'
       console.log('dbclick')
       if (store.state.currentSong?.encodeId !== props.song.encodeId) {
-        store.dispatch('loadSong', {
-          source: src,
-          song: props.song,
-        })
+        emit('playsong', props.song)
       } else {
         store.commit('togglePlay')
       }

@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import { Howl } from 'howler'
 import { formatTime } from '@/helpers/utils'
+import { Song } from '../types'
 interface SetStatePayload {
   prop: string
   value: any
@@ -10,19 +11,27 @@ let timeout: number
 const store = createStore({
   state: {
     howler: null,
-    currentSong: null,
+    currentSong: null as Song,
     playlist: null,
     seek: '0:00',
     playerProgress: 0,
     isMuted: false,
     volume: 0.5,
     isPlaying: false,
-    showLyric: false
+    showLyric: false,
+    showPlaylist: true
   },
   mutations: {
     setState(state, payload: SetStatePayload) {
       // @ts-ignore
       state[payload.prop] = payload.value
+    },
+    setCurrentSong(state, payload) {
+      state.howler?.pause()
+      state.currentSong = payload
+    },
+    toggleShowPlaylist(state) {
+      state.showPlaylist = !state.showPlaylist
     },
     updateMediaSessionMetaData(state) {
       const navigator: any = window.navigator
@@ -60,10 +69,14 @@ const store = createStore({
     },
     toggleShowLyric(state) {
       state.showLyric = !state.showLyric
+    },
+    toggleMute(state) {
+      state.isMuted = !state.isMuted
+      state.howler.mute(state.isMuted)
     }
   },
   actions: {
-    loadSong({ commit, state, dispatch }, payload) {
+    loadSong({ commit, state, dispatch, getters }, payload) {
       // destroy Howl object 
       if (state.howler instanceof Howl) {
         state.howler.unload()
@@ -75,7 +88,7 @@ const store = createStore({
       commit('setState', {
         prop: 'howler',
         value: new Howl({
-          src: [payload.source],
+          src: [payload],
           html5: true,
           volume: state.volume
         })
@@ -101,10 +114,12 @@ const store = createStore({
         commit('setState', { prop: 'isPlaying', value: false })
       })
 
-      commit('setState', {
-        prop: 'currentSong',
-        value: payload.song
+      state.howler.on('end', () => {
+        console.log('end', state.currentSong.title)
+        commit('setState', { prop: 'currentSong', value: getters.nextSongs[0] })
+        // commit('setState', { prop: 'isPlaying', value: false })
       })
+
       commit('updateMediaSessionMetaData')
       state.howler.play()
     },
@@ -124,16 +139,19 @@ const store = createStore({
       const seconds = (percentage / 100) * state.howler.duration()
       state.howler.seek(seconds)
     },
-    toggleMute({ state, commit }) {
-      commit('setState', { prop: 'isMuted', value: !state.isMuted })
-      state.howler.mute(state.isMuted)
-    }
   },
   getters: {
-    // isPlaying(state) {
-    //   console.log('playing', Boolean(state.howler?.playing()))
-    //   return Boolean(state.howler?.playing())
-    // },
+    currentIndex(state) {
+      return state.playlist?.song.items.findIndex((song: Song) => song.encodeId === state.currentSong.encodeId)
+    },
+    previousSongs(state, getters) {
+      if (getters.currentIndex < 1) return []
+      return state.playlist.song.items.slice(0, getters.currentIndex)
+    },
+    nextSongs(state, getters) {
+      if (getters.currentIndex < 0) return []
+      return state.playlist.song.items.slice(getters.currentIndex + 1)
+    },
     duration(state) {
       return formatTime(state.currentSong.duration)
     }

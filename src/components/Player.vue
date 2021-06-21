@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="song"
+    id="player"
     class="fixed bottom-0 w-full border-t bg-primary border-alpha"
     :class="{'playing': isPlaying, 'border-none bg-transparent': showLyric}"
   >
@@ -8,7 +9,7 @@
       <!-- left -->
       <div class="flex w-1/3 space-x-3">
         <!-- thumbnail -->
-        <div class="relative">
+        <div class="relative flex-shrink-0">
           <img
             class="thumbnail"
             :src="song.thumbnail"
@@ -37,9 +38,9 @@
           </svg>
         </div>
         <!-- detail -->
-        <div class="flex flex-col justify-center space-y-1">
-          <h4 class="font-semibold text-md text-primary">{{song.title}}</h4>
-          <p class="text-xs text-secondary">{{song.artists[0].name}}</p>
+        <div class="flex flex-col justify-center space-y-1 overflow-hidden">
+          <h4 class="font-semibold text-md text-primary truncate">{{song.title}}</h4>
+          <p class="text-xs text-secondary">{{song.artistsNames}}</p>
         </div>
         <!-- actions -->
         <div class="flex place-items-center">
@@ -116,8 +117,8 @@
             v-model:progress="volume"
           />
         </div>
-        <div class="pl-4 ml-6 border-l border-alpha">
-          <button class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none">
+        <div class="btn-toggle pl-4 ml-6 border-l border-alpha">
+          <button @click="toggleShowPlaylist" class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none">
             <i class="flex ic-list-music"></i>
           </button>
         </div>
@@ -127,10 +128,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import ProgressBar from './ProgressBar.vue'
-import { displayDuration } from '@/helpers/utils'
 
 export default defineComponent({
   name: 'Player',
@@ -138,11 +138,7 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const song = computed(() => store.state.currentSong)
-    const isPlaying = computed<boolean>(() => store.state.isPlaying)
-    function togglePlay() {
-      store.commit('togglePlay')
-    }
-    const seek = computed<string>(() => store.state.seek)
+
     const playerProgress = computed<string>({
       get() {
         return store.state.playerProgress
@@ -152,10 +148,6 @@ export default defineComponent({
       },
     })
 
-    function toggleMute() {
-      store.dispatch('toggleMute')
-    }
-    const isMuted = computed(() => store.state.isMuted)
     const volume = computed({
       get() {
         return store.state.volume * 100
@@ -171,16 +163,17 @@ export default defineComponent({
 
     return {
       song,
-      isPlaying,
-      togglePlay,
-      seek,
+      isPlaying: computed<boolean>(() => store.state.isPlaying),
+      seek: computed<string>(() => store.state.seek),
+      togglePlay: () => store.commit('togglePlay'),
       playerProgress,
-      toggleMute,
-      isMuted,
+      toggleMute: () => store.commit('toggleMute'),
+      isMuted: computed(() => store.state.isMuted),
       volume,
       duration,
       toggleShowLyric,
       showLyric: computed(() => store.state.showLyric),
+      toggleShowPlaylist: () => store.commit('toggleShowPlaylist')
     }
   },
 })
@@ -228,6 +221,12 @@ export default defineComponent({
 
 .playing :is(.thumbnail, .note) {
   animation-play-state: running;
+}
+
+@media only screen and (min-width: 1636px) {
+  .btn-toggle {
+    display: none;
+  }
 }
 
 @keyframes bubble-1 {

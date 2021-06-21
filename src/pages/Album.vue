@@ -1,5 +1,7 @@
 <template>
   <div class="album-page">
+    <h4 v-if="status === ApiStatus.PENDING">Loading...</h4>
+    <template v-if="status === ApiStatus.SUCCESS">
     <!-- left -->
     <div class="album-info">
       <div class="sticky top-20">
@@ -47,9 +49,11 @@
           v-for="song in album.song.items"
           :key="song.title"
           :song="song"
+          @playsong="playsong"
         />
       </div>
     </div>
+  </template>
   </div>
 </template>
 
@@ -57,7 +61,10 @@
 import { defineComponent, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import album from '@/data/list.json'
+import {fetchPlaylist, useApi, ApiStatus} from '@/api'
+import {Song} from '@/types'
+
+// import album from '@/data/list.json'
 import SongItem from '@/components/SongItem.vue'
 
 export default defineComponent({
@@ -69,10 +76,22 @@ export default defineComponent({
     const isPlaying = computed(() => store.state.isPlaying)
     const id = route.params.id
     console.log(id)
+
+    const {data: album, exec, status} = useApi('fetchPlaylist', fetchPlaylist)
+    exec(id)
+
     function togglePlay() {
       store.commit('togglePlay')
     }
-    return { album, isPlaying, togglePlay }
+
+    function playsong(song: Song) {
+      if (!store.state.playlist || store.state.playlist.encodeId !== album.encodeId) {
+        console.log('aASASASASA')
+        store.commit('setState', {prop: 'playlist', value: album.value})
+      }
+      store.commit('setState', {prop: 'currentSong', value: song})
+    }
+    return { album, isPlaying, togglePlay, status, ApiStatus, playsong }
   },
 })
 </script>

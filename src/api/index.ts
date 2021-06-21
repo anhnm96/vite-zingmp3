@@ -34,7 +34,7 @@ export function fetchPlaylist(id: string) {
 
 export function fetchStreaming(id: string) {
   return request({
-    url: 'api/song/getStreaming?id=' + id
+    url: 'api/song/streaming?id=' + id
   })
 }
 
@@ -59,13 +59,13 @@ export function fetchSongList(id: string) {
   })
 }
 
-export function fetchKaraokeLyric(id: string) {
+export function fetchLyric(id: string) {
   return request({
     url: 'api/lyric?id=' + id
   })
 }
 
-export function fetchLyric(link: string) {
+export function fetchKaraokeLyric(link: string) {
   return request({
     url: link
   })

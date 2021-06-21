@@ -32,36 +32,39 @@
         </div>
       </div>
       <!-- content -->
-      <div
-        v-show="tab===Tab.Lyric"
-        class="flex w-4/5 max-w-5xl mx-auto space-x-4"
-      >
-        <img
-          class="rounded-lg"
-          style="width: 400px"
-          src="https://photo-resize-zmp3.zadn.vn/w512_r1x1_jpeg/cover/2/8/6/f/286f0b4fae2ab3b2a7942968e22bd58f.jpg"
-          alt="thumbnail"
-        >
-        <!-- lyric -->
+      <h4 v-if="status === ApiStatus.PENDING">Loading....</h4>
+      <template v-if="status === ApiStatus.SUCCESS">
         <div
-          class="flex-1 overflow-y-auto hide-scrollbar"
-          style="max-height: 400px"
+          v-show="tab===Tab.Lyric"
+          class="flex w-4/5 max-w-5xl mx-auto space-x-4"
         >
+          <img
+            class="rounded-lg"
+            style="width: 400px"
+            :src="currentSong.thumbnail"
+            alt="thumbnail"
+          >
+          <!-- lyric -->
           <div
-            v-for="(sentence, index) in sentences"
-            :key="sentence.time"
-            :id="`sentence-${index}`"
-            class="text-2xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer hover:bg-alpha"
-            :class="currentSentenceIndex === index && 'text-progress bg-alpha'"
-            @click="seekLyric(sentence.time)"
-          >{{sentence.content}}</div>
+            class="flex-1 overflow-y-auto hide-scrollbar"
+            style="max-height: 400px"
+          >
+            <div
+              v-for="(sentence, index) in sentences"
+              :key="sentence.time"
+              :id="`sentence-${index}`"
+              class="text-2xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer hover:bg-alpha"
+              :class="currentSentenceIndex === index && 'text-progress bg-alpha'"
+              @click="seekLyric(sentence.time)"
+            >{{sentence.content}}</div>
+          </div>
         </div>
-      </div>
-      <Karaoke v-if="tab===Tab.Karaoke" :sentences="lyricData.sentences" />
+        <Karaoke v-if="tab===Tab.Karaoke" :sentences="lyricData.sentences" />
+      </template>
       <!-- player -->
       <div class="text-center">
-        <span class="text-sm font-bold text-primary">Cafe Không Đường</span>
-        <span class="text-sm text-secondary"> - G5RSquad</span>
+        <span class="text-sm font-bold text-primary">{{currentSong.title}}</span>
+        <span class="text-sm text-secondary"> - {{currentSong.artistsNames}}</span>
       </div>
     </div>
   </div>
@@ -77,9 +80,9 @@ import {
   ref,
 } from 'vue'
 import { useStore } from 'vuex'
+import {fetchLyric, fetchKaraokeLyric, useApi, ApiStatus} from '@/api'
 import Karaoke from './Karaoke.vue'
-import lyricData from '@/data/lyric.json'
-import axios from 'axios'
+// import lyricData from '@/data/lyric.json'
 import { lyricParser } from '@/helpers'
 
 enum Tab {
@@ -94,12 +97,21 @@ export default defineComponent({
     const tab = ref<Tab>(Tab.Lyric)
     const store = useStore()
     const sentences = ref([])
-    axios
-      .get(lyricData.file)
-      .then(({ data }) => {
-        sentences.value = lyricParser(data)
+
+      const {data: lyricData, exec: fetchLyricData, status, onSuccess: onFetchLyricDone} = useApi('fetchLyric', fetchLyric)
+      const {exec: fetchKaraokeLyricData, onSuccess: onFetchKaraokeLyricDone} = useApi('fetchKaraokeLyric', fetchKaraokeLyric)
+
+      fetchLyricData(store.state.currentSong.encodeId)
+      onFetchLyricDone((result) => {
+        console.log('lyricDone', result)
+        fetchKaraokeLyricData(result.file)
       })
-      .catch((err) => console.log(err))
+
+      onFetchKaraokeLyricDone((result) => {
+        console.log('kara', result)
+        sentences.value = lyricParser(result)
+      })
+    
     onMounted(() => {
       document.body.style.overflow = 'hidden'
     })
@@ -157,7 +169,10 @@ export default defineComponent({
       currentSentenceIndex,
       toggleShowLyric: () => store.commit('toggleShowLyric'),
       seekLyric,
-      lyricData
+      lyricData,
+      status,
+      ApiStatus,
+      currentSong: computed(() => store.state.currentSong)
     }
   },
 })

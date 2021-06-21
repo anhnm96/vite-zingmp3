@@ -12,7 +12,7 @@
         :title="section.title"
       />
     </section>
-    <InfiniteLoad @infinite-load="fetchMore" />
+    <InfiniteLoad class="fixed bottom-16" @infinite-load="fetchMore" />
   </template>
 </template>
 

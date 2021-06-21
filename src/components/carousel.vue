@@ -20,21 +20,22 @@
       class="carousel-items"
     >
       <BaseCard
-        v-for="song in items"
-        :key="song.title"
-        :song="song"
+        v-for="list in items"
+        :key="list.title"
+        :list="list"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed } from 'vue'
+import { defineComponent, onMounted, ref, computed, PropType } from 'vue'
+import {Playlist} from '@/types'
 export default defineComponent({
   name: 'Carousel',
   props: {
     title: String,
-    items: Array,
+    items: Array as PropType<Playlist[]>,
   },
   setup(props) {
     const listEl = ref<HTMLElement | null>(null)
