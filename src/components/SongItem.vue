@@ -76,7 +76,7 @@ export default defineComponent({
   props: {
     song: Object,
   },
-  emits: [],
+  emits: ['playsong'],
   setup(props, {emit}) {
     const store = useStore()
 

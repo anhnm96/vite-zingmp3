@@ -20,19 +20,19 @@
         </div>
         <!-- right -->
         <div class="flex ml-auto mr-5 space-x-4">
-          <button class="flex items-center justify-center w-12 h-12 text-xl rounded-full bg-alpha">
+          <button class="text-primary flex items-center justify-center w-12 h-12 text-xl rounded-full bg-alpha">
             <i class="flex ic-settings"></i>
           </button>
           <button
             @click="toggleShowLyric"
-            class="flex items-center justify-center w-12 h-12 text-xl rounded-full bg-alpha"
+            class="text-primary flex items-center justify-center w-12 h-12 text-xl rounded-full bg-alpha"
           >
             <i class="flex ic-go-down"></i>
           </button>
         </div>
       </div>
       <!-- content -->
-      <h4 v-if="status === ApiStatus.PENDING">Loading....</h4>
+      <div v-if="status === ApiStatus.PENDING" class="flex justify-center"><Loading /></div>
       <template v-if="status === ApiStatus.SUCCESS">
         <div
           v-show="tab===Tab.Lyric"
@@ -41,7 +41,7 @@
           <img
             class="rounded-lg"
             style="width: 400px"
-            :src="currentSong.thumbnail"
+            :src="currentSong.thumbnailM"
             alt="thumbnail"
           >
           <!-- lyric -->
@@ -51,7 +51,7 @@
           >
             <div
               v-for="(sentence, index) in sentences"
-              :key="sentence.time"
+              :key="`${index}-${sentence.content.trim()}`"
               :id="`sentence-${index}`"
               class="text-2xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer hover:bg-alpha"
               :class="currentSentenceIndex === index && 'text-progress bg-alpha'"
@@ -59,7 +59,9 @@
             >{{sentence.content}}</div>
           </div>
         </div>
-        <Karaoke v-if="tab===Tab.Karaoke" :sentences="lyricData.sentences" />
+        <keep-alive>
+          <Karaoke v-if="tab===Tab.Karaoke" :sentences="lyricData.sentences" />
+        </keep-alive>
       </template>
       <!-- player -->
       <div class="text-center">
@@ -99,19 +101,22 @@ export default defineComponent({
     const store = useStore()
     const sentences = ref([])
 
-      const {data: lyricData, exec: fetchLyricData, status, onSuccess: onFetchLyricDone} = useApi('fetchLyric', fetchLyric)
-      const {exec: fetchKaraokeLyricData, onSuccess: onFetchKaraokeLyricDone} = useApi('fetchKaraokeLyric', fetchKaraokeLyric)
+    const {data: lyricData, exec: fetchLyricData, status, onSuccess: onFetchLyricDone} = useApi('fetchLyric', fetchLyric)
+    const {exec: fetchKaraokeLyricData, onSuccess: onFetchKaraokeLyricDone} = useApi('fetchKaraokeLyric', fetchKaraokeLyric)
 
+    watch(() => store.state.currentSong, () => {
+      console.log('fetch lyric')
       fetchLyricData(store.state.currentSong.encodeId)
-      onFetchLyricDone((result) => {
-        console.log('lyricDone', result)
-        fetchKaraokeLyricData(result.file)
-      })
+    }, {immediate: true})
 
-      onFetchKaraokeLyricDone((result) => {
-        console.log('kara', result)
-        sentences.value = lyricParser(result)
-      })
+    onFetchLyricDone((result) => {
+      console.log('lyricDone', result)
+      fetchKaraokeLyricData(result.file)
+    })
+
+    onFetchKaraokeLyricDone((result) => {
+      sentences.value = lyricParser(result)
+    })
     
     onMounted(() => {
       document.body.style.overflow = 'hidden'
@@ -156,7 +161,7 @@ export default defineComponent({
       (val) => {
         if (val === PlayerState.PLAYING) updateCurrentIndex()
         else clearTimeout(timeout)
-      }
+      }, {immediate: true}
     )
 
     function seekLyric(time: number) {

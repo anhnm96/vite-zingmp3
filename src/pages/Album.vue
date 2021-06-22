@@ -4,7 +4,7 @@
     <template v-if="status === ApiStatus.SUCCESS">
     <!-- left -->
     <div class="album-info">
-      <div class="sticky top-20">
+      <div class="sticky top-0">
         <div
           @click="togglePlay"
           class="album-cover"
@@ -75,7 +75,6 @@ export default defineComponent({
     const route = useRoute()
     const isPlaying = computed(() => store.state.isPlaying === PlayerState.PLAYING)
     const id = route.params.id
-    console.log(id)
 
     const {data: album, exec, status} = useApi('fetchPlaylist', fetchPlaylist)
     exec(id)

@@ -17,6 +17,7 @@ export enum PlayerState {
 let timeout: number
 const store = createStore({
   state: {
+    theme: 'dark',
     howler: null,
     currentSong: null as Song,
     playlist: null,
@@ -29,6 +30,9 @@ const store = createStore({
     showPlaylist: true,
   },
   mutations: {
+    setTheme(state, payload) {
+      state.theme = payload
+    },
     setState(state, payload: SetStatePayload) {
       // @ts-ignore
       state[payload.prop] = payload.value
@@ -145,6 +149,15 @@ const store = createStore({
       const seconds = (percentage / 100) * state.howler.duration()
       state.howler.seek(seconds)
     },
+    playNext({ commit, getters }) {
+      if (!getters.nextSongs.length) return
+      commit('setState', { prop: 'currentSong', value: getters.nextSongs[0] })
+    },
+    playPrevious({ commit, getters }) {
+      console.log('playPrevious', getters.previousSongs)
+      if (!getters.previousSongs.length) return
+      commit('setState', { prop: 'currentSong', value: getters.previousSongs[getters.previousSongs.length - 1] })
+    }
   },
   getters: {
     currentIndex(state) {

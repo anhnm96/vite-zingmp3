@@ -16,21 +16,25 @@
             alt="thumbnail"
           >
           <svg
+            fill="currentColor"
             viewBox="0 0 512 512"
             class="note note-1"
           >
             <path d="M470.38 1.51L150.41 96A32 32 0 0 0 128 126.51v261.41A139 139 0 0 0 96 384c-53 0-96 28.66-96 64s43 64 96 64 96-28.66 96-64V214.32l256-75v184.61a138.4 138.4 0 0 0-32-3.93c-53 0-96 28.66-96 64s43 64 96 64 96-28.65 96-64V32a32 32 0 0 0-41.62-30.49z"></path>
           </svg><svg
+            fill="currentColor"
             viewBox="0 0 384 512"
             class="note note-2"
           >
             <path d="M310.94 1.33l-96.53 28.51A32 32 0 0 0 192 60.34V360a148.76 148.76 0 0 0-48-8c-61.86 0-112 35.82-112 80s50.14 80 112 80 112-35.82 112-80V148.15l73-21.39a32 32 0 0 0 23-30.71V32a32 32 0 0 0-41.06-30.67z"></path>
           </svg><svg
+            fill="currentColor"
             viewBox="0 0 512 512"
             class="note note-3"
           >
             <path d="M470.38 1.51L150.41 96A32 32 0 0 0 128 126.51v261.41A139 139 0 0 0 96 384c-53 0-96 28.66-96 64s43 64 96 64 96-28.66 96-64V214.32l256-75v184.61a138.4 138.4 0 0 0-32-3.93c-53 0-96 28.66-96 64s43 64 96 64 96-28.65 96-64V32a32 32 0 0 0-41.62-30.49z"></path>
           </svg><svg
+            fill="currentColor"
             viewBox="0 0 384 512"
             class="note note-4"
           >
@@ -62,7 +66,7 @@
           <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
             <i class="flex ic-shuffle"></i>
           </button>
-          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
+          <button @click="playPrevious" class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
             <i class="flex ic-pre"></i>
           </button>
           <button
@@ -76,7 +80,7 @@
             ></i>
             <Loading v-if="playerState === PlayerState.LOADING" />
           </button>
-          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
+          <button @click="playNext" class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
             <i class="flex ic-next"></i>
           </button>
           <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
@@ -93,21 +97,21 @@
       <!-- right -->
       <div class="flex items-center justify-end w-1/3">
         <button
-          class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
+          class="text-secondary flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
           v-if="song.mvlink"
         >
           <i class="flex ic-mv"></i>
         </button>
         <button
           @click="toggleShowLyric"
-          class="flex items-center justify-center w-8 h-8 ml-2 rounded-full hover:bg-alpha focus:outline-none"
+          class="text-secondary flex items-center justify-center w-8 h-8 ml-2 rounded-full hover:bg-alpha focus:outline-none"
         >
           <i class="flex ic-karaoke"></i>
         </button>
         <div class="flex items-center ml-2 space-x-2">
           <button
             @click="toggleMute"
-            class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
+            class="text-secondary flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
           >
             <i
               class="flex"
@@ -122,7 +126,7 @@
         <div class="pl-4 ml-6 border-l btn-toggle border-alpha">
           <button
             @click="toggleShowPlaylist"
-            class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
+            class="text-secondary flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
           >
             <i class="flex ic-list-music"></i>
           </button>
@@ -133,9 +137,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import { PlayerState } from '@/store'
+import { fetchStreaming, useApi } from '@/api'
 import ProgressBar from './ProgressBar.vue'
 
 export default defineComponent({
@@ -162,22 +167,45 @@ export default defineComponent({
         store.commit('setVolume', val / 100)
       },
     })
-    const duration = computed(() => store.getters.duration)
+
+    // fetch streaming for current song
+    const { exec: fetchStreamingData, onSuccess: onFetchStreamingSuccess, onError: onFetchStreamingFailed} =
+    useApi('fetchStreaming', fetchStreaming)
+
+    onFetchStreamingSuccess((result) => {
+      store.dispatch('loadSong', result['128'])
+    })
+
+    onFetchStreamingFailed((result) => {
+      console.log('ERROR Fetch', result)
+    })
+
+    watch(
+      () => store.state.currentSong,
+      (newSong) => {
+        store.commit('setState', {prop: 'playerState', value: PlayerState.LOADING})
+        console.log('fetch', store.state.playerState)
+        fetchStreamingData(newSong.encodeId)
+      },
+      { immediate: true }
+    )
 
     return {
       song,
       playerProgress,
       volume,
-      duration,
       seek: computed<string>(() => store.state.seek),
       PlayerState,
       playerState: computed<PlayerState>(() => store.state.playerState),
       isMuted: computed<boolean>(() => store.state.isMuted),
       showLyric: computed<boolean>(() => store.state.showLyric),
+      duration: computed(() => store.getters.duration),
       togglePlay: () => store.commit('togglePlay'),
       toggleMute: () => store.commit('toggleMute'),
       toggleShowLyric: () => store.commit('toggleShowLyric'),
       toggleShowPlaylist: () => store.commit('toggleShowPlaylist'),
+      playNext: () => store.dispatch('playNext'),
+      playPrevious: () => store.dispatch('playPrevious'),
     }
   },
 })
@@ -195,7 +223,7 @@ export default defineComponent({
 }
 
 .note {
-  @apply text-primary;
+  color: var(--text-primary);
   height: 10px;
   width: 10px;
   position: absolute;

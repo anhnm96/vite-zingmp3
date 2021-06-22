@@ -7,7 +7,7 @@
     <!-- tabs -->
     <div class="z-20 flex items-center px-2 py-4 space-x-1 h-17 bg-primary">
       <div class="flex p-1 rounded-full bg-alpha">
-        <button class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full bg-active text-bg">Danh sách phát</button>
+        <button class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full bg-active text-primary">Danh sách phát</button>
         <button class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full text-secondary">Nghe gần đây</button>
       </div>
       <button class="flex items-center justify-center w-8 h-8 text-white rounded-full focus:outline-none bg-bg">
@@ -58,12 +58,9 @@ import {
   ref,
   onMounted,
   onBeforeUnmount,
-  watch,
 } from 'vue'
 import { useStore } from 'vuex'
 import clickOutside from '@/directives/clickOutside'
-import { fetchStreaming, useApi } from '@/api'
-import { PlayerState } from '@/store'
 import Scrollbar from 'smooth-scrollbar'
 import SongQueue from './SongQueue.vue'
 
@@ -85,30 +82,11 @@ export default defineComponent({
       Scrollbar.destroy(scroll.value)
     })
 
-    // fetch streaming for current song
-    const { exec: fetchStreamingData, onSuccess: onFetchStreamingSuccess } =
-      useApi('fetchStreaming', fetchStreaming)
-
-    onFetchStreamingSuccess((result) => {
-      store.dispatch('loadSong', result['128'])
-    })
-
-    watch(
-      currentSong,
-      (newSong) => {
-        store.commit('setState', {prop: 'playerState', value: PlayerState.LOADING})
-        console.log('fetch', store.state.playerState)
-        fetchStreamingData(newSong.encodeId)
-      },
-      { immediate: true }
-    )
-
     function close(e: MouseEvent) {
       if (!showPlaylist.value) return
-      console.log('CLOSE', e.target)
       const player = document.getElementById('player')
       if (!player.contains(e.target as HTMLElement)) {
-        // store.commit('toggleShowPlaylist')
+        store.commit('toggleShowPlaylist')
       }
     }
 
@@ -126,9 +104,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.clickoutside {
-  display: none;
-}
 @media only screen and (max-width: 1636px) {
   .playlist {
     position: fixed;
@@ -138,11 +113,8 @@ export default defineComponent({
     z-index: 100;
     background-color: var(--background);
   }
-
-  .clickoutside {
-    display: block;
-  }
 }
+
 .playlist {
   transition: all 0.3s;
 }

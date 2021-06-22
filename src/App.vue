@@ -1,5 +1,5 @@
 <template>
-  <div :class="theme === 'light' ? 'theme-light' : 'theme-dark'">
+  <div id="main" :class="theme === 'light' ? 'theme-light' : 'theme-dark'">
     <div class="flex">
       <aside class="aside">
         <div>
@@ -65,7 +65,7 @@
                 <i class="flex h-5 text-xl text-secondary ic-search"></i>
               </button>
               <input
-                class="block w-full py-2 pl-10 pr-6 text-sm rounded-full outline-none text-color-secondary bg-alpha"
+                class="block w-full py-2 pl-10 pr-6 text-sm rounded-full outline-none text-secondary bg-alpha"
                 type="text"
                 placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV"
               >
@@ -73,6 +73,7 @@
           </div>
           <div class="flex items-center space-x-2">
             <button
+              @click="showModal = true"
               aria-label="layout"
               class="flex items-center justify-center w-10 h-10 rounded-full bg-alpha"
             >
@@ -321,7 +322,10 @@
       v-if="currentSong"
       class="z-50"
     />
-    <Lyric v-if="showLyricModal" />
+    <keep-alive>
+      <Lyric v-if="showLyricModal" />
+    </keep-alive>
+    <ThemeModal v-if="showModal" v-model="showModal" @setTheme="setTheme" />
   </div>
 </template>
 
@@ -332,12 +336,14 @@ import Player from './components/Player.vue'
 import Lyric from './components/Lyric.vue'
 import Playlist from './components/Playlist.vue'
 import Scrollbar from 'smooth-scrollbar'
+import ThemeModal from './components/ThemeModal.vue'
 
 export default {
-  components: { Player, Lyric, Playlist },
+  components: { Player, Lyric, Playlist, ThemeModal },
   setup() {
     const store = useStore()
     const main = ref(null)
+    const showModal = ref(false)
 
     onMounted(() => {
       if (document.body.offsetWidth < 1637)
@@ -349,11 +355,7 @@ export default {
       Scrollbar.destroy(main.value)
     })
 
-    const theme = ref('light')
-    function toggleTheme() {
-      if (theme.value === 'light') theme.value = 'dark'
-      else theme.value = 'light'
-    }
+
     const nav1 = [
       { text: 'Cá Nhân', iconClass: 'ic-library' },
       { text: 'Khám Phá', iconClass: 'ic-mn-home' },
@@ -370,15 +372,19 @@ export default {
     const hasPlaylist = computed(() => !!store.state.playlist)
     const showLyricModal = computed(() => store.state.showLyric)
     const currentSong = computed(() => store.state.currentSong)
+    function setTheme(value: string) {
+      store.commit('setTheme', value)
+    }
     return {
       main,
-      theme,
-      toggleTheme,
+      theme: computed(() => store.state.theme),
+      setTheme,
       nav1,
       nav2,
       showLyricModal,
       hasPlaylist,
       currentSong,
+      showModal
     }
   },
 }
@@ -400,7 +406,7 @@ export default {
   background-size: contain; */
 }
 .nav-link {
-  @apply flex items-center px-6 py-2.5 space-x-3 font-semibold;
+  @apply flex text-secondary items-center px-6 py-2.5 space-x-3 font-semibold;
 }
 .active {
   @apply bg-alpha border-l border-primary;

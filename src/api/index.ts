@@ -16,12 +16,10 @@ const request = axios.create({
 
 request.interceptors.response.use(
   (response) => {
+    console.log(response)
     if (response && response.data) {
       return response.data
     }
-    return false
-  },
-  (_err) => {
     return false
   }
 )

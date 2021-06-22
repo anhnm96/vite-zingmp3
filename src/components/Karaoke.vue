@@ -12,11 +12,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, PropType, watch } from 'vue'
+import { defineComponent, onMounted, ref, PropType, watch, onBeforeUnmount, computed } from 'vue'
 import { useStore } from 'vuex'
 import { PlayerState } from '@/store'
 import {buildSentences, normalize} from '@/helpers'
-import { Sentence } from "@/types"
+import { Sentence, Song } from "@/types"
 
 const fontSize = 50
 const lineHeight = 1.5
@@ -30,10 +30,15 @@ export default defineComponent({
   },
   setup(props) {
     const store = useStore()
-    const Colors = {
-      primary: '#000',
-      stroke: '#7200a1',
-    }
+    const currentSong = computed<Song>(() => store.state.currentSong)
+    const theme = computed(() => store.state.theme)
+
+    const Colors = computed(() => {
+      return {
+        primary: theme.value === 'dark' ? '#fff' : '#000',
+        stroke: '#7200a1',
+      }
+    })
     let ctx: CanvasRenderingContext2D
     let width = 0
     let height = 0
@@ -52,9 +57,8 @@ export default defineComponent({
       // ctx.font = `bold ${fontSize}px Arial`
       // ctx.textBaseline = 'hanging'
       // ctx.globalAlpha = 1
-
+      drawIntro()
       sections = normalize(props.sentences, ctx)
-      console.log(sections[0].start)
       watch(() => store.state.playerState, (val) => {
         if (val === PlayerState.PLAYING) {
           doKaraoke()
@@ -64,14 +68,18 @@ export default defineComponent({
       }, {immediate: true})
     })
 
+    onBeforeUnmount(() => {
+      clearTimeout(timeout)
+    })
+
     const countdown = ref(0)
     function doKaraoke () {
       const currentTime = store.state.howler.seek() * 1000 
       if (currentTime < sections[0].start - 4000) drawIntro()
       else draw(store.state.howler.seek() * 1000)
+      // show countdown when song about to start
       if (currentTime >= sections[0].start - 4000 && currentTime < sections[0].start) {
         countdown.value = Math.round((sections[0].start - currentTime) / 1000)
-        console.log(countdown.value)
       }
       
       timeout = setTimeout(doKaraoke, 50)
@@ -81,8 +89,9 @@ export default defineComponent({
       // const song = player.currentSong.value
       // if (!song) return
       ctx.clearRect(0, 0, width, height)
+      ctx.fillStyle = Colors.value.primary
       const fontsize = [60, 40]
-      ;['Cafe Không Đường', 'G5RSquad'].forEach((text, index) => {
+      ;[currentSong.value.title, currentSong.value.artistsNames].forEach((text, index) => {
         const textHeight = fontSize + lineHeight * fontSize
         const positionY = height / 2 + textHeight * index - textHeight / 2
         const positionX = width / 2
@@ -93,7 +102,7 @@ export default defineComponent({
     }
 
     function draw(seek: number) {
-      ctx.fillStyle = Colors.primary
+      ctx.fillStyle = Colors.value.primary
       ctx.clearRect(0, 0, width, height)
       // ctx.textAlign = 'center'
       // ctx.font = `bold ${fontSize}px ${fontFamily}`
@@ -113,9 +122,9 @@ export default defineComponent({
         ctx.globalAlpha = alpha
         
         if (seek > end) {
-          gradient.addColorStop(1, Colors.stroke)
+          gradient.addColorStop(1, Colors.value.stroke)
         } else if (seek < start) {
-          gradient.addColorStop(1, Colors.primary)
+          gradient.addColorStop(1, Colors.value.primary)
         } else {
           ctx.globalAlpha = 1
           let percent = 0
@@ -135,8 +144,8 @@ export default defineComponent({
             percent = Math.min(percent + deta * word.perInSentence, 1)
             break
           }
-          gradient.addColorStop(percent, Colors.stroke)
-          gradient.addColorStop(percent, Colors.primary)
+          gradient.addColorStop(percent, Colors.value.stroke)
+          gradient.addColorStop(percent, Colors.value.primary)
         }
 
         const contentHeight =

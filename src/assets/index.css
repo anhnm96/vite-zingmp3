@@ -37,8 +37,9 @@
   --logo-url: url('https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg');
 }
 
-body {
+#main {
   overflow: hidden;
+  background: var(--background);
 }
 
 .h-main {

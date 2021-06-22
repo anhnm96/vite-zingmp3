@@ -32,6 +32,7 @@ export const useApi = (apiName: string, fn: Function, config: any = {}) => {
   const status = ref<ApiStatus>(ApiStatus.IDLE)
   const error = ref(null)
   const resultEvent = useEventHook()
+  const errorEvent = useEventHook()
 
   /**
    * Initialise the api request
@@ -55,6 +56,7 @@ export const useApi = (apiName: string, fn: Function, config: any = {}) => {
       status.value = ApiStatus.SUCCESS
       resultEvent.trigger(data.value)
     } catch (error) {
+      errorEvent.trigger(error)
       error.value = error
       status.value = ApiStatus.ERROR
     }
@@ -67,6 +69,7 @@ export const useApi = (apiName: string, fn: Function, config: any = {}) => {
     status,
     error,
     onSuccess: resultEvent.on,
+    onError: errorEvent.on,
     exec,
     setStatus,
     ...createNormalisedApiStatuses(status, apiName)

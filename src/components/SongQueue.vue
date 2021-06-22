@@ -39,18 +39,7 @@
         class="mt-0.5 text-xs text-secondary"
         :class="active && 'text-gray-100'"
       >
-        <span
-          class="inline-flex items-center"
-          v-for="(artist, index) in song.artists"
-          :key="artist.name"
-        >
-          <span v-if="index > 0">,&nbsp;</span>
-          {{artist.name}}&nbsp;
-          <i
-            v-if="artist.spotlight"
-            class="flex text-xs ic-star"
-          ></i>
-        </span>
+        {{song.artistsNames}}
       </p>
     </div>
   </div>
