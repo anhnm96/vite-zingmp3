@@ -20,6 +20,7 @@
       class="carousel-items"
     >
       <BaseCard
+        class="md:w-1/4 lg:w-1/5 xl:w-1/6"
         v-for="list in items"
         :key="list.title"
         :list="list"

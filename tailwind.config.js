@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        'clg': '1200px'
+      },
       colors: {
         'primary': 'var(--primary)',
         'alpha': 'var(--alpha-bg)',
@@ -14,16 +17,16 @@ module.exports = {
       spacing: {
         17: '4.375rem',
         22: '5.5rem'
-      }
+      },
+      scale: {
+        '85': '.85'
+      },
     },
     textColor: theme => ({
       ...theme('colors'),
       primary: 'var(--text-primary)',
       secondary: 'var(--text-secondary)',
     }),
-    scale: {
-      '85': '.85'
-    },
     backgroundColor: (theme) => ({
       ...theme('colors'),
       'primary': 'var(--background)',

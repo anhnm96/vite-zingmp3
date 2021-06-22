@@ -59,7 +59,7 @@ export default defineComponent({
 
 <style scoped>
 .card {
-  @apply flex-shrink-0 md:w-1/6 px-4;
+  @apply flex-shrink-0 px-4;
 }
 .card-title {
   @apply text-sm font-semibold text-primary mt-2 block;
