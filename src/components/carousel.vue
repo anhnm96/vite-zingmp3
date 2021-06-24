@@ -17,10 +17,11 @@
     </div>
     <div
       ref="listEl"
-      class="carousel-items"
+      class="flex w-full mt-3 -mx-3 overflow-hidden lg:-mx-4"
+      style="scroll-behavior: smooth"
     >
       <BaseCard
-        class="md:w-1/4 lg:w-1/5 xl:w-1/6"
+        class="w-1/4 px-3 clg:w-1/5 cxl:w-1/6 lg:px-4"
         v-for="list in items"
         :key="list.title"
         :list="list"
@@ -77,10 +78,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.carousel-items {
-  @apply flex w-full -mx-4 overflow-hidden mt-3;
-  scroll-behavior: smooth;
-}
-</style>

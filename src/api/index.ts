@@ -1,5 +1,4 @@
 import axios from 'axios'
-import home from '@/data/home.json'
 
 export enum ApiStatus {
   IDLE = 'IDLE',
@@ -16,11 +15,13 @@ const request = axios.create({
 
 request.interceptors.response.use(
   (response) => {
-    console.log(response)
     if (response && response.data) {
       return response.data
     }
-    return false
+    return response
+  },
+  error => {
+    return Promise.reject(error)
   }
 )
 

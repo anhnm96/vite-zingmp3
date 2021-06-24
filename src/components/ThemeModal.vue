@@ -1,28 +1,28 @@
 <template>
-    <div @click.self="$emit('update:modelValue', false)" class="fixed inset-0 w-full h-full z-50 flex items-center bg-black bg-opacity-70">
-      <div class="rounded-md mx-auto max-w-4xl py-4 px-8 bg-primary" style="width: 70vw">
+    <div @click.self="$emit('update:modelValue', false)" class="fixed inset-0 z-50 flex items-center w-full h-full bg-black bg-opacity-70">
+      <div class="max-w-4xl px-8 py-4 mx-auto rounded-md bg-primary" style="width: 70vw">
         <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold">Giao Diện</h2>
+          <h2 class="text-2xl font-bold text-primary">Giao Diện</h2>
           <button @click="$emit('update:modelValue', false)" class="text-2xl" aria-label="close">
             <i class="flex ic-close"></i>
           </button>
         </div>
         <!-- main -->
         <div class="mt-2">
-          <h3 class="text-base font-bold">Color</h3>
+          <h3 class="text-base font-bold text-primary">Color</h3>
           <!-- options -->
-          <div class="flex items-center space-x-4 mt-2">
+          <div class="flex items-center mt-2 space-x-4">
             <div class="w-1/5 ">
-              <button @click="$emit('setTheme', 'dark')" class="rounded overflow-hidden">
+              <button @click="$emit('setTheme', 'dark')" class="overflow-hidden rounded">
                 <img class="w-full" src="https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/theme/dark.jpg" alt="theme dark">
               </button>
-              <p class="text-sm mt-2">Black</p>
+              <p class="mt-2 text-sm text-secondary">Black</p>
             </div>
             <div class="w-1/5 ">
-              <button @click="$emit('setTheme', 'light')" class="border border-primary rounded overflow-hidden">
+              <button @click="$emit('setTheme', 'light')" class="overflow-hidden border rounded border-primary">
                 <img class="w-full" src="https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/theme/light.jpg" alt="theme light">
               </button>
-              <p class="text-sm mt-2">White</p>
+              <p class="mt-2 text-sm text-secondary">White</p>
             </div>
           </div>
         </div>

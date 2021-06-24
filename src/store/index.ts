@@ -1,7 +1,8 @@
 import { createStore } from 'vuex'
 import { Howl } from 'howler'
-import { formatTime } from '@/helpers/utils'
-import { Song } from '../types'
+import { formatTime, shuffle } from '@/helpers'
+import { Song, Playlist } from '../types'
+
 interface SetStatePayload {
   prop: string
   value: any
@@ -14,13 +15,19 @@ export enum PlayerState {
   PAUSE = 'PAUSE'
 }
 
+export enum PlayerMode {
+  DEFAULT = 'DEFAULT',
+  REPEAT_LIST = 'REPEAT_LIST',
+  REPEAT_SONG = 'REPEAT_SONG'
+}
+
 let timeout: number
 const store = createStore({
   state: {
     theme: 'dark',
     howler: null,
     currentSong: null as Song,
-    playlist: null,
+    playlist: null as Playlist,
     seek: '0:00',
     playerProgress: 0,
     isMuted: false,
@@ -28,6 +35,9 @@ const store = createStore({
     playerState: PlayerState.IDLE,
     showLyric: false,
     showPlaylist: true,
+    isShuffled: false,
+    shuffledList: [] as Song[],
+    playerMode: PlayerMode.DEFAULT
   },
   mutations: {
     setTheme(state, payload) {
@@ -45,6 +55,7 @@ const store = createStore({
       state.showPlaylist = !state.showPlaylist
     },
     updateMediaSessionMetaData(state) {
+      // https://developers.google.com/web/updates/2017/02/media-session
       const navigator: any = window.navigator
       const MediaMetadata: any = (<any>window).MediaMetadata
       if ('mediaSession' in navigator === false) {
@@ -84,6 +95,21 @@ const store = createStore({
     toggleMute(state) {
       state.isMuted = !state.isMuted
       state.howler.mute(state.isMuted)
+    },
+    toggleShuffleSongList(state) {
+      state.isShuffled = !state.isShuffled
+      if (state.isShuffled) {
+        const currentIndex = state.playlist.song.items.findIndex((song: Song) => song.encodeId === state.currentSong.encodeId)
+        state.shuffledList = [state.currentSong, ...shuffle([...state.playlist.song.items.slice(0, currentIndex), ...state.playlist.song.items.slice(currentIndex + 1)])]
+      }
+    },
+    setNextPlayerMode(state) {
+      if (state.playerMode === PlayerMode.DEFAULT)
+        state.playerMode = PlayerMode.REPEAT_LIST
+      else if (state.playerMode === PlayerMode.REPEAT_LIST)
+        state.playerMode = PlayerMode.REPEAT_SONG
+      else
+        state.playerMode = PlayerMode.DEFAULT
     }
   },
   actions: {
@@ -112,7 +138,7 @@ const store = createStore({
       })
       state.howler.on('pause', () => {
         clearTimeout(timeout)
-        // if we want howler load other song it will pause -> unload
+        // if we want howler load other song howler will pause -> unload
         if (state.playerState !== PlayerState.LOADING)
           commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
         console.log('pause', state.currentSong.title)
@@ -122,11 +148,26 @@ const store = createStore({
       })
       state.howler.on('stop', () => {
         console.log('stop', state.currentSong.title)
-        commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
+        clearTimeout(timeout)
+        if (state.playerState !== PlayerState.LOADING)
+          commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
       })
 
       state.howler.on('end', () => {
         console.log('end', state.currentSong.title)
+        clearTimeout(timeout)
+        if (state.playerMode === PlayerMode.REPEAT_SONG) {
+          state.howler.play()
+          return
+        }
+        if (getters.nextSongs.length === 0) {
+          if (state.playerMode === PlayerMode.REPEAT_LIST) {
+            commit('setState', { prop: 'currentSong', value: getters.songList[0] })
+          } else {
+            commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
+          }
+          return
+        }
         commit('setState', { prop: 'currentSong', value: getters.nextSongs[0] })
       })
 
@@ -160,16 +201,24 @@ const store = createStore({
     }
   },
   getters: {
-    currentIndex(state) {
-      return state.playlist?.song.items.findIndex((song: Song) => song.encodeId === state.currentSong.encodeId)
+    currentIndex(state, getters) {
+      return getters.songList.findIndex((song: Song) => song.encodeId === state.currentSong.encodeId)
     },
-    previousSongs(state, getters) {
+    previousSongs(_state, getters) {
       if (getters.currentIndex < 1) return []
-      return state.playlist.song.items.slice(0, getters.currentIndex)
+      return getters.songList.slice(0, getters.currentIndex)
     },
-    nextSongs(state, getters) {
+    nextSongs(_state, getters) {
       if (getters.currentIndex < 0) return []
-      return state.playlist.song.items.slice(getters.currentIndex + 1)
+      return getters.songList.slice(getters.currentIndex + 1)
+    },
+    songList(state) {
+      if (state.playlist === null) return []
+      if (state.isShuffled) {
+        return state.shuffledList
+      } else {
+        return state.playlist.song.items
+      }
     },
     duration(state) {
       return formatTime(state.currentSong.duration)

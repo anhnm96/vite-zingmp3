@@ -1,9 +1,8 @@
 <template>
   <div id="main" :class="theme === 'light' ? 'theme-light' : 'theme-dark'">
     <div class="flex">
-      <aside class="aside">
-        <div>
-          <div class="px-6 py-4">
+      <aside class="relative flex-shrink-0 min-h-screen transition-all duration-300 lg:w-64 bg-sidebar-bg w-17">
+          <div class="flex items-center justify-center lg:justify-start lg:px-6 h-17">
             <router-link to="/">
               <div class="logo"></div>
             </router-link>
@@ -17,13 +16,13 @@
               >
                 <a
                   href="#"
-                  class="nav-link"
+                  class="hover:text-primary flex lg:justify-start justify-center text-secondary items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
                 >
                   <i
                     :class="nav.iconClass"
-                    class="nav-icon"
+                    class="flex nav-icon"
                   ></i>
-                  <span class="nav-text">{{nav.text}}</span>
+                  <span class="hidden lg:block nav-text">{{nav.text}}</span>
                 </a>
               </li>
             </ul>
@@ -37,18 +36,17 @@
               >
                 <a
                   href="#"
-                  class="nav-link"
+                  class="hover:text-primary flex lg:justify-start justify-center text-secondary items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
                 >
                   <i
                     :class="nav.iconClass"
-                    class="nav-icon"
+                    class="flex nav-icon"
                   ></i>
-                  <span class="nav-text">{{nav.text}}</span>
+                  <span class="hidden lg:block nav-text">{{nav.text}}</span>
                 </a>
               </li>
             </ul>
           </nav>
-        </div>
       </aside>
       <div class="flex-grow">
         <header class="sticky top-0 z-20 flex items-center px-4 py-2 space-x-2 shadow-sm h-17 bg-primary">
@@ -355,7 +353,6 @@ export default {
       Scrollbar.destroy(main.value)
     })
 
-
     const nav1 = [
       { text: 'Cá Nhân', iconClass: 'ic-library' },
       { text: 'Khám Phá', iconClass: 'ic-mn-home' },
@@ -390,26 +387,28 @@ export default {
 }
 </script>
 <style>
-.aside {
-  background-color: var(--sidebar-bg);
-  @apply min-h-screen flex-shrink-0 relative md:w-64;
-}
-.aside > div {
-  @apply sticky inset-0;
-}
 .logo {
-  width: 120px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: inline-block;
-  background: var(--logo-url) 50% / contain no-repeat;
-  /* background-position: 50%;
-  background-size: contain; */
+  background: var(--logo-url-m) 50% / contain no-repeat;
 }
-.nav-link {
-  @apply flex text-secondary items-center px-6 py-2.5 space-x-3 font-semibold;
+@media screen and (min-width: 1024px) {
+  .logo {
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    background: var(--logo-url) 50% / contain no-repeat;
+    /* background-position: 50%;
+    background-size: contain; */
+  }
 }
+
 .active {
-  @apply bg-alpha border-l border-primary;
+  @apply bg-alpha border-l-2 border-primary;
+}
+.active a {
+  @apply text-primary;
 }
 .nav-icon {
   @apply text-2xl h-6;
@@ -420,9 +419,8 @@ export default {
 }
 
 .divider {
-  @apply mx-6 my-3;
+  @apply mx-6 my-3 bg-gray-400;
   height: 1px;
-  background-color: var(--border-color);
 }
 .ic-vip {
   @apply absolute flex bottom-0 mx-auto h-2.5 w-5 inset-x-0 outline-none;

@@ -5,14 +5,16 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'clg': '1200px'
+        'clg': '1200px',
+        'cxl': '1350px'
       },
       colors: {
         'primary': 'var(--primary)',
         'alpha': 'var(--alpha-bg)',
         'progress': 'var(--progress)',
         'bg': 'var(--primary)',
-        'border': 'var(--border-color)'
+        'border': 'var(--border-color)',
+        'sidebar-bg': 'var(--sidebar-bg)'
       },
       spacing: {
         17: '4.375rem',

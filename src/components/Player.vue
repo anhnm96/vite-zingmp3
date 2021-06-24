@@ -63,7 +63,7 @@
       >
         <!-- controls -->
         <div class="flex items-center justify-center space-x-4">
-          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
+          <button @click="toggleShuffleSongList" class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha" :class="isShuffled && 'text-purple-600'">
             <i class="flex ic-shuffle"></i>
           </button>
           <button @click="playPrevious" class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
@@ -83,8 +83,10 @@
           <button @click="playNext" class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
             <i class="flex ic-next"></i>
           </button>
-          <button class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha">
-            <i class="flex ic-repeat"></i>
+          <button @click="setNextPlayerMode" class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha"
+            :class="{'text-purple-600': playerMode !== PlayerMode.DEFAULT}"
+          >
+            <i class="flex" :class="playerMode === PlayerMode.REPEAT_SONG ? 'ic-repeat-one' : 'ic-repeat'"></i>
           </button>
         </div>
         <!-- seeker -->
@@ -97,21 +99,21 @@
       <!-- right -->
       <div class="flex items-center justify-end w-1/3">
         <button
-          class="text-secondary flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
+          class="flex items-center justify-center w-8 h-8 rounded-full text-secondary hover:bg-alpha focus:outline-none"
           v-if="song.mvlink"
         >
           <i class="flex ic-mv"></i>
         </button>
         <button
           @click="toggleShowLyric"
-          class="text-secondary flex items-center justify-center w-8 h-8 ml-2 rounded-full hover:bg-alpha focus:outline-none"
+          class="flex items-center justify-center w-8 h-8 ml-2 rounded-full text-secondary hover:bg-alpha focus:outline-none"
         >
           <i class="flex ic-karaoke"></i>
         </button>
         <div class="flex items-center ml-2 space-x-2">
           <button
             @click="toggleMute"
-            class="text-secondary flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
+            class="flex items-center justify-center w-8 h-8 rounded-full text-secondary hover:bg-alpha focus:outline-none"
           >
             <i
               class="flex"
@@ -126,7 +128,7 @@
         <div class="pl-4 ml-6 border-l btn-toggle border-alpha">
           <button
             @click="toggleShowPlaylist"
-            class="text-secondary flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha focus:outline-none"
+            class="flex items-center justify-center w-8 h-8 rounded-full text-secondary hover:bg-alpha focus:outline-none"
           >
             <i class="flex ic-list-music"></i>
           </button>
@@ -139,7 +141,7 @@
 <script lang="ts">
 import { defineComponent, computed, watch } from 'vue'
 import { useStore } from 'vuex'
-import { PlayerState } from '@/store'
+import { PlayerState, PlayerMode } from '@/store'
 import { fetchStreaming, useApi } from '@/api'
 import ProgressBar from './ProgressBar.vue'
 
@@ -150,7 +152,7 @@ export default defineComponent({
     const store = useStore()
     const song = computed(() => store.state.currentSong)
 
-    const playerProgress = computed<string>({
+    const playerProgress = computed<number>({
       get() {
         return store.state.playerProgress
       },
@@ -159,11 +161,11 @@ export default defineComponent({
       },
     })
 
-    const volume = computed({
+    const volume = computed<number>({
       get() {
         return store.state.volume * 100
       },
-      set(val) {
+      set(val: number) {
         store.commit('setVolume', val / 100)
       },
     })
@@ -177,18 +179,27 @@ export default defineComponent({
     })
 
     onFetchStreamingFailed((result) => {
-      console.log('ERROR Fetch', result)
+      console.log('ERROR Fetch', result.response)
+      store.commit('setState', {prop: 'playerState', value: PlayerState.PAUSE})
     })
 
     watch(
       () => store.state.currentSong,
       (newSong) => {
+        store.state.howler?.unload()
         store.commit('setState', {prop: 'playerState', value: PlayerState.LOADING})
-        console.log('fetch', store.state.playerState)
         fetchStreamingData(newSong.encodeId)
       },
       { immediate: true }
     )
+
+    function togglePlay() {
+      if (store.state.howler.state() === 'unloaded') {
+        fetchStreamingData(store.state.currentSong.encodeId)
+      } else {
+        store.commit('togglePlay')
+      }
+    }
 
     return {
       song,
@@ -196,16 +207,21 @@ export default defineComponent({
       volume,
       seek: computed<string>(() => store.state.seek),
       PlayerState,
+      PlayerMode,
       playerState: computed<PlayerState>(() => store.state.playerState),
       isMuted: computed<boolean>(() => store.state.isMuted),
       showLyric: computed<boolean>(() => store.state.showLyric),
       duration: computed(() => store.getters.duration),
-      togglePlay: () => store.commit('togglePlay'),
+      isShuffled: computed(() => store.state.isShuffled),
+      playerMode: computed(() => store.state.playerMode),
+      togglePlay,
       toggleMute: () => store.commit('toggleMute'),
       toggleShowLyric: () => store.commit('toggleShowLyric'),
       toggleShowPlaylist: () => store.commit('toggleShowPlaylist'),
+      toggleShuffleSongList: () => store.commit('toggleShuffleSongList'),
       playNext: () => store.dispatch('playNext'),
       playPrevious: () => store.dispatch('playPrevious'),
+      setNextPlayerMode: () => store.commit('setNextPlayerMode')
     }
   },
 })

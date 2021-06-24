@@ -6,25 +6,27 @@
         alt="img"
       >
       <div class="card-overlay">
-        <button class="focus:outline-none flex items-center justify-center text-xl text-white">
+        <button class="flex items-center justify-center text-xl text-white focus:outline-none">
           <i class="flex ic-like"></i>
         </button>
         <button
           @click="fetchListAndPlay"
-          class="focus:outline-none flex items-center justify-center text-xl text-white border border-white rounded-full w-11 h-11 hover:text-gray-200 hover:border-gray-200"
+          class="flex items-center justify-center text-xl text-white border border-white rounded-full focus:outline-none w-11 h-11 hover:text-gray-200 hover:border-gray-200"
         >
           <i class="flex ic-play"></i>
         </button>
-        <button class="focus:outline-none flex items-center justify-center text-xl text-white">
+        <button class="flex items-center justify-center text-xl text-white focus:outline-none">
           <i class="flex ic-more"></i>
         </button>
       </div>
     </div>
-    <router-link
-      :to="list.link.split('.')[0]"
-      :title="list.title"
-      class="card-title"
-    >{{list.title}}</router-link>
+    <h4 class="card-title">
+      <router-link
+        class="text-sm"
+        :to="list.link"
+        :title="list.title"
+      >{{list.title}}</router-link>
+    </h4>
   </div>
 </template>
 
@@ -59,11 +61,12 @@ export default defineComponent({
 
 <style scoped>
 .card {
-  @apply flex-shrink-0 px-4;
+  @apply flex-shrink-0;
 }
 .card-title {
-  @apply text-sm font-semibold text-primary mt-2 block;
+  @apply text-sm font-semibold text-primary mt-2 block overflow-hidden;
   word-break: break-word;
+  text-overflow: ellipsis;
   /*
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -71,6 +74,11 @@ export default defineComponent({
   text-overflow: ellipsis;
   white-space: normal;
   -webkit-line-clamp: 2; */
+}
+.card-title a {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 .card-main {
   @apply relative overflow-hidden rounded-lg;

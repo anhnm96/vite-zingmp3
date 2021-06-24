@@ -4,7 +4,7 @@ import { ApiStatus } from './index'
 import { useEventHook } from '@/composables'
 
 const createNormalisedApiStatuses = (status: Ref<ApiStatus>, apiName: string) => {
-  const normalisedApiStatuses: Record<string, ComputedRef> = {}
+  const normalisedApiStatuses: Record<string, ComputedRef<boolean>> = {}
 
   for (const [statusKey, statusValue] of Object.entries(ApiStatus)) {
     let propertyName = ''

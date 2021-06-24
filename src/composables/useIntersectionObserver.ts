@@ -1,8 +1,6 @@
 import { ref, unref, onMounted, onUnmounted, Ref } from 'vue'
 
 export const useIntersectionObserver = (el: Ref<HTMLElement> | HTMLElement, options = {}, onEntry?: any) => {
-  console.log({ options })
-
   let observer: IntersectionObserver = null
   const isIntersecting = ref(false)
 

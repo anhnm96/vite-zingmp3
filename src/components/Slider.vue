@@ -1,9 +1,9 @@
 <template>
-  <div class="slider-container relative" @mouseenter="mouseenter" @mouseleave="mouseleave">
+  <div class="relative slider-container" @mouseenter="mouseenter" @mouseleave="mouseleave">
     <div class="slider">
       <div
         class="slider-item"
-        v-for="(slider, index) in sliders"
+        v-for="(item, index) in items"
         :key="index"
         :class="{next: index === nextIndex, prev: index === previousIndex, current: index===activeIndex}"
       >
@@ -12,11 +12,12 @@
           class="inline-block"
         >
           <img
-            :src="slider.banner"
+            :src="item.banner"
             alt="banner image"
           >
         </a>
       </div>
+      <!-- dummy card placeholder for the height -->
       <div
         class="relative opacity-0 slider-item current"
         style="position: relative"
@@ -26,27 +27,30 @@
           class="inline-block"
         >
           <img
-            :src="sliders[0].banner"
+            :src="items[0].banner"
             alt="banner image"
           >
         </a>
       </div>
     </div>
-    <button class="btn-move opacity-0 z-30 focus:outline-none absolute top-1/2 transform -translate-y-1/2 left-0 text-2xl text-white bg-white bg-opacity-10 rounded-full flex items-center justify-center p-2" @click="goPrevious"><i class="flex ic-go-left"></i></button>
-    <button class="btn-move opacity-0 z-30 focus:outline-none absolute top-1/2 transform -translate-y-1/2 right-0 text-2xl text-white bg-white bg-opacity-10 rounded-full flex items-center justify-center p-2" @click="goNext"><i class="flex ic-go-right"></i></button>
+    <button class="absolute left-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10" @click="goPrevious"><i class="flex ic-go-left"></i></button>
+    <button class="absolute right-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10" @click="goNext"><i class="flex ic-go-right"></i></button>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
-import sliders from './data.json'
-import SliderItem from './item.vue'
-export default {
+import { defineComponent, ref, computed, onMounted, onBeforeUnmount, watch, PropType } from 'vue'
+
+interface Slider {
+  banner: string
+}
+
+export default defineComponent({
+  name: 'Slider',
   props: {
-    sliders: { type: Array },
+    items: { type: Array as PropType<Slider[]> },
   },
-  components: { SliderItem },
-  setup() {
+  setup(props) {
     const activeIndex = ref(0)
     const isPaused = ref(false)
     let timeout: number
@@ -82,13 +86,13 @@ export default {
 
     const nextIndex = computed(() => {
       let index = activeIndex.value + 1
-      if (index > sliders.length - 1) index = 0
+      if (index > props.items.length - 1) index = 0
       return index
     })
 
     const previousIndex = computed(() => {
       let index = activeIndex.value - 1
-      if (index < 0) index = sliders.length - 1
+      if (index < 0) index = props.items.length - 1
       return index
     })
 
@@ -98,9 +102,9 @@ export default {
     function goPrevious() {
       activeIndex.value = previousIndex.value
     }
-    return { activeIndex, previousIndex, sliders, nextIndex, goNext, goPrevious, mouseenter, mouseleave }
+    return { activeIndex, previousIndex, nextIndex, goNext, goPrevious, mouseenter, mouseleave }
   },
-}
+})
 </script>
 
 <style scoped>

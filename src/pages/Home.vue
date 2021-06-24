@@ -1,11 +1,11 @@
 <template>
   <div v-if="status === ApiStatus.PENDING && page === 1">Loading...</div>
   <template v-if="status === ApiStatus.SUCCESS || page > 1">
-    <Slider />
     <section
-      v-for="(section, index) in home.sections"
-      :key="index"
+    v-for="(section, index) in home.sections"
+    :key="index"
     >
+      <Slider v-if="section.sectionType==='banner'" :items="section.items" />
       <Carousel
         v-if="section.sectionType==='playlist'"
         :items="section.items"
@@ -19,7 +19,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
 import { useApi, fetchHome, ApiStatus } from '@/api'
-import Slider from '@/components/slider/index.vue'
+import Slider from '@/components/Slider.vue'
 import Carousel from '@/components/Carousel.vue'
 import InfiniteLoad from '@/components/InfiniteLoad.vue'
 
