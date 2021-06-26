@@ -1,4 +1,4 @@
-import { computed, getCurrentInstance, WritableComputedRef } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 
 export const useVModel = (props: any, propName: string) => {
   const vm = getCurrentInstance().proxy

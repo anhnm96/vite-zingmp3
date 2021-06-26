@@ -1,10 +1,7 @@
 <template>
   <div class="card">
     <div class="card-main">
-      <img
-        :src="list.thumbnail"
-        alt="img"
-      >
+      <img :src="list.thumbnail" alt="img" />
       <div class="card-overlay">
         <button class="flex items-center justify-center text-xl text-white focus:outline-none">
           <i class="flex ic-like"></i>
@@ -23,16 +20,16 @@
     <h4 class="card-title">
       <router-link
         class="text-sm"
-        :to="list.link"
+        :to="list.link.split('.')[0]"
         :title="list.title"
-      >{{list.title}}</router-link>
+      >{{ list.title }}</router-link>
     </h4>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import {fetchSongList, useApi} from '@/api'
+import { fetchSongList, useApi } from '@/api'
 import { useStore } from 'vuex'
 import { Playlist } from '@/types'
 
@@ -42,7 +39,7 @@ export default defineComponent({
     list: Object as PropType<Playlist>,
   },
   setup(props) {
-    const { exec: fetchSongListData, onSuccess: onFetchListSuccess} = useApi('fetchSongList', fetchSongList)
+    const { exec: fetchSongListData, onSuccess: onFetchListSuccess } = useApi(fetchSongList)
 
     onFetchListSuccess(list => {
       store.commit('setState', { prop: 'playlist', value: list })
@@ -67,13 +64,6 @@ export default defineComponent({
   @apply text-sm font-semibold text-primary mt-2 block overflow-hidden;
   word-break: break-word;
   text-overflow: ellipsis;
-  /*
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  -webkit-line-clamp: 2; */
 }
 .card-title a {
   -webkit-line-clamp: 2;

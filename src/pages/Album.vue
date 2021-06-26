@@ -1,64 +1,56 @@
 <template>
-  <div class="flex clg:space-x-9 flex-col clg:flex-row">
-    <h4 v-if="status === ApiStatus.PENDING">Loading...</h4>
-    <template v-if="status === ApiStatus.SUCCESS">
-    <!-- left -->
-    <div class="album-info">
-      <div class="album-wrapper sticky top-0">
-        <div
-          @click="togglePlay"
-          class="album-cover"
-          :class="{'rotate': isPlaying}"
-        >
-          <img
-            :src="album.thumbnailM"
-            :alt="album.title"
-          >
-          <div class="overlay">
-            <button class="btn-play">
-              <i
-                class="icon"
-                :class="isPlaying ? 'ic-gif-playing-white':'ic-play'"
-              ></i>
-            </button>
-          </div>
-        </div>
-        <div class="flex flex-col justify-between clg:block">
-          <div>
-            <h1 class="album-title">{{album.title}}</h1>
-            <p class="mt-1 album-info">{{isPlaying }}Cập nhật: {{new Date(album.contentLastUpdate * 1000).toLocaleDateString()}}</p>
-            <p class="album-info">{{album.like}} Người yêu thích</p>
-          </div>
-          <div class="flex clg:block space-x-3">
-            <button class="btn-action">
-              <i class="flex w-5 h-5 place-items-center icon ic-play"></i>
-              <span>Phát ngẫu nhiên</span>
-            </button>
-            <div class="album-footer">
-              <button>
-                <i class="icon ic-like"></i>
+  <div class="flex flex-col clg:space-x-9 clg:flex-row">
+    <h4 v-if="statusPending">Loading...</h4>
+    <template v-if="statusSuccess">
+      <!-- left -->
+      <div class="album-info">
+        <div class="sticky top-0 album-wrapper">
+          <div @click="togglePlay" class="album-cover" :class="{ 'rotate': isPlaying }">
+            <img :src="album.thumbnailM" :alt="album.title" />
+            <div class="overlay">
+              <button class="btn-play">
+                <i class="icon" :class="isPlaying ? 'ic-gif-playing-white' : 'ic-play'"></i>
               </button>
-              <button>
-                <i class="icon ic-more"></i>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between clg:block">
+            <div>
+              <h1 class="album-title">{{ album.title }}</h1>
+              <p
+                class="mt-1 album-info"
+              >{{ isPlaying }}Cập nhật: {{ new Date(album.contentLastUpdate * 1000).toLocaleDateString() }}</p>
+              <p class="album-info">{{ album.like }} Người yêu thích</p>
+            </div>
+            <div class="flex space-x-3 clg:block">
+              <button class="btn-action">
+                <i class="flex w-5 h-5 place-items-center icon ic-play"></i>
+                <span>Phát ngẫu nhiên</span>
               </button>
+              <div class="album-footer">
+                <button>
+                  <i class="icon ic-like"></i>
+                </button>
+                <button>
+                  <i class="icon ic-more"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- right -->
-    <div class="mt-4 clg:mt-0">
-      <p class="description">Lời tựa: {{album.description}}</p>
-      <div class="mt-4">
-        <song-item
-          v-for="song in album.song.items"
-          :key="song.title"
-          :song="song"
-          @playsong="playsong"
-        />
+      <!-- right -->
+      <div class="mt-4 clg:mt-0">
+        <p class="description">Lời tựa: {{ album.description }}</p>
+        <div class="mt-4">
+          <song-item
+            v-for="song in album.song.items"
+            :key="song.title"
+            :song="song"
+            @playsong="playsong"
+          />
+        </div>
       </div>
-    </div>
-  </template>
+    </template>
   </div>
 </template>
 
@@ -66,10 +58,9 @@
 import { defineComponent, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import {fetchPlaylist, useApi, ApiStatus} from '@/api'
-import {Song} from '@/types'
+import { fetchPlaylist, useApi } from '@/api'
+import { Song, Playlist } from '@/types'
 import { PlayerState } from '@/store'
-// import album from '@/data/list.json'
 import SongItem from '@/components/SongItem.vue'
 
 export default defineComponent({
@@ -81,20 +72,25 @@ export default defineComponent({
     const isPlaying = computed(() => store.state.playerState === PlayerState.PLAYING)
     const id = route.params.id
 
-    const {data: album, exec, status} = useApi('fetchPlaylist', fetchPlaylist)
+    const { data: album, exec, statusPending, statusSuccess } = useApi<Playlist>(fetchPlaylist)
     exec(id)
 
     function togglePlay() {
-      store.commit('togglePlay')
+      if (!store.state.playlist || store.state.playlist.encodeId !== album.value.encodeId) {
+        store.commit('setState', { prop: 'playlist', value: album.value })
+        store.commit('setState', { prop: 'currentSong', value: album.value.song.items[0] })
+      } else {
+        store.commit('togglePlay')
+      }
     }
 
     function playsong(song: Song) {
-      if (!store.state.playlist || store.state.playlist.encodeId !== album.encodeId) {
-        store.commit('setState', {prop: 'playlist', value: album.value})
+      if (!store.state.playlist || store.state.playlist.encodeId !== album.value.encodeId) {
+        store.commit('setState', { prop: 'playlist', value: album.value })
       }
-      store.commit('setState', {prop: 'currentSong', value: song})
+      store.commit('setState', { prop: 'currentSong', value: song })
     }
-    return { album, isPlaying, togglePlay, status, ApiStatus, playsong }
+    return { album, isPlaying, togglePlay, statusPending, statusSuccess, playsong }
   },
 })
 </script>

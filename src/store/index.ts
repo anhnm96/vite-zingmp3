@@ -176,7 +176,7 @@ const store = createStore({
     },
     progress({ commit, state, dispatch }) {
       timeout = setTimeout(() => {
-        console.log('timemout')
+        // console.log('timemout')
         const currentTime = state.howler.seek()
         commit('setState', { prop: 'seek', value: formatTime(currentTime) })
         commit('setState', { prop: 'playerProgress', value: (currentTime / state.howler.duration()) * 100 })

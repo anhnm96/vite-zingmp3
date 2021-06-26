@@ -1,18 +1,22 @@
 <template>
-  <div class="carousel">
-    <div class="flex justify-between pr-8 mt-7">
-      <h2 class="text-lg font-bold text-primary">{{title}}</h2>
+  <div>
+    <div class="flex justify-between pr-8">
+      <h2 class="text-lg font-bold text-primary">{{ title }}</h2>
       <div class="flex items-center space-x-2">
         <button
           @click="slideLeft"
           class="inline-flex items-center p-1 focus:outline-none"
           aria-label="Previous List"
-        ><i class="w-5 h-5 text-primary ic-go-left"></i></button>
+        >
+          <i class="w-5 h-5 text-primary ic-go-left"></i>
+        </button>
         <button
           @click="slideRight"
           class="inline-flex items-center p-1 focus:outline-none"
           aria-label="Next List"
-        ><i class="w-5 h-5 text-primary ic-go-right"></i></button>
+        >
+          <i class="w-5 h-5 text-primary ic-go-right"></i>
+        </button>
       </div>
     </div>
     <div
@@ -32,7 +36,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed, PropType } from 'vue'
-import {Playlist} from '@/types'
+import { Playlist } from '@/types'
 export default defineComponent({
   name: 'Carousel',
   props: {

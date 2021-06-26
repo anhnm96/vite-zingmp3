@@ -23,6 +23,8 @@
   --progress-bg: rgb(71 66 66 / 45%);
   --logo-url: url('https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-light.svg');
   --logo-url-m: url('https://zjs.zadn.vn/zmp3-desktop/releases/v1.1.0/static/media/icon_zing_mp3_60.f6b51045.svg');
+  --loading-bg: rgba(0,0,0,0.05);
+  --loading-bg-animation: #f5f5f5;
 }
 
 .theme-dark {
@@ -42,6 +44,8 @@
   --logo: 'dark';
   --logo-url: url('https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg');
   --logo-url-m: url('https://zjs.zadn.vn/zmp3-desktop/releases/v1.1.0/static/media/icon_zing_mp3_60.f6b51045.svg');
+  --loading-bg: hsla(0,0%,100%, .2);
+  --loading-bg-animation: hsla(0,0%,100%,0.1);
 }
 
 #main {
@@ -72,5 +76,14 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    background-position: -200px 0px;
+  }
+  to {
+    background-position: calc(100% + 350px) 0px;
   }
 }

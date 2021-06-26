@@ -41,6 +41,9 @@ export interface Playlist {
   textType: string
   isSingle: boolean
   song: SongResult
+  contentLastUpdate: number
+  like: number
+  description: string
 }
 
 interface SongResult {

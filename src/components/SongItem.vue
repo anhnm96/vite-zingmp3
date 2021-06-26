@@ -7,10 +7,7 @@
     <!-- left -->
     <div class="flex items-center flex-1 space-x-2">
       <div class="relative w-10 h-10 overflow-hidden rounded">
-        <img
-          :src="song.thumbnail"
-          alt="thumbnail"
-        >
+        <img :src="song.thumbnail" alt="thumbnail" />
         <!-- overlay  -->
         <div
           class="absolute inset-0 bg-black bg-opacity-40"
@@ -27,12 +24,10 @@
         </div>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-primary">{{song.title}}</h4>
+        <h4 class="text-sm font-semibold text-primary">{{ song.title }}</h4>
         <p class="text-xs text-secondary">
-          <span
-            v-for="(artist, index) in song.artists"
-            :key="artist.name"
-          >{{artist.name}}
+          <span v-for="(artist, index) in song.artists" :key="artist.name">
+            {{ artist.name }}
             <span v-if="index !== song.artists.length - 1">,</span>
           </span>
         </p>
@@ -41,7 +36,7 @@
     <!-- right -->
     <div class="flex flex-1 space-x-2">
       <div class="flex items-center flex-1 text-xs text-primary">
-        <span>{{displayDuration(song.duration, 2)}}</span>
+        <span>{{ songDuration }}</span>
       </div>
       <button
         class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary"
@@ -55,10 +50,14 @@
       >
         <i class="flex icon ic-karaoke"></i>
       </button>
-      <button class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary">
+      <button
+        class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary"
+      >
         <i class="flex icon ic-like"></i>
       </button>
-      <button class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary">
+      <button
+        class="inline-flex items-center justify-center w-8 h-8 rounded-full focus:outline-none hover:bg-alpha text-primary"
+      >
         <i class="flex icon ic-more"></i>
       </button>
     </div>
@@ -77,11 +76,10 @@ export default defineComponent({
     song: Object,
   },
   emits: ['playsong'],
-  setup(props, {emit}) {
+  setup(props, { emit }) {
     const store = useStore()
 
     function playSong() {
-      console.log('dbclick')
       if (store.state.currentSong?.encodeId !== props.song.encodeId) {
         emit('playsong', props.song)
       } else {
@@ -89,12 +87,16 @@ export default defineComponent({
       }
     }
 
+    const songDuration = computed(() => {
+      return displayDuration(props.song.duration, 2)
+    })
+
     const isCurrent = computed(
       () => store.state.currentSong?.encodeId === props.song.encodeId
     )
     const isPlaying = computed(() => isCurrent.value && store.state.playerState === PlayerState.PLAYING)
 
-    return { displayDuration, playSong, isCurrent, isPlaying }
+    return { songDuration, displayDuration, playSong, isCurrent, isPlaying }
   },
 })
 </script>

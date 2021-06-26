@@ -1,5 +1,4 @@
-export function displayDuration(sec: number, type = 1) {
-  console.log('displayDuration')
+export function displayDuration(sec: number, type = 1): string {
   const format = (val: number) => `0${Math.floor(val)}`.slice(-2)
   const hours = sec / 3600
   const minutes = (sec % 3600) / 60

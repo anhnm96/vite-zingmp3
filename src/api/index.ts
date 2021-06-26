@@ -48,7 +48,7 @@ export function fetchHome(page = 1) {
 
 export function fetchSong(id: string) {
   return request({
-    url: 'api/song/getDetail?id=' + id
+    url: 'api/song/detail?id=' + id
   })
 }
 

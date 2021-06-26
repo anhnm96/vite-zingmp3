@@ -23,6 +23,12 @@ module.exports = {
       scale: {
         '85': '.85'
       },
+      backgroundColor: {
+        'loading': 'var(--loading-bg)'
+      },
+      backgroundImage: {
+        'loading-img': 'linear-gradient(90deg,transparent,var(--loading-bg-animation),transparent)'
+      }
     },
     textColor: theme => ({
       ...theme('colors'),
