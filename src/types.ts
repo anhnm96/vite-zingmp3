@@ -17,6 +17,7 @@ export interface Song {
   artists: Artist[]
   artistsNames: string
   duration: number
+  isWorldWide: boolean
 }
 
 export interface Artist {

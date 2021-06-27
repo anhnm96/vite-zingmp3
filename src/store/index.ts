@@ -133,11 +133,13 @@ const store = createStore({
         console.log('play', state.currentSong.title)
         // clear old timeout
         clearTimeout(timeout)
+        document.title = `${state.currentSong.title} - ${state.currentSong.artistsNames} | Zing MP3`
         commit('setState', { prop: 'playerState', value: PlayerState.PLAYING })
         dispatch('progress')
       })
       state.howler.on('pause', () => {
         clearTimeout(timeout)
+        document.title = 'Zing MP3'
         // if we want howler load other song howler will pause -> unload
         if (state.playerState !== PlayerState.LOADING)
           commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
@@ -222,6 +224,9 @@ const store = createStore({
     },
     duration(state) {
       return formatTime(state.currentSong.duration)
+    },
+    isPlaying(state) {
+      return state.playerState === PlayerState.PLAYING
     }
   }
 })

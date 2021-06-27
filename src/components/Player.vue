@@ -141,6 +141,8 @@ import { useStore } from 'vuex'
 import { PlayerState, PlayerMode } from '@/store'
 import { fetchStreaming, useApi } from '@/api'
 import ProgressBar from './ProgressBar.vue'
+import { createToast } from 'mosha-vue-toastify'
+import 'mosha-vue-toastify/dist/style.css'
 
 export default defineComponent({
   name: 'Player',
@@ -176,7 +178,10 @@ export default defineComponent({
     })
 
     onFetchStreamingFailed((result) => {
-      console.log('ERROR Fetch', result.response)
+      // console.log('ERROR Fetch', result.response)
+      createToast('This content is not available in your country', {
+        type: 'info'
+      })
       store.commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
     })
 

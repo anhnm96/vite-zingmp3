@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-main">
       <img :src="list.thumbnail" alt="img" />
-      <div class="card-overlay">
+      <div class="card-overlay" :class="isActive ? 'opacity-100' : 'opacity-0'">
         <button class="flex items-center justify-center text-xl text-white focus:outline-none">
           <i class="flex ic-like"></i>
         </button>
@@ -10,7 +10,7 @@
           @click="fetchListAndPlay"
           class="flex items-center justify-center text-xl text-white border border-white rounded-full focus:outline-none w-11 h-11 hover:text-gray-200 hover:border-gray-200"
         >
-          <i class="flex ic-play"></i>
+          <i class="flex icon" :class="isActive ? 'ic-gif-playing-white' : 'ic-play'"></i>
         </button>
         <button class="flex items-center justify-center text-xl text-white focus:outline-none">
           <i class="flex ic-more"></i>
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, computed } from 'vue'
 import { fetchSongList, useApi } from '@/api'
 import { useStore } from 'vuex'
 import { Playlist } from '@/types'
@@ -39,7 +39,8 @@ export default defineComponent({
     list: Object as PropType<Playlist>,
   },
   setup(props) {
-    const { exec: fetchSongListData, onSuccess: onFetchListSuccess } = useApi(fetchSongList)
+    const store = useStore()
+    const { exec: fetchSongListData, onSuccess: onFetchListSuccess } = useApi<Playlist>(fetchSongList)
 
     onFetchListSuccess(list => {
       store.commit('setState', { prop: 'playlist', value: list })
@@ -47,11 +48,18 @@ export default defineComponent({
     })
 
     function fetchListAndPlay() {
-      fetchSongListData(props.list.encodeId)
+      if (isActive.value) {
+        store.commit('togglePlay')
+      } else {
+        fetchSongListData(props.list.encodeId)
+      }
     }
 
-    const store = useStore()
-    return { fetchListAndPlay }
+    const isActive = computed<boolean>(() => {
+      return props.list.encodeId === store.state.playlist?.encodeId && store.getters.isPlaying
+    })
+
+    return { fetchListAndPlay, isActive }
   },
 })
 </script>
@@ -83,7 +91,6 @@ export default defineComponent({
 .card-overlay {
   @apply absolute inset-0 flex justify-center items-center space-x-4;
   background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
 }
 .card-main:hover .card-overlay {
   opacity: 1;

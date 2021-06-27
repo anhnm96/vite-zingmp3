@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "howler": "^2.2.1",
     "lodash-es": "^4.17.21",
+    "mosha-vue-toastify": "^1.0.13",
     "nprogress": "^0.2.0",
     "smooth-scrollbar": "^8.6.2",
     "vue": "^3.0.5",
