@@ -5,36 +5,31 @@
         class="slider-item"
         v-for="(item, index) in items"
         :key="index"
-        :class="{next: index === nextIndex, prev: index === previousIndex, current: index===activeIndex}"
+        :class="{ next: index === nextIndex, prev: index === previousIndex, current: index === activeIndex }"
       >
-        <a
-          href="#"
-          class="inline-block"
-        >
-          <img
-            :src="item.banner"
-            alt="banner image"
-          >
+        <a href="#" class="inline-block">
+          <img :src="item.banner" alt="banner image" />
         </a>
       </div>
       <!-- dummy card placeholder for the height -->
-      <div
-        class="relative opacity-0 slider-item current"
-        style="position: relative"
-      >
-        <a
-          href="#"
-          class="inline-block"
-        >
-          <img
-            :src="items[0].banner"
-            alt="banner image"
-          >
+      <div class="relative opacity-0 slider-item current" style="position: relative">
+        <a href="#" class="inline-block">
+          <img :src="items[0].banner" alt="banner image" />
         </a>
       </div>
     </div>
-    <button class="absolute left-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10" @click="goPrevious"><i class="flex ic-go-left"></i></button>
-    <button class="absolute right-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10" @click="goNext"><i class="flex ic-go-right"></i></button>
+    <button
+      class="absolute left-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10"
+      @click="goPrevious"
+    >
+      <i class="flex ic-go-left"></i>
+    </button>
+    <button
+      class="absolute right-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10"
+      @click="goNext"
+    >
+      <i class="flex ic-go-right"></i>
+    </button>
   </div>
 </template>
 
@@ -108,15 +103,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .slider-container:hover .btn-move {
-    opacity: 1;
-  }
+.slider-container:hover .btn-move {
+  opacity: 1;
+}
 .slider {
   @apply relative;
 }
 
 .slider-item {
-  @apply absolute w-2/5 inset-x-0 m-auto transform translate-x-0;
+  @apply absolute w-[70%] inset-x-0 m-auto transform translate-x-0;
   transition: all 0.7s ease-out;
 }
 
@@ -125,15 +120,29 @@ export default defineComponent({
 }
 
 .slider-item.prev {
-  @apply z-10 transform -translate-x-3/4 scale-85;
+  @apply z-10 transform -translate-x-1/3 scale-75;
 }
 
 .slider-item.next {
-  @apply z-10 transform translate-x-3/4 scale-85;
+  @apply z-10 transform translate-x-1/3 scale-75;
 }
 
 .slider-item:not(.next):not(.prev):not(.current) {
   @apply opacity-0 transform translate-x-0 scale-50;
+}
+
+@media screen and (min-width: 1000px) {
+  .slider-item {
+    width: 46%;
+  }
+  .slider-item.prev {
+    transform: translateX(-65%) scale(0.85);
+    width: 46%;
+  }
+  .slider-item.next {
+    transform: translateX(65%) scale(0.85);
+    width: 46%;
+  }
 }
 
 .slider-item img {

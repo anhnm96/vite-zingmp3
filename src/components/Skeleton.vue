@@ -2,7 +2,7 @@
   <div
     aria-hidden="true"
     class="rounded-xl bg-loading-img bg-loading"
-    style="animation: 2s ease-in-out 0s infinite normal none running loading"
+    :class="pulse ? '' : 'loading'"
   ></div>
 </template>
 
@@ -10,6 +10,17 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Skeleton'
+  name: 'Skeleton',
+  props: {
+    pulse: {
+      type: Boolean,
+      default: false
+    }
+  }
 })
 </script>
+<style scoped>
+.loading {
+  animation: 5s ease-in-out 0s infinite normal none running loading;
+}
+</style>

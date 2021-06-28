@@ -1,4 +1,4 @@
-# [ZingMP3](ec2-52-221-214-168.ap-southeast-1.compute.amazonaws.com)
+# [ZingMP3](http://ec2-52-221-214-168.ap-southeast-1.compute.amazonaws.com)
 
 ## Screenshots
 ![Home](./screenshots/home.png "Home page")

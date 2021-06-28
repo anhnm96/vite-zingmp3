@@ -28,6 +28,9 @@ module.exports = {
       },
       backgroundImage: {
         'loading-img': 'linear-gradient(90deg,transparent,var(--loading-bg-animation),transparent)'
+      },
+      translate: {
+        '65/100': '65%'
       }
     },
     textColor: theme => ({
@@ -42,7 +45,6 @@ module.exports = {
     })
   },
   variants: {
-    extend: {},
   },
   plugins: [],
 }
