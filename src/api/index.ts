@@ -39,17 +39,14 @@ export function fetchStreaming(id: string) {
 }
 
 export function fetchHome(page = 1) {
-  // return new Promise<any>(res => {
-  //   setTimeout(() => res(home), 500)
-  // })
   return request({
     url: 'api/home?page=' + page
   })
 }
 
-export function fetchSong(id: string) {
+export function fetchSongInfo(id: string) {
   return request({
-    url: 'api/song/detail?id=' + id
+    url: 'api/song/info?id=' + id
   })
 }
 

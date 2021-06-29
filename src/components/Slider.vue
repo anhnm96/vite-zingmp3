@@ -7,12 +7,15 @@
         :key="index"
         :class="{ next: index === nextIndex, prev: index === previousIndex, current: index === activeIndex }"
       >
-        <a href="#" class="inline-block">
+        <button @click="playBanner(item.encodeId)" class="inline-block">
           <img :src="item.banner" alt="banner image" />
-        </a>
+        </button>
       </div>
       <!-- dummy card placeholder for the height -->
-      <div class="relative opacity-0 slider-item current" style="position: relative">
+      <div
+        class="relative opacity-0 pointer-events-none slider-item current"
+        style="position: relative"
+      >
         <a href="#" class="inline-block">
           <img :src="items[0].banner" alt="banner image" />
         </a>
@@ -35,17 +38,19 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount, watch, PropType } from 'vue'
+import { useApi, fetchSongInfo } from '@/api'
+import { Song } from '@/types'
+import { useStore } from 'vuex'
+import { displayDuration } from '@/helpers'
 
-interface Slider {
-  banner: string
-}
 
 export default defineComponent({
   name: 'Slider',
   props: {
-    items: { type: Array as PropType<Slider[]> },
+    items: { type: Array as PropType<any[]> },
   },
   setup(props) {
+    const store = useStore()
     const activeIndex = ref(0)
     const isPaused = ref(false)
     let timeout: number
@@ -97,7 +102,32 @@ export default defineComponent({
     function goPrevious() {
       activeIndex.value = previousIndex.value
     }
-    return { activeIndex, previousIndex, nextIndex, goNext, goPrevious, mouseenter, mouseleave }
+
+    // banner
+    const { exec, onSuccess } = useApi(fetchSongInfo)
+    function playBanner(id: string) {
+      exec(id)
+    }
+
+    onSuccess((result) => {
+      const currentSong: Song = {
+        encodeId: result.encodeId,
+        title: result.title,
+        thumbnail: result.thumbnail,
+        thumbnailM: result.thumbnailM,
+        hasLyric: result.hasLyric,
+        mvLink: result.mvLink,
+        artists: result.artists,
+        artistsNames: result.artistsNames,
+        duration: result.duration,
+        isWorldWide: result.isWorldWide
+      }
+      const playlist = [currentSong, ...result.sections[0].items]
+      store.commit('setState', { prop: 'playlist', value: { song: { items: playlist } } })
+      store.commit('setState', { prop: 'currentSong', value: currentSong })
+    })
+
+    return { activeIndex, previousIndex, nextIndex, goNext, goPrevious, mouseenter, mouseleave, playBanner }
   },
 })
 </script>

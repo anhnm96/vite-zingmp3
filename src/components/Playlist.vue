@@ -26,8 +26,8 @@
       </button>
     </div>
     <div class="px-2">
-      <div v-show="playlist" class="h-main" ref="scroll">
-        <template v-if="playlist">
+      <div v-show="currentSong" class="h-main" ref="scroll">
+        <template v-if="currentSong">
           <!-- Previous songs -->
           <SongQueue
             v-for="song in previousSongs"
@@ -37,21 +37,23 @@
           />
           <!-- Current song -->
           <SongQueue :active="true" :song="currentSong" />
-          <!-- Next songs intro -->
-          <div class="mt-3">
-            <h4 class="text-sm font-bold">Tiếp theo</h4>
-            <p class="text-sm font-semibold text-secondary">
-              Từ playlist
-              <span class="text-bg">{{ playlist.title }}</span>
-            </p>
-          </div>
-          <!-- Songs in queue -->
-          <div class="mt-2">
-            <SongQueue v-for="song in nextSongs" :key="song.title" :song="song" />
-          </div>
+          <template v-if="playlist">
+            <!-- Next songs intro -->
+            <div class="mt-3">
+              <h4 class="text-sm font-bold">Tiếp theo</h4>
+              <p class="text-sm font-semibold text-secondary">
+                Từ playlist
+                <span class="text-bg">{{ playlist.title }}</span>
+              </p>
+            </div>
+            <!-- Songs in queue -->
+            <div class="mt-2">
+              <SongQueue v-for="song in nextSongs" :key="song.title" :song="song" />
+            </div>
+          </template>
         </template>
       </div>
-      <template v-if="!playlist">
+      <template v-if="!currentSong">
         <MediaSkeleton v-for="i in 4" :key="i" />
         <div
           class="absolute flex flex-col items-center px-8 space-y-4 transform -translate-y-1/2 top-1/2"
