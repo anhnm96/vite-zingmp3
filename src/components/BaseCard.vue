@@ -1,19 +1,28 @@
 <template>
   <div class="card">
     <div class="card-main">
-      <img :src="list.thumbnail" alt="img" />
-      <div class="card-overlay" :class="isActive ? 'opacity-100' : 'opacity-0'">
+      <img
+        :src="list.thumbnail"
+        alt="img"
+      >
+      <div
+        class="card-overlay"
+        :class="isActive ? 'opacity-100' : 'opacity-0'"
+      >
         <button class="flex items-center justify-center text-xl text-white focus:outline-none">
-          <i class="flex ic-like"></i>
+          <i class="flex ic-like" />
         </button>
         <button
-          @click="fetchListAndPlay"
           class="flex items-center justify-center text-xl text-white border border-white rounded-full focus:outline-none w-11 h-11 hover:text-gray-200 hover:border-gray-200"
+          @click="fetchListAndPlay"
         >
-          <i class="flex icon" :class="isActive ? 'ic-gif-playing-white' : 'ic-play'"></i>
+          <i
+            class="flex icon"
+            :class="isActive ? 'ic-gif-playing-white' : 'ic-play'"
+          />
         </button>
         <button class="flex items-center justify-center text-xl text-white focus:outline-none">
-          <i class="flex ic-more"></i>
+          <i class="flex ic-more" />
         </button>
       </div>
     </div>
@@ -22,7 +31,9 @@
         class="text-sm"
         :to="list.link.split('.')[0]"
         :title="list.title"
-      >{{ list.title }}</router-link>
+      >
+        {{ list.title }}
+      </router-link>
     </h4>
   </div>
 </template>
@@ -36,15 +47,22 @@ import { Playlist } from '@/types'
 export default defineComponent({
   name: 'BaseCard',
   props: {
-    list: Object as PropType<Playlist>,
+    list: {
+      type: Object as PropType<Playlist>,
+      required: true,
+    },
   },
   setup(props) {
     const store = useStore()
-    const { exec: fetchSongListData, onSuccess: onFetchListSuccess } = useApi<Playlist>(fetchSongList)
+    const { exec: fetchSongListData, onSuccess: onFetchListSuccess } =
+      useApi<Playlist>(fetchSongList)
 
-    onFetchListSuccess(list => {
+    onFetchListSuccess((list) => {
       store.commit('setState', { prop: 'playlist', value: list })
-      store.commit('setState', { prop: 'currentSong', value: list.song.items[0] })
+      store.commit('setState', {
+        prop: 'currentSong',
+        value: list.song.items[0],
+      })
     })
 
     function fetchListAndPlay() {
@@ -56,7 +74,10 @@ export default defineComponent({
     }
 
     const isActive = computed<boolean>(() => {
-      return props.list.encodeId === store.state.playlist?.encodeId && store.getters.isPlaying
+      return (
+        props.list.encodeId === store.state.playlist?.encodeId &&
+        store.getters.isPlaying
+      )
     })
 
     return { fetchListAndPlay, isActive }

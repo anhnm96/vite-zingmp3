@@ -16,7 +16,7 @@
 }
 
 #nprogress .bar {
-  background-color: purple !important;
+  background-color: var(--purple-primary) !important;
 }
 
 @keyframes spin {
@@ -38,334 +38,335 @@
 }
 
 @layer base {
-:root,
-[data-theme=green-light],
-[data-theme=light],
-[data-theme=pink-light],
-[data-theme=yellow] {
-	--background-tooltip: #e8e8e8;
-	--white: #fff;
-	--black: #32323d;
-	--yellow: #f8e71c;
-	--blue: #4a90e2;
-	--green: #50e3c2;
-	--red: #e35050;
-	--gray: #dbdbdb;
-	--dark-alpha-10: rgba(0, 0, 0, 0.1);
-	--dark-alpha-50: rgba(0, 0, 0, 0.5);
-	--dark-alpha-70: rgba(0, 0, 0, 0.7);
-	--dark-alpha-80: rgba(0, 0, 0, 0.8);
-	--hover-tooltip-opacity: hsla(0, 0%, 100%, 0.3);
-	--primary-bg: #fff;
-	--layout-bg: #fff;
-	--sidebar-bg: rgba(0, 0, 0, 0.05);
-	--sidebar-popup-bg: #f2f2f2;
-	--alpha-bg: rgba(0, 0, 0, 0.05);
-	--banner-home-dot: #d8d8d8;
-	--loading-bg: rgba(0, 0, 0, 0.05);
-	--loading-bg-animation: #f5f5f5;
-	--scroll-thumb-bg: rgba(0, 0, 0, 0.1);
-	--no-content-bg: #f9f9f9;
-	--box-item-bg: #fff;
-	--artist-layout-bg: hsla(0, 0%, 100%, 0.8);
-	--alpha-layout-bg: rgba(12, 3, 3, 0.8);
-	--tab-active-bg: #fff;
-	--queue-player-popup-bg: #fff;
-	--progressbar-active-bg: var(--purple-primary);
-	--progressbar-player-bg: rgba(0, 0, 0, 0.1);
-	--kara-lyrics-bg: #9882bd;
-	--kara-btn-bg: hsla(0, 0%, 100%, 0.1);
-	--theme-setting-active: rgba(0, 0, 0, 0.15);
-	--player-bg: #fff;
-	--select-bg: rgba(0, 0, 0, 0.15);
-	--text-primary: #32323d;
-	--text-secondary: rgba(0, 0, 0, 0.6);
-	--purple-primary: #6b3483;
-	--text-item-hover: #6b3483;
-	--link-text-hover: #9c32ca;
-	--player-text: #32323d;
-	--search-text: #282828;
-	--text-placeholder: #757575;
-	--setting-icon-text: #495057;
-	--navigation-text: #32323d;
-	--sidebar-title: rgba(0, 0, 0, 0.7);
-	--song-item-action: rgba(50, 50, 61, 0.5);
-	--border-primary: rgba(0, 0, 0, 0.1);
-	--border-secondary: rgba(0, 0, 0, 0.05);
-	--border-box: rgba(0, 0, 0, 0.2);
-	--spotlight-item: #f1f1f1;
-	--queue-border: rgba(0, 0, 0, 0.1);
-	--border-player: rgba(0, 0, 0, 0.05);
-	--thumbnail-player: hsla(0, 0%, 100%, 0.8);
-	--main-box-shadow: hsla(0, 0%, 81.2%, 0.4);
-	--sticky-header-box-shadow: rgba(0, 0, 0, 0.08);
-	--notify-box-shadow: rgba(0, 0, 0, 0.2);
-	--portal-menu-box-shadow: rgba(0, 0, 0, 0.3);
-	--main-text-stroke: #6b3483;
-	--img-banner-artist: url(https://zjs.zadn.vn/zmp3-desktop/releases/v1.2.10/static/media/bg-artist.4a5d9b23.png);
-	--image-queue-loader: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/bg-empty.svg);
-	--image-queue-video: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/queue-playing-video.svg);
-	--playing-mix-icon: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/icons/icon-playing-purple.gif);
-	--img-logo-mp3: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-light.svg);
-	--box-shadow-queue: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3), inset 0 1px 1px hsla(0, 0%, 100%, 0.3);
-	--chart-bg-img-alpha: hsla(0, 0%, 100%, 0.9);
-	--chart-box-bg-alpha: hsla(0, 0%, 100%, 0.5);
-	--chart-logo-color: #000;
-	--chart-icon-play-color: #fff;
-	--linear-gradient-bg: linear-gradient(180deg, #740091, #2d1a4c);
-	--padding-section: 4vw
-}
+  :root,
+  [data-theme='green-light'],
+  [data-theme='light'],
+  [data-theme='pink-light'],
+  [data-theme='yellow'] {
+    --background-tooltip: #e8e8e8;
+    --white: #fff;
+    --black: #32323d;
+    --yellow: #f8e71c;
+    --blue: #4a90e2;
+    --green: #50e3c2;
+    --red: #e35050;
+    --gray: #dbdbdb;
+    --dark-alpha-10: rgba(0, 0, 0, 0.1);
+    --dark-alpha-50: rgba(0, 0, 0, 0.5);
+    --dark-alpha-70: rgba(0, 0, 0, 0.7);
+    --dark-alpha-80: rgba(0, 0, 0, 0.8);
+    --hover-tooltip-opacity: hsla(0, 0%, 100%, 0.3);
+    --primary-bg: #fff;
+    --layout-bg: #fff;
+    --sidebar-bg: rgba(0, 0, 0, 0.05);
+    --sidebar-popup-bg: #f2f2f2;
+    --alpha-bg: rgba(0, 0, 0, 0.05);
+    --banner-home-dot: #d8d8d8;
+    --loading-bg: rgba(0, 0, 0, 0.05);
+    --loading-bg-animation: #f5f5f5;
+    --scroll-thumb-bg: rgba(0, 0, 0, 0.1);
+    --no-content-bg: #f9f9f9;
+    --box-item-bg: #fff;
+    --artist-layout-bg: hsla(0, 0%, 100%, 0.8);
+    --alpha-layout-bg: rgba(12, 3, 3, 0.8);
+    --tab-active-bg: #fff;
+    --queue-player-popup-bg: #fff;
+    --progressbar-active-bg: var(--purple-primary);
+    --progressbar-player-bg: rgba(0, 0, 0, 0.1);
+    --kara-lyrics-bg: #9882bd;
+    --kara-btn-bg: hsla(0, 0%, 100%, 0.1);
+    --theme-setting-active: rgba(0, 0, 0, 0.15);
+    --player-bg: #fff;
+    --select-bg: rgba(0, 0, 0, 0.15);
+    --text-primary: #32323d;
+    --text-secondary: rgba(0, 0, 0, 0.6);
+    --purple-primary: #6b3483;
+    --text-item-hover: #6b3483;
+    --link-text-hover: #9c32ca;
+    --player-text: #32323d;
+    --search-text: #282828;
+    --text-placeholder: #757575;
+    --setting-icon-text: #495057;
+    --navigation-text: #32323d;
+    --sidebar-title: rgba(0, 0, 0, 0.7);
+    --song-item-action: rgba(50, 50, 61, 0.5);
+    --border-primary: rgba(0, 0, 0, 0.1);
+    --border-secondary: rgba(0, 0, 0, 0.05);
+    --border-box: rgba(0, 0, 0, 0.2);
+    --spotlight-item: #f1f1f1;
+    --queue-border: rgba(0, 0, 0, 0.1);
+    --border-player: rgba(0, 0, 0, 0.05);
+    --thumbnail-player: hsla(0, 0%, 100%, 0.8);
+    --main-box-shadow: hsla(0, 0%, 81.2%, 0.4);
+    --sticky-header-box-shadow: rgba(0, 0, 0, 0.08);
+    --notify-box-shadow: rgba(0, 0, 0, 0.2);
+    --portal-menu-box-shadow: rgba(0, 0, 0, 0.3);
+    --main-text-stroke: #6b3483;
+    --img-banner-artist: url(https://zjs.zadn.vn/zmp3-desktop/releases/v1.2.10/static/media/bg-artist.4a5d9b23.png);
+    --image-queue-loader: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/bg-empty.svg);
+    --image-queue-video: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/queue-playing-video.svg);
+    --playing-mix-icon: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/icons/icon-playing-purple.gif);
+    --img-logo-mp3: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-light.svg);
+    --box-shadow-queue: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3),
+      inset 0 1px 1px hsla(0, 0%, 100%, 0.3);
+    --chart-bg-img-alpha: hsla(0, 0%, 100%, 0.9);
+    --chart-box-bg-alpha: hsla(0, 0%, 100%, 0.5);
+    --chart-logo-color: #000;
+    --chart-icon-play-color: #fff;
+    --linear-gradient-bg: linear-gradient(180deg, #740091, #2d1a4c);
+    --padding-section: 4vw;
+  }
 
-@media screen and (max-width:1024px) {
-	:root,
-	[data-theme=green-light],
-	[data-theme=light],
-	[data-theme=pink-light],
-	[data-theme=yellow] {
-		--padding-section: 5vw
-	}
-}
+  @media screen and (max-width: 1024px) {
+    :root,
+    [data-theme='green-light'],
+    [data-theme='light'],
+    [data-theme='pink-light'],
+    [data-theme='yellow'] {
+      --padding-section: 5vw;
+    }
+  }
 
-[data-theme=light] {
-	--thumbnail-player: rgba(0, 0, 0, 0.2)
-}
+  [data-theme='light'] {
+    --thumbnail-player: rgba(0, 0, 0, 0.2);
+  }
 
-[data-theme=pink-light] {
-	--primary-bg: #fff8f8;
-	--layout-bg: #f9dbdb;
-	--sidebar-bg: hsla(0, 0%, 100%, 0.3);
-	--sidebar-popup-bg: #fbd3d2;
-	--queue-player-popup-bg: #f9dbdb;
-	--blur-queue-bg: rgba(249, 219, 219, 0.9019607843137255);
-	--player-bg: #f9c6c5;
-	--artist-layout-bg: rgba(249, 219, 219, 0.8);
-	--text-secondary: #696969;
-	--purple-primary: #ea7aa0;
-	--text-item-hover: #ea7aa0;
-	--link-text-hover: #ea7aa0;
-	--chart-bg-img-alpha: rgb(249 219 219/0.9)
-}
+  [data-theme='pink-light'] {
+    --primary-bg: #fff8f8;
+    --layout-bg: #f9dbdb;
+    --sidebar-bg: hsla(0, 0%, 100%, 0.3);
+    --sidebar-popup-bg: #fbd3d2;
+    --queue-player-popup-bg: #f9dbdb;
+    --blur-queue-bg: rgba(249, 219, 219, 0.9019607843137255);
+    --player-bg: #f9c6c5;
+    --artist-layout-bg: rgba(249, 219, 219, 0.8);
+    --text-secondary: #696969;
+    --purple-primary: #ea7aa0;
+    --text-item-hover: #ea7aa0;
+    --link-text-hover: #ea7aa0;
+    --chart-bg-img-alpha: rgb(249 219 219/0.9);
+  }
 
-[data-theme=green-light],
-[data-theme=pink-light] {
-	--tab-active-bg: hsla(0, 0%, 100%, 0.3);
-	--box-item-bg: hsla(0, 0%, 100%, 0.3)
-}
+  [data-theme='green-light'],
+  [data-theme='pink-light'] {
+    --tab-active-bg: hsla(0, 0%, 100%, 0.3);
+    --box-item-bg: hsla(0, 0%, 100%, 0.3);
+  }
 
-[data-theme=green-light] {
-	--primary-bg: #e1e8e8;
-	--layout-bg: #ced9d9;
-	--sidebar-bg: hsla(0, 0%, 100%, 0.3);
-	--sidebar-popup-bg: #cce0e0;
-	--alpha-bg: hsla(0, 0%, 100%, 0.3);
-	--queue-player-popup-bg: #ced9d9;
-	--blur-queue-bg: rgba(206, 217, 217, 0.9019607843137255);
-	--player-bg: #b4d0d0;
-	--artist-layout-bg: rgba(206, 217, 217, 0.8);
-	--text-secondary: #696969;
-	--purple-primary: #239292;
-	--text-item-hover: #239292;
-	--link-text-hover: #239292;
-	--chart-bg-img-alpha: rgb(206 217 217/0.9)
-}
+  [data-theme='green-light'] {
+    --primary-bg: #e1e8e8;
+    --layout-bg: #ced9d9;
+    --sidebar-bg: hsla(0, 0%, 100%, 0.3);
+    --sidebar-popup-bg: #cce0e0;
+    --alpha-bg: hsla(0, 0%, 100%, 0.3);
+    --queue-player-popup-bg: #ced9d9;
+    --blur-queue-bg: rgba(206, 217, 217, 0.9019607843137255);
+    --player-bg: #b4d0d0;
+    --artist-layout-bg: rgba(206, 217, 217, 0.8);
+    --text-secondary: #696969;
+    --purple-primary: #239292;
+    --text-item-hover: #239292;
+    --link-text-hover: #239292;
+    --chart-bg-img-alpha: rgb(206 217 217/0.9);
+  }
 
-[data-theme=gray] {
-	--primary-bg: #fffffe;
-	--layout-bg: #e5e3df;
-	--queue-player-popup-bg: #e5e3df;
-	--blur-queue-bg: rgba(229, 227, 223, 0.9019607843137255);
-	--tab-active-bg: hsla(0, 0%, 100%, 0.3);
-	--box-item-bg: hsla(0, 0%, 100%, 0.3);
-	--player-bg: #d0ccc5;
-	--artist-layout-bg: rgba(229, 227, 223, 0.8);
-	--text-secondary: #696969;
-	--purple-primary: #8c8471;
-	--text-item-hover: #8c8471;
-	--link-text-hover: #8c8471;
-	--chart-bg-img-alpha: rgb(229 227 223/90%)
-}
+  [data-theme='gray'] {
+    --primary-bg: #fffffe;
+    --layout-bg: #e5e3df;
+    --queue-player-popup-bg: #e5e3df;
+    --blur-queue-bg: rgba(229, 227, 223, 0.9019607843137255);
+    --tab-active-bg: hsla(0, 0%, 100%, 0.3);
+    --box-item-bg: hsla(0, 0%, 100%, 0.3);
+    --player-bg: #d0ccc5;
+    --artist-layout-bg: rgba(229, 227, 223, 0.8);
+    --text-secondary: #696969;
+    --purple-primary: #8c8471;
+    --text-item-hover: #8c8471;
+    --link-text-hover: #8c8471;
+    --chart-bg-img-alpha: rgb(229 227 223/90%);
+  }
 
-[data-theme=blue-light],
-[data-theme=blue],
-[data-theme=brown],
-[data-theme=dark],
-[data-theme=green],
-[data-theme=pink],
-[data-theme=purple],
-[data-theme=red] {
-	--primary-bg: #282828;
-	--layout-bg: #1e1e1e;
-	--sidebar-bg: hsla(0, 0%, 100%, 0.05);
-	--sidebar-popup-bg: #292929;
-	--alpha-bg: hsla(0, 0%, 100%, 0.1);
-	--banner-home-dot: #d8d8d8;
-	--loading-bg: hsla(0, 0%, 100%, 0.1);
-	--loading-bg-animation: hsla(0, 0%, 100%, 0.1);
-	--scroll-thumb-bg: hsla(0, 0%, 100%, 0.3);
-	--no-content-bg: hsla(0, 0%, 100%, 0.1);
-	--box-item-bg: hsla(0, 0%, 100%, 0.1);
-	--alpha-layout-bg: rgba(12, 3, 3, 0.8);
-	--artist-layout-bg: var(--alpha-layout-bg);
-	--tab-active-bg: hsla(0, 0%, 100%, 0.3);
-	--queue-player-popup-bg: #2d2f32;
-	--kara-lyrics-bg: #1e1e1e;
-	--kara-btn-bg: hsla(0, 0%, 100%, 0.1);
-	--theme-setting-active: hsla(0, 0%, 100%, 0.15);
-	--player-bg: rgba(0, 0, 0, 0.2);
-	--progressbar-player-bg: hsla(0, 0%, 100%, 0.3);
-	--progressbar-active-bg: #fff;
-	--select-bg: hsla(0, 0%, 100%, 0.15);
-	--text-primary: #fff;
-	--text-secondary: hsla(0, 0%, 100%, 0.5);
-	--purple-primary: #7200a1;
-	--link-text-hover: #c662ef;
-	--text-item-hover: #fff;
-	--player-text: #fff;
-	--search-text: #eee;
-	--text-placeholder: #757575;
-	--setting-icon-text: #d8d8d8;
-	--navigation-text: #a0a0a0;
-	--sidebar-title: hsla(0, 0%, 100%, 0.7);
-	--song-item-action: hsla(0, 0%, 100%, 0.5);
-	--border-primary: hsla(0, 0%, 100%, 0.1);
-	--border-secondary: hsla(0, 0%, 100%, 0.05);
-	--border-box: hsla(0, 0%, 100%, 0.2);
-	--spotlight-item: #130223;
-	--queue-border: transparent;
-	--border-player: hsla(0, 0%, 100%, 0.1);
-	--main-box-shadow: rgba(66, 66, 66, 0.4);
-	--sticky-header-box-shadow: rgba(0, 0, 0, 0.2);
-	--notify-box-shadow: rgba(0, 0, 0, 0.6);
-	--portal-menu-box-shadow: rgba(0, 0, 0, 0.7);
-	--main-text-stroke: #fff;
-	--img-banner-artist: url(https://zjs.zadn.vn/zmp3-desktop/releases/v1.2.10/static/media/bg-dark-artist.291cc2d3.png);
-	--image-queue-loader: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/bg-empty-dark.svg);
-	--image-queue-video: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/dark-queue-playing-video.svg);
-	--playing-mix-icon: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/icons/icon-playing.gif);
-	--img-logo-mp3: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg);
-	--box-shadow-queue: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(25, 255, 255, 0.05);
-	--chart-bg-img-alpha: rgba(30, 30, 30, 0.9);
-	--chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
-	--chart-logo-color: #fff;
-	--chart-icon-play-color: var(--purple-primary)
-}
+  [data-theme='blue-light'],
+  [data-theme='blue'],
+  [data-theme='brown'],
+  [data-theme='dark'],
+  [data-theme='green'],
+  [data-theme='pink'],
+  [data-theme='purple'],
+  [data-theme='red'] {
+    --primary-bg: #282828;
+    --layout-bg: #1e1e1e;
+    --sidebar-bg: hsla(0, 0%, 100%, 0.05);
+    --sidebar-popup-bg: #292929;
+    --alpha-bg: hsla(0, 0%, 100%, 0.1);
+    --banner-home-dot: #d8d8d8;
+    --loading-bg: hsla(0, 0%, 100%, 0.1);
+    --loading-bg-animation: hsla(0, 0%, 100%, 0.1);
+    --scroll-thumb-bg: hsla(0, 0%, 100%, 0.3);
+    --no-content-bg: hsla(0, 0%, 100%, 0.1);
+    --box-item-bg: hsla(0, 0%, 100%, 0.1);
+    --alpha-layout-bg: rgba(12, 3, 3, 0.8);
+    --artist-layout-bg: var(--alpha-layout-bg);
+    --tab-active-bg: hsla(0, 0%, 100%, 0.3);
+    --queue-player-popup-bg: #2d2f32;
+    --kara-lyrics-bg: #1e1e1e;
+    --kara-btn-bg: hsla(0, 0%, 100%, 0.1);
+    --theme-setting-active: hsla(0, 0%, 100%, 0.15);
+    --player-bg: rgba(0, 0, 0, 0.2);
+    --progressbar-player-bg: hsla(0, 0%, 100%, 0.3);
+    --progressbar-active-bg: #fff;
+    --select-bg: hsla(0, 0%, 100%, 0.15);
+    --text-primary: #fff;
+    --text-secondary: hsla(0, 0%, 100%, 0.5);
+    --purple-primary: #7200a1;
+    --link-text-hover: #c662ef;
+    --text-item-hover: #fff;
+    --player-text: #fff;
+    --search-text: #eee;
+    --text-placeholder: #757575;
+    --setting-icon-text: #d8d8d8;
+    --navigation-text: #a0a0a0;
+    --sidebar-title: hsla(0, 0%, 100%, 0.7);
+    --song-item-action: hsla(0, 0%, 100%, 0.5);
+    --border-primary: hsla(0, 0%, 100%, 0.1);
+    --border-secondary: hsla(0, 0%, 100%, 0.05);
+    --border-box: hsla(0, 0%, 100%, 0.2);
+    --spotlight-item: #130223;
+    --queue-border: transparent;
+    --border-player: hsla(0, 0%, 100%, 0.1);
+    --main-box-shadow: rgba(66, 66, 66, 0.4);
+    --sticky-header-box-shadow: rgba(0, 0, 0, 0.2);
+    --notify-box-shadow: rgba(0, 0, 0, 0.6);
+    --portal-menu-box-shadow: rgba(0, 0, 0, 0.7);
+    --main-text-stroke: #fff;
+    --img-banner-artist: url(https://zjs.zadn.vn/zmp3-desktop/releases/v1.2.10/static/media/bg-dark-artist.291cc2d3.png);
+    --image-queue-loader: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/bg-empty-dark.svg);
+    --image-queue-video: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/dark-queue-playing-video.svg);
+    --playing-mix-icon: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/icons/icon-playing.gif);
+    --img-logo-mp3: url(https://zmp3-static.zadn.vn/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg);
+    --box-shadow-queue: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3),
+      inset 0 1px 1px rgba(25, 255, 255, 0.05);
+    --chart-bg-img-alpha: rgba(30, 30, 30, 0.9);
+    --chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
+    --chart-logo-color: #fff;
+    --chart-icon-play-color: var(--purple-primary);
+  }
 
-[data-theme=blue-light],
-[data-theme=blue],
-[data-theme=brown],
-[data-theme=green],
-[data-theme=pink],
-[data-theme=purple],
-[data-theme=red] {
-	--text-placeholder: #dadada;
-	--navigation-text: #dadada;
-	--sticky-header-box-shadow: rgba(0, 0, 0, 0.1);
-	--portal-menu-box-shadow: rgba(0, 0, 0, 0.2)
-}
+  [data-theme='blue-light'],
+  [data-theme='blue'],
+  [data-theme='brown'],
+  [data-theme='green'],
+  [data-theme='pink'],
+  [data-theme='purple'],
+  [data-theme='red'] {
+    --text-placeholder: #dadada;
+    --navigation-text: #dadada;
+    --sticky-header-box-shadow: rgba(0, 0, 0, 0.1);
+    --portal-menu-box-shadow: rgba(0, 0, 0, 0.2);
+  }
 
-[data-theme=purple] {
-	--primary-bg: #432275;
-	--layout-bg: #170f23;
-	--sidebar-popup-bg: #2a213a;
-	--alpha-layout-bg: rgba(41, 21, 71, 0.8);
-	--queue-player-popup-bg: #120822;
-	--blur-queue-bg: rgba(30, 21, 47, 0.9019607843137255);
-	--purple-primary: #7200a1;
-	--link-text-hover: #c662ef;
-	--chart-bg-img-alpha: rgba(32, 19, 53, 0.9)
-}
+  [data-theme='purple'] {
+    --primary-bg: #432275;
+    --layout-bg: #170f23;
+    --sidebar-popup-bg: #2a213a;
+    --alpha-layout-bg: rgba(41, 21, 71, 0.8);
+    --queue-player-popup-bg: #120822;
+    --blur-queue-bg: rgba(30, 21, 47, 0.9019607843137255);
+    --purple-primary: #7200a1;
+    --link-text-hover: #c662ef;
+    --chart-bg-img-alpha: rgba(32, 19, 53, 0.9);
+  }
 
-[data-theme=purple],
-[data-theme=red] {
-	--chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05)
-}
+  [data-theme='purple'],
+  [data-theme='red'] {
+    --chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
+  }
 
-[data-theme=red] {
-	--primary-bg: #883236;
-	--layout-bg: #731717;
-	--sidebar-popup-bg: #7a2922;
-	--alpha-layout-bg: rgba(115, 23, 23, 0.8);
-	--queue-player-popup-bg: #561111;
-	--blur-queue-bg: rgba(115, 23, 23, 0.9019607843137255);
-	--purple-primary: #aa1c1c;
-	--link-text-hover: #f36565;
-	--chart-bg-img-alpha: rgba(115, 23, 23, 0.9);
-	--linear-gradient-bg: linear-gradient(180deg, #941c1c, #961919)
-}
+  [data-theme='red'] {
+    --primary-bg: #883236;
+    --layout-bg: #731717;
+    --sidebar-popup-bg: #7a2922;
+    --alpha-layout-bg: rgba(115, 23, 23, 0.8);
+    --queue-player-popup-bg: #561111;
+    --blur-queue-bg: rgba(115, 23, 23, 0.9019607843137255);
+    --purple-primary: #aa1c1c;
+    --link-text-hover: #f36565;
+    --chart-bg-img-alpha: rgba(115, 23, 23, 0.9);
+    --linear-gradient-bg: linear-gradient(180deg, #941c1c, #961919);
+  }
 
-[data-theme=blue] {
-	--primary-bg: #192f60;
-	--layout-bg: #101f3f;
-	--sidebar-popup-bg: #1d2a49;
-	--alpha-layout-bg: rgba(16, 31, 63, 0.8);
-	--queue-player-popup-bg: #223c75;
-	--blur-queue-bg: rgba(16, 31, 63, 0.9019607843137255);
-	--chart-bg-img-alpha: rgba(16, 31, 63, 0.9);
-	--linear-gradient-bg: linear-gradient(180deg, #1b2f5a, #182e5d)
-}
+  [data-theme='blue'] {
+    --primary-bg: #192f60;
+    --layout-bg: #101f3f;
+    --sidebar-popup-bg: #1d2a49;
+    --alpha-layout-bg: rgba(16, 31, 63, 0.8);
+    --queue-player-popup-bg: #223c75;
+    --blur-queue-bg: rgba(16, 31, 63, 0.9019607843137255);
+    --chart-bg-img-alpha: rgba(16, 31, 63, 0.9);
+    --linear-gradient-bg: linear-gradient(180deg, #1b2f5a, #182e5d);
+  }
 
-[data-theme=blue-light],
-[data-theme=blue] {
-	--purple-primary: #3460f5;
-	--link-text-hover: #6e8ffb;
-	--chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05)
-}
+  [data-theme='blue-light'],
+  [data-theme='blue'] {
+    --purple-primary: #3460f5;
+    --link-text-hover: #6e8ffb;
+    --chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
+  }
 
-[data-theme=blue-light] {
-	--primary-bg: #274a78;
-	--layout-bg: #1d375a;
-	--sidebar-popup-bg: #2a4162;
-	--alpha-layout-bg: rgba(29, 55, 90, 0.8);
-	--queue-player-popup-bg: #0b274c;
-	--blur-queue-bg: rgba(29, 55, 90, 0.9019607843137255);
-	--chart-bg-img-alpha: rgba(29, 55, 90, 0.9);
-	--linear-gradient-bg: linear-gradient(180deg, #224472, #244572)
-}
+  [data-theme='blue-light'] {
+    --primary-bg: #274a78;
+    --layout-bg: #1d375a;
+    --sidebar-popup-bg: #2a4162;
+    --alpha-layout-bg: rgba(29, 55, 90, 0.8);
+    --queue-player-popup-bg: #0b274c;
+    --blur-queue-bg: rgba(29, 55, 90, 0.9019607843137255);
+    --chart-bg-img-alpha: rgba(29, 55, 90, 0.9);
+    --linear-gradient-bg: linear-gradient(180deg, #224472, #244572);
+  }
 
-[data-theme=green] {
-	--primary-bg: #126e54;
-	--layout-bg: #124534;
-	--sidebar-popup-bg: #244f3f;
-	--alpha-layout-bg: rgba(18, 69, 52, 0.8);
-	--queue-player-popup-bg: #0c523a;
-	--blur-queue-bg: rgba(18, 69, 52, 0.9019607843137255);
-	--purple-primary: #309785;
-	--link-text-hover: #309785;
-	--chart-bg-img-alpha: rgba(18, 69, 52, 0.9);
-	--linear-gradient-bg: linear-gradient(180deg, #137555, #15533f)
-}
+  [data-theme='green'] {
+    --primary-bg: #126e54;
+    --layout-bg: #124534;
+    --sidebar-popup-bg: #244f3f;
+    --alpha-layout-bg: rgba(18, 69, 52, 0.8);
+    --queue-player-popup-bg: #0c523a;
+    --blur-queue-bg: rgba(18, 69, 52, 0.9019607843137255);
+    --purple-primary: #309785;
+    --link-text-hover: #309785;
+    --chart-bg-img-alpha: rgba(18, 69, 52, 0.9);
+    --linear-gradient-bg: linear-gradient(180deg, #137555, #15533f);
+  }
 
-[data-theme=brown],
-[data-theme=green] {
-	--chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05)
-}
+  [data-theme='brown'],
+  [data-theme='green'] {
+    --chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
+  }
 
-[data-theme=brown] {
-	--primary-bg: #6f514c;
-	--layout-bg: #57403b;
-	--sidebar-popup-bg: #604a45;
-	--alpha-layout-bg: rgba(87, 64, 59, 0.8);
-	--queue-player-popup-bg: #63423c;
-	--blur-queue-bg: rgba(87, 64, 59, 0.9019607843137255);
-	--purple-primary: #986d5c;
-	--link-text-hover: #d8987f;
-	--chart-bg-img-alpha: rgba(87, 64, 59, 0.9);
-	--linear-gradient-bg: linear-gradient(180deg, #7b5e58, #654943)
-}
+  [data-theme='brown'] {
+    --primary-bg: #6f514c;
+    --layout-bg: #57403b;
+    --sidebar-popup-bg: #604a45;
+    --alpha-layout-bg: rgba(87, 64, 59, 0.8);
+    --queue-player-popup-bg: #63423c;
+    --blur-queue-bg: rgba(87, 64, 59, 0.9019607843137255);
+    --purple-primary: #986d5c;
+    --link-text-hover: #d8987f;
+    --chart-bg-img-alpha: rgba(87, 64, 59, 0.9);
+    --linear-gradient-bg: linear-gradient(180deg, #7b5e58, #654943);
+  }
 
-[data-theme=pink] {
-	--primary-bg: #a22687;
-	--layout-bg: #800064;
-	--sidebar-popup-bg: #883c6c;
-	--alpha-layout-bg: rgba(128, 0, 100, 0.8);
-	--queue-player-popup-bg: #800064;
-	--blur-queue-bg: rgba(128, 0, 100, 0.9019607843137255);
-	--purple-primary: #d820b0;
-	--link-text-hover: #fe63da;
-	--gradient-bg: linear-gradient(96deg, #ff64dc, #d631a1 102%);
-	--chart-bg-img-alpha: rgba(142, 51, 122, 0.9);
-	--chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
-	--linear-gradient-bg: linear-gradient(180deg, #ad3994, #8f0f72)
-}
-
+  [data-theme='pink'] {
+    --primary-bg: #a22687;
+    --layout-bg: #800064;
+    --sidebar-popup-bg: #883c6c;
+    --alpha-layout-bg: rgba(128, 0, 100, 0.8);
+    --queue-player-popup-bg: #800064;
+    --blur-queue-bg: rgba(128, 0, 100, 0.9019607843137255);
+    --purple-primary: #d820b0;
+    --link-text-hover: #fe63da;
+    --gradient-bg: linear-gradient(96deg, #ff64dc, #d631a1 102%);
+    --chart-bg-img-alpha: rgba(142, 51, 122, 0.9);
+    --chart-box-bg-alpha: hsla(0, 0%, 100%, 0.05);
+    --linear-gradient-bg: linear-gradient(180deg, #ad3994, #8f0f72);
+  }
 }

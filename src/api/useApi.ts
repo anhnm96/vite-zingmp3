@@ -1,17 +1,18 @@
 import { ref, computed, ComputedRef, Ref } from 'vue'
 import { upperFirst } from 'lodash-es'
-import { AxiosError, AxiosPromise } from 'axios'
+import { AxiosPromise, AxiosResponse } from 'axios'
 import { ApiStatus } from './index'
 import { useEventHook } from '@/composables'
 
-interface UseApiReturn<TResult, TVariables extends [...any[]]> extends NormalisedApiStatuses {
+interface UseApiReturn<TResult, TVariables extends [...any[]]>
+  extends NormalisedApiStatuses {
   data: Ref<TResult | undefined>
   status: Ref<ApiStatus>
-  error: Ref<AxiosError | null>
+  error: Ref<AxiosResponse | null>
   onSuccess: (fn: (param: TResult) => void) => {
     off: () => void
   }
-  onError: (fn: (param: AxiosError) => void) => {
+  onError: (fn: (param: AxiosResponse) => void) => {
     off: () => void
   }
   exec: (...variables: TVariables) => Promise<void>
@@ -29,7 +30,7 @@ const createNormalisedApiStatuses = (status: Ref<ApiStatus>) => {
   const normalisedApiStatuses = {}
 
   for (const [statusKey, statusValue] of Object.entries(ApiStatus)) {
-    let propertyName = `status${upperFirst(statusKey.toLowerCase())}`
+    const propertyName = `status${upperFirst(statusKey.toLowerCase())}`
 
     // Create a computed that returns true/false based on
     // the currently selected status
@@ -42,15 +43,21 @@ const createNormalisedApiStatuses = (status: Ref<ApiStatus>) => {
   return normalisedApiStatuses
 }
 
-export const useApi = <TResult = any, TVariables extends [...any[]] = [...any[]]>(fn: (...args: TVariables) => AxiosPromise<TResult>, config: any = {}): UseApiReturn<TResult, TVariables> => {
+export const useApi = <
+  TResult = any,
+  TVariables extends [...any[]] = [...any[]]
+>(
+  fn: (...args: TVariables) => AxiosPromise<TResult>,
+  config: any = {}
+): UseApiReturn<TResult, TVariables> => {
   const { initialData, responseAdapter, minimumWait = 500 } = config
   // Reactive values to store data and API status
   const data = ref<TResult>()
   data.value = initialData
   const status = ref<ApiStatus>(ApiStatus.IDLE)
-  const error = ref<AxiosError>()
+  const error = ref<AxiosResponse>()
   const resultEvent = useEventHook<TResult>()
-  const errorEvent = useEventHook<AxiosError>()
+  const errorEvent = useEventHook<AxiosResponse>()
 
   /**
    * Initialise the api request
@@ -63,9 +70,10 @@ export const useApi = <TResult = any, TVariables extends [...any[]] = [...any[]]
       //   typeof responseAdapter === 'function'
       //     ? responseAdapter(response)
       //     : response
-      const response = await Promise.all(
-        [fn(...args), new Promise(resolve => setTimeout(resolve, minimumWait))]
-      )
+      const response = await Promise.all([
+        fn(...args),
+        new Promise((resolve) => setTimeout(resolve, minimumWait)),
+      ])
       data.value =
         typeof responseAdapter === 'function'
           ? responseAdapter(response[0])
@@ -75,7 +83,7 @@ export const useApi = <TResult = any, TVariables extends [...any[]] = [...any[]]
       resultEvent.trigger(data.value)
     } catch (error) {
       errorEvent.trigger(error)
-      error.value = error
+      error.value = error.response
       status.value = ApiStatus.ERROR
     }
   }
@@ -90,6 +98,6 @@ export const useApi = <TResult = any, TVariables extends [...any[]] = [...any[]]
     onError: errorEvent.on,
     exec,
     setStatus,
-    ...createNormalisedApiStatuses(status)
+    ...createNormalisedApiStatuses(status),
   }
 }
