@@ -7,7 +7,7 @@
           style="animation: 2s ease-in-out 0s infinite normal none running loading"
         ></skeleton>
       </div>
-      <div class="bg-primary w-[46.5%] m-auto transform translate-x-0 z-20">
+      <div class="bg-[color:var(--layout-bg)] w-[46.5%] m-auto transform translate-x-0 z-20">
         <skeleton
           class="pb-[56.25%]"
           style="animation: 2s ease-in-out 0s infinite normal none running loading"

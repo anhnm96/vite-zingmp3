@@ -7,6 +7,7 @@
 ![Karaoke](./screenshots/karaoke.png "Karaoke page")
 ![Theme modal](./screenshots/theme.png "Them modal")
 ![Home dark](./screenshots/home-dark.png "Home dark")
+![Idol theme](./screenshots/lisa.png "Idol theme")
 
 ## Features
 - Play song like a music player...

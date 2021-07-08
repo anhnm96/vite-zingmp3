@@ -1,7 +1,7 @@
 <template>
   <div
     @dblclick="playSong"
-    class="flex items-center justify-between p-2 border-t border-solid cursor-pointer hover:bg-alpha border-alpha"
+    class="flex items-center justify-between p-2 border-t border-solid cursor-pointer hover:bg-alpha border-player"
     :class="isCurrent && 'bg-alpha'"
   >
     <!-- left -->

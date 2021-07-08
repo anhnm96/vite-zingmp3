@@ -1,26 +1,28 @@
 <template>
   <aside
     v-click-outside="close"
-    class="relative flex-shrink-0 border-l playlist w-80 border-border"
+    class="relative flex-shrink-0 border-l playlist w-80 border-primary"
     :style="{ transform: showPlaylist ? 'translateX(0)' : '' }"
   >
     <!-- tabs -->
-    <div class="z-20 flex items-center px-2 py-4 space-x-1 h-17 bg-primary">
+    <div class="z-20 flex items-center px-2 py-4 space-x-1 h-17 bg-[color:var(--layout-bg)]">
       <div class="flex p-1 rounded-full bg-alpha">
         <button
-          class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full bg-active text-primary"
+          class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full bg-tab-active text-item-hover"
         >Danh sách phát</button>
         <button
           class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full text-secondary"
         >Nghe gần đây</button>
       </div>
       <button
-        class="flex items-center justify-center w-8 h-8 text-white rounded-full focus:outline-none bg-bg"
+        class="flex items-center justify-center w-8 h-8 text-white rounded-full disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none bg-purple-primary"
+        :disabled="!currentSong"
       >
         <i class="flex ic-clock"></i>
       </button>
       <button
-        class="flex items-center justify-center w-8 h-8 rounded-full focus:outline-none text-secondary bg-alpha"
+        class="flex items-center justify-center w-8 h-8 rounded-full disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none text-secondary bg-alpha"
+        :disabled="!currentSong"
       >
         <i class="flex ic-more"></i>
       </button>
@@ -63,7 +65,7 @@
             style="word-break: 'break-word';"
           >Khám phá thêm các bài hát mới của Zing MP3</h4>
           <button
-            class="flex items-center px-6 py-1.5 space-x-2 text-sm font-semibold rounded-full text-primary bg-bg"
+            class="flex items-center px-6 py-1.5 space-x-2 text-sm font-semibold rounded-full text-white bg-purple-primary"
           >
             <i class="flex ic-play"></i>
             <span class="flex">Phát nhạc mới phát hành</span>
@@ -135,7 +137,7 @@ export default defineComponent({
     right: 0;
     top: 0;
     z-index: 100;
-    background-color: var(--background);
+    background-color: var(--queue-player-popup-bg);
   }
 }
 

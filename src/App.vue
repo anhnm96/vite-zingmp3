@@ -1,8 +1,9 @@
 <template>
-  <div id="main" :class="theme === 'light' ? 'theme-light' : 'theme-dark'">
-    <div class="flex">
+  <div id="main">
+  <!-- <div id="main" :class="theme === 'light' ? 'theme-light' : 'theme-dark'"> -->
+    <div class="flex bg-layout">
       <aside
-        class="relative flex-shrink-0 min-h-screen transition-all duration-300 lg:w-64 bg-sidebar-bg w-17"
+        class="relative flex-shrink-0 min-h-screen transition-all duration-300 bg-sidebar lg:w-64 w-17"
       >
         <div class="flex items-center justify-center lg:justify-start lg:px-6 h-17">
           <router-link to="/">
@@ -14,10 +15,10 @@
             <li v-for="(nav, index) in nav1" :class="{ 'active': index === 1 }" :key="nav.text">
               <a
                 href="#"
-                class="hover:text-primary flex lg:justify-start justify-center text-secondary items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
+                class="hover:text-item-hover flex lg:justify-start justify-center text-navigation items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
               >
                 <i :class="nav.iconClass" class="flex nav-icon"></i>
-                <span class="hidden lg:block nav-text">{{ nav.text }}</span>
+                <span class="hidden text-sm font-semibold leading-normal lg:block">{{ nav.text }}</span>
               </a>
             </li>
           </ul>
@@ -28,10 +29,10 @@
             <li v-for="nav in nav2" :key="nav.text">
               <a
                 href="#"
-                class="hover:text-primary flex lg:justify-start justify-center text-secondary items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
+                class="hover:text-item-hover flex lg:justify-start justify-center text-navigation items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
               >
                 <i :class="nav.iconClass" class="flex nav-icon"></i>
-                <span class="hidden lg:block nav-text">{{ nav.text }}</span>
+                <span class="hidden text-sm font-semibold leading-normal lg:block">{{ nav.text }}</span>
               </a>
             </li>
           </ul>
@@ -39,7 +40,7 @@
       </aside>
       <div class="flex-grow">
         <header
-          class="sticky top-0 z-20 flex items-center px-4 py-2 space-x-2 shadow-sm h-17 bg-primary"
+          class="sticky top-0 z-20 flex items-center px-4 py-2 space-x-2 shadow-sm h-17 bg-[color:var(--layout-bg)]"
         >
           <div class="flex items-center flex-shrink-0">
             <button class="flex items-center p-2">
@@ -242,7 +243,7 @@
     <keep-alive>
       <Lyric v-if="showLyricModal" />
     </keep-alive>
-    <ThemeModal v-if="showModal" v-model="showModal" @setTheme="setTheme" />
+    <ThemeModal v-show="showModal" v-model="showModal" />
   </div>
 </template>
 
@@ -263,6 +264,7 @@ export default {
     const showModal = ref(false)
     let resizeObserver: ResizeObserver
     onMounted(() => {
+      document.documentElement.dataset.theme = 'purple'
       if (document.body.offsetWidth < 1637)
         store.commit('setState', { prop: 'showPlaylist', value: false })
 
@@ -330,14 +332,14 @@ export default {
   width: 45px;
   height: 45px;
   display: inline-block;
-  background: var(--logo-url-m) 50% / contain no-repeat;
+  background: var(--img-logo-mp3) 50% / contain no-repeat;
 }
 @media screen and (min-width: 1024px) {
   .logo {
     width: 120px;
     height: 40px;
     display: inline-block;
-    background: var(--logo-url) 50% / contain no-repeat;
+    background: var(--img-logo-mp3) 50% / contain no-repeat;
     /* background-position: 50%;
     background-size: contain; */
   }
@@ -351,10 +353,6 @@ export default {
 }
 .nav-icon {
   @apply text-2xl h-6;
-}
-.nav-text {
-  color: var(--text-primary);
-  @apply text-sm leading-normal font-semibold;
 }
 
 .divider {
