@@ -72,19 +72,17 @@ export default defineComponent({
 }
 
 .progress-bg {
-  @apply w-full relative rounded-full;
-  background: var(--progress-bg);
+  @apply w-full relative rounded-full bg-progress;
   height: 3px;
 }
 
 .progress {
-  @apply absolute top-0 left-0 h-full rounded-full;
-  background: var(--progress);
+  @apply absolute top-0 left-0 h-full rounded-full bg-progress-active;
 }
 
 .progress::after {
+  @apply bg-progress-active;
   content: '';
-  background: var(--progress);
   position: absolute;
   width: 12px;
   height: 12px;
@@ -92,7 +90,6 @@ export default defineComponent({
   right: 0;
   top: -3px;
   opacity: 0;
-  box-shadow: 0px 0px 2px 1px #0008;
 }
 .progress-bar:hover .progress::after {
   opacity: 1;

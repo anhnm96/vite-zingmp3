@@ -18,11 +18,11 @@
               <h1 class="album-title">{{ album.title }}</h1>
               <p
                 class="mt-1 album-info"
-              >{{ isPlaying }}Cập nhật: {{ new Date(album.contentLastUpdate * 1000).toLocaleDateString() }}</p>
+              >Cập nhật: {{ new Date(album.contentLastUpdate * 1000).toLocaleDateString() }}</p>
               <p class="album-info">{{ album.like }} Người yêu thích</p>
             </div>
             <div class="flex space-x-3 clg:block">
-              <button class="btn-action">
+              <button class="bg-purple-primary hover:brightness-90 text-white rounded-full py-2.5 px-6 inline-flex space-x-2 mt-3 uppercase">
                 <i class="flex w-5 h-5 place-items-center icon ic-play"></i>
                 <span>Phát ngẫu nhiên</span>
               </button>
@@ -70,9 +70,9 @@ export default defineComponent({
     const store = useStore()
     const route = useRoute()
     const isPlaying = computed(() => store.state.playerState === PlayerState.PLAYING)
-    const id = route.params.id
+    const id = route.params.id as string
 
-    const { data: album, exec, statusPending, statusSuccess } = useApi<Playlist>(fetchPlaylist)
+    const { data: album, exec, statusPending, statusSuccess } = useApi<Playlist, Parameters<typeof fetchPlaylist>>(fetchPlaylist)
     exec(id)
 
     function togglePlay() {
@@ -140,19 +140,12 @@ export default defineComponent({
   @apply flex justify-center items-center w-10 h-10 rounded-full border border-white;
 }
 .album-title {
-  @apply text-xl font-bold text-center mt-2;
+  @apply text-xl font-bold text-center mt-2 text-primary;
 }
 .album-info {
   @apply text-secondary text-sm text-center;
 }
 
-.btn-action {
-  background: var(--primary);
-  @apply text-white rounded-full py-2.5 px-6 inline-flex space-x-2 mt-3 uppercase;
-}
-.btn-action:hover {
-  filter: brightness(0.9);
-}
 .album-footer {
   @apply flex space-x-4 mt-4 justify-center;
 }
@@ -164,7 +157,7 @@ export default defineComponent({
 }
 
 .description {
-  @apply text-secondary text-sm;
+  @apply text-primary text-sm;
 }
 @media only screen and (max-width: 1200px) {
   .footer-wrapper {

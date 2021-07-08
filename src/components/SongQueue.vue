@@ -1,15 +1,15 @@
 <template>
   <div
     @dblclick="play"
-    class="song-wrapper flex items-start p-2 space-x-2.5 rounded"
-    :class="{ 'bg-bg': active, 'hover:bg-alpha': !active }"
+    class="group flex items-start p-2 space-x-2.5 rounded"
+    :class="{ 'bg-purple-primary': active, 'hover:bg-alpha': !active }"
   >
     <!-- thumbnail -->
     <div class="relative flex-shrink-0 overflow-hidden rounded">
       <img class="w-10 h-10" :src="song.thumbnail" alt="thumbnail" />
       <div
-        class="absolute inset-0 bg-black opacity-0 overlay hover:opacity-100 bg-opacity-40"
-        :class="active && 'opacity-100'"
+        class="absolute inset-0 bg-black group-hover:opacity-100 hover:opacity-100 bg-opacity-40"
+        :class="active ? 'opacity-100' : 'opacity-0'"
       >
         <button
           @click.prevent="play"
@@ -80,7 +80,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.song-wrapper:hover .overlay {
-  opacity: 1;
-}
+
 </style>

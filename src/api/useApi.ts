@@ -1,10 +1,10 @@
 import { ref, computed, ComputedRef, Ref } from 'vue'
 import { upperFirst } from 'lodash-es'
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosPromise } from 'axios'
 import { ApiStatus } from './index'
 import { useEventHook } from '@/composables'
 
-interface UseApiReturn<TResult, TVariables> extends NormalisedApiStatuses {
+interface UseApiReturn<TResult, TVariables extends [...any[]]> extends NormalisedApiStatuses {
   data: Ref<TResult | undefined>
   status: Ref<ApiStatus>
   error: Ref<AxiosError | null>
@@ -14,7 +14,7 @@ interface UseApiReturn<TResult, TVariables> extends NormalisedApiStatuses {
   onError: (fn: (param: AxiosError) => void) => {
     off: () => void
   }
-  exec: (variables?: TVariables) => void
+  exec: (...variables: TVariables) => Promise<void>
   setStatus: (nextStatus: ApiStatus) => void
 }
 
@@ -42,7 +42,7 @@ const createNormalisedApiStatuses = (status: Ref<ApiStatus>) => {
   return normalisedApiStatuses
 }
 
-export const useApi = <TResult = any, TVariables = any>(fn: Function, config: any = {}): UseApiReturn<TResult, TVariables> => {
+export const useApi = <TResult = any, TVariables extends [...any[]] = [...any[]]>(fn: (...args: TVariables) => AxiosPromise<TResult>, config: any = {}): UseApiReturn<TResult, TVariables> => {
   const { initialData, responseAdapter, minimumWait = 500 } = config
   // Reactive values to store data and API status
   const data = ref<TResult>()
@@ -55,7 +55,7 @@ export const useApi = <TResult = any, TVariables = any>(fn: Function, config: an
   /**
    * Initialise the api request
    */
-  const exec = async (...args: any) => {
+  const exec = async (...args: TVariables) => {
     try {
       status.value = ApiStatus.PENDING
       // const response = await fn(...args)

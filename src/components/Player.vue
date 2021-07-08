@@ -2,10 +2,10 @@
   <div
     v-if="song"
     id="player"
-    class="fixed bottom-0 w-full border-t bg-primary border-alpha"
+    class="fixed bottom-0 w-full bg-layout"
     :class="{ 'playing': playerState === PlayerState.PLAYING, 'border-none bg-transparent': showLyric }"
   >
-    <div class="flex items-center w-full pl-10 pr-5 space-x-2 h-22">
+    <div class="flex items-center w-full pl-10 pr-5 space-x-2 border-t-player h-22" :class="showLyric ? 'bg-transparent' : 'bg-player'">
       <!-- left -->
       <div class="flex w-1/3 space-x-3">
         <!-- thumbnail -->
@@ -54,7 +54,7 @@
           <button
             @click="toggleShuffleSongList"
             class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha"
-            :class="isShuffled && 'text-purple-600'"
+            :class="isShuffled && 'text-link-hover'"
           >
             <i class="flex ic-shuffle"></i>
           </button>
@@ -84,7 +84,7 @@
           <button
             @click="setNextPlayerMode"
             class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha"
-            :class="{ 'text-purple-600': playerMode !== PlayerMode.DEFAULT }"
+            :class="{ 'text-link-hover': playerMode !== PlayerMode.DEFAULT }"
           >
             <i
               class="flex"
@@ -122,7 +122,7 @@
           </button>
           <ProgressBar style="width: 70px" v-model:progress="volume" />
         </div>
-        <div class="pl-4 ml-6 border-l btn-toggle border-alpha">
+        <div class="pl-4 ml-6 border-l btn-toggle border-player">
           <button
             @click="toggleShowPlaylist"
             class="flex items-center justify-center w-8 h-8 rounded-full text-secondary hover:bg-alpha focus:outline-none"

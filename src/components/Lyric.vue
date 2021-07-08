@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 z-40 pb-20 bg-primary">
+  <div class="fixed inset-0 z-40 pb-20 bg-[color:var(--layout-bg)]">
     <div class="flex flex-col justify-between h-full pt-5">
       <!-- header -->
       <div class="relative flex items-center">
@@ -9,12 +9,12 @@
             <button
               @click="tab = Tab.Karaoke"
               class="flex-1 px-2 py-1 text-base focus:outline-none text-secondary"
-              :class="tab === Tab.Karaoke && 'font-semibold rounded-full bg-active text-primary'"
+              :class="tab === Tab.Karaoke && 'font-semibold rounded-full bg-tab-active text-primary'"
             >Karaoke</button>
             <button
               @click="tab = Tab.Lyric"
               class="flex-1 px-2 py-1 text-base focus:outline-none text-secondary"
-              :class="tab === Tab.Lyric && 'font-semibold rounded-full bg-active text-primary'"
+              :class="tab === Tab.Lyric && 'font-semibold rounded-full bg-tab-active text-primary'"
             >Lyric</button>
           </div>
         </div>
@@ -52,7 +52,7 @@
               :key="`${index}-${sentence.content.trim()}`"
               :id="`sentence-${index}`"
               class="text-2xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer hover:bg-alpha"
-              :class="currentSentenceIndex === index && 'text-progress bg-alpha'"
+              :class="currentSentenceIndex === index && 'text-purple-primary bg-alpha'"
               @click="seekLyric(sentence.time)"
             >{{ sentence.content }}</div>
           </div>
