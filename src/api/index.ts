@@ -4,14 +4,14 @@ export enum ApiStatus {
   IDLE = 'IDLE',
   PENDING = 'PENDING',
   SUCCESS = 'SUCCESS',
-  ERROR = 'ERROR'
+  ERROR = 'ERROR',
 }
 
 export * from './useApi'
 
 const request = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL as string || 'http://localhost:8080',
-  timeout: 5000
+  baseURL: (import.meta.env.VITE_BASE_URL as string) || 'http://localhost:8080',
+  timeout: 5000,
 })
 
 request.interceptors.response.use(
@@ -21,50 +21,56 @@ request.interceptors.response.use(
     }
     return response
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )
 
 export function fetchPlaylist(id: string) {
   return request({
-    url: 'api/playlist/getDetail?id=' + id
+    url: 'api/playlist/getDetail?id=' + id,
   })
 }
 
-export function fetchStreaming(id: string) {
-  return request({
-    url: 'api/song/streaming?id=' + id
-  })
+export function fetchStreaming(id: string, isWorldWide = true) {
+  if (isWorldWide) {
+    return request({
+      url: 'api/song/streaming?id=' + id,
+    })
+  } else {
+    return request({
+      url: 'api/song/streamingproxy?id=' + id,
+    })
+  }
 }
 
 export function fetchHome(page = 1) {
   return request({
-    url: 'api/home?page=' + page
+    url: 'api/home?page=' + page,
   })
 }
 
 export function fetchSongInfo(id: string) {
   return request({
-    url: 'api/song/info?id=' + id
+    url: 'api/song/info?id=' + id,
   })
 }
 
 export function fetchSongList(id: string) {
   return request({
-    url: 'api/song/list?id=' + id
+    url: 'api/song/list?id=' + id,
   })
 }
 
 export function fetchLyric(id: string) {
   return request({
-    url: 'api/lyric?id=' + id
+    url: 'api/lyric?id=' + id,
   })
 }
 
 export function fetchKaraokeLyric(link: string) {
   return request({
-    url: link
+    url: link,
   })
 }
 
