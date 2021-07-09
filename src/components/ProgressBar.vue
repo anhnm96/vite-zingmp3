@@ -5,13 +5,13 @@
     @click="clickOnProgressBar"
   >
     <div
-      class="progress-bg"
       ref="progressElement"
+      class="progress-bg"
     >
       <div
         class="progress"
         :style="{width: progressLocal + '%'}"
-      ></div>
+      />
     </div>
   </div>
 </template>
@@ -23,7 +23,10 @@ import { useVModel } from '@/composables'
 export default defineComponent({
   name: 'ProgressBar',
   props: {
-    progress: Number,
+    progress: {
+      type: Number,
+      required: true,
+    },
   },
   emits: ['update:progress'],
   setup(props) {
@@ -87,7 +90,7 @@ export default defineComponent({
   width: 12px;
   height: 12px;
   border-radius: 100%;
-  right: 0;
+  right: -6px;
   top: -3px;
   opacity: 0;
 }

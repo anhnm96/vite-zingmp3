@@ -90,9 +90,12 @@ export default defineComponent({
   @apply flex-shrink-0;
 }
 .card-title {
-  @apply text-sm font-semibold text-primary mt-2 block overflow-hidden;
+  @apply text-sm font-bold text-primary mt-2 block overflow-hidden;
   word-break: break-word;
   text-overflow: ellipsis;
+}
+.card-title:hover {
+  @apply text-link-hover;
 }
 .card-title a {
   -webkit-line-clamp: 2;

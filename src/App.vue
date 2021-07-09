@@ -2,7 +2,7 @@
   <div id="main">
     <!-- <div id="main" :class="theme === 'light' ? 'theme-light' : 'theme-dark'"> -->
     <div class="flex bg-layout">
-      <aside class="relative flex-shrink-0 min-h-screen transition-all duration-300 bg-sidebar lg:w-64 w-17">
+      <aside class="relative flex-shrink-0 min-h-screen transition-all duration-300 bg-sidebar-popup lg:bg-sidebar lg:w-64 w-17">
         <div class="flex items-center justify-center lg:justify-start lg:px-6 h-17">
           <router-link to="/">
             <div class="logo" />
@@ -418,7 +418,7 @@ export default defineComponent({
   width: 45px;
   height: 45px;
   display: inline-block;
-  background: var(--img-logo-mp3) 50% / contain no-repeat;
+  background: url(https://zjs.zadn.vn/zmp3-desktop/releases/v1.2.10/static/media/icon_zing_mp3_60.f6b51045.svg);
 }
 @media screen and (min-width: 1024px) {
   .logo {
@@ -432,10 +432,10 @@ export default defineComponent({
 }
 
 .active {
-  @apply bg-alpha border-l-2 border-primary;
+  @apply bg-alpha border-l-2 border-purple-primary;
 }
 .active a {
-  @apply text-primary;
+  @apply text-item-hover;
 }
 .nav-icon {
   @apply text-2xl h-6;
