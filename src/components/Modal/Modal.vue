@@ -17,17 +17,18 @@
       <div
         v-if="showContent"
         class="absolute inset-0 bg-black bg-opacity-70"
+        aria-hidden="true"
         @click="!persistent && close()"
       />
     </transition>
 
     <transition
-      enter-active-class="transition-all duration-150 ease-out"
+      enter-active-class="transition-all duration-300 ease-out"
       leave-active-class="transition-all duration-200 ease-in"
-      enter-from-class="opacity-0 scale-70"
+      enter-from-class="scale-75 opacity-0"
       enter-to-class="scale-100 opacity-100"
       leave-from-class="scale-100 opacity-100"
-      leave-to-class="opacity-0 scale-70"
+      leave-to-class="scale-75 opacity-0"
       appear
       @before-leave="cardLeaving = true"
       @after-leave="cardLeaving = false"
@@ -39,6 +40,9 @@
         role="dialog"
         aria-modal="true"
         v-bind="$attrs"
+        tabindex="-1"
+        :aria-labelledby="labelledBy"
+        :aria-describedby="describedBy"
       >
         <slot :close="close" />
       </div>
@@ -48,10 +52,18 @@
 
 <script lang="ts">
 // https://www.w3.org/TR/wai-aria-practices-1.2/examples/dialog-modal/dialog.html#
-import { defineComponent, ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import { defineComponent, ref, onMounted, onBeforeUnmount, watch, provide, inject, InjectionKey, Ref } from 'vue'
 import trapFocus from '@/directives/trapFocus'
+// export modal context
+interface ModalContext {
+  labelledBy: Ref<string>
+  describedBy: Ref<string>
+}
+const MODAL_SYMBOL = Symbol('Modal') as InjectionKey<ModalContext>
+export const useModal = () => inject(MODAL_SYMBOL)
 
 export default defineComponent({
+  name: 'Modal',
   directives: { 'trap-focus': trapFocus },
   inheritAttrs: false,
   props: {
@@ -60,6 +72,14 @@ export default defineComponent({
   },
   emits: ['close', 'update:modelValue'],
   setup(props, { emit }) {
+    // context setup
+    const labelledBy = ref()
+    const describedBy = ref()
+    provide(MODAL_SYMBOL, {
+      labelledBy,
+      describedBy
+    })
+    // display logic
     const showModal = ref(false)
     const showContent = ref(false)
     const backdropLeaving = ref(false)
@@ -105,6 +125,8 @@ export default defineComponent({
       }
     })
     return {
+      labelledBy,
+      describedBy,
       showModal,
       showContent,
       backdropLeaving,

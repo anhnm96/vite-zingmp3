@@ -76,7 +76,7 @@
           </div>
           <div class="flex items-center space-x-2">
             <button
-              aria-label="layout"
+              aria-label="select theme"
               class="flex items-center justify-center w-10 h-10 rounded-full bg-alpha"
               @click="showModal = true"
             >
@@ -333,7 +333,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useStore } from 'vuex'
 import Player from './components/Player.vue'
 import Lyric from './components/Lyric.vue'
@@ -341,7 +341,8 @@ import Playlist from './components/Playlist.vue'
 import Scrollbar from 'smooth-scrollbar'
 import ThemeModal from './components/ThemeModal.vue'
 
-export default {
+export default defineComponent({
+  name: 'App',
   components: { Player, Lyric, Playlist, ThemeModal },
   setup() {
     const store = useStore()
@@ -349,7 +350,6 @@ export default {
     const showModal = ref(false)
     let resizeObserver: ResizeObserver
     onMounted(() => {
-      document.documentElement.dataset.theme = 'purple'
       if (document.body.offsetWidth < 1637)
         store.commit('setState', { prop: 'showPlaylist', value: false })
 
@@ -411,7 +411,7 @@ export default {
       showModal,
     }
   },
-}
+})
 </script>
 <style>
 .logo {

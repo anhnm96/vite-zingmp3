@@ -18,10 +18,12 @@ const findFocusable = (element: HTMLElement, programmatic = false) => {
                                    *[contenteditable]`)
 }
 
+let initialFocusedElement: HTMLElement
 let onKeyDown: (event: KeyboardEvent) => void
 
 const beforeMount = (el: HTMLElement, { value = true }) => {
   if (value) {
+    initialFocusedElement = document.activeElement as HTMLElement
     let focusable = findFocusable(el)
     let focusableProg = findFocusable(el, true)
 
@@ -44,7 +46,7 @@ const beforeMount = (el: HTMLElement, { value = true }) => {
         } else if (
           (event.target === lastFocusable ||
             Array.from(focusableProg).indexOf(event.target as HTMLElement) >=
-              0) &&
+            0) &&
           !event.shiftKey &&
           event.key === 'Tab'
         ) {
@@ -57,12 +59,18 @@ const beforeMount = (el: HTMLElement, { value = true }) => {
   }
 }
 
+const mounted = (el: HTMLElement) => {
+  el.focus()
+}
+
 const beforeUnmount = (el: HTMLElement) => {
+  initialFocusedElement.focus()
   el.removeEventListener('keydown', onKeyDown)
 }
 
 const directive = {
   beforeMount,
+  mounted,
   beforeUnmount,
 }
 

@@ -10,9 +10,9 @@
       style="width: 70vw; max-height: 60vh;"
     >
       <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-primary">
-          Giao Diện
-        </h2>
+        <ModalTitle class="text-2xl font-bold text-primary">
+          Select Theme
+        </ModalTitle>
         <button
           class="text-2xl text-primary"
           aria-label="close"
@@ -60,10 +60,11 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import Modal from './Modal.vue'
+import { Modal, ModalTitle } from './Modal'
+
 export default defineComponent({
   name: 'ThemeModal',
-  components: { Modal },
+  components: { Modal, ModalTitle },
   props: {
     modelValue: {
       type: Boolean,
@@ -196,11 +197,17 @@ export default defineComponent({
     onMounted(() => {
       mainFirstChild = document.getElementById('main')
         .firstElementChild as HTMLDivElement
+      // load savedTheme
+      let savedTheme = localStorage.getItem('theme')
+      if (savedTheme) {
+        selectedTheme.value = JSON.parse(savedTheme)
+        setThemeStyle()
+      }
     })
 
     const selectedTheme = ref()
 
-    function setTheme(item: any) {
+    function clearPreviousTheme() {
       // remove old theme styles and css variables
       mainFirstChild.style.removeProperty('background-image')
       mainFirstChild.style.removeProperty('background-size')
@@ -210,20 +217,34 @@ export default defineComponent({
           document.documentElement.style.removeProperty(key)
         }
       }
+    }
 
-      // set new theme
+    function setThemeStyle() {
+      document.documentElement.dataset.theme = selectedTheme.value.theme
+      if (selectedTheme.value.var) {
+        for (let key of Object.keys(selectedTheme.value.var)) {
+          document.documentElement.style.setProperty(
+            key,
+            selectedTheme.value.var[key]
+          )
+        }
+      }
+      if (selectedTheme.value.background) {
+        for (let key of Object.keys(selectedTheme.value.background)) {
+          mainFirstChild.style.setProperty(
+            key,
+            selectedTheme.value.background[key]
+          )
+        }
+      }
+    }
+
+    function setTheme(item: any) {
+      // save selected theme to localStorage
+      localStorage.setItem('theme', JSON.stringify(item))
       selectedTheme.value = item
-      document.documentElement.dataset.theme = item.theme
-      if (item.var) {
-        for (let key of Object.keys(item.var)) {
-          document.documentElement.style.setProperty(key, item.var[key])
-        }
-      }
-      if (item.background) {
-        for (let key of Object.keys(item.background)) {
-          mainFirstChild.style.setProperty(key, item.background[key])
-        }
-      }
+      clearPreviousTheme()
+      setThemeStyle()
     }
 
     return { setTheme, themes }
