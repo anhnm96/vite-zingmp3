@@ -240,10 +240,10 @@ export default defineComponent({
     }
 
     function setTheme(item: any) {
+      clearPreviousTheme()
       // save selected theme to localStorage
       localStorage.setItem('theme', JSON.stringify(item))
       selectedTheme.value = item
-      clearPreviousTheme()
       setThemeStyle()
     }
 

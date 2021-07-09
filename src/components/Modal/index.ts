@@ -1,3 +1,3 @@
 import Modal from './Modal.vue'
+export * from './ModalChildren'
 export { Modal }
-export * from './ModalChildren.vue'

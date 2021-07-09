@@ -1,6 +1,6 @@
-<script lang="ts">
 import { defineComponent, h } from 'vue'
 import { getRandomUUID } from '@/helpers/getnRandomUUID'
+// @ts-ignore
 import { useModal } from './Modal.vue'
 
 export const ModalTitle = defineComponent({
@@ -37,4 +37,3 @@ export const ModalContent = defineComponent({
     return () => h('div', { id }, slots.default())
   },
 })
-</script>
