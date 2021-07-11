@@ -1,33 +1,35 @@
 <template>
   <div>
-    <div class="flex justify-between pr-8">
-      <h2 class="text-lg font-bold text-primary">{{ title }}</h2>
+    <div class="flex justify-between">
+      <h2 class="text-lg font-bold text-primary">
+        {{ title }}
+      </h2>
       <div class="flex items-center space-x-2">
         <button
-          @click="slideLeft"
           class="inline-flex items-center p-1 focus:outline-none"
           aria-label="Previous List"
+          @click="slideLeft"
         >
-          <i class="w-5 h-5 text-primary ic-go-left"></i>
+          <i class="w-5 h-5 text-primary ic-go-left" />
         </button>
         <button
-          @click="slideRight"
           class="inline-flex items-center p-1 focus:outline-none"
           aria-label="Next List"
+          @click="slideRight"
         >
-          <i class="w-5 h-5 text-primary ic-go-right"></i>
+          <i class="w-5 h-5 text-primary ic-go-right" />
         </button>
       </div>
     </div>
     <div
       ref="listEl"
-      class="flex w-full mt-3 -mx-3 overflow-hidden lg:-mx-4"
+      class="flex mt-3 -mx-3 overflow-hidden"
       style="scroll-behavior: smooth"
     >
       <BaseCard
-        class="w-1/4 px-3 clg:w-1/5 cxl:w-1/6 lg:px-4"
         v-for="list in items"
         :key="list.title"
+        class="w-1/4 px-3 clg:w-1/5 cxl:w-1/6"
         :list="list"
       />
     </div>

@@ -103,13 +103,13 @@ export default defineComponent({
   -webkit-box-orient: vertical;
 }
 .card-main {
-  @apply relative overflow-hidden rounded-lg;
+  @apply relative overflow-hidden rounded-lg pb-[100%];
 }
 .card-main:hover > img {
   transform: scale(1.1);
 }
 .card-main > img {
-  @apply w-full max-w-full;
+  @apply max-w-full absolute h-full;
   transition: transform 0.7s ease-out;
 }
 .card-overlay {

@@ -1,54 +1,7 @@
 <template>
   <div id="main">
-    <!-- <div id="main" :class="theme === 'light' ? 'theme-light' : 'theme-dark'"> -->
     <div class="flex bg-layout">
-      <aside class="relative flex-shrink-0 min-h-screen transition-all duration-300 bg-sidebar-popup lg:bg-sidebar lg:w-64 w-17">
-        <div class="flex items-center justify-center lg:justify-start lg:px-6 h-17">
-          <router-link to="/">
-            <div class="logo" />
-          </router-link>
-        </div>
-        <nav>
-          <ul>
-            <li
-              v-for="(nav, index) in nav1"
-              :key="nav.text"
-              :class="{ 'active': index === 1 }"
-            >
-              <a
-                href="#"
-                class="hover:text-item-hover flex lg:justify-start justify-center text-navigation items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
-              >
-                <i
-                  :class="nav.iconClass"
-                  class="flex nav-icon"
-                />
-                <span class="hidden text-sm font-semibold leading-normal lg:block">{{ nav.text }}</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="divider" />
-        <nav>
-          <ul>
-            <li
-              v-for="nav in nav2"
-              :key="nav.text"
-            >
-              <a
-                href="#"
-                class="hover:text-item-hover flex lg:justify-start justify-center text-navigation items-center px-6 lg:py-2.5 space-x-3 font-semibold py-4"
-              >
-                <i
-                  :class="nav.iconClass"
-                  class="flex nav-icon"
-                />
-                <span class="hidden text-sm font-semibold leading-normal lg:block">{{ nav.text }}</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
+      <Sidebar />
       <div class="flex-grow">
         <header class="sticky top-0 z-20 flex items-center px-4 py-2 space-x-2 shadow-sm h-17 bg-[color:var(--layout-bg)]">
           <div class="flex items-center flex-shrink-0">
@@ -335,6 +288,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useStore } from 'vuex'
+import Sidebar from './components/Layout/Sidebar.vue'
 import Player from './components/Player.vue'
 import Lyric from './components/Lyric.vue'
 import Playlist from './components/Playlist.vue'
@@ -343,7 +297,7 @@ import ThemeModal from './components/ThemeModal.vue'
 
 export default defineComponent({
   name: 'App',
-  components: { Player, Lyric, Playlist, ThemeModal },
+  components: { Sidebar, Player, Lyric, Playlist, ThemeModal },
   setup() {
     const store = useStore()
     const main = ref(null)
@@ -380,31 +334,17 @@ export default defineComponent({
       resizeObserver.unobserve(document.body)
     })
 
-    const nav1 = [
-      { text: 'Cá Nhân', iconClass: 'ic-library' },
-      { text: 'Khám Phá', iconClass: 'ic-mn-home' },
-      { text: '#zingchart', iconClass: 'ic-mn-zingchart' },
-      { text: 'Theo Dõi', iconClass: 'ic-feed' },
-    ]
-    const nav2 = [
-      { text: 'Nhạc Mới', iconClass: 'ic-mn-song' },
-      { text: 'Thể Loại', iconClass: 'ic-mn-catalogue' },
-      { text: 'Top 100', iconClass: 'ic-mn-top100' },
-      { text: 'MV', iconClass: 'ic-mn-mv' },
-    ]
-
     const hasPlaylist = computed(() => !!store.state.playlist)
     const showLyricModal = computed(() => store.state.showLyric)
     const currentSong = computed(() => store.state.currentSong)
     function setTheme(value: string) {
       store.commit('setTheme', value)
     }
+
     return {
       main,
       theme: computed(() => store.state.theme),
       setTheme,
-      nav1,
-      nav2,
       showLyricModal,
       hasPlaylist,
       currentSong,
@@ -414,29 +354,6 @@ export default defineComponent({
 })
 </script>
 <style>
-.logo {
-  width: 45px;
-  height: 45px;
-  display: inline-block;
-  background: url(https://zjs.zadn.vn/zmp3-desktop/releases/v1.2.10/static/media/icon_zing_mp3_60.f6b51045.svg);
-}
-@media screen and (min-width: 1024px) {
-  .logo {
-    width: 120px;
-    height: 40px;
-    display: inline-block;
-    background: var(--img-logo-mp3) 50% / contain no-repeat;
-    /* background-position: 50%;
-    background-size: contain; */
-  }
-}
-
-.active {
-  @apply bg-alpha border-l-2 border-purple-primary;
-}
-.active a {
-  @apply text-item-hover;
-}
 .nav-icon {
   @apply text-2xl h-6;
 }

@@ -7,58 +7,74 @@
         <div class="absolute w-1/4 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
           <div class="flex p-1 rounded-full bg-alpha">
             <button
-              @click="tab = Tab.Karaoke"
               class="flex-1 px-2 py-1 text-base focus:outline-none text-secondary"
               :class="tab === Tab.Karaoke && 'font-semibold rounded-full bg-tab-active text-primary'"
-            >Karaoke</button>
+              @click="tab = Tab.Karaoke"
+            >
+              Karaoke
+            </button>
             <button
-              @click="tab = Tab.Lyric"
               class="flex-1 px-2 py-1 text-base focus:outline-none text-secondary"
               :class="tab === Tab.Lyric && 'font-semibold rounded-full bg-tab-active text-primary'"
-            >Lyric</button>
+              @click="tab = Tab.Lyric"
+            >
+              Lyric
+            </button>
           </div>
         </div>
         <!-- right -->
         <div class="flex ml-auto mr-5 space-x-4">
-          <button
-            class="flex items-center justify-center w-12 h-12 text-xl rounded-full text-primary bg-alpha"
-          >
-            <i class="flex ic-settings"></i>
+          <button class="flex items-center justify-center w-12 h-12 text-xl rounded-full text-primary bg-alpha">
+            <i class="flex ic-settings" />
           </button>
           <button
-            @click="toggleShowLyric"
             class="flex items-center justify-center w-12 h-12 text-xl rounded-full text-primary bg-alpha"
+            @click="toggleShowLyric"
           >
-            <i class="flex ic-go-down"></i>
+            <i class="flex ic-go-down" />
           </button>
         </div>
       </div>
       <!-- content -->
-      <div v-if="status === ApiStatus.PENDING" class="flex justify-center">
+      <div
+        v-if="status === ApiStatus.PENDING"
+        class="flex justify-center"
+      >
         <Loading />
       </div>
       <template v-if="status === ApiStatus.SUCCESS">
-        <div v-show="tab === Tab.Lyric" class="flex w-4/5 max-w-5xl mx-auto space-x-4">
+        <div
+          v-show="tab === Tab.Lyric"
+          class="flex w-4/5 max-w-5xl mx-auto space-x-4"
+        >
           <img
             class="rounded-lg"
             style="width: 400px"
             :src="currentSong.thumbnailM"
             alt="thumbnail"
-          />
+          >
           <!-- lyric -->
-          <div class="flex-1 overflow-y-auto hide-scrollbar" style="max-height: 400px">
+          <div
+            class="flex-1 overflow-y-auto hide-scrollbar"
+            style="max-height: 400px"
+          >
             <div
               v-for="(sentence, index) in sentences"
-              :key="`${index}-${sentence.content.trim()}`"
               :id="`sentence-${index}`"
+              :key="`${index}-${sentence.content.trim()}`"
               class="text-2xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer hover:bg-alpha"
               :class="currentSentenceIndex === index && 'text-purple-primary bg-alpha'"
               @click="seekLyric(sentence.time)"
-            >{{ sentence.content }}</div>
+            >
+              {{ sentence.content }}
+            </div>
           </div>
         </div>
         <keep-alive>
-          <Karaoke v-if="tab === Tab.Karaoke" :sentences="lyricData.sentences" />
+          <Karaoke
+            v-if="tab === Tab.Karaoke"
+            :sentences="lyricData.sentences"
+          />
         </keep-alive>
       </template>
       <!-- player -->
@@ -99,12 +115,22 @@ export default defineComponent({
     const store = useStore()
     const sentences = ref([])
 
-    const { data: lyricData, exec: fetchLyricData, status, onSuccess: onFetchLyricDone } = useApi(fetchLyric)
-    const { exec: fetchKaraokeLyricData, onSuccess: onFetchKaraokeLyricDone } = useApi(fetchKaraokeLyric)
+    const {
+      data: lyricData,
+      exec: fetchLyricData,
+      status,
+      onSuccess: onFetchLyricDone,
+    } = useApi(fetchLyric)
+    const { exec: fetchKaraokeLyricData, onSuccess: onFetchKaraokeLyricDone } =
+      useApi(fetchKaraokeLyric)
 
-    watch(() => store.state.currentSong, () => {
-      fetchLyricData(store.state.currentSong.encodeId)
-    }, { immediate: true })
+    watch(
+      () => store.state.currentSong,
+      () => {
+        fetchLyricData(store.state.currentSong.encodeId)
+      },
+      { immediate: true }
+    )
 
     onFetchLyricDone((result) => {
       // console.log('lyricDone', result)
@@ -159,7 +185,8 @@ export default defineComponent({
       (val) => {
         if (val === PlayerState.PLAYING) updateCurrentIndex()
         else clearTimeout(timeout)
-      }, { immediate: true }
+      },
+      { immediate: true }
     )
 
     function seekLyric(time: number) {
@@ -176,7 +203,7 @@ export default defineComponent({
       lyricData,
       status,
       ApiStatus,
-      currentSong: computed(() => store.state.currentSong)
+      currentSong: computed(() => store.state.currentSong),
     }
   },
 })

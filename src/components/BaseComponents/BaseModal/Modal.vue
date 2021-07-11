@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="showModal"
+    v-if="showModal"
     class="fixed inset-0 z-50 flex items-center justify-center w-full h-full"
   >
     <transition
@@ -52,7 +52,17 @@
 
 <script lang="ts">
 // https://www.w3.org/TR/wai-aria-practices-1.2/examples/dialog-modal/dialog.html#
-import { defineComponent, ref, onMounted, onBeforeUnmount, watch, provide, inject, InjectionKey, Ref } from 'vue'
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  watch,
+  provide,
+  inject,
+  InjectionKey,
+  Ref,
+} from 'vue'
 import trapFocus from '@/directives/trapFocus'
 // export modal context
 interface ModalContext {
@@ -77,7 +87,7 @@ export default defineComponent({
     const describedBy = ref()
     provide(MODAL_SYMBOL, {
       labelledBy,
-      describedBy
+      describedBy,
     })
     // display logic
     const showModal = ref(false)
@@ -95,6 +105,7 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
+      console.log('unmount')
       document.removeEventListener('keydown', onEscape)
     })
     function show() {

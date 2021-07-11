@@ -39,14 +39,14 @@
             class="w-1/3 cxl:w-1/6 clg:w-1/5 lg:w-1/4"
           >
             <button
-              class="overflow-hidden rounded bg-loading"
+              class="w-full overflow-hidden rounded bg-loading"
               @click="setTheme(item)"
             >
-              <img
-                class="w-full"
+              <BaseImg
                 :src="item.image"
                 :alt="item.name"
-              >
+                :aspect-ratio="1.5"
+              />
             </button>
             <p class="text-xs font-semibold text-primary">
               {{ item.name }}
@@ -60,11 +60,12 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { Modal, ModalTitle } from './Modal'
+import { Modal, ModalTitle } from './BaseComponents/BaseModal'
+import BaseImg from '@/components/BaseComponents/BaseImg.vue'
 
 export default defineComponent({
   name: 'ThemeModal',
-  components: { Modal, ModalTitle },
+  components: { Modal, ModalTitle, BaseImg },
   props: {
     modelValue: {
       type: Boolean,

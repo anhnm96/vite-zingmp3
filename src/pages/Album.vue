@@ -1,37 +1,53 @@
 <template>
   <div class="flex flex-col clg:space-x-9 clg:flex-row">
-    <h4 v-if="statusPending">Loading...</h4>
+    <h4 v-if="statusPending">
+      Loading...
+    </h4>
     <template v-if="statusSuccess">
       <!-- left -->
       <div class="album-info">
         <div class="sticky top-0 album-wrapper">
-          <div @click="togglePlay" class="album-cover" :class="{ 'rotate': isPlaying }">
-            <img :src="album.thumbnailM" :alt="album.title" />
+          <div
+            class="album-cover"
+            :class="{ 'rotate': isPlaying }"
+            @click="togglePlay"
+          >
+            <img
+              :src="album.thumbnailM"
+              :alt="album.title"
+            >
             <div class="overlay">
               <button class="btn-play">
-                <i class="icon" :class="isPlaying ? 'ic-gif-playing-white' : 'ic-play'"></i>
+                <i
+                  class="icon"
+                  :class="isPlaying ? 'ic-gif-playing-white' : 'ic-play'"
+                />
               </button>
             </div>
           </div>
           <div class="flex flex-col justify-between clg:block">
             <div>
-              <h1 class="album-title">{{ album.title }}</h1>
-              <p
-                class="mt-1 album-info"
-              >Cập nhật: {{ new Date(album.contentLastUpdate * 1000).toLocaleDateString() }}</p>
-              <p class="album-info">{{ album.like }} Người yêu thích</p>
+              <h1 class="album-title">
+                {{ album.title }}
+              </h1>
+              <p class="mt-1 album-info">
+                Cập nhật: {{ new Date(album.contentLastUpdate * 1000).toLocaleDateString() }}
+              </p>
+              <p class="album-info">
+                {{ album.like }} Người yêu thích
+              </p>
             </div>
             <div class="flex space-x-3 clg:block">
               <button class="bg-purple-primary hover:brightness-90 text-white rounded-full py-2.5 px-6 inline-flex space-x-2 mt-3 uppercase">
-                <i class="flex w-5 h-5 place-items-center icon ic-play"></i>
+                <i class="flex w-5 h-5 place-items-center icon ic-play" />
                 <span>Phát ngẫu nhiên</span>
               </button>
               <div class="album-footer">
                 <button>
-                  <i class="icon ic-like"></i>
+                  <i class="icon ic-like" />
                 </button>
                 <button>
-                  <i class="icon ic-more"></i>
+                  <i class="icon ic-more" />
                 </button>
               </div>
             </div>
@@ -40,7 +56,9 @@
       </div>
       <!-- right -->
       <div class="mt-4 clg:mt-0">
-        <p class="description">Lời tựa: {{ album.description }}</p>
+        <p class="description">
+          Lời tựa: {{ album.description }}
+        </p>
         <div class="mt-4">
           <song-item
             v-for="song in album.song.items"
@@ -69,28 +87,51 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const route = useRoute()
-    const isPlaying = computed(() => store.state.playerState === PlayerState.PLAYING)
+    const isPlaying = computed(
+      () => store.state.playerState === PlayerState.PLAYING
+    )
     const id = route.params.id as string
 
-    const { data: album, exec, statusPending, statusSuccess } = useApi<Playlist, Parameters<typeof fetchPlaylist>>(fetchPlaylist)
+    const {
+      data: album,
+      exec,
+      statusPending,
+      statusSuccess,
+    } = useApi<Playlist, Parameters<typeof fetchPlaylist>>(fetchPlaylist)
     exec(id)
 
     function togglePlay() {
-      if (!store.state.playlist || store.state.playlist.encodeId !== album.value.encodeId) {
+      if (
+        !store.state.playlist ||
+        store.state.playlist.encodeId !== album.value.encodeId
+      ) {
         store.commit('setState', { prop: 'playlist', value: album.value })
-        store.commit('setState', { prop: 'currentSong', value: album.value.song.items[0] })
+        store.commit('setState', {
+          prop: 'currentSong',
+          value: album.value.song.items[0],
+        })
       } else {
         store.commit('togglePlay')
       }
     }
 
     function playsong(song: Song) {
-      if (!store.state.playlist || store.state.playlist.encodeId !== album.value.encodeId) {
+      if (
+        !store.state.playlist ||
+        store.state.playlist.encodeId !== album.value.encodeId
+      ) {
         store.commit('setState', { prop: 'playlist', value: album.value })
       }
       store.commit('setState', { prop: 'currentSong', value: song })
     }
-    return { album, isPlaying, togglePlay, statusPending, statusSuccess, playsong }
+    return {
+      album,
+      isPlaying,
+      togglePlay,
+      statusPending,
+      statusSuccess,
+      playsong,
+    }
   },
 })
 </script>
@@ -162,6 +203,9 @@ export default defineComponent({
 @media only screen and (max-width: 1200px) {
   .footer-wrapper {
     display: flex;
+  }
+  .album-title {
+    text-align: left;
   }
   .album-info {
     text-align: left;
