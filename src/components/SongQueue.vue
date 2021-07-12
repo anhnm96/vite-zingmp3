@@ -1,40 +1,48 @@
 <template>
   <div
-    @dblclick="play"
     class="group flex items-start p-2 space-x-2.5 rounded"
     :class="{ 'bg-purple-primary': active, 'hover:bg-alpha': !active }"
+    @dblclick="play"
   >
     <!-- thumbnail -->
     <div class="relative flex-shrink-0 overflow-hidden rounded">
-      <img class="w-10 h-10" :src="song.thumbnail" alt="thumbnail" />
+      <img
+        class="w-10 h-10"
+        :src="song.thumbnail"
+        alt="thumbnail"
+      >
       <div
         class="absolute inset-0 bg-black group-hover:opacity-100 hover:opacity-100 bg-opacity-40"
         :class="active ? 'opacity-100' : 'opacity-0'"
       >
         <button
-          @click.prevent="play"
           :disabled="isLoading && active"
           class="flex items-center justify-center w-full h-full text-white focus:outline-none"
+          @click.prevent="play"
         >
           <i
             v-show="!isLoading"
             class="flex icon"
             :class="{ 'ic-gif-playing-white': active && isPlaying, 'ic-play': (active && !isPlaying) || !active }"
-          ></i>
+          />
           <Loading v-if="isLoading && active" />
         </button>
       </div>
     </div>
     <div class="overflow-hidden select-none">
       <h4
-        class="text-sm font-bold truncate text-primary"
-        :class="active && 'text-white'"
+        class="text-sm font-bold truncate"
+        :class="active ? 'text-white' : 'text-primary'"
         :title="song.title"
-      >{{ song.title }}</h4>
+      >
+        {{ song.title }}
+      </h4>
       <p
         class="mt-0.5 text-xs text-secondary"
         :class="active && 'text-gray-100'"
-      >{{ song.artistsNames }}</p>
+      >
+        {{ song.artistsNames }}
+      </p>
     </div>
   </div>
 </template>
@@ -72,13 +80,16 @@ export default defineComponent({
 
     return {
       play,
-      isPlaying: computed(() => store.state.playerState === PlayerState.PLAYING),
-      isLoading: computed(() => store.state.playerState === PlayerState.LOADING)
+      isPlaying: computed(
+        () => store.state.playerState === PlayerState.PLAYING
+      ),
+      isLoading: computed(
+        () => store.state.playerState === PlayerState.LOADING
+      ),
     }
   },
 })
 </script>
 
 <style scoped>
-
 </style>

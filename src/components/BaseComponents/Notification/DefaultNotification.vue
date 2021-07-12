@@ -7,7 +7,7 @@
     leave-from-class="opacity-100"
     leave-to-class="-translate-y-2 opacity-0 "
     appear
-    @after-leave="() => onClose()"
+    @after-leave="onClose()"
   >
     <div
       v-show="show"

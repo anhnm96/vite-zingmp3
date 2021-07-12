@@ -47,11 +47,10 @@ export default defineComponent({
   setup(props) {
     const store = useStore()
     const currentSong = computed<Song>(() => store.state.currentSong)
-    const theme = computed(() => store.state.theme)
 
     const Colors = computed(() => {
       return {
-        primary: theme.value === 'dark' ? '#fff' : '#000',
+        primary: '#fff',
         stroke: '#7200a1',
       }
     })

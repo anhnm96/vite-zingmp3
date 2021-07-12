@@ -2,12 +2,12 @@
   <div class="relative flex-shrink-0 transition-all duration-300 w-17 lg:w-64">
     <button
       v-if="show"
-      class="fixed inset-0 z-50 w-full h-full bg-transparent cursor-default lg:hidden"
+      class="fixed inset-0 z-30 w-full h-full bg-transparent cursor-default lg:hidden"
       aria-label="collapse"
       @click="toggleExpand"
     />
     <aside
-      class="absolute inset-0 z-50 h-full transition-all duration-300 lg:relative bg-sidebar-popup lg:bg-sidebar lg:w-full"
+      class="absolute inset-0 z-30 h-full transition-all duration-300 lg:relative bg-sidebar-popup lg:bg-sidebar lg:w-full"
       :class="[show ? 'w-64' : 'w-17', {transitioning, expanded}]"
       @transitionend="transitionEnd"
     >

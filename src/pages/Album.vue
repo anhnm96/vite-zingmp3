@@ -56,8 +56,9 @@
       </div>
       <!-- right -->
       <div class="mt-4 clg:mt-0">
-        <p class="description">
-          Lời tựa: {{ album.description }}
+        <p class="text-sm">
+          <span class="text-secondary">Lời tựa: </span>
+          <span class="font-semibold text-primary">{{ album.description }}</span>
         </p>
         <div class="mt-4">
           <song-item
@@ -87,10 +88,13 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const route = useRoute()
-    const isPlaying = computed(
-      () => store.state.playerState === PlayerState.PLAYING
-    )
     const id = route.params.id as string
+    const isPlaying = computed(() => {
+      return (
+        store.state.playerState === PlayerState.PLAYING &&
+        store.state.playlist.encodeId === id
+      )
+    })
 
     const {
       data: album,
@@ -197,9 +201,6 @@ export default defineComponent({
   @apply flex;
 }
 
-.description {
-  @apply text-primary text-sm;
-}
 @media only screen and (max-width: 1200px) {
   .footer-wrapper {
     display: flex;

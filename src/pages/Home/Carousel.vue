@@ -39,11 +39,18 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed, PropType } from 'vue'
 import { Playlist } from '@/types'
+
 export default defineComponent({
   name: 'Carousel',
   props: {
-    title: String,
-    items: Array as PropType<Playlist[]>,
+    title: {
+      type: String,
+      required: true,
+    },
+    items: {
+      type: Array as PropType<Playlist[]>,
+      required: true,
+    },
   },
   setup(props) {
     const listEl = ref<HTMLElement | null>(null)

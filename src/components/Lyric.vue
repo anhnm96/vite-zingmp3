@@ -1,6 +1,18 @@
 <template>
-  <div class="fixed inset-0 z-40 pb-20 bg-[color:var(--layout-bg)]">
-    <div class="flex flex-col justify-between h-full pt-5">
+  <div class="fixed inset-0 z-40 pb-20 bg-primary">
+    <div class="absolute inset-0 bg-[color:var(--alpha-layout-bg)]">
+      <transition
+        mode="out-in"
+        name="fade"
+      >
+        <img
+          :src="lyricData?.defaultIBGUrls[index]"
+          alt="background"
+          class="object-cover object-center w-full h-full opacity-50"
+        >
+      </transition>
+    </div>
+    <div class="flex flex-col justify-between h-full pt-5 isolate">
       <!-- header -->
       <div class="relative flex items-center">
         <!-- center -->
@@ -62,8 +74,8 @@
               v-for="(sentence, index) in sentences"
               :id="`sentence-${index}`"
               :key="`${index}-${sentence.content.trim()}`"
-              class="text-2xl font-bold text-secondary p-2.5 rounded-lg cursor-pointer hover:bg-alpha"
-              :class="currentSentenceIndex === index && 'text-purple-primary bg-alpha'"
+              class="text-2xl font-bold text-white p-2.5 rounded-lg cursor-pointer hover:bg-alpha"
+              :class="[currentSentenceIndex === index && 'text-purple-primary bg-alpha', currentSentenceIndex > index && 'text-secondary']"
               @click="seekLyric(sentence.time)"
             >
               {{ sentence.content }}
@@ -132,10 +144,18 @@ export default defineComponent({
       { immediate: true }
     )
 
+    const index = ref(0)
+    let timeBg: number
     onFetchLyricDone((result) => {
       // console.log('lyricDone', result)
       fetchKaraokeLyricData(result.file)
+      timeBg = setTimeout(changeBg, 10000)
     })
+
+    function changeBg() {
+      index.value++
+      if (index.value === lyricData.value.defaultIBGUrls.length) index.value = 0
+    }
 
     onFetchKaraokeLyricDone((result) => {
       sentences.value = lyricParser(result)
@@ -148,6 +168,7 @@ export default defineComponent({
     onBeforeUnmount(() => {
       document.body.style.overflow = ''
       clearTimeout(timeout)
+      clearTimeout(timeBg)
     })
 
     const currentSentenceIndex = ref<number>(0)
@@ -194,6 +215,7 @@ export default defineComponent({
     }
 
     return {
+      index,
       tab,
       Tab,
       sentences,
@@ -216,5 +238,14 @@ export default defineComponent({
 .hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 2.5s ease;
 }
 </style>
