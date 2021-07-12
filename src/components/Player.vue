@@ -12,7 +12,7 @@
       <!-- left -->
       <div class="flex w-1/3 space-x-3">
         <!-- thumbnail -->
-        <div class="relative flex-shrink-0">
+        <div class="relative flex-shrink-0 pointer-events-none">
           <img
             class="thumbnail"
             :src="song.thumbnail"
@@ -169,8 +169,7 @@ import { useStore } from 'vuex'
 import { PlayerState, PlayerMode } from '@/store'
 import { fetchStreaming, useApi } from '@/api'
 import ProgressBar from './ProgressBar.vue'
-import { createToast } from 'mosha-vue-toastify'
-import 'mosha-vue-toastify/dist/style.css'
+import { show } from '@/components/BaseComponents/Notification'
 
 export default defineComponent({
   name: 'Player',
@@ -210,8 +209,11 @@ export default defineComponent({
 
     onFetchStreamingFailed((result) => {
       // console.log('ERROR Fetch', result.response)
-      createToast('This content is not available', {
-        type: 'info',
+      show({
+        position: 'top-right',
+        type: 'danger',
+        title: 'Sorry, this content may not be available',
+        showProgressbar: false,
       })
       store.commit('setState', {
         prop: 'playerState',

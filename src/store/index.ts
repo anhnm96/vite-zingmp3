@@ -24,7 +24,6 @@ export enum PlayerMode {
 let timeout: number
 const store = createStore({
   state: {
-    theme: 'dark',
     howler: null,
     currentSong: null as Song,
     playlist: null as Playlist,
@@ -40,9 +39,6 @@ const store = createStore({
     playerMode: PlayerMode.DEFAULT
   },
   mutations: {
-    setTheme(state, payload) {
-      state.theme = payload
-    },
     setState(state, payload: SetStatePayload) {
       // @ts-ignore
       state[payload.prop] = payload.value

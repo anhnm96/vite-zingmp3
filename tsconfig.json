@@ -21,7 +21,8 @@
         "./src/*"
       ]
     },
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "allowJs": true
   },
   "include": [
     "src/**/*.ts",

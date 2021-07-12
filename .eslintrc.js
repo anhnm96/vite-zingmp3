@@ -17,6 +17,6 @@ module.exports = {
     'vue/one-component-per-file': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off'
   },
 }

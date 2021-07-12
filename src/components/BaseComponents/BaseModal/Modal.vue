@@ -105,7 +105,6 @@ export default defineComponent({
     })
 
     onBeforeUnmount(() => {
-      console.log('unmount')
       document.removeEventListener('keydown', onEscape)
     })
     function show() {

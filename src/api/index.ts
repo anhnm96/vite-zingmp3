@@ -11,7 +11,7 @@ export * from './useApi'
 
 const request = axios.create({
   baseURL: (import.meta.env.VITE_BASE_URL as string) || 'http://localhost:8080',
-  timeout: 5000,
+  timeout: 6000,
 })
 
 request.interceptors.response.use(

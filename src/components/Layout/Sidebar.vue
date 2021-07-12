@@ -29,14 +29,17 @@
             >
               <i
                 :class="nav.iconClass"
-                class="flex nav-icon"
+                class="flex h-6 text-2xl"
               />
               <span class="hidden text-sm font-semibold leading-normal truncate lg:block">{{ nav.text }}</span>
             </a>
           </li>
         </ul>
       </nav>
-      <div class="divider" />
+      <div
+        class="mx-6 my-3 bg-gray-400"
+        style="height: 1px;"
+      />
       <nav>
         <ul>
           <li
@@ -49,7 +52,7 @@
             >
               <i
                 :class="nav.iconClass"
-                class="flex nav-icon"
+                class="flex h-6 text-2xl"
               />
               <span class="hidden text-sm font-semibold leading-normal truncate lg:block">{{ nav.text }}</span>
             </a>
