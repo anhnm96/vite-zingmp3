@@ -1,16 +1,37 @@
 <template>
   <div class="fixed inset-0 z-40 pb-20 bg-primary">
-    <div class="absolute inset-0 bg-[color:var(--alpha-layout-bg)]">
-      <transition
-        mode="out-in"
-        name="fade"
-      >
-        <img
-          :src="lyricData?.defaultIBGUrls[index]"
-          alt="background"
-          class="object-cover object-center w-full h-full opacity-50"
+    <!-- background images -->
+    <div class="absolute inset-0 isolate bg-[color:var(--alpha-layout-bg)]">
+      <div class="opacity-50">
+        <transition
+          name="fade"
+          type="transition"
+          @after-leave="disappeared('above')"
         >
-      </transition>
+          <img
+            v-show="showBgAbove"
+            key="1"
+            :src="bgImageAbove"
+            alt="background1"
+            class="absolute inset-0 z-10 object-cover object-center w-full h-full animate-enter"
+            @animationend="animationEnd('above')"
+          >
+        </transition>
+        <transition
+          name="fade"
+          type="transition"
+          @after-leave="disappeared('bellow')"
+        >
+          <img
+            v-show="!showBgAbove"
+            key="2"
+            :src="bgImageBellow"
+            alt="background2"
+            class="absolute inset-0 object-cover object-center w-full h-full animate-enter"
+            @animationend="animationEnd('bellow')"
+          >
+        </transition>
+      </div>
     </div>
     <div class="flex flex-col justify-between h-full pt-5 isolate">
       <!-- header -->
@@ -106,6 +127,7 @@ import {
   onMounted,
   onBeforeUnmount,
   ref,
+  reactive,
 } from 'vue'
 import { useStore } from 'vuex'
 import { fetchLyric, fetchKaraokeLyric, useApi, ApiStatus } from '@/api'
@@ -144,19 +166,36 @@ export default defineComponent({
       { immediate: true }
     )
 
-    const index = ref(0)
-    let timeBg: number
     onFetchLyricDone((result) => {
-      // console.log('lyricDone', result)
       fetchKaraokeLyricData(result.file)
-      timeBg = setTimeout(changeBg, 10000)
     })
 
-    function changeBg() {
-      index.value++
-      if (index.value === lyricData.value.defaultIBGUrls.length) index.value = 0
+    // transition background images
+    let timeBg: number
+    const showBgAbove = ref(true)
+    const bgIndexes = reactive({ above: 0, bellow: 1 })
+    function animationEnd(key: 'above' | 'bellow') {
+      console.log('animationAboveEnd', key)
+      timeBg = setTimeout(() => {
+        showBgAbove.value = !showBgAbove.value
+      }, 1500)
     }
 
+    function disappeared(key: 'above' | 'bellow') {
+      console.log('afterleave', key)
+      if (bgIndexes[key] + 2 < lyricData.value.defaultIBGUrls.length)
+        bgIndexes[key] += 2
+      else bgIndexes[key] = key === 'above' ? 0 : 1
+    }
+
+    const bgImageAbove = computed(
+      () => lyricData.value?.defaultIBGUrls[bgIndexes['above']]
+    )
+    const bgImageBellow = computed(
+      () => lyricData.value?.defaultIBGUrls[bgIndexes['bellow']]
+    )
+
+    //
     onFetchKaraokeLyricDone((result) => {
       sentences.value = lyricParser(result)
     })
@@ -215,7 +254,11 @@ export default defineComponent({
     }
 
     return {
-      index,
+      showBgAbove,
+      bgImageAbove,
+      bgImageBellow,
+      disappeared,
+      animationEnd,
       tab,
       Tab,
       sentences,
@@ -239,6 +282,7 @@ export default defineComponent({
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -246,6 +290,19 @@ export default defineComponent({
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 2.5s ease;
+  transition: opacity 5s ease;
+}
+
+.animate-enter {
+  animation: animateEnter 10s linear forwards;
+}
+
+@keyframes animateEnter {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
 </style>

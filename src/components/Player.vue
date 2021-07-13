@@ -49,10 +49,10 @@
         </div>
         <!-- detail -->
         <div class="flex flex-col justify-center space-y-1 overflow-hidden">
-          <h4 class="font-semibold truncate text-md text-primary">
+          <h4 class="font-semibold truncate text-md text-player">
             {{ song.title }}
           </h4>
-          <p class="text-xs text-secondary">
+          <p class="text-xs text-player">
             {{ song.artistsNames }}
           </p>
         </div>
@@ -116,7 +116,7 @@
         </div>
         <!-- seeker -->
         <div class="flex items-center space-x-3">
-          <span class="text-xs font-semibold text-secondary">{{ seek }}</span>
+          <span class="text-xs font-semibold opacity-50 text-player">{{ seek }}</span>
           <ProgressBar v-model:progress="playerProgress" />
           <span class="text-xs font-bold text-primary">{{ duration }}</span>
         </div>
@@ -125,19 +125,19 @@
       <div class="flex items-center justify-end w-1/3">
         <button
           v-if="song.mvlink"
-          class="flex items-center justify-center w-8 h-8 rounded-full text-secondary hover:bg-alpha focus:outline-none"
+          class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha focus:outline-none"
         >
           <i class="flex ic-mv" />
         </button>
         <button
-          class="flex items-center justify-center w-8 h-8 ml-2 rounded-full text-secondary hover:bg-alpha focus:outline-none"
+          class="flex items-center justify-center w-8 h-8 ml-2 rounded-full text-player hover:bg-alpha focus:outline-none"
           @click="toggleShowLyric"
         >
           <i class="flex ic-karaoke" />
         </button>
         <div class="flex items-center ml-2 space-x-2">
           <button
-            class="flex items-center justify-center w-8 h-8 rounded-full text-secondary hover:bg-alpha focus:outline-none"
+            class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha focus:outline-none"
             @click="toggleMute"
           >
             <i
@@ -152,7 +152,7 @@
         </div>
         <div class="pl-4 ml-6 border-l btn-toggle border-player">
           <button
-            class="flex items-center justify-center w-8 h-8 rounded-full text-secondary hover:bg-alpha focus:outline-none"
+            class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha focus:outline-none"
             @click="toggleShowPlaylist"
           >
             <i class="flex ic-list-music" />

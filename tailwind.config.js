@@ -14,6 +14,7 @@ module.exports = {
         navigation: 'var(--navigation-text)',
         'item-hover': 'var(--text-item-hover)',
         'link-hover': 'var(--link-text-hover)',
+        player: 'var(--player-text)'
       },
       colors: {
         'purple-primary': 'var(--purple-primary)',
