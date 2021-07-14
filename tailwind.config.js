@@ -37,6 +37,7 @@ module.exports = {
         alpha: 'var(--alpha-bg)',
         sidebar: 'var(--sidebar-bg)',
         'sidebar-popup': 'var(--sidebar-popup-bg)',
+        blur: 'var(--kara-btn-bg)'
       },
       backgroundImage: {
         'loading-img':

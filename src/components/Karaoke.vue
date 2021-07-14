@@ -2,7 +2,7 @@
   <div>
     <h4
       v-if="countdown <= 3 &&countdown > 0"
-      class="absolute text-2xl font-bold text-center transform -translate-x-1/2 left-1/2"
+      class="absolute text-2xl font-bold text-center text-white transform -translate-x-1/2 left-1/2"
     >
       {{ countdown }}
     </h4>
@@ -51,7 +51,7 @@ export default defineComponent({
     const Colors = computed(() => {
       return {
         primary: '#fff',
-        stroke: '#7200a1',
+        stroke: '#4a90e2',
       }
     })
     let ctx: CanvasRenderingContext2D
@@ -120,7 +120,7 @@ export default defineComponent({
           const positionY = height / 2 + textHeight * index - textHeight / 2
           const positionX = width / 2
 
-          ctx.font = `bold ${fontsize[index]}px Arial`
+          ctx.font = `bold ${fontsize[index]}px ${fontFamily}`
           ctx.fillText(text, positionX, positionY)
         }
       )

@@ -12,7 +12,7 @@
       <!-- left -->
       <div class="flex w-1/3 space-x-3">
         <!-- thumbnail -->
-        <div class="relative flex-shrink-0 pointer-events-none">
+        <div class="relative flex-shrink-0 pointer-events-none text-player">
           <img
             class="thumbnail"
             :src="song.thumbnail"
@@ -58,10 +58,10 @@
         </div>
         <!-- actions -->
         <div class="flex place-items-center">
-          <button class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha">
+          <button class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha">
             <i class="flex ic-like" />
           </button>
-          <button class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-alpha">
+          <button class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha">
             <i class="flex ic-more" />
           </button>
         </div>
@@ -74,21 +74,21 @@
         <!-- controls -->
         <div class="flex items-center justify-center space-x-4">
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
             :class="isShuffled && 'text-link-hover'"
             @click="toggleShuffleSongList"
           >
             <i class="flex ic-shuffle" />
           </button>
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
             @click="playPrevious"
           >
             <i class="flex ic-pre" />
           </button>
           <button
             :disabled="playerState === PlayerState.LOADING"
-            class="flex items-center justify-center w-12 h-12 text-4xl rounded-full focus:outline-none text-primary"
+            class="flex items-center justify-center w-12 h-12 text-4xl rounded-full focus:outline-none text-player"
             @click="togglePlay"
           >
             <i
@@ -98,13 +98,13 @@
             <Loading v-if="playerState === PlayerState.LOADING" />
           </button>
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
             @click="playNext"
           >
             <i class="flex ic-next" />
           </button>
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-primary hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
             :class="{ 'text-link-hover': playerMode !== PlayerMode.DEFAULT }"
             @click="setNextPlayerMode"
           >
@@ -118,7 +118,7 @@
         <div class="flex items-center space-x-3">
           <span class="text-xs font-semibold opacity-50 text-player">{{ seek }}</span>
           <ProgressBar v-model:progress="playerProgress" />
-          <span class="text-xs font-bold text-primary">{{ duration }}</span>
+          <span class="text-xs font-bold text-player">{{ duration }}</span>
         </div>
       </div>
       <!-- right -->
@@ -280,7 +280,6 @@ export default defineComponent({
 }
 
 .note {
-  color: var(--text-primary);
   height: 10px;
   width: 10px;
   position: absolute;
