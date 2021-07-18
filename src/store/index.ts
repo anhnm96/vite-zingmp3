@@ -2,6 +2,8 @@ import { createStore } from 'vuex'
 import { Howl } from 'howler'
 import { formatTime, shuffle } from '@/helpers'
 import { Song, Playlist } from '../types'
+import { fetchStreaming, useApi } from '@/api'
+import { show } from '@/components/BaseComponents/Notification'
 
 interface SetStatePayload {
   prop: string
@@ -12,13 +14,13 @@ export enum PlayerState {
   IDLE = 'IDLE',
   LOADING = 'LOADING',
   PLAYING = 'PLAYING',
-  PAUSE = 'PAUSE'
+  PAUSE = 'PAUSE',
 }
 
 export enum PlayerMode {
   DEFAULT = 'DEFAULT',
   REPEAT_LIST = 'REPEAT_LIST',
-  REPEAT_SONG = 'REPEAT_SONG'
+  REPEAT_SONG = 'REPEAT_SONG',
 }
 
 let timeout: number
@@ -36,7 +38,7 @@ const store = createStore({
     showPlaylist: true,
     isShuffled: false,
     shuffledList: [] as Song[],
-    playerMode: PlayerMode.DEFAULT
+    playerMode: PlayerMode.DEFAULT,
   },
   mutations: {
     setState(state, payload: SetStatePayload) {
@@ -70,13 +72,6 @@ const store = createStore({
         ],
       })
     },
-    togglePlay(state) {
-      if (state.howler?.playing()) {
-        state.howler.pause()
-      } else {
-        state.howler.play()
-      }
-    },
     setVolume(state, payload: number) {
       if (state.isMuted) {
         state.howler.mute(false)
@@ -95,8 +90,16 @@ const store = createStore({
     toggleShuffleSongList(state) {
       state.isShuffled = !state.isShuffled
       if (state.isShuffled) {
-        const currentIndex = state.playlist.song.items.findIndex((song: Song) => song.encodeId === state.currentSong.encodeId)
-        state.shuffledList = [state.currentSong, ...shuffle([...state.playlist.song.items.slice(0, currentIndex), ...state.playlist.song.items.slice(currentIndex + 1)])]
+        const currentIndex = state.playlist.song.items.findIndex(
+          (song: Song) => song.encodeId === state.currentSong.encodeId
+        )
+        state.shuffledList = [
+          state.currentSong,
+          ...shuffle([
+            ...state.playlist.song.items.slice(0, currentIndex),
+            ...state.playlist.song.items.slice(currentIndex + 1),
+          ]),
+        ]
       }
     },
     setNextPlayerMode(state) {
@@ -104,13 +107,56 @@ const store = createStore({
         state.playerMode = PlayerMode.REPEAT_LIST
       else if (state.playerMode === PlayerMode.REPEAT_LIST)
         state.playerMode = PlayerMode.REPEAT_SONG
-      else
-        state.playerMode = PlayerMode.DEFAULT
-    }
+      else state.playerMode = PlayerMode.DEFAULT
+    },
   },
   actions: {
+    togglePlay({ state, dispatch }) {
+      if (!state.howler || store.state.howler.state() === 'unloaded') {
+        dispatch('fetchStreamingAction')
+        return
+      }
+      if (state.howler.playing()) {
+        state.howler.pause()
+      } else {
+        state.howler.play()
+      }
+    },
+    fetchStreamingAction({ state, commit, dispatch }) {
+      // fetch streaming for current song
+      commit('setState', {
+        prop: 'playerState',
+        value: PlayerState.LOADING,
+      })
+      const {
+        exec: fetchStreamingData,
+        onSuccess: onFetchStreamingSuccess,
+        onError: onFetchStreamingFailed,
+      } = useApi(fetchStreaming)
+      fetchStreamingData(
+        state.currentSong.encodeId,
+        state.currentSong.isWorldWide
+      )
+
+      onFetchStreamingSuccess((result) => {
+        dispatch('loadSong', result['128'])
+      })
+
+      onFetchStreamingFailed(() => {
+        show({
+          position: 'top-right',
+          type: 'danger',
+          title: 'Sorry, this content may not be available',
+          showProgressbar: false,
+        })
+        commit('setState', {
+          prop: 'playerState',
+          value: PlayerState.PAUSE,
+        })
+      })
+    },
     loadSong({ commit, state, dispatch, getters }, payload) {
-      // destroy Howl object 
+      // destroy Howl object
       if (state.howler instanceof Howl) {
         state.howler.unload()
         clearTimeout(timeout)
@@ -121,8 +167,9 @@ const store = createStore({
         value: new Howl({
           src: [payload],
           html5: true,
-          volume: state.volume
-        })
+          volume: state.volume,
+          mute: state.isMuted,
+        }),
       })
 
       state.howler.on('play', () => {
@@ -160,9 +207,15 @@ const store = createStore({
         }
         if (getters.nextSongs.length === 0) {
           if (state.playerMode === PlayerMode.REPEAT_LIST) {
-            commit('setState', { prop: 'currentSong', value: getters.songList[0] })
+            commit('setState', {
+              prop: 'currentSong',
+              value: getters.songList[0],
+            })
           } else {
-            commit('setState', { prop: 'playerState', value: PlayerState.PAUSE })
+            commit('setState', {
+              prop: 'playerState',
+              value: PlayerState.PAUSE,
+            })
           }
           return
         }
@@ -177,7 +230,10 @@ const store = createStore({
         // console.log('timemout')
         const currentTime = state.howler.seek()
         commit('setState', { prop: 'seek', value: formatTime(currentTime) })
-        commit('setState', { prop: 'playerProgress', value: (currentTime / state.howler.duration()) * 100 })
+        commit('setState', {
+          prop: 'playerProgress',
+          value: (currentTime / state.howler.duration()) * 100,
+        })
         dispatch('progress')
       }, 500)
     },
@@ -195,12 +251,17 @@ const store = createStore({
     playPrevious({ commit, getters }) {
       console.log('playPrevious', getters.previousSongs)
       if (!getters.previousSongs.length) return
-      commit('setState', { prop: 'currentSong', value: getters.previousSongs[getters.previousSongs.length - 1] })
-    }
+      commit('setState', {
+        prop: 'currentSong',
+        value: getters.previousSongs[getters.previousSongs.length - 1],
+      })
+    },
   },
   getters: {
     currentIndex(state, getters) {
-      return getters.songList.findIndex((song: Song) => song.encodeId === state.currentSong.encodeId)
+      return getters.songList.findIndex(
+        (song: Song) => song.encodeId === state.currentSong.encodeId
+      )
     },
     previousSongs(_state, getters) {
       if (getters.currentIndex < 1) return []
@@ -223,8 +284,16 @@ const store = createStore({
     },
     isPlaying(state) {
       return state.playerState === PlayerState.PLAYING
-    }
-  }
+    },
+  },
 })
+
+store.watch(
+  (state) => state.currentSong,
+  () => {
+    store.state.howler?.unload()
+    store.dispatch('fetchStreamingAction')
+  }
+)
 
 export default store

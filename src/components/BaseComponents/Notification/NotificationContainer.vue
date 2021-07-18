@@ -10,7 +10,8 @@ export default defineComponent({
     return (
       <div
         aria-live="assertive"
-        className="fixed inset-0 flex items-end pointer-events-none sm:items-start z-50"
+        className="fixed inset-0 flex items-end pointer-events-none sm:items-start"
+        style="z-index: 999"
       >
         {notifications.value['top-right'].length > 0 && (
           <div className="items-end right-0 top-0 flex flex-col space-y-2 sm:p-6 px-4 py-6 absolute">

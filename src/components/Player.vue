@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="song"
     id="player"
     class="fixed bottom-0 w-full bg-layout"
     :class="{ 'playing': playerState === PlayerState.PLAYING, 'border-none bg-transparent': showLyric }"
@@ -164,12 +163,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import { PlayerState, PlayerMode } from '@/store'
-import { fetchStreaming, useApi } from '@/api'
 import ProgressBar from './ProgressBar.vue'
-import { show } from '@/components/BaseComponents/Notification'
 
 export default defineComponent({
   name: 'Player',
@@ -196,52 +193,6 @@ export default defineComponent({
       },
     })
 
-    // fetch streaming for current song
-    const {
-      exec: fetchStreamingData,
-      onSuccess: onFetchStreamingSuccess,
-      onError: onFetchStreamingFailed,
-    } = useApi(fetchStreaming)
-
-    onFetchStreamingSuccess((result) => {
-      store.dispatch('loadSong', result['128'])
-    })
-
-    onFetchStreamingFailed((result) => {
-      // console.log('ERROR Fetch', result.response)
-      show({
-        position: 'top-right',
-        type: 'danger',
-        title: 'Sorry, this content may not be available',
-        showProgressbar: false,
-      })
-      store.commit('setState', {
-        prop: 'playerState',
-        value: PlayerState.PAUSE,
-      })
-    })
-
-    watch(
-      () => store.state.currentSong,
-      (newSong) => {
-        store.state.howler?.unload()
-        store.commit('setState', {
-          prop: 'playerState',
-          value: PlayerState.LOADING,
-        })
-        fetchStreamingData(newSong.encodeId, newSong.isWorldWide)
-      },
-      { immediate: true }
-    )
-
-    function togglePlay() {
-      if (store.state.howler.state() === 'unloaded') {
-        fetchStreamingData(store.state.currentSong.encodeId)
-      } else {
-        store.commit('togglePlay')
-      }
-    }
-
     return {
       song,
       playerProgress,
@@ -255,7 +206,7 @@ export default defineComponent({
       duration: computed(() => store.getters.duration),
       isShuffled: computed(() => store.state.isShuffled),
       playerMode: computed(() => store.state.playerMode),
-      togglePlay,
+      togglePlay: () => store.dispatch('togglePlay'),
       toggleMute: () => store.commit('toggleMute'),
       toggleShowLyric: () => store.commit('toggleShowLyric'),
       toggleShowPlaylist: () => store.commit('toggleShowPlaylist'),

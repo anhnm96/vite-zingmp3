@@ -7,42 +7,51 @@
     <!-- tabs -->
     <div class="z-20 flex items-center px-2 py-4 space-x-1 h-17 bg-[color:var(--layout-bg)]">
       <div class="flex p-1 rounded-full bg-alpha">
-        <button
-          class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full bg-tab-active text-item-hover"
-        >Danh sách phát</button>
-        <button
-          class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full text-secondary"
-        >Nghe gần đây</button>
+        <button class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full bg-tab-active text-item-hover">
+          Danh sách phát
+        </button>
+        <button class="focus:outline-none px-3 font-semibold py-1.5 text-xs rounded-full text-secondary">
+          Nghe gần đây
+        </button>
       </div>
       <button
         class="flex items-center justify-center w-8 h-8 text-white rounded-full disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none bg-purple-primary"
         :disabled="!currentSong"
       >
-        <i class="flex ic-clock"></i>
+        <i class="flex ic-clock" />
       </button>
       <button
         class="flex items-center justify-center w-8 h-8 rounded-full disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none text-secondary bg-alpha"
         :disabled="!currentSong"
       >
-        <i class="flex ic-more"></i>
+        <i class="flex ic-more" />
       </button>
     </div>
     <div class="px-2">
-      <div v-show="currentSong" class="h-main" ref="scroll">
+      <div
+        v-show="currentSong"
+        ref="scroll"
+        class="h-main"
+      >
         <template v-if="currentSong">
           <!-- Previous songs -->
           <SongQueue
             v-for="song in previousSongs"
-            :key="song.title"
+            :key="`${song.title}-${song.artistsNames}`"
             :song="song"
             class="opacity-50 hover:opacity-100"
           />
           <!-- Current song -->
-          <SongQueue :active="true" :song="currentSong" />
+          <SongQueue
+            :active="true"
+            :song="currentSong"
+          />
           <template v-if="playlist">
             <!-- Next songs intro -->
             <div class="mt-3">
-              <h4 class="text-sm font-bold">Tiếp theo</h4>
+              <h4 class="text-sm font-bold">
+                Tiếp theo
+              </h4>
               <p class="text-sm font-semibold text-secondary">
                 Từ playlist
                 <span class="text-bg">{{ playlist.title }}</span>
@@ -50,24 +59,29 @@
             </div>
             <!-- Songs in queue -->
             <div class="mt-2">
-              <SongQueue v-for="song in nextSongs" :key="song.title" :song="song" />
+              <SongQueue
+                v-for="song in nextSongs"
+                :key="`${song.title}-${song.artistsNames}`"
+                :song="song"
+              />
             </div>
           </template>
         </template>
       </div>
       <template v-if="!currentSong">
-        <MediaSkeleton v-for="i in 4" :key="i" />
-        <div
-          class="absolute flex flex-col items-center px-8 space-y-4 transform -translate-y-1/2 top-1/2"
-        >
+        <MediaSkeleton
+          v-for="i in 4"
+          :key="i"
+        />
+        <div class="absolute flex flex-col items-center px-8 space-y-4 transform -translate-y-1/2 top-1/2">
           <h4
             class="text-sm text-center text-primary"
             style="word-break: 'break-word';"
-          >Khám phá thêm các bài hát mới của Zing MP3</h4>
-          <button
-            class="flex items-center px-6 py-1.5 space-x-2 text-sm font-semibold rounded-full text-white bg-purple-primary"
           >
-            <i class="flex ic-play"></i>
+            Khám phá thêm các bài hát mới của Zing MP3
+          </h4>
+          <button class="flex items-center px-6 py-1.5 space-x-2 text-sm font-semibold rounded-full text-white bg-purple-primary">
+            <i class="flex ic-play" />
             <span class="flex">Phát nhạc mới phát hành</span>
           </button>
         </div>
@@ -77,13 +91,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  ref,
-  onBeforeUnmount,
-  onMounted
-} from 'vue'
+import { defineComponent, computed, ref, onBeforeUnmount, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import clickOutside from '@/directives/clickOutside'
 import Scrollbar from 'smooth-scrollbar'

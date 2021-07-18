@@ -7,7 +7,7 @@
         <main
           ref="main"
           class="px-9"
-          :class="currentSong ? 'h-main' : 'h-main-2'"
+          :class="playlist ? 'h-main' : 'h-main-2'"
         >
           <div class="py-5">
             <router-view />
@@ -17,7 +17,7 @@
       <Playlist />
     </div>
     <Player
-      v-if="currentSong"
+      v-if="playlist"
       class="z-50"
     />
     <keep-alive>
@@ -75,12 +75,12 @@ export default defineComponent({
     })
 
     const showLyricModal = computed(() => store.state.showLyric)
-    const currentSong = computed(() => store.state.currentSong)
+    const playlist = computed(() => store.state.playlist)
 
     return {
       main,
       showLyricModal,
-      currentSong,
+      playlist,
     }
   },
 })

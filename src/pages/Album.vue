@@ -55,7 +55,7 @@
         </div>
       </div>
       <!-- right -->
-      <div class="mt-4 clg:mt-0">
+      <div class="flex-grow mt-4 clg:mt-0">
         <p class="text-sm">
           <span class="text-secondary">Lời tựa: </span>
           <span class="font-semibold text-primary">{{ album.description }}</span>
@@ -63,7 +63,7 @@
         <div class="mt-4">
           <song-item
             v-for="song in album.song.items"
-            :key="song.title"
+            :key="`${song.title}-${song.artistsNames}`"
             :song="song"
             @playsong="playsong"
           />
@@ -115,7 +115,7 @@ export default defineComponent({
           value: album.value.song.items[0],
         })
       } else {
-        store.commit('togglePlay')
+        store.dispatch('togglePlay')
       }
     }
 

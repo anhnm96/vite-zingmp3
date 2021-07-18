@@ -93,7 +93,7 @@ export default defineComponent({
       if (store.state.currentSong?.encodeId !== props.song.encodeId) {
         emit('playsong', props.song)
       } else {
-        store.commit('togglePlay')
+        store.dispatch('togglePlay')
       }
     }
 

@@ -119,7 +119,7 @@
         <!-- player -->
         <div class="text-center">
           <span class="text-sm font-bold text-player">{{ currentSong.title }}</span>
-          <span class="text-sm opacity-50 text-player">- {{ currentSong.artistsNames }}</span>
+          <span class="text-sm opacity-50 text-player"> - {{ currentSong.artistsNames }}</span>
         </div>
       </div>
     </div>

@@ -67,7 +67,7 @@ export default defineComponent({
 
     function fetchListAndPlay() {
       if (isActive.value) {
-        store.commit('togglePlay')
+        store.dispatch('togglePlay')
       } else {
         fetchSongListData(props.list.encodeId)
       }

@@ -5,34 +5,46 @@
         <skeleton
           class="pb-[56.25%]"
           style="animation: 2s ease-in-out 0s infinite normal none running loading"
-        ></skeleton>
+        />
       </div>
       <div class="bg-[color:var(--layout-bg)] w-[46.5%] m-auto transform translate-x-0 z-20">
         <skeleton
           class="pb-[56.25%]"
           style="animation: 2s ease-in-out 0s infinite normal none running loading"
-        ></skeleton>
+        />
         <!-- style="animation: 2s ease-in-out 0s infinite normal none running loading" -->
       </div>
       <div class="absolute inset-x-0 w-[46.5%] m-auto transform z-10 scale-85 translate-x-2/3">
-        <skeleton class="pb-[56.25%]"></skeleton>
+        <skeleton class="pb-[56.25%]" />
       </div>
     </div>
     <!-- carousel -->
     <skeleton-carousel class="mt-7" />
   </div>
   <template v-if="statusSuccess || page > 1">
-    <section v-for="(section, index) in home.sections" :key="index">
-      <Slider v-if="section.sectionType === 'banner'" :items="section.items" />
+    <section
+      v-for="(section, index) in home.sections"
+      :key="index"
+    >
+      <Slider
+        v-if="section.sectionType === 'banner'"
+        :items="section.items"
+      />
       <Carousel
-        class="mt-7"
         v-if="section.sectionType === 'playlist'"
+        class="mt-7"
         :items="section.items"
         :title="section.title"
       />
     </section>
-    <InfiniteLoad class="fixed bottom-20" @infinite-load="fetchMore" />
-    <skeleton-carousel v-if="statusPending && page > 1" class="mt-7" />
+    <InfiniteLoad
+      class="fixed bottom-20"
+      @infinite-load="fetchMore"
+    />
+    <skeleton-carousel
+      v-if="statusPending && page > 1"
+      class="mt-7"
+    />
   </template>
 </template>
 
@@ -50,7 +62,7 @@ export default defineComponent({
     Slider,
     Carousel,
     InfiniteLoad,
-    SkeletonCarousel
+    SkeletonCarousel,
   },
   setup() {
     const page = ref<number>(1)
@@ -61,7 +73,7 @@ export default defineComponent({
       onSuccess,
       onError,
       statusPending,
-      statusSuccess
+      statusSuccess,
     } = useApi(fetchHome)
     fetchHomeData(page.value)
 

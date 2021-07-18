@@ -56,7 +56,10 @@ import { PlayerState } from '@/store'
 export default defineComponent({
   name: 'SongQueue',
   props: {
-    song: Object as PropType<Song>,
+    song: {
+      type: Object as PropType<Song>,
+      required: true,
+    },
     active: Boolean,
   },
   setup(props) {
@@ -64,7 +67,7 @@ export default defineComponent({
 
     function play() {
       if (props.active) {
-        store.commit('togglePlay')
+        store.dispatch('togglePlay')
       } else {
         // setTimeout for delay setCurrentSong. If not
         // the clickOutside will not detect that event.target
