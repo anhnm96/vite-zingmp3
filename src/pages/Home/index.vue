@@ -22,21 +22,21 @@
     <skeleton-carousel class="mt-7" />
   </div>
   <template v-if="statusSuccess || page > 1">
-    <section
-      v-for="(section, index) in home.sections"
-      :key="index"
-    >
-      <Slider
+    <template v-for="(section, index) in home.sections">
+      <section
         v-if="section.sectionType === 'banner'"
-        :items="section.items"
-      />
-      <Carousel
+        :key="index"
+      >
+        <Slider :items="section.items" />
+      </section>
+      <HomeCarousel
         v-if="section.sectionType === 'playlist'"
-        class="mt-7"
+        :key="index"
         :items="section.items"
         :title="section.title"
+        class="mt-7"
       />
-    </section>
+    </template>
     <InfiniteLoad
       class="fixed bottom-20"
       @infinite-load="fetchMore"
@@ -53,14 +53,14 @@ import { defineComponent, ref, reactive } from 'vue'
 import { useApi, fetchHome } from '@/api'
 import Slider from '@/components/Slider.vue'
 import SkeletonCarousel from './SkeletonCarousel.vue'
-import Carousel from './Carousel.vue'
+import HomeCarousel from './HomeCarousel.vue'
 import InfiniteLoad from '@/components/InfiniteLoad.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     Slider,
-    Carousel,
+    HomeCarousel,
     InfiniteLoad,
     SkeletonCarousel,
   },

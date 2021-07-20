@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div>
     <div class="card-main">
       <img
         :src="list.thumbnail"
@@ -86,9 +86,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.card {
-  @apply flex-shrink-0;
-}
 .card-title {
   @apply text-sm font-bold text-primary mt-2 block overflow-hidden;
   word-break: break-word;
