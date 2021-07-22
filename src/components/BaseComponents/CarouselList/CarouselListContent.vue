@@ -11,8 +11,10 @@
       <slot />
     </ul>
     <slot
-      name="item-actions"
-      :index="scrollIndex"
+      name="controls"
+      :index="activeIndex"
+      :hasPrev="hasPrev"
+      :hasNext="hasNext"
       :prev="prev"
       :next="next"
     />
@@ -29,10 +31,7 @@ import {
   provide,
   inject,
 } from 'vue'
-import { useCarouselList } from './CarouselList.vue'
-
-const CAROUSEL_CONTENT_SYMBOL = Symbol('CarouselListContent')
-export const useCarouselListContent = () => inject(CAROUSEL_CONTENT_SYMBOL)
+import { CarouselListKey, CarouselListContentKey } from './symbols'
 
 export default defineComponent({
   name: 'CarouselListContent',
@@ -43,7 +42,7 @@ export default defineComponent({
     },
     itemsToList: {
       type: Number,
-      default: Infinity,
+      default: -1,
     },
     repeat: {
       type: Boolean,
@@ -52,18 +51,70 @@ export default defineComponent({
   },
   setup(props) {
     // provide context
-    const carouselItems = ref([])
-    provide(CAROUSEL_CONTENT_SYMBOL, {
+    const carouselItems = ref<HTMLElement[]>([])
+    provide(CarouselListContentKey, {
       carouselItems,
     })
 
     const el = ref()
-    const scrollIndex = ref(0)
+    const activeIndex = ref(0)
     const itemWidth = ref(0)
 
+    const itemsToShow = computed(() => {
+      if (!el.value) return 0
+      return Math.round(
+        el.value.getBoundingClientRect().width / itemWidth.value
+      )
+    })
+
+    const hasPrev = computed<boolean>(() => {
+      return activeIndex.value > 0
+    })
+
+    const hasNext = computed<boolean>(() => {
+      return activeIndex.value < carouselItems.value.length - itemsToShow.value
+    })
+
+    function prev() {
+      if (!hasPrev.value && props.repeat) {
+        activeIndex.value = carouselItems.value.length - itemsToShow.value
+        return
+      }
+
+      const gap =
+        props.itemsToList === -1 ? itemsToShow.value : props.itemsToList
+      activeIndex.value -= gap
+      if (activeIndex.value < 0) activeIndex.value = 0
+    }
+
+    function next() {
+      if (!hasNext.value && props.repeat) {
+        activeIndex.value = 0
+        return
+      }
+
+      const lastAllowIndex = carouselItems.value.length - itemsToShow.value
+      const gap =
+        props.itemsToList === -1 ? itemsToShow.value : props.itemsToList
+      const nextActiveIndex = activeIndex.value + gap
+      // make sure we don't over translateX
+      if (nextActiveIndex > lastAllowIndex) {
+        activeIndex.value = lastAllowIndex
+        return
+      }
+      activeIndex.value = nextActiveIndex
+    }
+
     // expose these data to parent CarouselList
-    const parentData = useCarouselList()
-    Object.assign(parentData, { scrollIndex, prev, next })
+    const parentData = inject(CarouselListKey)
+    Object.assign(parentData, { activeIndex, hasPrev, hasNext, prev, next })
+
+    function refresh() {
+      itemWidth.value = carouselItems.value[0].getBoundingClientRect().width
+      // make sure we don't over translateX
+      if (activeIndex.value > carouselItems.value.length - itemsToShow.value)
+        activeIndex.value = carouselItems.value.length - itemsToShow.value
+    }
 
     // use resizeObserver to recalculate CarouselItem width
     let observer: ResizeObserver
@@ -76,55 +127,11 @@ export default defineComponent({
       observer.disconnect()
     })
 
-    function refresh() {
-      itemWidth.value = carouselItems.value[0].getBoundingClientRect().width
-      // make sure we don't over translateX
-      if (scrollIndex.value > carouselItems.value.length - itemsToShow.value)
-        scrollIndex.value = carouselItems.value.length - itemsToShow.value
-    }
-
-    const itemsToShow = computed(() => {
-      return Math.round(
-        el.value.getBoundingClientRect().width / itemWidth.value
-      )
-    })
-
     const translation = computed(() => {
-      return -(scrollIndex.value * itemWidth.value)
+      return -(activeIndex.value * itemWidth.value)
     })
 
-    function prev() {
-      if (scrollIndex.value === 0 && props.repeat) {
-        scrollIndex.value = carouselItems.value.length - itemsToShow.value
-        return
-      }
-
-      const gap =
-        props.itemsToList === Infinity ? itemsToShow.value : props.itemsToList
-      scrollIndex.value -= gap
-      if (scrollIndex.value < 0) scrollIndex.value = 0
-    }
-
-    function next() {
-      const lastAllowIndex = carouselItems.value.length - itemsToShow.value
-
-      if (scrollIndex.value === lastAllowIndex && props.repeat) {
-        scrollIndex.value = 0
-        return
-      }
-
-      const gap =
-        props.itemsToList === Infinity ? itemsToShow.value : props.itemsToList
-      const nextScrollIndex = scrollIndex.value + gap
-      // make sure we don't over translateX
-      if (nextScrollIndex > lastAllowIndex) {
-        scrollIndex.value = lastAllowIndex
-        return
-      }
-      scrollIndex.value = nextScrollIndex
-    }
-
-    return { el, prev, next, translation, scrollIndex }
+    return { el, hasNext, hasPrev, prev, next, translation, activeIndex }
   },
 })
 </script>

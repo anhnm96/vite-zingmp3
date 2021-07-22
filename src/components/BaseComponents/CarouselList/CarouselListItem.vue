@@ -1,23 +1,28 @@
 <template>
-  <li class="carousel-item">
+  <li
+    ref="itemEl"
+    class="carousel-item"
+  >
     <slot />
   </li>
 </template>
 
-<script>
-import { onMounted, getCurrentInstance } from 'vue'
-import { useCarouselListContent } from './CarouselListContent.vue'
+<script lang="ts">
+import { defineComponent, onMounted, ref, inject } from 'vue'
+import { CarouselListContentKey } from './symbols'
 
-export default {
+export default defineComponent({
   name: 'CarouselListItem',
   setup() {
-    const instance = getCurrentInstance()
-    const { carouselItems } = useCarouselListContent()
+    const itemEl = ref()
+    const { carouselItems } = inject(CarouselListContentKey)
     onMounted(() => {
-      carouselItems.value.push(instance.ctx.$el)
+      carouselItems.value.push(itemEl.value)
     })
+
+    return { itemEl }
   },
-}
+})
 </script>
 
 <style>
