@@ -1,0 +1,262 @@
+{
+  "items": [
+    {
+      "keywords": [
+        {
+          "type": 0,
+          "keyword": "buồn lắm em ơi",
+          "suggestType": 2
+        },
+        {
+          "type": 0,
+          "keyword": "buồn của anh",
+          "suggestType": 2
+        },
+        {
+          "type": 0,
+          "keyword": "buồn vì ta mất nhau",
+          "suggestType": 2
+        },
+        {
+          "type": 0,
+          "keyword": "buồn không em",
+          "suggestType": 2
+        }
+      ]
+    },
+    {
+      "suggestions": [
+        {
+          "type": 1,
+          "title": "Buồn (Future Bass Remix)",
+          "id": "ZW80D7FA",
+          "radioPid": "ZEFD6UUE",
+          "hasVideo": false,
+          "thumb": "https://photo-zmp3.zadn.vn/thumb/165_165/covers/5/b/5bbc2eac344f6abacfa3dcab40850917_1501467418.jpg",
+          "thumbVideo": "",
+          "duration": 245,
+          "status": 1,
+          "playStatus": 1,
+          "artists": [
+            {
+              "name": "Vũ Duy Khánh",
+              "id": "IWZ9ZCEW"
+            }
+          ],
+          "genres": [
+            {
+              "name": "Việt Nam",
+              "id": "IWZ9Z08I"
+            },
+            {
+              "name": "Dance Việt",
+              "id": "IWZ9Z0CW"
+            }
+          ],
+          "disSPlatform": 0,
+          "disDPlatform": 0,
+          "boolAtt": 18
+        },
+        {
+          "type": 1,
+          "title": "Buồn Của Anh",
+          "id": "ZW8WD9BE",
+          "radioPid": "ZEFDFW9B",
+          "hasVideo": true,
+          "thumb": "https://photo-zmp3.zadn.vn/thumb/165_165/covers/c/0/c0827e5f2c898fc987e7883151b0476a_1513651595.png",
+          "thumbVideo": "https://photo-zmp3.zadn.vn/thumb/240_135/thumb_video/9/c/9c2cfa5cbfeae42275cad35bc50790e9_1513848418.jpg",
+          "duration": 288,
+          "status": 1,
+          "playStatus": 2,
+          "video": {
+            "playStatus": 2,
+            "status": 1
+          },
+          "artists": [
+            {
+              "name": "Đạt G",
+              "id": "IWZFEEU7"
+            },
+            {
+              "name": "Masew",
+              "id": "IWZFD77I"
+            },
+            {
+              "name": "K-ICM",
+              "id": "IWZFFOWB"
+            }
+          ],
+          "genres": [
+            {
+              "name": "Việt Nam",
+              "id": "IWZ9Z08I"
+            },
+            {
+              "name": "Nhạc Trẻ",
+              "id": "IWZ9Z088"
+            },
+            {
+              "name": "V-Pop",
+              "id": "IWZ97FCD"
+            }
+          ],
+          "disSPlatform": 0,
+          "disDPlatform": 0,
+          "boolAtt": 46
+        },
+        {
+          "type": 1,
+          "title": "Buồn Lắm Em Ơi",
+          "id": "ZWAE70C8",
+          "radioPid": "ZF0C0ZB8",
+          "hasVideo": true,
+          "thumb": "https://photo-zmp3.zadn.vn/thumb/165_165/cover/e/b/5/f/eb5fbb1a97fc8242c6a568d0ac9a3ea7.jpg",
+          "thumbVideo": "https://photo-zmp3.zadn.vn/thumb/240_135/thumb_video/7/9/5/5/79552ce7f1e25e914ea1d5c33b4f059d.jpg",
+          "duration": 345,
+          "status": 1,
+          "playStatus": 2,
+          "video": {
+            "playStatus": 2,
+            "status": 1
+          },
+          "artists": [
+            {
+              "name": "Trịnh Đình Quang",
+              "id": "IWZAODD8"
+            }
+          ],
+          "genres": [
+            {
+              "name": "Việt Nam",
+              "id": "IWZ9Z08I"
+            },
+            {
+              "name": "Nhạc Trẻ",
+              "id": "IWZ9Z088"
+            },
+            {
+              "name": "V-Pop",
+              "id": "IWZ97FCD"
+            }
+          ],
+          "disSPlatform": 0,
+          "disDPlatform": 0,
+          "boolAtt": 174
+        },
+        {
+          "type": 1,
+          "title": "Buồn Làm Chi Em Ơi (Cover)",
+          "id": "ZO00I7FD",
+          "radioPid": "6ZUAOACC",
+          "hasVideo": false,
+          "thumb": "https://photo-zmp3.zadn.vn/thumb/165_165/cover/e/6/4/b/e64bb7fd5dc7f983c00d382a10c401a3.jpg",
+          "thumbVideo": "",
+          "duration": 274,
+          "status": 1,
+          "playStatus": 2,
+          "artists": [
+            {
+              "name": "Gia Hy",
+              "id": "IW6W8EO6"
+            }
+          ],
+          "genres": [
+            {
+              "name": "Việt Nam",
+              "id": "IWZ9Z08I"
+            },
+            {
+              "name": "Nhạc Trẻ",
+              "id": "IWZ9Z088"
+            },
+            {
+              "name": "V-Pop",
+              "id": "IWZ97FCD"
+            }
+          ],
+          "disSPlatform": 0,
+          "disDPlatform": 0,
+          "boolAtt": 166
+        },
+        {
+          "type": 1,
+          "title": "Buồn Không Em",
+          "id": "ZW9DIEUI",
+          "radioPid": "ZEFEFD7F",
+          "hasVideo": true,
+          "thumb": "https://photo-zmp3.zadn.vn/thumb/165_165/cover/3/0/1/c/301ce668e0144c874754359e3db405cb.jpg",
+          "thumbVideo": "https://photo-zmp3.zadn.vn/thumb/240_135/thumb_video/9/a/6/9/9a694f3c706a03ad52a00e4eccb7d194.jpg",
+          "duration": 384,
+          "status": 1,
+          "playStatus": 2,
+          "video": {
+            "playStatus": 2,
+            "status": 1
+          },
+          "artists": [
+            {
+              "name": "Đạt G",
+              "id": "IWZFEEU7"
+            }
+          ],
+          "genres": [
+            {
+              "name": "Việt Nam",
+              "id": "IWZ9Z08I"
+            },
+            {
+              "name": "Nhạc Trẻ",
+              "id": "IWZ9Z088"
+            },
+            {
+              "name": "V-Pop",
+              "id": "IWZ97FCD"
+            }
+          ],
+          "disSPlatform": 0,
+          "disDPlatform": 0,
+          "boolAtt": 46
+        },
+        {
+          "type": 1,
+          "title": "Buồn Vì Ta Mất Nhau",
+          "id": "ZWFB7UWD",
+          "radioPid": "6ZU0WFAE",
+          "hasVideo": true,
+          "thumb": "https://photo-zmp3.zadn.vn/thumb/165_165/cover/1/b/3/a/1b3a2b88f47a75ae2759ccbb23dfff7a.jpg",
+          "thumbVideo": "https://photo-zmp3.zadn.vn/thumb/240_135/thumb_video/c/c/b/f/ccbf9bce99ee76c2f3fc4667ac4aab6c.jpg",
+          "duration": 279,
+          "status": 1,
+          "playStatus": 2,
+          "video": {
+            "playStatus": 2,
+            "status": 1
+          },
+          "artists": [
+            {
+              "name": "Trịnh Đình Quang",
+              "id": "IWZAODD8"
+            }
+          ],
+          "genres": [
+            {
+              "name": "Việt Nam",
+              "id": "IWZ9Z08I"
+            },
+            {
+              "name": "Nhạc Trẻ",
+              "id": "IWZ9Z088"
+            },
+            {
+              "name": "V-Pop",
+              "id": "IWZ97FCD"
+            }
+          ],
+          "disSPlatform": 0,
+          "disDPlatform": 0,
+          "boolAtt": 174
+        }
+      ]
+    }
+  ]
+}

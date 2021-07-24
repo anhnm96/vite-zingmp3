@@ -8,12 +8,12 @@ import './assets/index.css'
 import nProgress from './plugins/nProgress'
 import 'nprogress/nprogress.css'
 // global component
-import BaseCard from './components/BaseCard.vue'
-import Skeleton from './components/Skeleton.vue'
+import PlaylistCard from './components/common/cards/PlaylistCard.vue'
+import Skeleton from './components/base/Skeleton.vue'
 import Loading from './assets/loading.svg?component'
 
 const app = createApp(App)
-app.component('BaseCard', BaseCard)
+app.component('PlaylistCard', PlaylistCard)
 app.component('Skeleton', Skeleton)
 app.component('Loading', Loading)
 app.use(store)

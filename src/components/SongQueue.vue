@@ -38,10 +38,16 @@
         {{ song.title }}
       </h4>
       <p
-        class="mt-0.5 text-xs text-secondary"
+        class="mt-0.5 text-xs text-secondary truncate"
         :class="active && 'text-gray-100'"
       >
-        {{ song.artistsNames }}
+        <span
+          v-for="(artist, index) in song.artists"
+          :key="artist.id"
+        >
+          <span>{{ artist.name }}</span>
+          <template v-if="song.artists.length > 1 && index < song.artists.length - 1">,&nbsp;</template>
+        </span>
       </p>
     </div>
   </div>

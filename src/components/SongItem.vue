@@ -84,6 +84,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    safeToPlay: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['playsong'],
   setup(props, { emit }) {
@@ -91,6 +95,11 @@ export default defineComponent({
 
     function playSong() {
       if (store.state.currentSong?.encodeId !== props.song.encodeId) {
+        if (props.safeToPlay) {
+          store.commit('setState', { prop: 'playlist', value: null })
+          store.commit('setState', { prop: 'currentSong', value: props.song })
+          return
+        }
         emit('playsong', props.song)
       } else {
         store.dispatch('togglePlay')

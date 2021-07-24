@@ -29,7 +29,7 @@
       >
         <Slider :items="section.items" />
       </section>
-      <HomeCarousel
+      <PlaylistCarousel
         v-if="section.sectionType === 'playlist'"
         :key="index"
         :items="section.items"
@@ -51,16 +51,16 @@
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
 import { useApi, fetchHome } from '@/api'
-import Slider from '@/components/Slider.vue'
-import SkeletonCarousel from './SkeletonCarousel.vue'
-import HomeCarousel from './HomeCarousel.vue'
+import Slider from './Slider.vue'
+import SkeletonCarousel from '@/components/common/carousels/SkeletonCarousel.vue'
+import PlaylistCarousel from '@/components/common/carousels/PlaylistCarousel.vue'
 import InfiniteLoad from '@/components/InfiniteLoad.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     Slider,
-    HomeCarousel,
+    PlaylistCarousel,
     InfiniteLoad,
     SkeletonCarousel,
   },

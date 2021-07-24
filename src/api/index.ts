@@ -74,4 +74,38 @@ export function fetchKaraokeLyric(link: string) {
   })
 }
 
+export function fetchSuggestion(query: string) {
+  return request({
+    url: 'api/suggest?query=' + query,
+  })
+}
+
+export function fetchHotKeyword() {
+  return request({
+    url: 'api/hotKeyword',
+  })
+}
+
+export function fetchSearchCounter(query: string) {
+  return request({
+    url: 'api/search/counter?q=' + query,
+  })
+}
+
+export function fetchSearchAll(query: string) {
+  return request({
+    url: 'api/search/multi?q=' + query,
+  })
+}
+
+export function fetchSearch(query: string, type: string) {
+  return request({
+    url: 'api/search',
+    params: {
+      q: query,
+      type,
+    },
+  })
+}
+
 export default request

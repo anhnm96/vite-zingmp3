@@ -14,12 +14,13 @@ module.exports = {
         navigation: 'var(--navigation-text)',
         'item-hover': 'var(--text-item-hover)',
         'link-hover': 'var(--link-text-hover)',
-        player: 'var(--player-text)'
+        player: 'var(--player-text)',
       },
       colors: {
         'purple-primary': 'var(--purple-primary)',
       },
       spacing: {
+        7.5: '1.875rem',
         17: '4.375rem',
         22: '5.5rem',
       },
@@ -37,7 +38,8 @@ module.exports = {
         alpha: 'var(--alpha-bg)',
         sidebar: 'var(--sidebar-bg)',
         'sidebar-popup': 'var(--sidebar-popup-bg)',
-        blur: 'var(--kara-btn-bg)'
+        blur: 'var(--kara-btn-bg)',
+        'box-item': 'var(--box-item-bg)',
       },
       backgroundImage: {
         'loading-img':

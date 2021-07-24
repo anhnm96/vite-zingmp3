@@ -6,8 +6,8 @@
         <AppHeader />
         <main
           ref="main"
-          class="px-9"
-          :class="playlist ? 'h-main' : 'h-main-2'"
+          class="px-[4vw]"
+          :class="songList.length > 0 ? 'h-main' : 'h-main-2'"
         >
           <div class="py-5">
             <router-view />
@@ -17,7 +17,7 @@
       <Playlist />
     </div>
     <Player
-      v-if="playlist"
+      v-if="songList.length > 0"
       class="z-50"
     />
     <keep-alive>
@@ -29,12 +29,12 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useStore } from 'vuex'
-import Sidebar from './components/Layout/Sidebar.vue'
+import Sidebar from './components/layout/Sidebar.vue'
 import Player from './components/Player.vue'
 import Lyric from './components/Lyric.vue'
 import Playlist from './components/Playlist.vue'
 import Scrollbar from 'smooth-scrollbar'
-import AppHeader from './components/Layout/AppHeader.vue'
+import AppHeader from './components/layout/AppHeader.vue'
 
 export default defineComponent({
   name: 'App',
@@ -75,12 +75,12 @@ export default defineComponent({
     })
 
     const showLyricModal = computed(() => store.state.showLyric)
-    const playlist = computed(() => store.state.playlist)
+    const songList = computed(() => store.getters.songList)
 
     return {
       main,
       showLyricModal,
-      playlist,
+      songList,
     }
   },
 })

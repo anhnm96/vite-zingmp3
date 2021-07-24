@@ -19,16 +19,89 @@
     <div class="flex flex-auto">
       <div class="relative w-full max-w-xl mr-auto">
         <button
-          class="absolute p-2 transition transform -translate-y-1/2 rounded-full outline-none hover:bg-alpha top-1/2"
+          class="absolute z-10 p-2 transition transform -translate-y-1/2 rounded-full outline-none hover:bg-alpha top-1/2"
           aria-label="search"
         >
           <i class="flex h-5 text-xl text-secondary ic-search" />
         </button>
-        <input
+        <!-- <input
           class="block w-full py-2 pl-10 pr-6 text-sm rounded-full outline-none text-secondary bg-alpha"
           type="text"
           placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV"
+        > -->
+        <Autocomplete
+          v-model:input="searchTerm"
+          :options="suggestions"
+          :input-bind="{class: 'focus:bg-primary focus:rounded-b-none focus:rounded-t-2xl block w-full py-2 pl-10 pr-6 text-sm border-none rounded-full outline-none text-secondary bg-alpha', placeholder: 'Nhập tên bài hát, nghệ sĩ hoặc MV'}"
+          menu-class="py-3 px-2.5 mt-0 rounded-b-lg bg-primary"
         >
+          <template #option="{item, isActive}">
+            <div
+              v-if="item.value.type === 4"
+              class="flex items-center px-4 py-2 space-x-2 text-sm truncate rounded-md select-none text-primary hover:bg-alpha"
+              :class="isActive && 'bg-alpha'"
+              @click.stop
+            >
+              <div class="flex space-x-2">
+                <div class="flex-shrink-0 w-10 h-10">
+                  <img
+                    class="rounded-full"
+                    :src="item.value.avatar"
+                    :alt="item.value.name"
+                  >
+                </div>
+                <div>
+                  <p class="text-title">
+                    {{ item.value.name }}
+                  </p>
+                  <p class="text-secondary">
+                    Artist • {{ item.value.followers }} follows
+                  </p>
+                </div>
+              </div>
+            </div>
+            <router-link
+              v-if="item.value.type === undefined || item.value.type === 0"
+              :to="{name: 'SearchAll', query: {q: item.value.keyword ? item.value.keyword : item.value}}"
+              class="flex items-center px-4 py-2 space-x-2 text-sm truncate rounded-md select-none text-primary hover:bg-alpha"
+              :class="isActive && 'bg-alpha'"
+              @click.stop
+            >
+              <template v-if="item.value.type === undefined">
+                <i class="flex ic-search text-secondary" />
+                <span>{{ item.label }}</span>
+              </template>
+              <template v-if="item.value.type === 0">
+                <i class="flex ic-search text-secondary" />
+                <span>{{ item.value.keyword }}</span>
+              </template>
+            </router-link>
+            <template v-if="item.value.type === 1">
+              <div
+                class="flex items-center px-4 py-2 space-x-2 text-sm truncate rounded-md select-none text-primary hover:bg-alpha"
+                :class="isActive && 'bg-alpha'"
+                @click.prevent.stop="execFetchSongInfo(item.value.id)"
+              >
+                <div class="flex space-x-2">
+                  <div class="flex-shrink-0 w-10 h-10">
+                    <img
+                      :src="item.value.thumb"
+                      :alt="item.value.title"
+                    >
+                  </div>
+                  <div>
+                    <p class="text-title">
+                      {{ item.value.title }}
+                    </p>
+                    <p class="text-secondary">
+                      {{ item.value.artists[0].name }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </template>
+        </Autocomplete>
       </div>
     </div>
     <div class="flex items-center space-x-2">
@@ -272,16 +345,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import ThemeModal from '../ThemeModal.vue'
+import { useStore } from 'vuex'
+import ThemeModal from './ThemeModal.vue'
+import Autocomplete from '../base/Autocomplete.vue'
+import { useApi, fetchSuggestion, fetchHotKeyword, fetchSongInfo } from '@/api'
+import { useDebounceRef } from '@/composables'
 
 export default defineComponent({
   name: 'AppHeader',
-  components: { ThemeModal },
+  components: { ThemeModal, Autocomplete },
   setup() {
-    // back button
     const route = useRoute()
+    const store = useStore()
+    // back button
 
     const disableBack = computed(() => {
       // use _path as dependency to force computed update
@@ -300,7 +378,50 @@ export default defineComponent({
     // theme modal
     const showModal = ref(false)
 
-    return { showModal, disableBack, disableForward }
+    // hot keyword
+    const {
+      data: hotKeywords,
+      exec: execFetchHotKeyword,
+      onSuccess: onFetchHotKeywordSuccess,
+    } = useApi(fetchHotKeyword)
+    execFetchHotKeyword()
+    onFetchHotKeywordSuccess((result) => (suggestions.value = result))
+
+    // suggestion
+    const { data: suggestions, exec: execFetchSuggestion } = useApi(
+      fetchSuggestion,
+      {
+        responseAdapter: (res: any) => {
+          return [...res.items[0].keywords, ...res.items[1].suggestions]
+        },
+      }
+    )
+
+    const searchTerm = useDebounceRef<string>('')
+    watch(searchTerm, (newValue) => {
+      if (newValue === '') {
+        suggestions.value = hotKeywords.value
+        return
+      }
+      execFetchSuggestion(newValue)
+    })
+
+    // get song info
+    const { exec: execFetchSongInfo, onSuccess: onFetchSongInfoSuccess } =
+      useApi(fetchSongInfo)
+    onFetchSongInfoSuccess((result: any) => {
+      store.commit('setState', { prop: 'playlist', value: null })
+      store.commit('setState', { prop: 'currentSong', value: result })
+    })
+
+    return {
+      searchTerm,
+      suggestions,
+      execFetchSongInfo,
+      showModal,
+      disableBack,
+      disableForward,
+    }
   },
 })
 </script>

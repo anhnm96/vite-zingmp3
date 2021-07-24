@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div class="card-main">
+    <div class="relative overflow-hidden rounded-md pb-[100%] group">
       <img
-        :src="list.thumbnail"
+        class="absolute inset-0 w-full transition-transform duration-700 group-hover:scale-110"
+        :src="item.thumbnailM"
         alt="img"
       >
       <div
-        class="card-overlay"
+        class="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:bg-black group-hover:bg-opacity-40 group-hover:opacity-100"
         :class="isActive ? 'opacity-100' : 'opacity-0'"
       >
         <button class="flex items-center justify-center text-xl text-white focus:outline-none">
@@ -26,15 +27,23 @@
         </button>
       </div>
     </div>
-    <h4 class="card-title">
-      <router-link
-        class="text-sm"
-        :to="list.link.split('.')[0]"
-        :title="list.title"
+    <div class="mt-2">
+      <h4>
+        <router-link
+          class="text-title"
+          :to="item.link.split('.')[0]"
+          :title="item.title"
+        >
+          {{ item.title }}
+        </router-link>
+      </h4>
+      <p
+        v-if="showArtist && item.artistsNames"
+        class="text-artist"
       >
-        {{ list.title }}
-      </router-link>
-    </h4>
+        {{ item.artistsNames }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -45,11 +54,15 @@ import { useStore } from 'vuex'
 import { Playlist } from '@/types'
 
 export default defineComponent({
-  name: 'BaseCard',
+  name: 'PlaylistCard',
   props: {
-    list: {
+    item: {
       type: Object as PropType<Playlist>,
       required: true,
+    },
+    showArtist: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
@@ -69,13 +82,13 @@ export default defineComponent({
       if (isActive.value) {
         store.dispatch('togglePlay')
       } else {
-        fetchSongListData(props.list.encodeId)
+        fetchSongListData(props.item.encodeId)
       }
     }
 
     const isActive = computed<boolean>(() => {
       return (
-        props.list.encodeId === store.state.playlist?.encodeId &&
+        props.item.encodeId === store.state.playlist?.encodeId &&
         store.getters.isPlaying
       )
     })
@@ -85,35 +98,5 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.card-title {
-  @apply text-sm font-bold text-primary mt-2 block overflow-hidden;
-  word-break: break-word;
-  text-overflow: ellipsis;
-}
-.card-title:hover {
-  @apply text-link-hover;
-}
-.card-title a {
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-.card-main {
-  @apply relative overflow-hidden rounded-lg pb-[100%];
-}
-.card-main:hover > img {
-  transform: scale(1.1);
-}
-.card-main > img {
-  @apply max-w-full absolute h-full;
-  transition: transform 0.7s ease-out;
-}
-.card-overlay {
-  @apply absolute inset-0 flex justify-center items-center space-x-4;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.card-main:hover .card-overlay {
-  opacity: 1;
-}
+<style>
 </style>

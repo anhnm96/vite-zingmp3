@@ -9,12 +9,12 @@ const htmlPlugin = () => {
     transformIndexHtml(html) {
       return html.replace(
         /<title>(.*?)<\/title>/,
-        `<title>Zing MP3</title>`
+        `<title>Zing MP3</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">`
       )
-    }
+    },
   }
 }
-
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,6 +22,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@/': '/src/',
-    }
+    },
   },
 })

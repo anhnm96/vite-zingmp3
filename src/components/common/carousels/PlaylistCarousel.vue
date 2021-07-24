@@ -2,9 +2,11 @@
   <CarouselList>
     <template #header="{prev, next}">
       <div class="flex justify-between">
-        <h2 class="text-lg font-bold text-primary">
-          {{ title }}
-        </h2>
+        <slot>
+          <h3 class="text-xl font-bold text-primary">
+            {{ title }}
+          </h3>
+        </slot>
         <div class="flex items-center space-x-2">
           <button
             class="inline-flex items-center p-1 focus:outline-none"
@@ -25,11 +27,14 @@
     </template>
     <CarouselListContent wrapper-class="mt-3 -mx-3">
       <CarouselListItem
-        v-for="list in items"
-        :key="list.title"
-        class="flex-shrink-0 w-1/4 px-3 clg:w-1/5 cxl:w-1/6"
+        v-for="item in items"
+        :key="item.title"
+        :class="['flex-shrink-0 w-1/4 px-3 cxl:w-1/5', itemClass]"
       >
-        <BaseCard :list="list" />
+        <component
+          :is="as"
+          :item="item"
+        />
       </CarouselListItem>
     </CarouselListContent>
   </CarouselList>
@@ -42,7 +47,7 @@ import {
   CarouselList,
   CarouselListContent,
   CarouselListItem,
-} from '@/components/BaseComponents/CarouselList'
+} from '@/components/base/CarouselList'
 
 export default defineComponent({
   name: 'HomeCarousel',
@@ -54,11 +59,19 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true,
+      default: '',
     },
     items: {
       type: Array as PropType<Playlist[]>,
       required: true,
+    },
+    as: {
+      type: [Object, String] as PropType<Record<string, unknown> | string>,
+      default: 'PlaylistCard',
+    },
+    itemClass: {
+      type: String,
+      default: '',
     },
   },
 })

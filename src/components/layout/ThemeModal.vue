@@ -14,7 +14,7 @@
           Select Theme
         </ModalTitle>
         <button
-          class="text-2xl text-primary"
+          class="text-2xl rounded text-primary focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1"
           aria-label="close"
           @click="close"
         >
@@ -39,14 +39,14 @@
             class="w-1/3 cxl:w-1/6 clg:w-1/5 lg:w-1/4"
           >
             <button
-              class="w-full overflow-hidden rounded bg-loading"
+              class="w-full overflow-hidden rounded focus:outline-none bg-loading pb-[66.6%] relative focus:ring-1 focus:ring-blue-500 focus:ring-offset-2"
               @click="setTheme(item)"
             >
-              <BaseImg
+              <img
+                class="absolute inset-0"
                 :src="item.image"
                 :alt="item.name"
-                :aspect-ratio="1.5"
-              />
+              >
             </button>
             <p class="text-xs font-semibold text-primary">
               {{ item.name }}
@@ -60,12 +60,11 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { Modal, ModalTitle } from './BaseComponents/BaseModal'
-import BaseImg from '@/components/BaseComponents/BaseImg.vue'
+import { Modal, ModalTitle } from '../base/BaseModal'
 
 export default defineComponent({
   name: 'ThemeModal',
-  components: { Modal, ModalTitle, BaseImg },
+  components: { Modal, ModalTitle },
   props: {
     modelValue: {
       type: Boolean,

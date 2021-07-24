@@ -23,9 +23,9 @@ export interface Song {
 export interface Artist {
   id: string
   name: string
-  link: string
-  spotlight: boolean
-  playlistId: string
+  link?: string
+  spotlight?: boolean
+  playlistId?: string
 }
 
 export interface Playlist {
@@ -45,6 +45,8 @@ export interface Playlist {
   contentLastUpdate: number
   like: number
   description: string
+  artistsNames?: string
+  artists?: Artist[]
 }
 
 interface SongResult {

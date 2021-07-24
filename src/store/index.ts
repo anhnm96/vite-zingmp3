@@ -3,7 +3,7 @@ import { Howl } from 'howler'
 import { formatTime, shuffle } from '@/helpers'
 import { Song, Playlist } from '../types'
 import { fetchStreaming, useApi } from '@/api'
-import { show } from '@/components/BaseComponents/Notification'
+import { show } from '@/components/base/Notification'
 
 interface SetStatePayload {
   prop: string
@@ -272,7 +272,10 @@ const store = createStore({
       return getters.songList.slice(getters.currentIndex + 1)
     },
     songList(state) {
-      if (state.playlist === null) return []
+      if (state.playlist === null) {
+        if (state.currentSong) return [state.currentSong]
+        return []
+      }
       if (state.isShuffled) {
         return state.shuffledList
       } else {

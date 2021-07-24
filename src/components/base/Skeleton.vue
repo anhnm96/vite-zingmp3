@@ -3,7 +3,7 @@
     aria-hidden="true"
     class="rounded-xl bg-loading-img bg-loading"
     :class="pulse ? '' : 'loading'"
-  ></div>
+  />
 </template>
 
 <script lang="ts">
@@ -14,9 +14,9 @@ export default defineComponent({
   props: {
     pulse: {
       type: Boolean,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 })
 </script>
 <style scoped>

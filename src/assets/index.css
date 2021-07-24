@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    font-family: Inter, 'sans-serif';
+    @apply text-primary;
+  }
+}
+
+@layer components {
+  .content {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .text-title {
+    @apply text-sm font-semibold hover:text-link-hover;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  .text-artist {
+    @apply text-xs text-secondary;
+  }
+}
+
+@layer utilities {
+  .pb-full {
+    padding: 100%;
+  }
+}
+
 .h-main {
   height: calc(100vh - 70px - 88px);
 }

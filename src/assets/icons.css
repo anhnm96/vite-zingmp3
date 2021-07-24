@@ -34,6 +34,12 @@
   display: inline-block;
 }
 
+.ic-svg-artist-icon {
+  width: 90px;
+  height: 90px;
+  background-image: url(https://zjs.zadn.vn/zmp3-desktop/releases/v1.2.10/static/media/artist-icon.0b64fd14.svg);
+}
+
 .ic-addfriend:before {
   content: '\68';
 }

@@ -1,0 +1,675 @@
+{
+  "top": {
+    "encodeId": "ZOWI7AWC",
+    "title": "Tự Nắm Tay Mình",
+    "alias": "Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P",
+    "isOffical": true,
+    "username": "",
+    "artistsNames": "Dương Hoàng Yến, Quân A.P",
+    "artists": [
+      {
+        "id": "IWZ97WAZ",
+        "name": "Dương Hoàng Yến",
+        "link": "/nghe-si/Duong-Hoang-Yen",
+        "spotlight": false,
+        "playlistId": "Z6BOEZZU"
+      },
+      {
+        "id": "IW6ZUZI8",
+        "name": "Quân A.P",
+        "link": "/nghe-si/Quan-A-P",
+        "spotlight": false,
+        "playlistId": "Z6BOECF8"
+      }
+    ],
+    "isWorldWide": true,
+    "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/8/e/c/4/8ec47ce61b4e4a84f566ecbdb3f898cd.jpg",
+    "link": "/bai-hat/Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P/ZOWI7AWC.html",
+    "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/8/e/c/4/8ec47ce61b4e4a84f566ecbdb3f898cd.jpg",
+    "duration": 321,
+    "isZMA": false,
+    "zingChoise": false,
+    "isPrivate": false,
+    "preRelease": false,
+    "releaseDate": 1607083200,
+    "indicators": [],
+    "radioId": 1394493067,
+    "mvlink": "/video-clip/Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P/ZOWI7AWC.html",
+    "streamingStatus": 1,
+    "allowAudioAds": true,
+    "hasLyric": true,
+    "objectType": "song"
+  },
+  "songs": [
+    {
+      "encodeId": "ZOWI7AWC",
+      "title": "Tự Nắm Tay Mình",
+      "alias": "Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P",
+      "isOffical": true,
+      "username": "",
+      "artistsNames": "Dương Hoàng Yến, Quân A.P",
+      "artists": [
+        {
+          "id": "IWZ97WAZ",
+          "name": "Dương Hoàng Yến",
+          "link": "/nghe-si/Duong-Hoang-Yen",
+          "spotlight": false,
+          "playlistId": "Z6BOEZZU"
+        },
+        {
+          "id": "IW6ZUZI8",
+          "name": "Quân A.P",
+          "link": "/nghe-si/Quan-A-P",
+          "spotlight": false,
+          "playlistId": "Z6BOECF8"
+        }
+      ],
+      "isWorldWide": true,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/8/e/c/4/8ec47ce61b4e4a84f566ecbdb3f898cd.jpg",
+      "link": "/bai-hat/Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P/ZOWI7AWC.html",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/8/e/c/4/8ec47ce61b4e4a84f566ecbdb3f898cd.jpg",
+      "duration": 321,
+      "isZMA": false,
+      "zingChoise": false,
+      "isPrivate": false,
+      "preRelease": false,
+      "releaseDate": 1607083200,
+      "indicators": [],
+      "radioId": 1394493067,
+      "mvlink": "/video-clip/Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P/ZOWI7AWC.html",
+      "streamingStatus": 1,
+      "allowAudioAds": true,
+      "hasLyric": true
+    },
+    {
+      "encodeId": "ZW78U88D",
+      "title": "Sao Mình Chưa Nắm Tay Nhau",
+      "alias": "Sao-Minh-Chua-Nam-Tay-Nhau-Yan-Nguyen",
+      "isOffical": true,
+      "username": "",
+      "artistsNames": "Yan Nguyễn",
+      "artists": [
+        {
+          "id": "IWZ9F9WU",
+          "name": "Yan Nguyễn",
+          "link": "/nghe-si/Yan-Nguyen",
+          "spotlight": false,
+          "playlistId": "Z6BOEW7Z"
+        }
+      ],
+      "isWorldWide": true,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/covers/9/d/9dca47c7a31744400935c9405900df1c_1498726562.jpg",
+      "link": "/bai-hat/Sao-Minh-Chua-Nam-Tay-Nhau-Yan-Nguyen/ZW78U88D.html",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/covers/9/d/9dca47c7a31744400935c9405900df1c_1498726562.jpg",
+      "duration": 284,
+      "isZMA": false,
+      "zingChoise": false,
+      "isPrivate": false,
+      "preRelease": false,
+      "releaseDate": 0,
+      "indicators": [],
+      "radioId": 1285244100,
+      "streamingStatus": 1,
+      "allowAudioAds": true,
+      "hasLyric": true
+    },
+    {
+      "encodeId": "ZW9CD9UO",
+      "title": "Mình Yêu Nhau Từ Kiếp Nào (Ai Chết Giơ Tay OST)",
+      "alias": "Minh-Yeu-Nhau-Tu-Kiep-Nao-Ai-Chet-Gio-Tay-OST-Duong-Hoang-Yen",
+      "isOffical": true,
+      "username": "",
+      "artistsNames": "Dương Hoàng Yến",
+      "artists": [
+        {
+          "id": "IWZ97WAZ",
+          "name": "Dương Hoàng Yến",
+          "link": "/nghe-si/Duong-Hoang-Yen",
+          "spotlight": false,
+          "playlistId": "Z6BOEZZU"
+        }
+      ],
+      "isWorldWide": true,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/6/e/9/8/6e987d324b3f92b669056ca66e85efd1.jpg",
+      "link": "/bai-hat/Minh-Yeu-Nhau-Tu-Kiep-Nao-Ai-Chet-Gio-Tay-OST-Duong-Hoang-Yen/ZW9CD9UO.html",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/cover/6/e/9/8/6e987d324b3f92b669056ca66e85efd1.jpg",
+      "duration": 295,
+      "isZMA": false,
+      "zingChoise": false,
+      "isPrivate": false,
+      "preRelease": false,
+      "releaseDate": 0,
+      "indicators": [],
+      "radioId": 1285920371,
+      "streamingStatus": 1,
+      "allowAudioAds": true,
+      "hasLyric": true
+    },
+    {
+      "encodeId": "ZW78U88E",
+      "title": "Sao Mình Chưa Nắm Tay Nhau (Beat)",
+      "alias": "Sao-Minh-Chua-Nam-Tay-Nhau-Beat-Yan-Nguyen",
+      "isOffical": true,
+      "username": "",
+      "artistsNames": "Yan Nguyễn",
+      "artists": [
+        {
+          "id": "IWZ9F9WU",
+          "name": "Yan Nguyễn",
+          "link": "/nghe-si/Yan-Nguyen",
+          "spotlight": false,
+          "playlistId": "Z6BOEW7Z"
+        }
+      ],
+      "isWorldWide": true,
+      "thumbnailM": "https://photo-zmp3.zadn.vn/audio_default.png",
+      "link": "/bai-hat/Sao-Minh-Chua-Nam-Tay-Nhau-Beat-Yan-Nguyen/ZW78U88E.html",
+      "thumbnail": "https://photo-zmp3.zadn.vn/audio_default.png",
+      "duration": 284,
+      "isZMA": false,
+      "zingChoise": false,
+      "isPrivate": false,
+      "preRelease": false,
+      "releaseDate": 0,
+      "indicators": [],
+      "radioId": 1285244101,
+      "streamingStatus": 1,
+      "allowAudioAds": true,
+      "hasLyric": true
+    },
+    {
+      "encodeId": "ZW8IFZC0",
+      "title": "Nam Định Mình Ơi",
+      "alias": "Nam-Dinh-Minh-Oi-Viet-Tu",
+      "isOffical": true,
+      "username": "",
+      "artistsNames": "Việt Tú",
+      "artists": [
+        {
+          "id": "IWZ98896",
+          "name": "Việt Tú",
+          "link": "/nghe-si/Viet-Tu",
+          "spotlight": false,
+          "playlistId": "Z6BOEWOC"
+        }
+      ],
+      "isWorldWide": false,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/covers/9/1/91ad87a6f1b9545ad196848e15895d45_1507807677.jpg",
+      "link": "/bai-hat/Nam-Dinh-Minh-Oi-Viet-Tu/ZW8IFZC0.html",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w94_r1x1_jpeg/covers/9/1/91ad87a6f1b9545ad196848e15895d45_1507807677.jpg",
+      "duration": 366,
+      "isZMA": false,
+      "zingChoise": false,
+      "isPrivate": false,
+      "preRelease": false,
+      "releaseDate": 0,
+      "indicators": [],
+      "radioId": 1285839840,
+      "streamingStatus": 1,
+      "allowAudioAds": true,
+      "hasLyric": true
+    }
+  ],
+  "videos": [
+    {
+      "encodeId": "ZOWI7AWC",
+      "title": "Tự Nắm Tay Mình",
+      "alias": "Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P",
+      "isOffical": true,
+      "username": "",
+      "artistsNames": "Dương Hoàng Yến, Quân A.P",
+      "artists": [
+        {
+          "id": "IWZ97WAZ",
+          "name": "Dương Hoàng Yến",
+          "link": "/nghe-si/Duong-Hoang-Yen",
+          "spotlight": false,
+          "playlistId": "Z6BOEZZU"
+        },
+        {
+          "id": "IW6ZUZI8",
+          "name": "Quân A.P",
+          "link": "/nghe-si/Quan-A-P",
+          "spotlight": false,
+          "playlistId": "Z6BOECF8"
+        }
+      ],
+      "isWorldWide": true,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w600_r300x169_jpeg/thumb_video/6/9/a/2/69a2511b02d9ec0fd1b41007a82a6dad.jpg",
+      "link": "/video-clip/Tu-Nam-Tay-Minh-Duong-Hoang-Yen-Quan-A-P/ZOWI7AWC.html",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r16x9_jpeg/thumb_video/6/9/a/2/69a2511b02d9ec0fd1b41007a82a6dad.jpg",
+      "duration": 446,
+      "streamingStatus": 1,
+      "artist": {
+        "id": "IWZ97WAZ",
+        "name": "Dương Hoàng Yến",
+        "link": "/nghe-si/Duong-Hoang-Yen",
+        "spotlight": false,
+        "playlistId": "Z6BOEZZU",
+        "cover": "https://photo-zmp3.zadn.vn/cover_artist/4/a/a/b/4aabfa5c2a0fb1665ae754841769cf81.jpg",
+        "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/e/9/6/1/e961a45b0004018a92db04d9d301f3dc.jpg"
+      }
+    },
+    {
+      "encodeId": "ZW9C77E8",
+      "title": "Mười Năm Tình Cũ",
+      "alias": "Muoi-Nam-Tinh-Cu-Hoang-Tu-Minh",
+      "isOffical": true,
+      "username": "",
+      "artistsNames": "Hoàng Tú Minh",
+      "artists": [
+        {
+          "id": "IW6W90OU",
+          "name": "Hoàng Tú Minh",
+          "link": "/nghe-si/Hoang-Ngoc-Minh",
+          "spotlight": false,
+          "playlistId": "Z6BOEAF7"
+        }
+      ],
+      "isWorldWide": true,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w600_r300x169_jpeg/thumb_video/9/3/2/4/93247eaa9fe7a363a23d20614b4a2363.jpg",
+      "link": "/video-clip/Muoi-Nam-Tinh-Cu-Hoang-Tu-Minh/ZW9C77E8.html",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r16x9_jpeg/thumb_video/9/3/2/4/93247eaa9fe7a363a23d20614b4a2363.jpg",
+      "duration": 320,
+      "streamingStatus": 1,
+      "artist": {
+        "id": "IW6W90OU",
+        "name": "Hoàng Tú Minh",
+        "link": "/nghe-si/Hoang-Ngoc-Minh",
+        "spotlight": false,
+        "playlistId": "Z6BOEAF7",
+        "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+        "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/d/6/f/a/d6fa3b8be3be7311ff7bc8c4238e500c.jpg"
+      }
+    },
+    {
+      "encodeId": "ZW6CIZ6C",
+      "title": "Đứa Bé Mồ Côi",
+      "alias": "Dua-Be-Mo-Coi-Luong-Bich-Huu-Minh-Vuong-M4U-Nam-Cuong-Ngo-Kien-Huy-Khong-Tu-Quynh-Chi-Dan-Nhat-Tinh-Anh-Quach-Thanh-Danh-Han-Thai-Tu-Khanh-Don",
+      "isOffical": true,
+      "username": "mp3",
+      "artistsNames": "Nhiều nghệ sĩ",
+      "artists": [
+        {
+          "id": "IWZ9ZI7W",
+          "name": "Lương Bích Hữu",
+          "link": "/nghe-si/Luong-Bich-Huu",
+          "spotlight": false,
+          "playlistId": "Z6BU0OEA"
+        },
+        {
+          "id": "IWZ9ZFA7",
+          "name": "Minh Vương M4U",
+          "link": "/nghe-si/Minh-Vuong-M4U",
+          "spotlight": false,
+          "playlistId": "Z6BU0AFZ"
+        },
+        {
+          "id": "IWZ9Z8BW",
+          "name": "Nam Cường",
+          "link": "/nghe-si/Nam-Cuong",
+          "spotlight": false,
+          "playlistId": "Z6BOFED7"
+        },
+        {
+          "id": "IWZ9ZBBF",
+          "name": "Ngô Kiến Huy",
+          "link": "/nghe-si/NgoKienHuy",
+          "spotlight": false,
+          "playlistId": "Z6BU0IW6"
+        },
+        {
+          "id": "IWZ9Z98E",
+          "name": "Khổng Tú Quỳnh",
+          "link": "/nghe-si/Khong-Tu-Quynh",
+          "spotlight": false,
+          "playlistId": "Z6BUIUEU"
+        },
+        {
+          "id": "IWZ99099",
+          "name": "Chi Dân",
+          "link": "/nghe-si/Chi-Dan",
+          "spotlight": true,
+          "playlistId": "Z6BU0OFF"
+        },
+        {
+          "id": "IWZ9Z97U",
+          "name": "Nhật Tinh Anh",
+          "link": "/nghe-si/Nhat-Tinh-Anh",
+          "spotlight": false,
+          "playlistId": "Z6BOF07F"
+        },
+        {
+          "id": "IWZ9Z7UW",
+          "name": "Quách Thành Danh",
+          "link": "/nghe-si/Quach-Thanh-Danh",
+          "spotlight": false,
+          "playlistId": "Z6BOFA6B"
+        },
+        {
+          "id": "IWZ9ZW98",
+          "name": "Hàn Thái Tú",
+          "link": "/nghe-si/Han-Thai-Tu",
+          "spotlight": false,
+          "playlistId": "Z6BU0C6D"
+        },
+        {
+          "id": "IWZ9ZB80",
+          "name": "Khánh Đơn",
+          "link": "/nghe-si/Khanh-Don-Nguyen",
+          "spotlight": false,
+          "playlistId": "Z6BOEFWE"
+        }
+      ],
+      "isWorldWide": true,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w600_r300x169_jpeg/thumb_video/8/a/8ab83c07af5739897a89a7eb820ec0de_1401443627.jpg",
+      "link": "/video-clip/Dua-Be-Mo-Coi-Luong-Bich-Huu-Minh-Vuong-M4U-Nam-Cuong-Ngo-Kien-Huy-Khong-Tu-Quynh-Chi-Dan-Nhat-Tinh-Anh-Quach-Thanh-Danh-Han-Thai-Tu-Khanh-Don/ZW6CIZ6C.html",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r16x9_jpeg/thumb_video/8/a/8ab83c07af5739897a89a7eb820ec0de_1401443627.jpg",
+      "duration": 414,
+      "streamingStatus": 1,
+      "artist": {
+        "id": "IWZ9ZI7W",
+        "name": "Lương Bích Hữu",
+        "link": "/nghe-si/Luong-Bich-Huu",
+        "spotlight": false,
+        "playlistId": "Z6BU0OEA",
+        "cover": "https://zmp3-static.zadn.vn/skins/zmp3-v5.2/images/default_cover.png",
+        "thumbnail": "https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/d/b/7/0/db7009be5cb06fe68704ec4160d8160d.jpg"
+      }
+    }
+  ],
+  "playlists": [
+    {
+      "encodeId": "6Z6DFC70",
+      "title": "Tự Nắm Tay Mình (Single)",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/8/e/c/4/8ec47ce61b4e4a84f566ecbdb3f898cd.jpg",
+      "isoffical": true,
+      "link": "/album/Tu-Nam-Tay-Minh-Single-Duong-Hoang-Yen-Quan-A-P/6Z6DFC70.html",
+      "isIndie": false,
+      "PR": false,
+      "artists": [
+        {
+          "id": "IWZ97WAZ",
+          "name": "Dương Hoàng Yến",
+          "link": "/nghe-si/Duong-Hoang-Yen",
+          "spotlight": false,
+          "playlistId": "Z6BOEZZU"
+        },
+        {
+          "id": "IW6ZUZI8",
+          "name": "Quân A.P",
+          "link": "/nghe-si/Quan-A-P",
+          "spotlight": false,
+          "playlistId": "Z6BOECF8"
+        }
+      ],
+      "artistsNames": "Dương Hoàng Yến, Quân A.P",
+      "playItemMode": 0,
+      "subType": 1,
+      "uid": 456,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/8/e/c/4/8ec47ce61b4e4a84f566ecbdb3f898cd.jpg",
+      "isShuffle": false,
+      "isPrivate": false,
+      "userName": "Zing MP3",
+      "isAlbum": true,
+      "textType": "Single",
+      "isSingle": true,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    },
+    {
+      "encodeId": "6Z77970B",
+      "title": "Mixtape Tự Nắm Tay Mình",
+      "thumbnail": "https://photo-playlist-zmp3.zadn.vn/s3/v3/radio?src=HavwqN7EYmrDGr6VBegUMHOLKPiyqSW4LXLHXpp6p0zK7GJRFCEQ3WOP0zm-ayWF0abJZ3YKpLbGI3pOFPIaMbT7CjWtWlOO2KjqYZp9j54wGN-F5y-Z7NG6Ri9RYB9TEanvmW28urrX1YxP3uxbNsS7VueAZUaEDLDnY0dRlLmo0tNKKj2u02LHPjTUbkeBRXClv4MHvZneM7AkKjogUtb4A_yFoQfxC14tgbpDg2Xc532l3iluBpOHCwXUpQfyDqGm_LoM-X8qI6IRMvFo7pHCSiKTmFvPPbyraKkMeGD6dBG2Fpdx2Cc_TUpnBViHQsexoH2jjmqmDdoVEZ9z&cv=1&size=thumb/240_240",
+      "isoffical": true,
+      "link": "/album/Tu-Nam-Tay-Minh-Various-Artists/6Z77970B.html",
+      "isIndie": false,
+      "PR": false,
+      "artists": [
+        {
+          "id": "IWZ97WAZ",
+          "name": "Dương Hoàng Yến",
+          "link": "/nghe-si/Duong-Hoang-Yen",
+          "spotlight": false,
+          "playlistId": "Z6BOEZZU"
+        },
+        {
+          "id": "IW6ZUZI8",
+          "name": "Quân A.P",
+          "link": "/nghe-si/Quan-A-P",
+          "spotlight": false,
+          "playlistId": "Z6BOECF8"
+        },
+        {
+          "id": "IWZA7UAD",
+          "name": "Huỳnh Tú",
+          "link": "/nghe-si/Huynh-Tu",
+          "spotlight": false,
+          "playlistId": "Z6BUI0UU"
+        },
+        {
+          "id": "IWZAZEUU",
+          "name": "Magazine",
+          "link": "/nghe-si/Magazine",
+          "spotlight": false,
+          "playlistId": "Z6BU0U0O"
+        }
+      ],
+      "artistsNames": "Nhiều nghệ sĩ",
+      "playItemMode": 1,
+      "subType": 19,
+      "uid": 1,
+      "thumbnailM": "https://photo-playlist-zmp3.zadn.vn/s3/v3/radio?src=HavwqN7EYmrDGr6VBegUMHOLKPiyqSW4LXLHXpp6p0zK7GJRFCEQ3WOP0zm-ayWF0abJZ3YKpLbGI3pOFPIaMbT7CjWtWlOO2KjqYZp9j54wGN-F5y-Z7NG6Ri9RYB9TEanvmW28urrX1YxP3uxbNsS7VueAZUaEDLDnY0dRlLmo0tNKKj2u02LHPjTUbkeBRXClv4MHvZneM7AkKjogUtb4A_yFoQfxC14tgbpDg2Xc532l3iluBpOHCwXUpQfyDqGm_LoM-X8qI6IRMvFo7pHCSiKTmFvPPbyraKkMeGD6dBG2Fpdx2Cc_TUpnBViHQsexoH2jjmqmDdoVEZ9z&cv=1&size=thumb/240_240",
+      "isShuffle": true,
+      "isPrivate": false,
+      "userName": "",
+      "isAlbum": false,
+      "textType": "Playlist",
+      "isSingle": false,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    },
+    {
+      "encodeId": "Z9FDIIEC",
+      "title": "Mình Chia Tay Nhau Từ Đây",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/3/d/3/a/3d3a05111806e120598325dcb8ace47b.jpg",
+      "isoffical": true,
+      "link": "/album/Minh-Chia-Tay-Nhau-Tu-Day-Various-Artists/Z9FDIIEC.html",
+      "isIndie": false,
+      "PR": false,
+      "playItemMode": 0,
+      "subType": 1,
+      "uid": 416,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/3/d/3/a/3d3a05111806e120598325dcb8ace47b.jpg",
+      "isShuffle": false,
+      "isPrivate": false,
+      "userName": "Zing MP3",
+      "isAlbum": false,
+      "textType": "Playlist",
+      "isSingle": false,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    },
+    {
+      "encodeId": "ZODWIUBE",
+      "title": "Mình Yêu Nhau Từ Kiếp Nào (Ai Chết Giơ Tay OST) (Single)",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/6/e/9/8/6e987d324b3f92b669056ca66e85efd1.jpg",
+      "isoffical": true,
+      "link": "/album/Minh-Yeu-Nhau-Tu-Kiep-Nao-Ai-Chet-Gio-Tay-OST-Single-Duong-Hoang-Yen/ZODWIUBE.html",
+      "isIndie": false,
+      "PR": false,
+      "artists": [
+        {
+          "id": "IWZ97WAZ",
+          "name": "Dương Hoàng Yến",
+          "link": "/nghe-si/Duong-Hoang-Yen",
+          "spotlight": false,
+          "playlistId": "Z6BOEZZU"
+        }
+      ],
+      "artistsNames": "Dương Hoàng Yến",
+      "playItemMode": 2,
+      "subType": 1,
+      "uid": 309,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/6/e/9/8/6e987d324b3f92b669056ca66e85efd1.jpg",
+      "isShuffle": false,
+      "isPrivate": false,
+      "userName": "Zing MP3",
+      "isAlbum": true,
+      "textType": "Single",
+      "isSingle": true,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    },
+    {
+      "encodeId": "6OEEFBI7",
+      "title": "Tự Hào Việt Nam (Single)",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/4/1/c/8/41c84a121faee9822a260a3eeb2845b1.jpg",
+      "isoffical": true,
+      "link": "/album/Tu-Hao-Viet-Nam-Single-Dan-Truong-Trong-Tan-Xuan-Tri-Minh-Quan-Various-Artists/6OEEFBI7.html",
+      "isIndie": false,
+      "PR": false,
+      "artists": [
+        {
+          "id": "IWZ9Z0CW",
+          "name": "Đan Trường",
+          "link": "/nghe-si/Dan-Truong",
+          "spotlight": false,
+          "playlistId": "Z6BOFOAO"
+        },
+        {
+          "id": "IWZ9ZWWW",
+          "name": "Trọng Tấn",
+          "link": "/nghe-si/Trong-Tan",
+          "spotlight": false,
+          "playlistId": "Z6BU0E6O"
+        },
+        {
+          "id": "IW67DFEF",
+          "name": "Xuân Trí",
+          "link": "/nghe-si/Xuan-Tri",
+          "spotlight": false
+        },
+        {
+          "id": "IWZ9ZBBI",
+          "name": "Minh Quân",
+          "link": "/nghe-si/Minh-Quan",
+          "spotlight": false,
+          "playlistId": "Z6BODEZ9"
+        }
+      ],
+      "artistsNames": "Nhiều nghệ sĩ",
+      "playItemMode": 0,
+      "subType": 1,
+      "uid": 309,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/4/1/c/8/41c84a121faee9822a260a3eeb2845b1.jpg",
+      "isShuffle": false,
+      "isPrivate": false,
+      "userName": "Zing MP3",
+      "isAlbum": true,
+      "textType": "Single",
+      "isSingle": true,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    },
+    {
+      "encodeId": "ZOC9OOF8",
+      "title": "Bốn Năm Lần",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/0/1/e/f/01efa166751c4988645f0280072d5d4e.jpg",
+      "isoffical": true,
+      "link": "/album/Bon-Nam-Lan-Hoang-Tu-Minh/ZOC9OOF8.html",
+      "isIndie": false,
+      "PR": false,
+      "artists": [
+        {
+          "id": "IW6W90OU",
+          "name": "Hoàng Tú Minh",
+          "link": "/nghe-si/Hoang-Ngoc-Minh",
+          "spotlight": false,
+          "playlistId": "Z6BOEAF7"
+        }
+      ],
+      "artistsNames": "Hoàng Tú Minh",
+      "playItemMode": 2,
+      "subType": 1,
+      "uid": 321,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/0/1/e/f/01efa166751c4988645f0280072d5d4e.jpg",
+      "isShuffle": false,
+      "isPrivate": false,
+      "userName": "Zing MP3",
+      "isAlbum": true,
+      "textType": "Album",
+      "isSingle": false,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    },
+    {
+      "encodeId": "ZOC9OUBC",
+      "title": "Câu Chuyện Đầu Năm",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/b/3/f/8/b3f83652ca714053f80d982d3d8cb90d.jpg",
+      "isoffical": true,
+      "link": "/album/Cau-Chuyen-Dau-Nam-Hoang-Tu-Minh/ZOC9OUBC.html",
+      "isIndie": false,
+      "PR": false,
+      "artists": [
+        {
+          "id": "IW6W90OU",
+          "name": "Hoàng Tú Minh",
+          "link": "/nghe-si/Hoang-Ngoc-Minh",
+          "spotlight": false,
+          "playlistId": "Z6BOEAF7"
+        }
+      ],
+      "artistsNames": "Hoàng Tú Minh",
+      "playItemMode": 2,
+      "subType": 1,
+      "uid": 321,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/cover/b/3/f/8/b3f83652ca714053f80d982d3d8cb90d.jpg",
+      "isShuffle": false,
+      "isPrivate": false,
+      "userName": "Zing MP3",
+      "isAlbum": true,
+      "textType": "Album",
+      "isSingle": false,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    },
+    {
+      "encodeId": "IWAIZ8I0",
+      "title": "Album Tân Cổ Hát Mừng Năm Mới Chọn Lọc Mp3-Vũ Luân,Vũ Linh,Kim Tử Long,Thanh Ngân,Phi Nhung,Mạnh Quỳnh,Trọng Phúc,Hà My,Minh Vương,Lệ Thủy,Thanh Kim Huệ,Phượng Hằng,Linh Vương...",
+      "thumbnail": "https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/covers/e/9/e9f46f968c158fdbda86a394b1cf9903_1293181570.jpg",
+      "isoffical": false,
+      "link": "/playlist/Album-Tan-Co-Hat-Mung-Nam-Moi-Chon-Loc-Mp3-Vu-Luan-Vu-Linh-Kim-Tu-Long-Thanh-Ngan-Phi-Nhung-Manh-Quynh-Trong-Phuc-Ha-My-Minh-Vuong-Le-Thuy-Thanh-Kim-Hue-Phuong-Hang-Linh-Vuong/IWAIZ8I0.html",
+      "isIndie": false,
+      "PR": false,
+      "artistsNames": "",
+      "playItemMode": 0,
+      "subType": 2,
+      "uid": 24740215,
+      "thumbnailM": "https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/covers/e/9/e9f46f968c158fdbda86a394b1cf9903_1293181570.jpg",
+      "isShuffle": true,
+      "isPrivate": false,
+      "userName": "vodacluc199o",
+      "isAlbum": false,
+      "textType": "Playlist",
+      "isSingle": false,
+      "isOwner": false,
+      "canEdit": false,
+      "canDelete": false
+    }
+  ],
+  "counter": {
+    "song": 52,
+    "artist": 0,
+    "playlist": 34,
+    "video": 3
+  },
+  "sectionId": "search"
+}
