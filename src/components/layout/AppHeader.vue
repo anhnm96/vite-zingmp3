@@ -347,7 +347,7 @@ import { useStore } from 'vuex'
 import ThemeModal from './ThemeModal.vue'
 import Autocomplete from '../base/Autocomplete.vue'
 import { useApi, fetchSuggestion, fetchHotKeyword, fetchSongInfo } from '@/api'
-import { useDebounceRef } from '@/composables'
+import { debounce } from 'lodash-es'
 
 export default defineComponent({
   name: 'AppHeader',
@@ -397,14 +397,17 @@ export default defineComponent({
     )
 
     // watch input value to fetch suggest
-    const searchTerm = useDebounceRef<string>('', 300)
-    watch(searchTerm, (newValue) => {
-      if (newValue === '') {
-        suggestions.value = hotKeywords.value
-        return
-      }
-      execFetchSuggestion(newValue)
-    })
+    const searchTerm = ref<string>('')
+    watch(
+      searchTerm,
+      debounce((newValue) => {
+        if (newValue === '') {
+          suggestions.value = hotKeywords.value
+          return
+        }
+        execFetchSuggestion(newValue)
+      }, 300)
+    )
 
     // on select option autocomplete
     function onSelect(item: any) {

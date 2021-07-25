@@ -1,4 +1,4 @@
-import { Sentence } from "@/types"
+import { Sentence } from '@/types'
 
 const fadeout = 0.4
 const fadein = 0.4
@@ -109,13 +109,13 @@ function findSentences({ sentences = [], start, end }: any = {}, time: number) {
     return _sentences
   }
 
-  if (time < sentences[1].start) {
+  if (time < sentences[1]?.start) {
     _sentences = sentences.slice(0, 2)
     _sentences.forEach((i: any) => (i.alpha = 1))
     return _sentences
   }
 
-  if (time > sentences[n - 2].end) {
+  if (time > sentences[n - 2]?.end) {
     _sentences = sentences.slice(n - 2)
     _sentences.forEach((i: any) => (i.alpha = 1))
     return _sentences

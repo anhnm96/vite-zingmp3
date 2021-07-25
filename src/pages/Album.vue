@@ -79,7 +79,6 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { fetchPlaylist, useApi } from '@/api'
 import { Song, Playlist } from '@/types'
-import { PlayerState } from '@/store'
 import SongItem from '@/components/SongItem.vue'
 
 export default defineComponent({
@@ -90,10 +89,7 @@ export default defineComponent({
     const route = useRoute()
     const id = route.params.id as string
     const isPlaying = computed(() => {
-      return (
-        store.state.playerState === PlayerState.PLAYING &&
-        store.state.playlist.encodeId === id
-      )
+      return store.getters.isPlaying && store.state.playlist?.encodeId === id
     })
 
     const {
