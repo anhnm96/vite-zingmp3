@@ -29,7 +29,7 @@
       <CarouselListItem
         v-for="item in items"
         :key="item.title"
-        :class="['flex-shrink-0 w-1/4 px-3 cxl:w-1/5', itemClass]"
+        :class="['flex-shrink-0 px-3', itemClass]"
       >
         <component
           :is="as"
@@ -71,7 +71,7 @@ export default defineComponent({
     },
     itemClass: {
       type: String,
-      default: '',
+      default: 'w-1/4 cxl:w-1/5',
     },
   },
 })

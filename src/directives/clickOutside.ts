@@ -8,11 +8,14 @@ export default {
         binding.value(event)
       }
     }
-    document.body.addEventListener('click', (<any>el).__ClickOutsideHandler__)
+    document.body.addEventListener(
+      'pointerdown',
+      (<any>el).__ClickOutsideHandler__
+    )
   },
   beforeUnmount(el: HTMLElement) {
     document.body.removeEventListener(
-      'click',
+      'pointerdown',
       (<any>el).__ClickOutsideHandler__
     )
   },

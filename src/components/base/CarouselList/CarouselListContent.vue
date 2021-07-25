@@ -76,6 +76,8 @@ export default defineComponent({
     })
 
     function prev() {
+      // check if carouselItems are enough to slide
+      if (carouselItems.value.length < itemsToShow.value) return
       if (!hasPrev.value && props.repeat) {
         activeIndex.value = carouselItems.value.length - itemsToShow.value
         return
@@ -88,6 +90,8 @@ export default defineComponent({
     }
 
     function next() {
+      // check if carouselItems are enough to slide
+      if (carouselItems.value.length < itemsToShow.value) return
       if (!hasNext.value && props.repeat) {
         activeIndex.value = 0
         return
@@ -114,6 +118,7 @@ export default defineComponent({
       // make sure we don't over translateX
       if (activeIndex.value > carouselItems.value.length - itemsToShow.value)
         activeIndex.value = carouselItems.value.length - itemsToShow.value
+      if (activeIndex.value < 0) activeIndex.value = 0
     }
 
     // use resizeObserver to recalculate CarouselItem width

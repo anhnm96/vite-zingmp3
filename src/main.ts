@@ -11,11 +11,14 @@ import 'nprogress/nprogress.css'
 import PlaylistCard from './components/common/cards/PlaylistCard.vue'
 import Skeleton from './components/base/Skeleton.vue'
 import Loading from './assets/loading.svg?component'
+// directives
+import clickOutside from './directives/clickOutside'
 
 const app = createApp(App)
 app.component('PlaylistCard', PlaylistCard)
 app.component('Skeleton', Skeleton)
 app.component('Loading', Loading)
+app.directive('clickOutside', clickOutside)
 app.use(store)
 app.use(router)
 nProgress(router)

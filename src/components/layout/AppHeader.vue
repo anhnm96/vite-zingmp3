@@ -24,18 +24,17 @@
         >
           <i class="flex h-5 text-xl text-secondary ic-search" />
         </button>
-        <!-- <input
-          class="block w-full py-2 pl-10 pr-6 text-sm rounded-full outline-none text-secondary bg-alpha"
-          type="text"
-          placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV"
-        > -->
         <Autocomplete
           v-model:input="searchTerm"
           :options="suggestions"
-          :input-bind="{class: 'focus:bg-primary focus:rounded-b-none focus:rounded-t-2xl block w-full py-2 pl-10 pr-6 text-sm border-none rounded-full outline-none text-secondary bg-alpha', placeholder: 'Nhập tên bài hát, nghệ sĩ hoặc MV'}"
+          :option-adapter="optionAdapter"
+          class="block w-full py-2 pl-10 pr-6 text-sm border-none rounded-full outline-none focus:bg-primary focus:rounded-b-none focus:rounded-t-2xl text-secondary bg-alpha"
+          placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV"
           menu-class="py-3 px-2.5 mt-0 rounded-b-lg bg-primary"
+          :blur-on-select="true"
+          @select="onSelect"
         >
-          <template #option="{item, isActive}">
+          <template #option="{item, isActive, select}">
             <div
               v-if="item.value.type === 4"
               class="flex items-center px-4 py-2 space-x-2 text-sm truncate rounded-md select-none text-primary hover:bg-alpha"
@@ -60,12 +59,11 @@
                 </div>
               </div>
             </div>
-            <router-link
-              v-if="item.value.type === undefined || item.value.type === 0"
-              :to="{name: 'SearchAll', query: {q: item.value.keyword ? item.value.keyword : item.value}}"
+            <div
+              v-else
               class="flex items-center px-4 py-2 space-x-2 text-sm truncate rounded-md select-none text-primary hover:bg-alpha"
               :class="isActive && 'bg-alpha'"
-              @click.stop
+              @click="select(item)"
             >
               <template v-if="item.value.type === undefined">
                 <i class="flex ic-search text-secondary" />
@@ -75,31 +73,29 @@
                 <i class="flex ic-search text-secondary" />
                 <span>{{ item.value.keyword }}</span>
               </template>
-            </router-link>
-            <template v-if="item.value.type === 1">
               <div
-                class="flex items-center px-4 py-2 space-x-2 text-sm truncate rounded-md select-none text-primary hover:bg-alpha"
-                :class="isActive && 'bg-alpha'"
-                @click.prevent.stop="execFetchSongInfo(item.value.id)"
+                v-if="item.value.type === 1"
+                class="flex space-x-2"
               >
-                <div class="flex space-x-2">
-                  <div class="flex-shrink-0 w-10 h-10">
-                    <img
-                      :src="item.value.thumb"
-                      :alt="item.value.title"
-                    >
-                  </div>
-                  <div>
-                    <p class="text-title">
-                      {{ item.value.title }}
-                    </p>
-                    <p class="text-secondary">
-                      {{ item.value.artists[0].name }}
-                    </p>
-                  </div>
+                <div
+                  v-if="item.value.thumb"
+                  class="flex-shrink-0 w-10 h-10"
+                >
+                  <img
+                    :src="item.value.thumb"
+                    :alt="item.value.title"
+                  >
+                </div>
+                <div>
+                  <p class="text-title">
+                    {{ item.value.title }}
+                  </p>
+                  <p class="text-secondary">
+                    {{ item.value.artists[0].name }}
+                  </p>
                 </div>
               </div>
-            </template>
+            </div>
           </template>
         </Autocomplete>
       </div>
@@ -346,7 +342,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import ThemeModal from './ThemeModal.vue'
 import Autocomplete from '../base/Autocomplete.vue'
@@ -358,6 +354,7 @@ export default defineComponent({
   components: { ThemeModal, Autocomplete },
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const store = useStore()
     // back button
 
@@ -378,7 +375,7 @@ export default defineComponent({
     // theme modal
     const showModal = ref(false)
 
-    // hot keyword
+    // get hot keyword
     const {
       data: hotKeywords,
       exec: execFetchHotKeyword,
@@ -387,17 +384,20 @@ export default defineComponent({
     execFetchHotKeyword()
     onFetchHotKeywordSuccess((result) => (suggestions.value = result))
 
-    // suggestion
+    // get suggestion
     const { data: suggestions, exec: execFetchSuggestion } = useApi(
       fetchSuggestion,
       {
         responseAdapter: (res: any) => {
-          return [...res.items[0].keywords, ...res.items[1].suggestions]
+          const arr = [...res.items[0].keywords]
+          if (res.items[1]) arr.push(...res.items[1].suggestions)
+          return arr
         },
       }
     )
 
-    const searchTerm = useDebounceRef<string>('')
+    // watch input value to fetch suggest
+    const searchTerm = useDebounceRef<string>('', 300)
     watch(searchTerm, (newValue) => {
       if (newValue === '') {
         suggestions.value = hotKeywords.value
@@ -405,6 +405,40 @@ export default defineComponent({
       }
       execFetchSuggestion(newValue)
     })
+
+    // on select option autocomplete
+    function onSelect(item: any) {
+      if (item.type === undefined || item.type === 0) {
+        router.push({
+          name: 'SearchAll',
+          query: { q: item.keyword ? item.keyword : item },
+        })
+      }
+      if (item.type === 1) execFetchSongInfo(item.id)
+    }
+
+    // adapter options for autocomplete input
+    function optionAdapter(item: any) {
+      if (item.type === undefined) {
+        return {
+          id: item,
+          label: item,
+          value: item,
+        }
+      }
+      if (item.type === 0) {
+        return {
+          id: item.keyword,
+          label: item.keyword,
+          value: item,
+        }
+      }
+      return {
+        id: item.id,
+        label: '',
+        value: item,
+      }
+    }
 
     // get song info
     const { exec: execFetchSongInfo, onSuccess: onFetchSongInfoSuccess } =
@@ -421,6 +455,8 @@ export default defineComponent({
       showModal,
       disableBack,
       disableForward,
+      optionAdapter,
+      onSelect,
     }
   },
 })

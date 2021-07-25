@@ -13,7 +13,10 @@
       </div>
     </div>
     <div class="flex items-center mt-2 space-x-2.5 space-y-1">
-      <div class="flex-shrink-0 w-10 h-10">
+      <div
+        v-if="item.artist"
+        class="flex-shrink-0 w-10 h-10"
+      >
         <img
           class="rounded-full"
           :src="item.artist.thumbnail"
