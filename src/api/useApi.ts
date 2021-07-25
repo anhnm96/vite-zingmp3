@@ -50,7 +50,8 @@ export const useApi = <
   fn: (...args: TVariables) => AxiosPromise<TResult>,
   config: any = {}
 ): UseApiReturn<TResult, TVariables> => {
-  const { initialData, responseAdapter, minimumWait = 500 } = config
+  const { initialData, responseAdapter, retry = 3 } = config
+  let tried = 0
   // Reactive values to store data and API status
   const data = ref<TResult>()
   data.value = initialData
@@ -65,26 +66,27 @@ export const useApi = <
   const exec = async (...args: TVariables) => {
     try {
       status.value = ApiStatus.PENDING
-      // const response = await fn(...args)
-      // data.value =
-      //   typeof responseAdapter === 'function'
-      //     ? responseAdapter(response)
-      //     : response
-      const response = await Promise.all([
-        fn(...args),
-        new Promise((resolve) => setTimeout(resolve, minimumWait)),
-      ])
+      const response = await fn(...args)
       data.value =
         typeof responseAdapter === 'function'
-          ? responseAdapter(response[0])
-          : response[0]
+          ? responseAdapter(response)
+          : response
 
       status.value = ApiStatus.SUCCESS
       resultEvent.trigger(data.value)
+      tried = 0
     } catch (error) {
-      errorEvent.trigger(error)
-      error.value = error.response
-      status.value = ApiStatus.ERROR
+      if (tried < retry) {
+        setTimeout(() => {
+          exec(...args)
+          tried++
+        }, 500)
+      } else {
+        errorEvent.trigger(error)
+        error.value = error.response
+        status.value = ApiStatus.ERROR
+        tried = 0
+      }
     }
   }
 

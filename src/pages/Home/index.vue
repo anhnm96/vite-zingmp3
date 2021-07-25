@@ -67,11 +67,9 @@ export default defineComponent({
   setup() {
     const page = ref<number>(1)
     const home = reactive({ sections: [], hasMore: false })
-    const retry = ref(0)
     const {
       exec: fetchHomeData,
       onSuccess,
-      onError,
       statusPending,
       statusSuccess,
     } = useApi(fetchHome)
@@ -81,15 +79,6 @@ export default defineComponent({
       home.sections.push(...result.items)
       home.hasMore = result.hasMore
       page.value++
-    })
-
-    onError(() => {
-      if (retry.value < 3) {
-        setTimeout(() => {
-          fetchHomeData(page.value)
-          retry.value++
-        }, 500)
-      }
     })
 
     function fetchMore() {

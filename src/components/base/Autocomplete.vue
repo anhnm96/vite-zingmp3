@@ -245,7 +245,6 @@ export default defineComponent({
 .dropdown-content {
   overflow: auto;
   max-height: 600px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 .dropdown-item {
   white-space: nowrap;
