@@ -166,7 +166,7 @@
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import { PlayerState, PlayerMode } from '@/store'
-import ProgressBar from './ProgressBar.vue'
+import ProgressBar from '../base/ProgressBar.vue'
 
 export default defineComponent({
   name: 'Player',

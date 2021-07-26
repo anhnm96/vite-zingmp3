@@ -22,7 +22,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
-import SongItem from '@/components/SongItem.vue'
+import SongItem from '@/components/common/SongItem.vue'
 import { useApi, fetchSearch } from '@/api'
 
 export default defineComponent({

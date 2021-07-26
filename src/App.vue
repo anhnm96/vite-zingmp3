@@ -30,9 +30,9 @@
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useStore } from 'vuex'
 import Sidebar from './components/layout/Sidebar.vue'
-import Player from './components/Player.vue'
-import Lyric from './components/Lyric.vue'
-import Playlist from './components/Playlist.vue'
+import Player from './components/layout/Player.vue'
+import Lyric from './components/layout/Lyric.vue'
+import Playlist from './components/layout/Playlist.vue'
 import Scrollbar from 'smooth-scrollbar'
 import AppHeader from './components/layout/AppHeader.vue'
 

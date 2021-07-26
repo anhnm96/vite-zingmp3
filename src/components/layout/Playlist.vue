@@ -93,15 +93,13 @@
 <script lang="ts">
 import { defineComponent, computed, ref, onBeforeUnmount, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import clickOutside from '@/directives/clickOutside'
 import Scrollbar from 'smooth-scrollbar'
 import SongQueue from './SongQueue.vue'
-import MediaSkeleton from './MediaSkeleton.vue'
+import MediaSkeleton from '../common/MediaSkeleton.vue'
 
 export default defineComponent({
   name: 'Playlist',
   components: { SongQueue, MediaSkeleton },
-  directives: { clickOutside },
   setup() {
     const store = useStore()
     const currentSong = computed(() => store.state.currentSong)

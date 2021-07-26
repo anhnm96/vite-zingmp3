@@ -79,7 +79,7 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { fetchPlaylist, useApi } from '@/api'
 import { Song, Playlist } from '@/types'
-import SongItem from '@/components/SongItem.vue'
+import SongItem from '@/components/common/SongItem.vue'
 
 export default defineComponent({
   name: 'PageAlbum',

@@ -120,7 +120,7 @@
 <script lang="ts">
 import { defineComponent, markRaw } from 'vue'
 import { useRoute } from 'vue-router'
-import SongItem from '@/components/SongItem.vue'
+import SongItem from '@/components/common/SongItem.vue'
 import PlaylistCarousel from '@/components/common/carousels/PlaylistCarousel.vue'
 import { useApi, fetchSearchAll } from '@/api'
 import VideoCard from '@/components/common/cards/VideoCard.vue'

@@ -54,7 +54,7 @@ import { useApi, fetchHome } from '@/api'
 import Slider from './Slider.vue'
 import SkeletonCarousel from '@/components/common/carousels/SkeletonCarousel.vue'
 import PlaylistCarousel from '@/components/common/carousels/PlaylistCarousel.vue'
-import InfiniteLoad from '@/components/InfiniteLoad.vue'
+import InfiniteLoad from './InfiniteLoad.vue'
 
 export default defineComponent({
   name: 'App',
