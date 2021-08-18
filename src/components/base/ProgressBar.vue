@@ -1,7 +1,7 @@
 <template>
   <div
     class="progress-bar"
-    @mousedown="mousedown"
+    @pointerdown="pointerdown"
     @click="clickOnProgressBar"
   >
     <div
@@ -10,15 +10,14 @@
     >
       <div
         class="progress"
-        :style="{width: progressLocal + '%'}"
+        :style="{width: progressDelta * 100 + '%'}"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { useVModel } from '@/composables'
+import { defineComponent, ref, computed } from 'vue'
 
 export default defineComponent({
   name: 'ProgressBar',
@@ -27,18 +26,28 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    min: {
+      type: Number,
+      default: 0,
+    },
+    max: {
+      type: Number,
+      default: 100,
+    },
   },
   emits: ['update:progress'],
-  setup(props) {
-    const progressLocal = useVModel(props, 'progress')
-    const progressElement = ref<HTMLElement | null>(null)
+  setup(props, { emit }) {
+    const progressElement = ref<HTMLElement>()
+    const progressDelta = computed<number>(() => {
+      return props.progress / props.max
+    })
 
-    function mousedown() {
-      document.addEventListener('mousemove', mousemove)
-      document.addEventListener('mouseup', mouseup)
+    function pointerdown() {
+      document.addEventListener('pointermove', pointermove)
+      document.addEventListener('pointerup', pointerup)
     }
 
-    function mousemove(e: MouseEvent) {
+    function pointermove(e: PointerEvent) {
       setProgress(e)
     }
 
@@ -48,18 +57,19 @@ export default defineComponent({
 
     function setProgress(e: MouseEvent) {
       const elWidth = progressElement.value.offsetWidth
-      let progress =
+      let progressWidth =
         e.clientX - progressElement.value.getBoundingClientRect().left
-      if (progress < 0) progress = 0
-      if (progress > elWidth) progress = elWidth
-      progressLocal.value = (progress / elWidth) * 100
+      if (progressWidth < 0) progressWidth = 0
+      if (progressWidth > elWidth) progressWidth = elWidth
+      emit('update:progress', (progressWidth / elWidth) * props.max)
     }
 
-    function mouseup() {
-      document.removeEventListener('mousemove', mousemove)
-      document.removeEventListener('mouseup', mouseup)
+    function pointerup() {
+      document.removeEventListener('pointermove', pointermove)
+      document.removeEventListener('pointerup', pointerup)
     }
-    return { progressLocal, progressElement, mousedown, clickOnProgressBar }
+
+    return { progressDelta, progressElement, pointerdown, clickOnProgressBar }
   },
 })
 </script>

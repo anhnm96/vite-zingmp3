@@ -116,7 +116,10 @@
         <!-- seeker -->
         <div class="flex items-center space-x-3">
           <span class="text-xs font-semibold opacity-50 text-player">{{ seek }}</span>
-          <ProgressBar v-model:progress="playerProgress" />
+          <ProgressBar
+            v-model:progress="currentTime"
+            :max="currentSong.duration"
+          />
           <span class="text-xs font-bold text-player">{{ duration }}</span>
         </div>
       </div>
@@ -146,6 +149,7 @@
           </button>
           <ProgressBar
             v-model:progress="volume"
+            :max="1"
             style="width: 70px"
           />
         </div>
@@ -175,9 +179,9 @@ export default defineComponent({
     const store = useStore()
     const song = computed(() => store.state.currentSong)
 
-    const playerProgress = computed<number>({
+    const currentTime = computed<number>({
       get() {
-        return store.state.playerProgress
+        return store.state.currentTime
       },
       set(val) {
         store.dispatch('updateSeek', val)
@@ -186,16 +190,17 @@ export default defineComponent({
 
     const volume = computed<number>({
       get() {
-        return store.state.volume * 100
+        return store.state.volume
       },
       set(val: number) {
-        store.commit('setVolume', val / 100)
+        store.commit('setVolume', val)
       },
     })
 
     return {
       song,
-      playerProgress,
+      currentTime,
+      currentSong: computed(() => store.state.currentSong),
       volume,
       seek: computed<string>(() => store.state.seek),
       PlayerState,

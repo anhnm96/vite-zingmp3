@@ -38,8 +38,8 @@
             v-for="(artist, index) in song.artists"
             :key="artist.name"
           >
-            {{ artist.name }}
-            <span v-if="index !== song.artists.length - 1">,</span>
+            <span>{{ artist.name }}</span>
+            <span v-if="index !== song.artists.length - 1">, </span>
           </span>
         </p>
       </div>

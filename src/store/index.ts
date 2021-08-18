@@ -30,7 +30,7 @@ const store = createStore({
     currentSong: null as Song,
     playlist: null as Playlist,
     seek: '0:00',
-    playerProgress: 0,
+    currentTime: 0,
     isMuted: false,
     volume: 0.5,
     playerState: PlayerState.IDLE,
@@ -231,18 +231,17 @@ const store = createStore({
         const currentTime = state.howler.seek()
         commit('setState', { prop: 'seek', value: formatTime(currentTime) })
         commit('setState', {
-          prop: 'playerProgress',
-          value: (currentTime / state.howler.duration()) * 100,
+          prop: 'currentTime',
+          value: currentTime,
         })
         dispatch('progress')
       }, 500)
     },
-    updateSeek({ state, commit }, percentage: number) {
+    updateSeek({ state, commit }, time: number) {
       // update playerProgress state
-      commit('setState', { prop: 'playerProgress', value: percentage })
+      commit('setState', { prop: 'currentTime', value: time })
       // make howler seek to selected progress
-      const seconds = (percentage / 100) * state.howler.duration()
-      state.howler.seek(seconds)
+      state.howler.seek(time)
     },
     playNext({ commit, getters }) {
       if (!getters.nextSongs.length) return
@@ -294,6 +293,8 @@ const store = createStore({
 store.watch(
   (state) => state.currentSong,
   () => {
+    store.commit('setState', { prop: 'currentTime', value: 0 })
+    store.commit('setState', { prop: 'seek', value: '0:00' })
     store.state.howler?.unload()
     store.dispatch('fetchStreamingAction')
   }
