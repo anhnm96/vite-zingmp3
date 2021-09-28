@@ -1,22 +1,19 @@
 export default {
-  beforeMount(el: HTMLElement, binding: any): void {
+  mounted(el: HTMLElement, binding: any) {
+    let targetEl = el
+    if (binding.arg === 'parent') targetEl = el.parentElement
     // @ts-ignore
-    el.__ClickOutsideHandler__ = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
+    targetEl.__ClickOutsideHandler__ = (event: Event) => {
       // check if event's target is the el or contained by el
-      if (!(el === target || el.contains(target))) {
+      if (!(targetEl === event.target || targetEl.contains(event.target))) {
         binding.value(event)
       }
     }
-    document.body.addEventListener(
-      'pointerdown',
-      (<any>el).__ClickOutsideHandler__
-    )
+    document.body.addEventListener('click', targetEl.__ClickOutsideHandler__)
   },
-  beforeUnmount(el: HTMLElement) {
-    document.body.removeEventListener(
-      'pointerdown',
-      (<any>el).__ClickOutsideHandler__
-    )
-  },
+  beforeUnmount(el: HTMLElement, binding: any) {
+    let targetEl = el
+    if (binding.arg === 'parent') targetEl = el.parentElement
+    document.body.removeEventListener('click', targetEl.__ClickOutsideHandler__)
+  }
 }

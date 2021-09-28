@@ -5,7 +5,7 @@
     </p>
     <template v-if="statusSuccess">
       <!-- top results -->
-      <div>
+      <div v-if="search.top">
         <h3 class="text-xl font-bold">
           Top Results for <span class="italic">"{{ query }}"</span>
         </h3>

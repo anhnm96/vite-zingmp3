@@ -1,11 +1,10 @@
 <template>
   <div
-    v-click-outside="close"
     role="combobox"
     :aria-expanded="show"
     :aria-owns="`VAutocomplete__${timeId}--listbox`"
     aria-haspopup="listbox"
-    class="autocomplete__container"
+    class="relative"
     :class="containerClass"
   >
     <input
@@ -20,14 +19,16 @@
       @keyup.esc.prevent="show = false"
       @keydown.down.prevent="keyboardNavigate('down')"
       @keydown.up.prevent="keyboardNavigate('up')"
-      @keydown.enter="safeSalect(adaptedOptions[hoverIndex])"
-      @keydown.tab.prevent="safeSalect(adaptedOptions[hoverIndex])"
+      @keydown.enter="safeSalect(filteredOptions[hoverIndex])"
+      @keydown.tab.prevent="safeSalect(filteredOptions[hoverIndex])"
+      @focus="show = true"
       @click="show = true"
     >
     <div
       v-if="show"
       ref="dropdownEl"
-      :class="[menuClass, 'dropdown-menu']"
+      v-click-outside:parent="close"
+      :class="['absolute w-full z-50', menuClass]"
       :style="{ bottom: !isListInViewportVertically ? '100%' : '' }"
     >
       <ul
@@ -36,7 +37,7 @@
         class="dropdown-content"
       >
         <li
-          v-for="(item, index) in adaptedOptions"
+          v-for="(item, index) in filteredOptions"
           :id="`VAutocomplete__${timeId}--opt${index}`"
           :key="index"
           role="option"
@@ -51,8 +52,8 @@
             :close="close"
           >
             <div
-              class="dropdown-item"
-              :class="{ 'is-active': index === hoverIndex }"
+              class="block px-4 py-2 text-sm text-left truncate cursor-pointer select-none"
+              :class="[index === hoverIndex && 'opacity-50 bg-gray-200', item.selected && 'bg-blue-300 text-blue-500']"
               @click="select(item)"
             >
               {{ item.label }}
@@ -65,7 +66,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, nextTick } from 'vue'
+import { defineComponent, ref, computed, watch, nextTick, PropType } from 'vue'
+
+interface AdaptedOption {
+  id: string | number
+  label: string
+  value: any
+  selected?: boolean
+}
 
 export default defineComponent({
   name: 'Autocomplete',
@@ -77,14 +85,14 @@ export default defineComponent({
     },
     menuClass: {
       type: String,
-      default: '',
+      default: 'shadow mt-2 bg-white',
     },
     options: {
       type: Array,
       default: (): any[] => [],
     },
     optionAdapter: {
-      type: Function,
+      type: Function as PropType<(value: any) => AdaptedOption>,
       default: (value: any) => ({
         id: value,
         label: value,
@@ -107,18 +115,31 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    useFilter: {
+      type: Boolean,
+      default: false,
+    },
+    filter: {
+      type: Function,
+      default: (keyword: string, item: AdaptedOption) =>
+        item.label.toLowerCase().indexOf(keyword.toLowerCase()) > -1,
+    },
   },
   emits: ['update:input', 'update:selected', 'select'],
   setup(props, { emit }) {
     const timeId = Date.now()
     const show = ref(false)
     const inputEl = ref()
+    const isDirty = ref(false)
+    const hoverIndex = ref<number>(0)
 
     // input value logic
     const localInput = ref('')
     const useLocalValue = props.input === undefined
     const inputValue = computed<string>({
       set: (value: string) => {
+        isDirty.value = true
+        if (props.useFilter) hoverIndex.value = 0
         useLocalValue ? (localInput.value = value) : emit('update:input', value)
       },
       get: () => {
@@ -129,10 +150,10 @@ export default defineComponent({
     //
     function close() {
       show.value = false
+      isDirty.value = false
       // refocus selected item
     }
 
-    const hoverIndex = ref<number>(0)
     const dropdownEl = ref()
     function keyboardNavigate(direction: string) {
       if (show.value) {
@@ -145,9 +166,7 @@ export default defineComponent({
         hoverIndex.value = nextIndex
         // scroll to hoverIndex
         const list = dropdownEl.value.querySelector('.dropdown-content')
-        const element = list.querySelectorAll(
-          '.dropdown-item:not(.is-disabled)'
-        )[nextIndex]
+        const element = list.querySelectorAll('li:not(.is-disabled)')[nextIndex]
         if (!element) return
         const visMin = list.scrollTop
         const visMax = list.scrollTop + list.clientHeight - element.clientHeight
@@ -185,26 +204,58 @@ export default defineComponent({
       }
     })
 
-    const adaptedOptions = computed(() => {
-      return props.options.map((option) => props.optionAdapter(option))
+    const adaptedSelects = computed<AdaptedOption[]>(() => {
+      return props.selected.map((selectedOpt) =>
+        props.optionAdapter(selectedOpt)
+      )
     })
 
-    function select(item: any) {
+    const adaptedOptions = computed<AdaptedOption[]>(() => {
+      if (!props.multiple)
+        return props.options.map((option) => props.optionAdapter(option))
+      return props.options.map((option) => {
+        const adaptedOption = props.optionAdapter(option)
+        adaptedOption.selected = adaptedSelects.value.some(
+          (i) => i.id === adaptedOption.id
+        )
+        return adaptedOption
+      })
+    })
+
+    const filteredOptions = computed<AdaptedOption[]>(() => {
+      if (!props.useFilter || !isDirty.value) return adaptedOptions.value
+      return adaptedOptions.value.filter((i) =>
+        props.filter(inputValue.value, i)
+      )
+    })
+
+    function select(item: AdaptedOption) {
       let payload
       if (props.multiple) {
-        payload = [...props.selected, item.value]
+        payload = [...props.selected]
+        const foundIndex =
+          adaptedSelects.value.length > 0
+            ? adaptedSelects.value.findIndex((i) => i.id === item.id)
+            : -1
+
+        if (foundIndex > -1) {
+          payload.splice(foundIndex, 1)
+        } else {
+          payload.push(item.value)
+        }
       } else {
         inputValue.value = item.label
         payload = item.value
+        if (props.blurOnSelect) inputEl.value.blur()
+        else inputEl.value.focus()
+        close()
       }
+
       emit('update:selected', payload)
       emit('select', item.value)
-      if (props.blurOnSelect) inputEl.value.blur()
-      else inputEl.value.focus()
-      close()
     }
 
-    function safeSalect(item: any) {
+    function safeSalect(item: AdaptedOption) {
       if (show.value) {
         select(item)
       }
@@ -222,6 +273,7 @@ export default defineComponent({
       calcDropdownInViewportVertical,
       isListInViewportVertically,
       adaptedOptions,
+      filteredOptions,
       select,
       safeSalect,
     }
@@ -230,39 +282,8 @@ export default defineComponent({
 </script>
 
 <style>
-.autocomplete__container {
-  position: relative;
-}
-.dropdown-menu {
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-  display: block;
-  background-color: white;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
 .dropdown-content {
   overflow: auto;
-  max-height: 600px;
-}
-.dropdown-item {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  color: #374151;
-  display: block;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  user-select: none;
-  text-align: left;
-}
-.dropdown-item:hover,
-.dropdown-item.is-active {
-  color: #161e2e;
-  background-color: #f4f5f7;
+  max-height: 200px;
 }
 </style>
