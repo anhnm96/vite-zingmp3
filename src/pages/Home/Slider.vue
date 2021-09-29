@@ -1,14 +1,24 @@
 <template>
-  <div class="relative slider-container" @mouseenter="mouseenter" @mouseleave="mouseleave">
+  <div
+    class="relative slider-container"
+    @mouseenter="mouseenter"
+    @mouseleave="mouseleave"
+  >
     <div class="slider">
       <div
-        class="slider-item"
         v-for="(item, index) in items"
         :key="index"
+        class="slider-item"
         :class="{ next: index === nextIndex, prev: index === previousIndex, current: index === activeIndex }"
       >
-        <button @click="playBanner(item.encodeId)" class="inline-block">
-          <img :src="item.banner" alt="banner image" />
+        <button
+          class="inline-block"
+          @click="playBanner(item)"
+        >
+          <img
+            :src="item.banner"
+            alt="banner image"
+          >
         </button>
       </div>
       <!-- dummy card placeholder for the height -->
@@ -16,8 +26,14 @@
         class="relative opacity-0 pointer-events-none slider-item current"
         style="position: relative"
       >
-        <a href="#" class="inline-block">
-          <img :src="items[0].banner" alt="banner image" />
+        <a
+          href="#"
+          class="inline-block"
+        >
+          <img
+            :src="items[0].banner"
+            alt="banner image"
+          >
         </a>
       </div>
     </div>
@@ -25,13 +41,13 @@
       class="absolute left-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10"
       @click="goPrevious"
     >
-      <i class="flex ic-go-left"></i>
+      <i class="flex ic-go-left" />
     </button>
     <button
       class="absolute right-0 z-30 flex items-center justify-center p-2 text-2xl text-white transform -translate-y-1/2 bg-white rounded-full opacity-0 btn-move focus:outline-none top-1/2 bg-opacity-10"
       @click="goNext"
     >
-      <i class="flex ic-go-right"></i>
+      <i class="flex ic-go-right" />
     </button>
   </div>
 </template>
@@ -41,6 +57,7 @@ import { defineComponent, ref, computed, onMounted, onBeforeUnmount, watch, Prop
 import { useApi, fetchSongInfo } from '@/api'
 import { Song } from '@/types'
 import { useStore } from 'vuex'
+import {useRouter} from 'vue-router'
 import { displayDuration } from '@/helpers'
 
 
@@ -50,6 +67,7 @@ export default defineComponent({
     items: { type: Array as PropType<any[]> },
   },
   setup(props) {
+    const router = useRouter()
     const store = useStore()
     const activeIndex = ref(0)
     const isPaused = ref(false)
@@ -105,8 +123,13 @@ export default defineComponent({
 
     // banner
     const { exec, onSuccess } = useApi(fetchSongInfo)
-    function playBanner(id: string) {
-      exec(id)
+    function playBanner(item: any) {
+      if (item.type === 1) {
+        exec(item.encodeId)
+      }
+      if (item.type === 4) {
+        router.push(item.link.split('.')[0])
+      }
     }
 
     onSuccess((result) => {
@@ -122,7 +145,7 @@ export default defineComponent({
         duration: result.duration,
         isWorldWide: result.isWorldWide
       }
-      const playlist = [currentSong, ...result.sections[0].items]
+      const playlist = [currentSong]
       store.commit('setState', { prop: 'playlist', value: { song: { items: playlist } } })
       store.commit('setState', { prop: 'currentSong', value: currentSong })
     })

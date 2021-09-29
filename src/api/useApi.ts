@@ -76,6 +76,7 @@ export const useApi = <
       resultEvent.trigger(data.value)
       tried = 0
     } catch (error) {
+      console.log(error)
       if (tried < retry) {
         setTimeout(() => {
           exec(...args)
