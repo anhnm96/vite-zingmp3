@@ -6,10 +6,12 @@
         <AppHeader />
         <main
           ref="main"
-          class="px-[4vw]"
           :class="songList.length > 0 ? 'h-main' : 'h-main-2'"
         >
-          <div class="py-5">
+          <div
+            class="py-5 mx-auto"
+            style="max-width: 90%;"
+          >
             <router-view />
           </div>
         </main>

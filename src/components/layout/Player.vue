@@ -2,7 +2,10 @@
   <div
     id="player"
     class="fixed bottom-0 w-full bg-layout"
-    :class="{ 'playing': playerState === PlayerState.PLAYING, 'border-none bg-transparent': showLyric }"
+    :class="{
+      playing: playerState === PlayerState.PLAYING,
+      'border-none bg-transparent': showLyric,
+    }"
   >
     <div
       class="flex items-center w-full pl-10 pr-5 space-x-2 border-t-player h-22"
@@ -12,38 +15,26 @@
       <div class="flex w-1/3 space-x-3">
         <!-- thumbnail -->
         <div class="relative flex-shrink-0 pointer-events-none text-player">
-          <img
-            class="thumbnail"
-            :src="song.thumbnail"
-            alt="thumbnail"
-          >
-          <svg
-            fill="currentColor"
-            viewBox="0 0 512 512"
-            class="note note-1"
-          >
-            <path d="M470.38 1.51L150.41 96A32 32 0 0 0 128 126.51v261.41A139 139 0 0 0 96 384c-53 0-96 28.66-96 64s43 64 96 64 96-28.66 96-64V214.32l256-75v184.61a138.4 138.4 0 0 0-32-3.93c-53 0-96 28.66-96 64s43 64 96 64 96-28.65 96-64V32a32 32 0 0 0-41.62-30.49z" />
+          <img class="thumbnail" :src="song.thumbnail" alt="thumbnail" />
+          <svg fill="currentColor" viewBox="0 0 512 512" class="note note-1">
+            <path
+              d="M470.38 1.51L150.41 96A32 32 0 0 0 128 126.51v261.41A139 139 0 0 0 96 384c-53 0-96 28.66-96 64s43 64 96 64 96-28.66 96-64V214.32l256-75v184.61a138.4 138.4 0 0 0-32-3.93c-53 0-96 28.66-96 64s43 64 96 64 96-28.65 96-64V32a32 32 0 0 0-41.62-30.49z"
+            />
           </svg>
-          <svg
-            fill="currentColor"
-            viewBox="0 0 384 512"
-            class="note note-2"
-          >
-            <path d="M310.94 1.33l-96.53 28.51A32 32 0 0 0 192 60.34V360a148.76 148.76 0 0 0-48-8c-61.86 0-112 35.82-112 80s50.14 80 112 80 112-35.82 112-80V148.15l73-21.39a32 32 0 0 0 23-30.71V32a32 32 0 0 0-41.06-30.67z" />
+          <svg fill="currentColor" viewBox="0 0 384 512" class="note note-2">
+            <path
+              d="M310.94 1.33l-96.53 28.51A32 32 0 0 0 192 60.34V360a148.76 148.76 0 0 0-48-8c-61.86 0-112 35.82-112 80s50.14 80 112 80 112-35.82 112-80V148.15l73-21.39a32 32 0 0 0 23-30.71V32a32 32 0 0 0-41.06-30.67z"
+            />
           </svg>
-          <svg
-            fill="currentColor"
-            viewBox="0 0 512 512"
-            class="note note-3"
-          >
-            <path d="M470.38 1.51L150.41 96A32 32 0 0 0 128 126.51v261.41A139 139 0 0 0 96 384c-53 0-96 28.66-96 64s43 64 96 64 96-28.66 96-64V214.32l256-75v184.61a138.4 138.4 0 0 0-32-3.93c-53 0-96 28.66-96 64s43 64 96 64 96-28.65 96-64V32a32 32 0 0 0-41.62-30.49z" />
+          <svg fill="currentColor" viewBox="0 0 512 512" class="note note-3">
+            <path
+              d="M470.38 1.51L150.41 96A32 32 0 0 0 128 126.51v261.41A139 139 0 0 0 96 384c-53 0-96 28.66-96 64s43 64 96 64 96-28.66 96-64V214.32l256-75v184.61a138.4 138.4 0 0 0-32-3.93c-53 0-96 28.66-96 64s43 64 96 64 96-28.65 96-64V32a32 32 0 0 0-41.62-30.49z"
+            />
           </svg>
-          <svg
-            fill="currentColor"
-            viewBox="0 0 384 512"
-            class="note note-4"
-          >
-            <path d="M310.94 1.33l-96.53 28.51A32 32 0 0 0 192 60.34V360a148.76 148.76 0 0 0-48-8c-61.86 0-112 35.82-112 80s50.14 80 112 80 112-35.82 112-80V148.15l73-21.39a32 32 0 0 0 23-30.71V32a32 32 0 0 0-41.06-30.67z" />
+          <svg fill="currentColor" viewBox="0 0 384 512" class="note note-4">
+            <path
+              d="M310.94 1.33l-96.53 28.51A32 32 0 0 0 192 60.34V360a148.76 148.76 0 0 0-48-8c-61.86 0-112 35.82-112 80s50.14 80 112 80 112-35.82 112-80V148.15l73-21.39a32 32 0 0 0 23-30.71V32a32 32 0 0 0-41.06-30.67z"
+            />
           </svg>
         </div>
         <!-- detail -->
@@ -57,10 +48,14 @@
         </div>
         <!-- actions -->
         <div class="flex place-items-center">
-          <button class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha">
+          <button
+            class="flex items-center justify-center w-8 h-8 rounded-full  text-player hover:bg-alpha"
+          >
             <i class="flex ic-like" />
           </button>
-          <button class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha">
+          <button
+            class="flex items-center justify-center w-8 h-8 rounded-full  text-player hover:bg-alpha"
+          >
             <i class="flex ic-more" />
           </button>
         </div>
@@ -73,49 +68,58 @@
         <!-- controls -->
         <div class="flex items-center justify-center space-x-4">
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full  focus:outline-none text-player hover:bg-alpha"
             :class="isShuffled && 'text-link-hover'"
             @click="toggleShuffleSongList"
           >
             <i class="flex ic-shuffle" />
           </button>
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full  focus:outline-none text-player hover:bg-alpha"
             @click="playPrevious"
           >
             <i class="flex ic-pre" />
           </button>
           <button
             :disabled="playerState === PlayerState.LOADING"
-            class="flex items-center justify-center w-12 h-12 text-4xl rounded-full focus:outline-none text-player"
+            class="flex items-center justify-center w-12 h-12 text-4xl rounded-full  focus:outline-none text-player"
             @click="togglePlay"
           >
             <i
               class="flex"
-              :class="{ 'ic-pause-circle-outline': playerState === PlayerState.PLAYING, 'ic-play-circle-outline': playerState === PlayerState.PAUSE }"
+              :class="{
+                'ic-pause-circle-outline': playerState === PlayerState.PLAYING,
+                'ic-play-circle-outline': playerState === PlayerState.PAUSE,
+              }"
             />
             <Loading v-if="playerState === PlayerState.LOADING" />
           </button>
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full  focus:outline-none text-player hover:bg-alpha"
             @click="playNext"
           >
             <i class="flex ic-next" />
           </button>
           <button
-            class="flex items-center justify-center w-8 h-8 text-base rounded-full focus:outline-none text-player hover:bg-alpha"
+            class="flex items-center justify-center w-8 h-8 text-base rounded-full  focus:outline-none text-player hover:bg-alpha"
             :class="{ 'text-link-hover': playerMode !== PlayerMode.DEFAULT }"
             @click="setNextPlayerMode"
           >
             <i
               class="flex"
-              :class="playerMode === PlayerMode.REPEAT_SONG ? 'ic-repeat-one' : 'ic-repeat'"
+              :class="
+                playerMode === PlayerMode.REPEAT_SONG
+                  ? 'ic-repeat-one'
+                  : 'ic-repeat'
+              "
             />
           </button>
         </div>
         <!-- seeker -->
         <div class="flex items-center space-x-3">
-          <span class="text-xs font-semibold opacity-50 text-player">{{ seek }}</span>
+          <span class="text-xs font-semibold opacity-50 text-player">{{
+            seek
+          }}</span>
           <ProgressBar
             v-model:progress="currentTime"
             :max="currentSong.duration"
@@ -127,35 +131,28 @@
       <div class="flex items-center justify-end w-1/3">
         <button
           v-if="song.mvlink"
-          class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha focus:outline-none"
+          class="flex items-center justify-center w-8 h-8 rounded-full  text-player hover:bg-alpha focus:outline-none"
         >
           <i class="flex ic-mv" />
         </button>
         <button
-          class="flex items-center justify-center w-8 h-8 ml-2 rounded-full text-player hover:bg-alpha focus:outline-none"
+          class="flex items-center justify-center w-8 h-8 ml-2 rounded-full  text-player hover:bg-alpha focus:outline-none"
           @click="toggleShowLyric"
         >
           <i class="flex ic-karaoke" />
         </button>
         <div class="flex items-center ml-2 space-x-2">
           <button
-            class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha focus:outline-none"
+            class="flex items-center justify-center w-8 h-8 rounded-full  text-player hover:bg-alpha focus:outline-none"
             @click="toggleMute"
           >
-            <i
-              class="flex"
-              :class="isMuted ? 'ic-volume-mute' : 'ic-volume'"
-            />
+            <i class="flex" :class="isMuted ? 'ic-volume-mute' : 'ic-volume'" />
           </button>
-          <ProgressBar
-            v-model:progress="volume"
-            :max="1"
-            style="width: 70px"
-          />
+          <ProgressBar v-model:progress="volume" :max="1" style="width: 70px" />
         </div>
         <div class="pl-4 ml-6 border-l btn-toggle border-player">
           <button
-            class="flex items-center justify-center w-8 h-8 rounded-full text-player hover:bg-alpha focus:outline-none"
+            class="flex items-center justify-center w-8 h-8 rounded-full  text-player hover:bg-alpha focus:outline-none"
             @click="toggleShowPlaylist"
           >
             <i class="flex ic-list-music" />
@@ -167,7 +164,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useStore } from 'vuex'
 import { PlayerState, PlayerMode } from '@/store'
 import ProgressBar from '../base/ProgressBar.vue'
@@ -197,6 +194,25 @@ export default defineComponent({
       },
     })
 
+    function handleKeyDown(e: KeyboardEvent) {
+      e.preventDefault()
+      if (e.code === 'Space') {
+        togglePlay()
+      }
+    }
+
+    function togglePlay() {
+      store.dispatch('togglePlay')
+    }
+
+    onMounted(() => {
+      document.addEventListener('keydown', handleKeyDown, { capture: true })
+    })
+
+    onBeforeUnmount(() => {
+      document.removeEventListener('keydown', handleKeyDown, { capture: true })
+    })
+
     return {
       song,
       currentTime,
@@ -211,7 +227,7 @@ export default defineComponent({
       duration: computed(() => store.getters.duration),
       isShuffled: computed(() => store.state.isShuffled),
       playerMode: computed(() => store.state.playerMode),
-      togglePlay: () => store.dispatch('togglePlay'),
+      togglePlay,
       toggleMute: () => store.commit('toggleMute'),
       toggleShowLyric: () => store.commit('toggleShowLyric'),
       toggleShowPlaylist: () => store.commit('toggleShowPlaylist'),
