@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex items-center border-b border-primary content">
+    <div class="flex items-center border-b border-primary">
       <h2 class="flex-shrink-0 hidden pr-5 text-2xl font-bold border-r clg:block border-primary text-primary">
         Search Results
       </h2>
@@ -56,7 +56,7 @@
         </li>
       </ul>
     </div>
-    <div class="mt-5 content">
+    <div class="mt-5">
       <router-view :key="$route.fullPath" />
     </div>
   </div>
