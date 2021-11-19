@@ -33,6 +33,7 @@
           menu-class="py-3 px-2.5 mt-0 rounded-b-lg bg-primary"
           :blur-on-select="true"
           @select="onSelect"
+          @keydown.space.stop
         >
           <template #option="{item, isActive, select}">
             <div

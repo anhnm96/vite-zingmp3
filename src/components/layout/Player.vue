@@ -195,7 +195,6 @@ export default defineComponent({
     })
 
     function handleKeyDown(e: KeyboardEvent) {
-      e.preventDefault()
       if (e.code === 'Space') {
         togglePlay()
       }
@@ -206,11 +205,11 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      document.addEventListener('keydown', handleKeyDown, { capture: true })
+      document.addEventListener('keydown', handleKeyDown)
     })
 
     onBeforeUnmount(() => {
-      document.removeEventListener('keydown', handleKeyDown, { capture: true })
+      document.removeEventListener('keydown', handleKeyDown)
     })
 
     return {
