@@ -195,6 +195,8 @@ export default defineComponent({
     })
 
     function handleKeyDown(e: KeyboardEvent) {
+      if (e.target.tagName === 'BUTTON')
+        e.preventDefault()
       if (e.code === 'Space') {
         togglePlay()
       }
