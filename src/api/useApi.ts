@@ -67,10 +67,12 @@ export const useApi = <
     try {
       status.value = ApiStatus.PENDING
       const response = await fn(...args)
+      const result = response.data ? response.data : response
+      // console.log('response', response)
       data.value =
         typeof responseAdapter === 'function'
-          ? responseAdapter(response)
-          : response
+          ? responseAdapter(result)
+          : result
 
       status.value = ApiStatus.SUCCESS
       resultEvent.trigger(data.value)
