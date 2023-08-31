@@ -28,14 +28,14 @@ request.interceptors.response.use(
 
 export function fetchPlaylist(id: string) {
   return request({
-    url: 'api/playlist/getDetail?id=' + id,
+    url: 'api/playlist?id=' + id,
   })
 }
 
 export function fetchStreaming(id: string, isWorldWide = true) {
   if (isWorldWide) {
     return request({
-      url: 'api/song/streaming?id=' + id,
+      url: 'api/song?id=' + id,
     })
   } else {
     return request({
